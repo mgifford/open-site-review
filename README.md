@@ -64,6 +64,8 @@ node src/cli.js --targets "defaults, not ie <= 11" --format json
 node src/cli.js --paths "src/**/*.{html,css,js},public/**/*.{html,css,js}"
 node src/cli.js --urls "https://example.org,https://example.org/about" --format markdown
 node src/cli.js --urls "https://example.org" --all-assets --format markdown
+node src/cli.js --issue "https://github.com/mgifford/open-site-review/issues/1" --max-urls 25 --format markdown
+node src/cli.js --issue "mgifford/open-site-review#1" --format markdown
 node src/cli.js --audience-weights '{"chrome":0.45,"safari":0.30,"firefox":0.15,"edge":0.10}'
 node src/cli.js --format github --ci
 ```
@@ -78,6 +80,8 @@ Key options:
 - `targets`: Browserslist query string.
 - `paths`: Glob patterns to scan.
 - `urls`: Page URLs to scan in URL mode.
+- `issue`: GitHub issue reference whose body contains URLs to scan.
+- `maxUrls`: Cap URL count from `urls` or `issue` inputs.
 - `sameOriginOnly`: In URL mode, keep linked-asset crawling on the same origin.
 - `audienceWeights`: Optional browser-family weighting map for compatibility scoring.
 - `unsupportedThresholdPercent`: If modern feature unsupported share is above this, mark as `too-new`.

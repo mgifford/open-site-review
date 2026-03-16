@@ -4,12 +4,15 @@ const fs = require("node:fs/promises");
 const path = require("node:path");
 const { scanFiles } = require("./scanner");
 const { toMarkdown, toGithubAnnotations, sortFindings } = require("./reporters");
+const { resolveUrlsFromIssue } = require("./github-issues");
 
 const DEFAULT_CONFIG = {
   scanMode: "files",
   targets: "defaults, not ie <= 11",
   paths: ["**/*.{html,htm,css,js,mjs,cjs}"],
   urls: [],
+  issue: null,
+  maxUrls: null,
   includeLinkedAssets: true,
   sameOriginOnly: true,
   audienceWeights: null,
@@ -81,6 +84,8 @@ async function loadConfig(cwd, argv) {
 
   const cliPaths = parseArgValue(argv, "--paths");
   const cliUrls = parseArgValue(argv, "--urls");
+  const cliIssue = parseArgValue(argv, "--issue");
+  const cliMaxUrls = parseArgValue(argv, "--max-urls");
   const cliTargets = parseArgValue(argv, "--targets");
   const cliFormat = parseArgValue(argv, "--format");
   const cliAudienceWeights = parseArgValue(argv, "--audience-weights");
@@ -97,6 +102,10 @@ async function loadConfig(cwd, argv) {
   if (cliUrls) {
     merged.urls = splitGlobList(cliUrls);
     merged.scanMode = "urls";
+  }
+
+  if (cliIssue) {
+    merged.issue = cliIssue;
   }
 
   if (cliTargets) {
@@ -119,6 +128,25 @@ async function loadConfig(cwd, argv) {
     merged.sameOriginOnly = false;
   }
 
+  if (cliMaxUrls) {
+    const value = Number(cliMaxUrls);
+    if (!Number.isFinite(value) || value <= 0) {
+      throw new Error("--max-urls must be a positive number.");
+    }
+    merged.maxUrls = Math.floor(value);
+  }
+
+  if (merged.issue) {
+    const token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN || null;
+    const resolved = await resolveUrlsFromIssue(merged.issue, token);
+    merged.urls = resolved.urls;
+    merged.scanMode = "urls";
+  }
+
+  if (typeof merged.maxUrls === "number" && merged.maxUrls > 0) {
+    merged.urls = merged.urls.slice(0, merged.maxUrls);
+  }
+
   if (merged.scanMode !== "urls") {
     merged.scanMode = "files";
   }
@@ -129,11 +157,13 @@ async function loadConfig(cwd, argv) {
 function printHelp() {
   console.log(`open-site-review\n
 Usage:
-  open-site-review [--config path] [--paths glob1,glob2] [--urls url1,url2] [--targets "query"] [--format markdown|json|github]\n
+  open-site-review [--config path] [--paths glob1,glob2] [--urls url1,url2] [--issue owner/repo#number|issueURL] [--targets "query"] [--format markdown|json|github]\n
 Options:
   --config   Path to JSON configuration file.
   --paths    Comma-separated glob patterns to scan.
   --urls     Comma-separated page URLs to scan.
+  --issue    Load URLs from a GitHub issue body.
+  --max-urls Limit number of URLs scanned (useful for large issue lists).
   --targets  Browserslist query string.
   --format   Report output format.
   --audience-weights JSON object like {"chrome":0.4,"safari":0.3,"firefox":0.2,"edge":0.1}.

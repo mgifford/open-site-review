@@ -4,6 +4,8 @@ on:
   pull_request:
     branches:
       - main
+  issues:
+    types: [opened, edited]
   workflow_dispatch:
 
 jobs:
@@ -23,10 +25,20 @@ jobs:
         run: npm ci
 
       - name: Run scanner with annotations
-        run: npm run scan:ci
+        run: |
+          if [ "${{ github.event_name }}" = "issues" ]; then
+            node src/cli.js --issue "${{ github.event.issue.html_url }}" --max-urls 50 --format github --ci
+          else
+            npm run scan:ci
+          fi
 
       - name: Save markdown report artifact
-        run: npm run scan -- --format markdown > open-site-review-report.md
+        run: |
+          if [ "${{ github.event_name }}" = "issues" ]; then
+            node src/cli.js --issue "${{ github.event.issue.html_url }}" --max-urls 50 --format markdown > open-site-review-report.md
+          else
+            npm run scan -- --format markdown > open-site-review-report.md
+          fi
 
       - name: Upload report
         uses: actions/upload-artifact@v4
