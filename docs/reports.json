@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "issueNumber": 1,
+    "issueTitle": "SCAN: Spain",
+    "issueUrl": "https://github.com/mgifford/open-site-review/issues/1",
+    "runUrl": "https://github.com/mgifford/open-site-review/actions/runs/23154952915",
+    "createdAt": "2026-03-16T16:41:50.388Z",
+    "reportPath": "reports/issue-1-20260316T164150Z.md"
+  }
+]
