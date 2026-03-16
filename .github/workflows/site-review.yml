@@ -116,6 +116,24 @@ jobs:
             const repoName = process.env.REPO_NAME;
             const runUrl = process.env.RUN_URL;
 
+            // Retry an async Octokit call up to maxAttempts times with exponential backoff.
+            // Transient network errors ("fetch failed") and 5xx responses are retried;
+            // 4xx client errors are not.
+            async function withRetry(fn, maxAttempts = 3) {
+              for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+                try {
+                  return await fn();
+                } catch (err) {
+                  const status = err.status ?? 0;
+                  const isRetryable = !status || status >= 500;
+                  if (!isRetryable || attempt === maxAttempts) throw err;
+                  const delayMs = Math.pow(2, attempt) * 1000;
+                  console.warn(`Attempt ${attempt} failed (${err.message}); retrying in ${delayMs}ms…`);
+                  await new Promise(r => setTimeout(r, delayMs));
+                }
+              }
+            }
+
             // Fetch the default branch from the API so scheduled/dispatch events
             // have a reliable value (context.payload.repository may be absent).
             const { data: repoData } = await github.rest.repos.get({ owner, repo });
@@ -133,6 +151,9 @@ jobs:
                 repo,
                 issue_number: issueNumber
               });
+
+              let reportUrl = null;
+              let reportsUrl = null;
 
               try {
                 // Run the scanner for this issue
@@ -204,10 +225,30 @@ jobs:
                   }
                 }
 
-                const reportUrl = `https://${owner}.github.io/${repoName}/${reportRel}`;
-                const reportsUrl = `https://${owner}.github.io/${repoName}/reports.html`;
+                reportUrl = `https://${owner}.github.io/${repoName}/${reportRel}`;
+                reportsUrl = `https://${owner}.github.io/${repoName}/reports.html`;
 
-                // Post comment with the report
+              } catch (scanError) {
+                console.error(`Scan failed for issue #${issueNumber}:`, scanError.message);
+
+                try {
+                  await withRetry(() => github.rest.issues.createComment({
+                    owner,
+                    repo,
+                    issue_number: issueNumber,
+                    body: `❌ Scan encountered an error: ${scanError.message}\n\nCheck the [workflow run](${runUrl}) for details.`
+                  }));
+                } catch (commentError) {
+                  console.error(`Failed to post scan error comment:`, commentError.message);
+                }
+                continue;
+              }
+
+              // Post the scan report as a comment and close the issue.
+              // These operations are separated so a failure in one does not skip the other.
+
+              // Post comment with the report
+              try {
                 let report = fs.readFileSync(reportFile, 'utf8');
                 const maxLen = 50000;
                 if (report.length > maxLen) {
@@ -222,26 +263,18 @@ jobs:
                   report
                 ].join('\n');
 
-                await github.rest.issues.createComment({ owner, repo, issue_number: issueNumber, body });
+                await withRetry(() => github.rest.issues.createComment({ owner, repo, issue_number: issueNumber, body }));
+              } catch (commentError) {
+                console.error(`Failed to post report comment for issue #${issueNumber}:`, commentError.message);
+                console.log(`Report is still available in workflow artifacts and on GitHub Pages: ${reportUrl}`);
+              }
 
-                // Close the issue
-                await github.rest.issues.update({ owner, repo, issue_number: issueNumber, state: 'closed' });
-
+              // Close the issue
+              try {
+                await withRetry(() => github.rest.issues.update({ owner, repo, issue_number: issueNumber, state: 'closed' }));
                 console.log(`Issue #${issueNumber} processed and closed`);
-
-              } catch (error) {
-                console.error(`Error processing issue #${issueNumber}:`, error.message);
-
-                try {
-                  await github.rest.issues.createComment({
-                    owner,
-                    repo,
-                    issue_number: issueNumber,
-                    body: `❌ Scan encountered an error: ${error.message}\n\nCheck the [workflow run](${runUrl}) for details.`
-                  });
-                } catch (commentError) {
-                  console.error(`Failed to post error comment:`, commentError.message);
-                }
+              } catch (closeError) {
+                console.error(`Failed to close issue #${issueNumber}:`, closeError.message);
               }
             }
 
