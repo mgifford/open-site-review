@@ -128,3 +128,17 @@ Issue automation behavior:
 - Expand rule packs for accessibility and performance anti-patterns.
 - Add JavaScript/CSS AST-level detectors for stronger precision.
 - Add configurable recommendation templates by severity.
+
+## Related tools and resources
+
+### Project Wallace
+
+[Project Wallace](https://www.projectwallace.com/) is a CSS analytics platform for visualizing and understanding your CSS. It is a great place to learn more about CSS complexity, quality, and maintainability.
+
+Tools in the Project Wallace ecosystem:
+
+- **[css-analyzer](https://github.com/projectwallace/css-analyzer)** – Static analysis of CSS, exposing detailed metrics on selectors, properties, values, colors, specificity, and more.
+- **[wallace-cli](https://github.com/projectwallace/wallace-cli)** – Command-line interface for running CSS analysis locally.
+- **[color-sorter](https://github.com/projectwallace/color-sorter)** – Sorts CSS colors by format, hue, whiteness, and lightness.
+
+While open-site-review focuses on browser compatibility and feature usage patterns, Project Wallace goes deeper into CSS structure and quality metrics, making them complementary tools for front-end code review.
