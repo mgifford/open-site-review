@@ -1,0 +1,84 @@
+name: Delete merged branches
+
+permissions:
+  contents: write
+  pull-requests: read
+
+on:
+  pull_request:
+    types: [closed]
+  workflow_dispatch:
+    # No inputs required — cleans up all branches with a merged PR
+
+jobs:
+  delete-merged-branch:
+    name: Delete merged branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete branch(es)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const protectedBranches = ['main', 'master', 'develop', 'staging', 'production'];
+
+            async function deleteBranch(branch) {
+              if (protectedBranches.includes(branch)) {
+                console.log(`Skipping protected branch: ${branch}`);
+                return;
+              }
+              try {
+                await github.rest.git.deleteRef({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  ref: `heads/${branch}`
+                });
+                console.log(`Deleted branch: ${branch}`);
+              } catch (error) {
+                console.log(`Could not delete branch ${branch}: ${error.message}`);
+              }
+            }
+
+            if (context.eventName === 'pull_request') {
+              // Only act on merged PRs
+              if (!context.payload.pull_request.merged) {
+                console.log('PR was closed without merging — skipping branch deletion.');
+                return;
+              }
+              await deleteBranch(context.payload.pull_request.head.ref);
+            } else {
+              // workflow_dispatch: clean up all branches whose PRs have been merged.
+              // Fetch all merged PRs once and match against branches in memory to avoid
+              // making one API call per branch.
+              const [branches, mergedPRs] = await Promise.all([
+                github.paginate(github.rest.repos.listBranches, {
+                  owner: context.repo.owner,
+                  repo: context.repo.repo
+                }),
+                github.paginate(github.rest.pulls.list, {
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  state: 'closed'
+                })
+              ]);
+
+              // Build a map of head branch name → merged PR number for quick lookup
+              const mergedByBranch = new Map();
+              for (const pr of mergedPRs) {
+                if (pr.merged_at !== null) {
+                  mergedByBranch.set(pr.head.ref, pr.number);
+                }
+              }
+
+              for (const branch of branches) {
+                const branchName = branch.name;
+                if (protectedBranches.includes(branchName)) continue;
+
+                const prNumber = mergedByBranch.get(branchName);
+                if (prNumber !== undefined) {
+                  console.log(`Branch ${branchName} was merged via PR #${prNumber} — deleting.`);
+                  await deleteBranch(branchName);
+                } else {
+                  console.log(`Branch ${branchName} has no merged PR — skipping.`);
+                }
+              }
+            }
