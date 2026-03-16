@@ -1,5 +1,13 @@
 [
   {
+    "issueNumber": 7,
+    "issueTitle": "SCAN: Green Web Foundation",
+    "issueUrl": "https://github.com/mgifford/open-site-review/issues/7",
+    "runUrl": "https://github.com/mgifford/open-site-review/actions/runs/23159325330",
+    "createdAt": "2026-03-16T18:22:50.079Z",
+    "reportPath": "reports/issue-7-20260316T182250Z.md"
+  },
+  {
     "issueNumber": 1,
     "issueTitle": "SCAN: Spain",
     "issueUrl": "https://github.com/mgifford/open-site-review/issues/1",
