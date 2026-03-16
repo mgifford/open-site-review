@@ -119,8 +119,8 @@ a { color: var(--accent); }
 <body>
 <main>
   <h1>Open Site Review Reports</h1>
-  <p>Reports generated from issues whose titles begin with Scan:.</p>
-  <table>
+  <p>Reports generated from issues whose titles begin with Scan:. <a href="./">Back to home</a></p>
+  <table aria-label="Site review reports">
     <thead>
       <tr>
         <th>Generated</th>
@@ -179,7 +179,6 @@ function main() {
 
   fs.writeFileSync(metadataPath, JSON.stringify(deduped.slice(0, 500), null, 2));
   fs.writeFileSync(path.join(pagesDir, "reports.html"), buildReportsHtml(deduped.slice(0, 500)));
-  fs.writeFileSync(path.join(pagesDir, "index.html"), buildReportsHtml(deduped.slice(0, 500)));
 }
 
 main();
