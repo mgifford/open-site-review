@@ -1,0 +1,15 @@
+{
+  "targets": "defaults, not ie <= 11",
+  "paths": [
+    "**/*.{html,htm,css,js,mjs,cjs}"
+  ],
+  "ignore": [
+    "node_modules/**",
+    "dist/**",
+    "build/**",
+    ".git/**"
+  ],
+  "unsupportedThresholdPercent": 10,
+  "removableThresholdPercent": 5,
+  "format": "markdown"
+}

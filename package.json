@@ -1,0 +1,19 @@
+{
+  "name": "open-site-review",
+  "version": "0.1.0",
+  "description": "Analyze front-end code for compatibility, obsolete polyfills, and modern best-practice adoption opportunities.",
+  "main": "src/cli.js",
+  "bin": {
+    "open-site-review": "src/cli.js"
+  },
+  "scripts": {
+    "scan": "node src/cli.js",
+    "scan:example": "node src/cli.js --paths \"examples/**/*.{html,css,js}\" --format markdown"
+  },
+  "dependencies": {
+    "@mdn/browser-compat-data": "^5.6.26",
+    "browserslist": "^4.25.4",
+    "caniuse-api": "^3.0.0",
+    "fast-glob": "^3.3.3"
+  }
+}
