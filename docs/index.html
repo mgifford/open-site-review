@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Open Site Review</title>
+<style>
+:root {
+  --bg: #f4f7f4;
+  --surface: #ffffff;
+  --ink: #15201d;
+  --muted: #5a6b64;
+  --line: #d6e2dc;
+  --accent: #0b6e4f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at 10% 10%, #e7f6ef 0%, var(--bg) 55%);
+  color: var(--ink);
+}
+main {
+  max-width: 860px;
+  margin: 3rem auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 6px 24px rgba(7, 24, 16, 0.08);
+}
+h1 {
+  margin: 0 0 .5rem 0;
+  font-size: 2.1rem;
+}
+h2 {
+  margin: 1.8rem 0 .4rem 0;
+  font-size: 1.2rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+p, li {
+  color: var(--muted);
+  line-height: 1.65;
+}
+ul { padding-left: 1.4rem; }
+.cta {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: .65rem 1.4rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.cta:hover { opacity: .88; }
+a { color: var(--accent); }
+code {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: .1em .35em;
+  font-size: .9em;
+}
+</style>
+</head>
+<body>
+<main>
+  <h1>Open Site Review</h1>
+  <p>Compatibility and front-end practice scanner for HTML, CSS, and JavaScript.</p>
+
+  <h2>What it does</h2>
+  <ul>
+    <li>Checks whether you are using features that are too new for your target browsers.</li>
+    <li>Identifies polyfills that are no longer needed.</li>
+    <li>Highlights native web platform features that can replace JavaScript.</li>
+  </ul>
+
+  <h2>How to request a scan</h2>
+  <p>
+    Open a GitHub issue in the
+    <a href="https://github.com/mgifford/open-site-review">open-site-review repository</a>
+    with a title beginning with <code>Scan:</code> and include the URLs you want reviewed in
+    the issue body. The workflow will run automatically, post the report as a comment, and
+    publish it here.
+  </p>
+
+  <a class="cta" href="reports.html">View all reports <span aria-hidden="true">&rarr;</span></a>
+
+  <h2>Source</h2>
+  <p>
+    <a href="https://github.com/mgifford/open-site-review">github.com/mgifford/open-site-review</a>
+  </p>
+</main>
+</body>
+</html>
