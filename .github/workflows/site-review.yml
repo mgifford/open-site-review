@@ -5,21 +5,26 @@ permissions:
   issues: write
 
 on:
+  schedule:
+    # Run daily at midnight UTC to process any open SCAN: issues
+    - cron: '0 0 * * *'
   pull_request:
     branches:
       - main
   issues:
     types: [opened, reopened]
   workflow_dispatch:
-    inputs:
-      issue:
-        description: 'GitHub issue URL or owner/repo#number to scan (e.g. https://github.com/owner/repo/issues/1 or owner/repo#1)'
-        required: false
-        type: string
+    # No inputs required — triggers a full scan of all open SCAN: issues
+
+concurrency:
+  group: scan-queue
+  cancel-in-progress: false
 
 jobs:
-  review:
+  scan-files:
+    name: Scan Files (PR)
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,136 +40,215 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Resolve issue context
-        id: issue_ctx
-        if: (github.event_name == 'issues' && startsWith(github.event.issue.title, 'Scan:')) || (github.event_name == 'workflow_dispatch' && inputs.issue != '')
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          if [ "${{ github.event_name }}" = "issues" ]; then
-            echo "issue_ref=${{ github.event.issue.html_url }}" >> "$GITHUB_OUTPUT"
-            echo "issue_number=${{ github.event.issue.number }}" >> "$GITHUB_OUTPUT"
-            echo "issue_title=${{ github.event.issue.title }}" >> "$GITHUB_OUTPUT"
-            echo "issue_url=${{ github.event.issue.html_url }}" >> "$GITHUB_OUTPUT"
-          else
-            ISSUE_INPUT="${{ inputs.issue }}"
-            echo "issue_ref=${ISSUE_INPUT}" >> "$GITHUB_OUTPUT"
-            if [[ "${ISSUE_INPUT}" =~ /issues/([0-9]+) ]]; then
-              ISSUE_NUM="${BASH_REMATCH[1]}"
-            elif [[ "${ISSUE_INPUT}" =~ \#([0-9]+)$ ]]; then
-              ISSUE_NUM="${BASH_REMATCH[1]}"
-            else
-              echo "::error::Cannot extract issue number from '${ISSUE_INPUT}'. Provide a GitHub issue URL (https://github.com/owner/repo/issues/N) or owner/repo#N format."
-              exit 1
-            fi
-            echo "issue_number=${ISSUE_NUM}" >> "$GITHUB_OUTPUT"
-            ISSUE_TITLE=$(gh api "repos/${{ github.repository }}/issues/${ISSUE_NUM}" --jq '.title' 2>/dev/null || echo "Unable to fetch title for Issue #${ISSUE_NUM}")
-            echo "issue_title=${ISSUE_TITLE}" >> "$GITHUB_OUTPUT"
-            echo "issue_url=https://github.com/${{ github.repository }}/issues/${ISSUE_NUM}" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Run scanner with annotations
-        if: github.event_name != 'issues' && !(github.event_name == 'workflow_dispatch' && inputs.issue != '')
         run: npm run scan:ci
 
-      - name: Generate issue report
-        if: steps.issue_ctx.outputs.issue_ref != ''
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          node src/cli.js --issue "${{ steps.issue_ctx.outputs.issue_ref }}" --max-urls 50 --format markdown > open-site-review-report.md
-
       - name: Save markdown report artifact
-        if: github.event_name != 'issues' && !(github.event_name == 'workflow_dispatch' && inputs.issue != '')
-        run: |
-          npm run scan -- --format markdown > open-site-review-report.md
-
-      - name: Publish issue report to GitHub Pages
-        id: publish_pages
-        if: steps.issue_ctx.outputs.issue_ref != '' && success()
-        env:
-          ISSUE_NUMBER: ${{ steps.issue_ctx.outputs.issue_number }}
-          ISSUE_TITLE: ${{ steps.issue_ctx.outputs.issue_title }}
-          ISSUE_URL: ${{ steps.issue_ctx.outputs.issue_url }}
-          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          OWNER: ${{ github.repository_owner }}
-          REPO_NAME: ${{ github.event.repository.name }}
-        run: |
-          set -euo pipefail
-          mkdir -p docs/reports
-          TS="$(date -u +%Y%m%dT%H%M%SZ)"
-          REPORT_REL="reports/issue-${ISSUE_NUMBER}-${TS}.md"
-          cp open-site-review-report.md "docs/${REPORT_REL}"
-
-          node scripts/update-pages-index.js docs "${REPORT_REL}"
-
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/reports docs/reports.json docs/reports.html
-          git commit -m "Add report for issue #${ISSUE_NUMBER}" || echo "No changes to commit"
-          git push origin main
-
-          echo "report_url=https://${OWNER}.github.io/${REPO_NAME}/${REPORT_REL}" >> "$GITHUB_OUTPUT"
-          echo "reports_url=https://${OWNER}.github.io/${REPO_NAME}/reports.html" >> "$GITHUB_OUTPUT"
+        run: npm run scan -- --format markdown > open-site-review-report.md
 
       - name: Upload report
-        if: steps.issue_ctx.outputs.issue_ref != '' || github.event_name != 'issues'
         uses: actions/upload-artifact@v4
         with:
           name: open-site-review-report
           path: open-site-review-report.md
 
-      - name: Comment report on issue
-        if: steps.issue_ctx.outputs.issue_ref != '' && success()
+  scan-issue-queue:
+    name: Scan Issue Queue
+    runs-on: ubuntu-latest
+    # Skip for PRs; skip for issue events whose title doesn't start with SCAN:
+    if: >
+      github.event_name != 'pull_request' &&
+      (github.event_name != 'issues' ||
+       startsWith(github.event.issue.title, 'SCAN:'))
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch open SCAN issues
+        id: fetch-issues
         uses: actions/github-script@v7
-        env:
-          REPORT_URL: ${{ steps.publish_pages.outputs.report_url }}
-          REPORTS_URL: ${{ steps.publish_pages.outputs.reports_url }}
-          ISSUE_NUMBER: ${{ steps.issue_ctx.outputs.issue_number }}
         with:
           script: |
+            const issues = await github.paginate(github.rest.issues.listForRepo, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100
+            });
+
+            // Match exactly "SCAN:" (case-sensitive) to stay consistent with the
+            // job-level condition and the convention used in mgifford/open-scans.
+            const scanIssues = issues.filter(issue =>
+              issue.title.startsWith('SCAN:') && !issue.pull_request
+            );
+
+            console.log(`Found ${scanIssues.length} open SCAN issue(s)`);
+            return scanIssues.map(issue => issue.number);
+          result-encoding: json
+
+      - name: Process SCAN issue queue
+        if: steps.fetch-issues.outputs.result != '[]'
+        uses: actions/github-script@v7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+          REPO_NAME: ${{ github.event.repository.name }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        with:
+          script: |
+            const { spawnSync } = require('child_process');
             const fs = require('node:fs');
-            let report = fs.readFileSync('open-site-review-report.md', 'utf8');
-            const maxLen = 50000;
-            if (report.length > maxLen) {
-              report = `${report.slice(0, maxLen)}\n\n... Report truncated in comment. Full report is published on GitHub Pages and in workflow artifacts.`;
+
+            const issueNumbers = ${{ steps.fetch-issues.outputs.result }};
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const repoName = process.env.REPO_NAME;
+            const runUrl = process.env.RUN_URL;
+
+            // Fetch the default branch from the API so scheduled/dispatch events
+            // have a reliable value (context.payload.repository may be absent).
+            const { data: repoData } = await github.rest.repos.get({ owner, repo });
+            const defaultBranch = repoData.default_branch;
+
+            for (const issueNumber of issueNumbers) {
+              console.log(`\n=== Processing issue #${issueNumber} ===`);
+
+              const issueUrl = `https://github.com/${owner}/${repo}/issues/${issueNumber}`;
+              const reportFile = `issue-${issueNumber}-report.md`;
+
+              // Fetch issue details
+              const { data: issue } = await github.rest.issues.get({
+                owner,
+                repo,
+                issue_number: issueNumber
+              });
+
+              try {
+                // Run the scanner for this issue
+                const scanResult = spawnSync(
+                  process.execPath,
+                  ['src/cli.js', '--issue', issueUrl, '--max-urls', '50', '--format', 'markdown'],
+                  { encoding: 'utf8', env: process.env }
+                );
+
+                if (scanResult.status !== 0) {
+                  const stderr = scanResult.stderr ?? '';
+                  const excerpt = stderr.length > 6000
+                    ? `${stderr.slice(0, 3000)}\n...\n${stderr.slice(-3000)}`
+                    : stderr;
+                  throw new Error(`Scanner exited with code ${scanResult.status}:\n${excerpt}`);
+                }
+
+                fs.writeFileSync(reportFile, scanResult.stdout);
+
+                // Publish report to GitHub Pages
+                fs.mkdirSync('docs/reports', { recursive: true });
+                // Timestamp format matches the existing bash convention: YYYYMMDDTHHMMSSz
+                const ts = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, 'Z');
+                const reportRel = `reports/issue-${issueNumber}-${ts}.md`;
+                fs.copyFileSync(reportFile, `docs/${reportRel}`);
+
+                spawnSync(
+                  process.execPath,
+                  ['scripts/update-pages-index.js', 'docs', reportRel],
+                  {
+                    encoding: 'utf8',
+                    env: {
+                      ...process.env,
+                      ISSUE_NUMBER: String(issueNumber),
+                      ISSUE_TITLE: issue.title,
+                      ISSUE_URL: issueUrl,
+                      RUN_URL: runUrl
+                    }
+                  }
+                );
+
+                // Commit and push the report
+                spawnSync('git', ['config', 'user.name', 'github-actions[bot]']);
+                spawnSync('git', ['config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com']);
+                spawnSync('git', ['add', 'docs/reports', 'docs/reports.json', 'docs/reports.html']);
+
+                const statusResult = spawnSync('git', ['status', '--porcelain'], { encoding: 'utf8' });
+                if (statusResult.stdout.trim()) {
+                  spawnSync('git', ['commit', '-m', `Add report for issue #${issueNumber}`]);
+
+                  let pushSucceeded = false;
+                  for (let attempt = 1; attempt <= 3; attempt++) {
+                    const pullResult = spawnSync('git', ['pull', '--rebase', 'origin', defaultBranch], { encoding: 'utf8' });
+                    if (pullResult.status === 0) {
+                      const pushResult = spawnSync('git', ['push', 'origin', `HEAD:${defaultBranch}`], { encoding: 'utf8' });
+                      if (pushResult.status === 0) {
+                        console.log(`Report pushed for issue #${issueNumber} (attempt ${attempt})`);
+                        pushSucceeded = true;
+                        break;
+                      }
+                    }
+                    if (attempt < 3) {
+                      // Exponential backoff: 2 s, 4 s
+                      await new Promise(r => setTimeout(r, Math.pow(2, attempt) * 1000));
+                    }
+                  }
+                  if (!pushSucceeded) {
+                    console.warn(`Could not push report for issue #${issueNumber} after 3 attempts — report is still available in the issue comment and workflow artifacts`);
+                  }
+                }
+
+                const reportUrl = `https://${owner}.github.io/${repoName}/${reportRel}`;
+                const reportsUrl = `https://${owner}.github.io/${repoName}/reports.html`;
+
+                // Post comment with the report
+                let report = fs.readFileSync(reportFile, 'utf8');
+                const maxLen = 50000;
+                if (report.length > maxLen) {
+                  report = `${report.slice(0, maxLen)}\n\n... Report truncated in comment. Full report is published on GitHub Pages and in workflow artifacts.`;
+                }
+
+                const body = [
+                  'Automated site review completed for this issue URL list.',
+                  `Full report: ${reportUrl}`,
+                  `Reports index: ${reportsUrl}`,
+                  '',
+                  report
+                ].join('\n');
+
+                await github.rest.issues.createComment({ owner, repo, issue_number: issueNumber, body });
+
+                // Close the issue
+                await github.rest.issues.update({ owner, repo, issue_number: issueNumber, state: 'closed' });
+
+                console.log(`Issue #${issueNumber} processed and closed`);
+
+              } catch (error) {
+                console.error(`Error processing issue #${issueNumber}:`, error.message);
+
+                try {
+                  await github.rest.issues.createComment({
+                    owner,
+                    repo,
+                    issue_number: issueNumber,
+                    body: `❌ Scan encountered an error: ${error.message}\n\nCheck the [workflow run](${runUrl}) for details.`
+                  });
+                } catch (commentError) {
+                  console.error(`Failed to post error comment:`, commentError.message);
+                }
+              }
             }
 
-            const body = [
-              'Automated site review completed for this issue URL list.',
-              `Full report: ${process.env.REPORT_URL}`,
-              `Reports index: ${process.env.REPORTS_URL}`,
-              '',
-              report
-            ].join('\n');
-
-            const issueNumber = parseInt(process.env.ISSUE_NUMBER, 10);
-            if (isNaN(issueNumber) || issueNumber <= 0) {
-              core.setFailed(`Invalid issue number: ${process.env.ISSUE_NUMBER}`);
-              return;
-            }
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: issueNumber,
-              body
-            });
-
-      - name: Close issue after report
-        if: steps.issue_ctx.outputs.issue_number != '' && success()
-        uses: actions/github-script@v7
-        env:
-          ISSUE_NUMBER: ${{ steps.issue_ctx.outputs.issue_number }}
+      - name: Upload reports
+        if: steps.fetch-issues.outputs.result != '[]'
+        uses: actions/upload-artifact@v4
         with:
-          script: |
-            const issueNumber = parseInt(process.env.ISSUE_NUMBER, 10);
-            if (isNaN(issueNumber) || issueNumber <= 0) {
-              core.setFailed(`Invalid issue number: ${process.env.ISSUE_NUMBER}`);
-              return;
-            }
-            await github.rest.issues.update({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: issueNumber,
-              state: 'closed'
-            });
+          name: open-site-review-reports
+          path: issue-*-report.md
+          if-no-files-found: ignore
