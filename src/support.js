@@ -21,7 +21,19 @@ function getByPath(obj, path) {
     return undefined;
   }
 
-  return path.split(".").reduce((acc, key) => (acc ? acc[key] : undefined), obj);
+  return path.split(".").reduce((acc, key) => {
+    if (!acc || typeof acc !== "object") {
+      return undefined;
+    }
+
+    if (Object.prototype.hasOwnProperty.call(acc, key)) {
+      return acc[key];
+    }
+
+    const normalized = key.toLowerCase();
+    const matchedKey = Object.keys(acc).find((candidate) => candidate.toLowerCase() === normalized);
+    return matchedKey ? acc[matchedKey] : undefined;
+  }, obj);
 }
 
 function getMdnMetadata(mdnPath) {

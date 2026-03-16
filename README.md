@@ -33,6 +33,14 @@ Current rules detect and classify:
 - Polyfills likely obsolete for current targets.
 - Legacy patterns with modern native alternatives.
 
+Expanded detectors now include examples such as:
+
+- Native UI features: `<dialog>`, `<details>`, and HTML `popover`.
+- Modern CSS capabilities: `:has()`, container queries, and `subgrid`.
+- Modern JS syntax and APIs: optional chaining and nullish coalescing.
+- Legacy anti-patterns: `document.write` and synchronous XHR.
+- Polyfill review signals: `polyfill.io`, `core-js`, `regenerator-runtime`, IntersectionObserver/ResizeObserver/Web Components polyfills.
+
 Severity is based on unsupported share of your configured targets.
 
 ## Install and run
