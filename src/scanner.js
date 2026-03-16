@@ -4,6 +4,7 @@ const fg = require("fast-glob");
 const { RULES } = require("./rules");
 const { evaluateSupport, getMdnMetadata } = require("./support");
 const { fetchSourcesFromUrls } = require("./url-scan");
+const { analyzeCssQuality } = require("./css-quality");
 
 function classifyFinding(rule, support, config, mdnMetadata) {
   const unsupportedThreshold = config.unsupportedThresholdPercent;
@@ -137,6 +138,7 @@ async function scanFiles(config) {
   const loaded =
     sourceMode === "urls" ? await loadUrlSources(config) : await loadLocalSources(config);
   const findings = [];
+  const cssAnalysis = [];
 
   for (const source of loaded.sources) {
     const { location, sourceType, text } = source;
@@ -181,12 +183,28 @@ async function scanFiles(config) {
         mdn: mdnMetadata
       });
     }
+
+    if (sourceType === "css") {
+      try {
+        const qualityData = await analyzeCssQuality(text);
+        cssAnalysis.push({
+          file: location,
+          ...qualityData
+        });
+      } catch (error) {
+        cssAnalysis.push({
+          file: location,
+          error: error.message
+        });
+      }
+    }
   }
 
   return {
     scannedFiles: loaded.scannedFiles,
     sourceErrors: loaded.sourceErrors,
-    findings
+    findings,
+    cssAnalysis
   };
 }
 
