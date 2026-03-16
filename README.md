@@ -103,6 +103,7 @@ Issue automation behavior:
 - For `SCAN:` issues, it reads URLs from the issue body and runs a scan.
 - It posts the report as an issue comment and publishes it to GitHub Pages.
 - Reports index page is published at `https://<owner>.github.io/<repo>/reports.html`.
+- Configure GitHub Pages source to `main` branch and `/docs` folder.
 - After successful processing and report generation, it closes the `SCAN:` issue automatically.
 - If a `SCAN:` issue is reopened later, the scan runs again and closes it again after reporting.
 - Non-`SCAN:` issues are ignored by this automation and remain open.
