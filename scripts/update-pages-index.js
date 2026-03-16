@@ -123,7 +123,7 @@ a { color: var(--accent); }
 <body>
 <main>
   <h1>Open Site Review Reports</h1>
-  <p>Reports generated from issues whose titles begin with Scan:. <a href="${backLink}">Back to home</a></p>
+  <p>Reports generated from issues whose titles begin with SCAN:. <a href="${backLink}">Back to home</a></p>
   <table aria-label="Site review reports">
     <thead>
       <tr>
