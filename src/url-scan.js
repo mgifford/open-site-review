@@ -65,19 +65,32 @@ function extractAssetUrls(html, pageUrl) {
   return [...urls];
 }
 
-async function fetchText(url) {
-  const response = await fetch(url, {
-    redirect: "follow",
-    headers: {
-      "user-agent": "open-site-review/0.2"
+async function fetchText(url, timeoutMs = 15000) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const response = await fetch(url, {
+      redirect: "follow",
+      signal: controller.signal,
+      headers: {
+        "user-agent": "open-site-review/0.2"
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch ${url}: HTTP ${response.status}`);
     }
-  });
 
-  if (!response.ok) {
-    throw new Error(`Failed to fetch ${url}: HTTP ${response.status}`);
+    return response.text();
+  } catch (error) {
+    if (error.name === "AbortError") {
+      throw new Error(`Fetch timed out after ${timeoutMs}ms: ${url}`);
+    }
+
+    throw error;
+  } finally {
+    clearTimeout(timer);
   }
-
-  return response.text();
 }
 
 async function fetchSourcesFromUrls(urls, options = {}) {
