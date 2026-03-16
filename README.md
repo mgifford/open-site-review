@@ -99,10 +99,13 @@ This repository includes a workflow that runs on pull requests and emits scanner
 
 Issue automation behavior:
 
-- On issue `opened` and `reopened`, the workflow reads URLs from the issue body and runs a scan.
-- It posts the markdown report as an issue comment.
-- After successful processing and report generation, it closes the issue automatically.
-- If an issue is reopened later, the scan runs again and the issue is closed again after reporting.
+- On issue `opened` and `reopened`, the workflow runs only when the title starts with `SCAN:`.
+- For `SCAN:` issues, it reads URLs from the issue body and runs a scan.
+- It posts the report as an issue comment and publishes it to GitHub Pages.
+- Reports index page is published at `https://<owner>.github.io/<repo>/reports.html`.
+- After successful processing and report generation, it closes the `SCAN:` issue automatically.
+- If a `SCAN:` issue is reopened later, the scan runs again and closes it again after reporting.
+- Non-`SCAN:` issues are ignored by this automation and remain open.
 
 ## Insights this can surface
 

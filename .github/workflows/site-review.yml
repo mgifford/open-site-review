@@ -1,7 +1,7 @@
 name: Site Review
 
 permissions:
-  contents: read
+  contents: write
   issues: write
 
 on:
@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -33,7 +35,7 @@ jobs:
         run: npm run scan:ci
 
       - name: Generate issue report
-        if: github.event_name == 'issues'
+        if: github.event_name == 'issues' && startsWith(github.event.issue.title, 'SCAN:')
         run: |
           node src/cli.js --issue "${{ github.event.issue.html_url }}" --max-urls 50 --format markdown > open-site-review-report.md
 
@@ -42,26 +44,76 @@ jobs:
         run: |
           npm run scan -- --format markdown > open-site-review-report.md
 
+      - name: Publish issue report to GitHub Pages
+        id: publish_pages
+        if: github.event_name == 'issues' && startsWith(github.event.issue.title, 'SCAN:') && success()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          REPO_SLUG: ${{ github.repository }}
+          OWNER: ${{ github.repository_owner }}
+          REPO_NAME: ${{ github.event.repository.name }}
+        run: |
+          set -euo pipefail
+          REPO_URL="https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO_SLUG}.git"
+          rm -rf .pages-work
+
+          if git ls-remote --exit-code --heads "$REPO_URL" gh-pages >/dev/null 2>&1; then
+            git clone --depth 1 --branch gh-pages "$REPO_URL" .pages-work
+          else
+            git clone --depth 1 "$REPO_URL" .pages-work
+            cd .pages-work
+            git checkout --orphan gh-pages
+            git rm -rf . >/dev/null 2>&1 || true
+            cd ..
+          fi
+
+          mkdir -p .pages-work/reports
+          TS="$(date -u +%Y%m%dT%H%M%SZ)"
+          REPORT_REL="reports/issue-${ISSUE_NUMBER}-${TS}.md"
+          cp open-site-review-report.md ".pages-work/${REPORT_REL}"
+
+          node scripts/update-pages-index.js .pages-work "${REPORT_REL}"
+
+          cd .pages-work
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports reports.json reports.html index.html
+          git commit -m "Add report for issue #${ISSUE_NUMBER}" || echo "No changes to commit"
+          git push "$REPO_URL" gh-pages
+
+          echo "report_url=https://${OWNER}.github.io/${REPO_NAME}/${REPORT_REL}" >> "$GITHUB_OUTPUT"
+          echo "reports_url=https://${OWNER}.github.io/${REPO_NAME}/reports.html" >> "$GITHUB_OUTPUT"
+
       - name: Upload report
+        if: github.event_name != 'issues' || startsWith(github.event.issue.title, 'SCAN:')
         uses: actions/upload-artifact@v4
         with:
           name: open-site-review-report
           path: open-site-review-report.md
 
       - name: Comment report on issue
-        if: github.event_name == 'issues' && success()
+        if: github.event_name == 'issues' && startsWith(github.event.issue.title, 'SCAN:') && success()
         uses: actions/github-script@v7
+        env:
+          REPORT_URL: ${{ steps.publish_pages.outputs.report_url }}
+          REPORTS_URL: ${{ steps.publish_pages.outputs.reports_url }}
         with:
           script: |
             const fs = require('node:fs');
             let report = fs.readFileSync('open-site-review-report.md', 'utf8');
-            const maxLen = 60000;
+            const maxLen = 50000;
             if (report.length > maxLen) {
-              report = `${report.slice(0, maxLen)}\n\n... Report truncated in comment. Full report is in workflow artifacts.`;
+              report = `${report.slice(0, maxLen)}\n\n... Report truncated in comment. Full report is published on GitHub Pages and in workflow artifacts.`;
             }
 
             const body = [
               'Automated site review completed for this issue URL list.',
+              `Full report: ${process.env.REPORT_URL}`,
+              `Reports index: ${process.env.REPORTS_URL}`,
               '',
               report
             ].join('\n');
@@ -74,7 +126,7 @@ jobs:
             });
 
       - name: Close issue after report
-        if: github.event_name == 'issues' && success()
+        if: github.event_name == 'issues' && startsWith(github.event.issue.title, 'SCAN:') && success()
         uses: actions/github-script@v7
         with:
           script: |
