@@ -29,12 +29,16 @@ function toAbsoluteUrl(input) {
   }
 }
 
-function buildReportsHtml(items) {
+function buildReportsHtml(items, { insideReportsDir = false } = {}) {
+  const backLink = insideReportsDir ? "../" : "./";
   const rows = items
     .map((item) => {
       const title = escapeHtml(item.issueTitle || "(untitled)");
       const issueUrl = escapeHtml(item.issueUrl || "");
-      const reportPath = escapeHtml(item.reportPath || "");
+      let reportPath = escapeHtml(item.reportPath || "");
+      if (insideReportsDir && reportPath.startsWith("reports/")) {
+        reportPath = reportPath.slice("reports/".length);
+      }
       const runUrl = escapeHtml(item.runUrl || "");
       const createdAt = escapeHtml(item.createdAt || "");
 
@@ -119,7 +123,7 @@ a { color: var(--accent); }
 <body>
 <main>
   <h1>Open Site Review Reports</h1>
-  <p>Reports generated from issues whose titles begin with Scan:. <a href="./">Back to home</a></p>
+  <p>Reports generated from issues whose titles begin with Scan:. <a href="${backLink}">Back to home</a></p>
   <table aria-label="Site review reports">
     <thead>
       <tr>
@@ -177,8 +181,11 @@ function main() {
     deduped.push(entry);
   }
 
-  fs.writeFileSync(metadataPath, JSON.stringify(deduped.slice(0, 500), null, 2));
-  fs.writeFileSync(path.join(pagesDir, "reports.html"), buildReportsHtml(deduped.slice(0, 500)));
+  const truncated = deduped.slice(0, 500);
+  fs.writeFileSync(metadataPath, JSON.stringify(truncated, null, 2));
+  fs.writeFileSync(path.join(pagesDir, "reports.html"), buildReportsHtml(truncated));
+  fs.mkdirSync(path.join(pagesDir, "reports"), { recursive: true });
+  fs.writeFileSync(path.join(pagesDir, "reports", "index.html"), buildReportsHtml(truncated, { insideReportsDir: true }));
 }
 
 main();
