@@ -97,6 +97,13 @@ This repository includes a workflow that runs on pull requests and emits scanner
 - Command used: `npm run scan:ci`
 - Output includes `::warning` / `::error` annotations for findings.
 
+Issue automation behavior:
+
+- On issue `opened` and `reopened`, the workflow reads URLs from the issue body and runs a scan.
+- It posts the markdown report as an issue comment.
+- After successful processing and report generation, it closes the issue automatically.
+- If an issue is reopened later, the scan runs again and the issue is closed again after reporting.
+
 ## Insights this can surface
 
 - Replace JavaScript UI helpers with native elements (for example `<dialog>`) where support allows.
