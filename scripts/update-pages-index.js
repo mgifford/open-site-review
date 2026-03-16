@@ -119,7 +119,7 @@ a { color: var(--accent); }
 <body>
 <main>
   <h1>Open Site Review Reports</h1>
-  <p>Reports generated from issues whose titles begin with SCAN:.</p>
+  <p>Reports generated from issues whose titles begin with Scan:.</p>
   <table>
     <thead>
       <tr>
