@@ -3,15 +3,21 @@
 const fs = require("node:fs/promises");
 const path = require("node:path");
 const { scanFiles } = require("./scanner");
-const { toMarkdown } = require("./reporters");
+const { toMarkdown, toGithubAnnotations, sortFindings } = require("./reporters");
 
 const DEFAULT_CONFIG = {
+  scanMode: "files",
   targets: "defaults, not ie <= 11",
   paths: ["**/*.{html,htm,css,js,mjs,cjs}"],
+  urls: [],
+  includeLinkedAssets: true,
+  sameOriginOnly: true,
+  audienceWeights: null,
   ignore: ["node_modules/**", "dist/**", "build/**", ".git/**"],
   unsupportedThresholdPercent: 10,
   removableThresholdPercent: 5,
-  format: "markdown"
+  format: "markdown",
+  ci: false
 };
 
 function parseArgValue(argv, flag) {
@@ -74,8 +80,10 @@ async function loadConfig(cwd, argv) {
   }
 
   const cliPaths = parseArgValue(argv, "--paths");
+  const cliUrls = parseArgValue(argv, "--urls");
   const cliTargets = parseArgValue(argv, "--targets");
   const cliFormat = parseArgValue(argv, "--format");
+  const cliAudienceWeights = parseArgValue(argv, "--audience-weights");
 
   const merged = {
     ...DEFAULT_CONFIG,
@@ -86,6 +94,11 @@ async function loadConfig(cwd, argv) {
     merged.paths = splitGlobList(cliPaths);
   }
 
+  if (cliUrls) {
+    merged.urls = splitGlobList(cliUrls);
+    merged.scanMode = "urls";
+  }
+
   if (cliTargets) {
     merged.targets = cliTargets;
   }
@@ -94,18 +107,38 @@ async function loadConfig(cwd, argv) {
     merged.format = cliFormat;
   }
 
+  if (cliAudienceWeights) {
+    merged.audienceWeights = JSON.parse(cliAudienceWeights);
+  }
+
+  if (hasFlag(argv, "--ci")) {
+    merged.ci = true;
+  }
+
+  if (hasFlag(argv, "--all-assets")) {
+    merged.sameOriginOnly = false;
+  }
+
+  if (merged.scanMode !== "urls") {
+    merged.scanMode = "files";
+  }
+
   return merged;
 }
 
 function printHelp() {
   console.log(`open-site-review\n
 Usage:
-  open-site-review [--config path] [--paths glob1,glob2] [--targets "query"] [--format markdown|json]\n
+  open-site-review [--config path] [--paths glob1,glob2] [--urls url1,url2] [--targets "query"] [--format markdown|json|github]\n
 Options:
   --config   Path to JSON configuration file.
   --paths    Comma-separated glob patterns to scan.
+  --urls     Comma-separated page URLs to scan.
   --targets  Browserslist query string.
   --format   Report output format.
+  --audience-weights JSON object like {"chrome":0.4,"safari":0.3,"firefox":0.2,"edge":0.1}.
+  --all-assets Include cross-origin linked JS/CSS assets in URL mode.
+  --ci       Emit GitHub Actions style annotations.
   --help     Show this help text.`);
 }
 
@@ -125,7 +158,18 @@ async function main() {
     return;
   }
 
-  console.log(toMarkdown(report, config));
+  if (config.format === "github") {
+    const sorted = sortFindings(report.findings);
+    const annotations = toGithubAnnotations(sorted);
+    if (annotations) {
+      console.log(annotations);
+    }
+
+    console.log(toMarkdown(report, config, { ci: true }));
+    return;
+  }
+
+  console.log(toMarkdown(report, config, { ci: config.ci }));
 }
 
 main().catch((error) => {

@@ -18,6 +18,13 @@ The scanner combines:
 
 This gives practical guidance on balancing backward compatibility with progressive enhancement.
 
+## New in v0.2
+
+- Scan local files or live URLs.
+- Optionally crawl linked CSS/JS assets from target pages.
+- Use audience-weighted scoring to reflect your real browser mix.
+- Emit GitHub Actions annotations for pull request feedback.
+
 ## What it reports
 
 Current rules detect and classify:
@@ -47,6 +54,10 @@ CLI usage:
 node src/cli.js --help
 node src/cli.js --targets "defaults, not ie <= 11" --format json
 node src/cli.js --paths "src/**/*.{html,css,js},public/**/*.{html,css,js}"
+node src/cli.js --urls "https://example.org,https://example.org/about" --format markdown
+node src/cli.js --urls "https://example.org" --all-assets --format markdown
+node src/cli.js --audience-weights '{"chrome":0.45,"safari":0.30,"firefox":0.15,"edge":0.10}'
+node src/cli.js --format github --ci
 ```
 
 ## Configuration
@@ -55,10 +66,24 @@ Default config file: `open-site-review.config.json`
 
 Key options:
 
+- `scanMode`: `files` or `urls`.
 - `targets`: Browserslist query string.
 - `paths`: Glob patterns to scan.
+- `urls`: Page URLs to scan in URL mode.
+- `sameOriginOnly`: In URL mode, keep linked-asset crawling on the same origin.
+- `audienceWeights`: Optional browser-family weighting map for compatibility scoring.
 - `unsupportedThresholdPercent`: If modern feature unsupported share is above this, mark as `too-new`.
 - `removableThresholdPercent`: If polyfill-related support gap is below this, mark as `possibly-obsolete-polyfill`.
+
+When `audienceWeights` is set, the scanner reports both raw unsupported share and weighted unsupported share.
+
+## GitHub Actions integration
+
+This repository includes a workflow that runs on pull requests and emits scanner annotations in CI logs.
+
+- Workflow file: `.github/workflows/site-review.yml`
+- Command used: `npm run scan:ci`
+- Output includes `::warning` / `::error` annotations for findings.
 
 ## Insights this can surface
 
@@ -75,7 +100,6 @@ Key options:
 
 ## Next improvements
 
-- Add feature extraction from live URLs and linked assets.
-- Integrate real audience weighting from analytics or custom stats.
 - Expand rule packs for accessibility and performance anti-patterns.
-- Add CI output and pull request annotations.
+- Add JavaScript/CSS AST-level detectors for stronger precision.
+- Add configurable recommendation templates by severity.

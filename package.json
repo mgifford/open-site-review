@@ -1,6 +1,6 @@
 {
   "name": "open-site-review",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Analyze front-end code for compatibility, obsolete polyfills, and modern best-practice adoption opportunities.",
   "main": "src/cli.js",
   "bin": {
@@ -8,7 +8,9 @@
   },
   "scripts": {
     "scan": "node src/cli.js",
-    "scan:example": "node src/cli.js --paths \"examples/**/*.{html,css,js}\" --format markdown"
+    "scan:example": "node src/cli.js --paths \"examples/**/*.{html,css,js}\" --format markdown",
+    "scan:url": "node src/cli.js --urls \"https://example.com\" --format markdown",
+    "scan:ci": "node src/cli.js --format github --ci"
   },
   "dependencies": {
     "@mdn/browser-compat-data": "^5.6.26",
