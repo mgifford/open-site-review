@@ -226,7 +226,7 @@ jobs:
                 }
 
                 reportUrl = `https://${owner}.github.io/${repoName}/${reportRel}`;
-                reportsUrl = `https://${owner}.github.io/${repoName}/reports.html`;
+                reportsUrl = `https://${owner}.github.io/${repoName}/reports/`;
 
               } catch (scanError) {
                 console.error(`Scan failed for issue #${issueNumber}:`, scanError.message);
