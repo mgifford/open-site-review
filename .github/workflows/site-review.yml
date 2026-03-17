@@ -225,7 +225,7 @@ jobs:
                   }
                 }
 
-                reportUrl = `https://${owner}.github.io/${repoName}/${reportRel}`;
+                reportUrl = `https://${owner}.github.io/${repoName}/${reportRel.replace(/\.md$/, ".html")}`;
                 reportsUrl = `https://${owner}.github.io/${repoName}/reports/`;
 
               } catch (scanError) {

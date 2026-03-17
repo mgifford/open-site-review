@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SCAN: Spain</title>
+<style>
+:root {
+  --bg: #f4f7f4;
+  --surface: #ffffff;
+  --ink: #15201d;
+  --muted: #5a6b64;
+  --line: #d6e2dc;
+  --accent: #0b6e4f;
+  --code-bg: #eef1ef;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at 10% 10%, #e7f6ef 0%, var(--bg) 55%);
+  color: var(--ink);
+}
+main {
+  max-width: 860px;
+  margin: 2rem auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 6px 24px rgba(7, 24, 16, 0.08);
+}
+nav { margin-bottom: 1.5rem; font-size: .9rem; }
+a { color: var(--accent); }
+h1 { font-size: 1.8rem; margin: 0 0 1rem 0; }
+h2 { font-size: 1.25rem; margin: 1.5rem 0 .5rem 0; border-bottom: 1px solid var(--line); padding-bottom: .3rem; }
+h3 { font-size: 1.05rem; margin: 1.25rem 0 .4rem 0; }
+ul { padding-left: 1.4rem; line-height: 1.7; }
+li { margin: .2rem 0; }
+p { line-height: 1.6; }
+code {
+  background: var(--code-bg);
+  border-radius: 4px;
+  padding: .1em .35em;
+  font-size: .9em;
+  font-family: "IBM Plex Mono", "Fira Code", monospace;
+}
+pre { background: var(--code-bg); padding: 1rem; border-radius: 8px; overflow: auto; }
+pre code { background: none; padding: 0; }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="./">← Back to reports</a></nav>
+  <div id="report"><h1>Open Site Review Report</h1>
+<ul>
+<li>Targets: defaults, not ie &lt;= 11</li>
+<li>Unsupported threshold: 10%</li>
+<li>Polyfill removable threshold: 5%</li>
+<li>Files scanned: 88</li>
+<li>Findings: 27</li>
+<li>Scan mode: URL crawl (same-origin assets only)</li>
+</ul>
+<h2>[HIGH] Uses nullish coalescing operator</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://administracion.gob.es/pag_Home/resources/templating-kit/themes/pag/js/libs/es5-shim.min.js:6</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Nullish coalescing can simplify defaults while avoiding falsy-value bugs, but legacy browsers need transpilation.</li>
+<li>Recommendation: Transpile this syntax for older browser support or gate usage to modern bundles only.</li>
+<li>Can I Use feature: mdn-javascript_operators_nullish_coalescing</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_nullish_coalescing' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://administracion.gob.es/pag_Home/resources/templating-kit/themes/pag/js/libs/jquery-ui.min.js:7</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses document.write</h2>
+<ul>
+<li>Type: deprecated-pattern</li>
+<li>Location: https://administracion.gob.es/pagFront/ruxitagentjs_ICA7NVfgqrux_10331260218130851.js:67</li>
+<li>Message: Legacy pattern relies on a deprecated web platform feature.</li>
+<li>Why it matters: document.write can block parsing, hurt performance, and create maintainability and security risk.</li>
+<li>Recommendation: Replace with DOM APIs or server-side rendering patterns that avoid parser-blocking behavior.</li>
+<li>Can I Use feature: documentwrite</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'documentwrite' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/write</li>
+</ul>
+<h2>[HIGH] Uses nullish coalescing operator</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://administracion.gob.es/resources/templating-kit/themes/pag/js/libs/es5-shim.min.js:6</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Nullish coalescing can simplify defaults while avoiding falsy-value bugs, but legacy browsers need transpilation.</li>
+<li>Recommendation: Transpile this syntax for older browser support or gate usage to modern bundles only.</li>
+<li>Can I Use feature: mdn-javascript_operators_nullish_coalescing</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_nullish_coalescing' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://administracion.gob.es/resources/templating-kit/themes/pag/js/libs/jquery-ui.min.js:7</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses document.write</h2>
+<ul>
+<li>Type: deprecated-pattern</li>
+<li>Location: https://administracion.gob.es/ruxitagentjs_ICA7NVfgqrux_10331260218130851.js:67</li>
+<li>Message: Legacy pattern relies on a deprecated web platform feature.</li>
+<li>Why it matters: document.write can block parsing, hurt performance, and create maintainability and security risk.</li>
+<li>Recommendation: Replace with DOM APIs or server-side rendering patterns that avoid parser-blocking behavior.</li>
+<li>Can I Use feature: documentwrite</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'documentwrite' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/write</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://administracion.gob.es/pag_Home/resources/templating-kit/themes/pag/js/front-script.js:10</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Uses synchronous XMLHttpRequest</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://administracion.gob.es/pag_Home/resources/templating-kit/themes/pag/js/lib/ajax.js:250</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Synchronous XHR blocks the main thread and degrades responsiveness and accessibility.</li>
+<li>Recommendation: Move to async fetch/XMLHttpRequest patterns and handle loading states without blocking UI interaction.</li>
+<li>Can I Use feature: xmlhttprequest</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'xmlhttprequest' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/open</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://administracion.gob.es/pag_Home/resources/templating-kit/themes/pag/js/lib/utils.js:6</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://administracion.gob.es/pag_Home/resources/templating-kit/themes/pag/js/libs/ajax-buzon.js:9</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://administracion.gob.es/pag_Home/resources/templating-kit/themes/pag/js/libs/calendario/datepicker-dialog.min.js:1</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Imports core-js or babel-polyfill</h2>
+<ul>
+<li>Type: polyfill-review</li>
+<li>Location: https://administracion.gob.es/pag_Home/resources/templating-kit/themes/pag/js/libs/es5-sham.min.js:2</li>
+<li>Message: Polyfill may still be required for some targets (82.4% unsupported).</li>
+<li>Why it matters: Global polyfill bundles can increase JS size and execution cost.</li>
+<li>Recommendation: Prefer targeted polyfills and differential serving to reduce bundle cost.</li>
+<li>Can I Use feature: es6</li>
+<li>Unsupported target share: 82.4%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_chr 145, and_ff 147, and_qq 14.9, and_uc 15.5, android 145, chrome 146, chrome 145, chrome 144, chrome 143, chrome 139, chrome 133, chrome 131, chrome 116, chrome 112, chrome 109, edge 145, edge 144, firefox 148, firefox 147, firefox 140, kaios 3.0-3.1, kaios 2.5, op_mini all, op_mob 80, opera 127, opera 126, samsung 29, samsung 28</li>
+</ul>
+<h2>[LOW] Imports core-js or babel-polyfill</h2>
+<ul>
+<li>Type: polyfill-review</li>
+<li>Location: https://administracion.gob.es/pag_Home/resources/templating-kit/themes/pag/js/libs/es5-shim.min.js:2</li>
+<li>Message: Polyfill may still be required for some targets (82.4% unsupported).</li>
+<li>Why it matters: Global polyfill bundles can increase JS size and execution cost.</li>
+<li>Recommendation: Prefer targeted polyfills and differential serving to reduce bundle cost.</li>
+<li>Can I Use feature: es6</li>
+<li>Unsupported target share: 82.4%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_chr 145, and_ff 147, and_qq 14.9, and_uc 15.5, android 145, chrome 146, chrome 145, chrome 144, chrome 143, chrome 139, chrome 133, chrome 131, chrome 116, chrome 112, chrome 109, edge 145, edge 144, firefox 148, firefox 147, firefox 140, kaios 3.0-3.1, kaios 2.5, op_mini all, op_mob 80, opera 127, opera 126, samsung 29, samsung 28</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://administracion.gob.es/pag_Home/resources/templating-kit/themes/pag/js/libs/es5-shim.min.js:6</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://administracion.gob.es/pag_Home/resources/templating-kit/themes/pag/js/libs/jquery-ui.min.js:12</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://administracion.gob.es/pag_Home/resources/templating-kit/themes/pag/js/libs/jquery.mCustomScrollbar.js:60</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://administracion.gob.es/pag_Home/resources/templating-kit/themes/pag/js/libs/jquery.min.js:3</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://administracion.gob.es/pagFront/ruxitagentjs_ICA7NVfgqrux_10331260218130851.js:176</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://administracion.gob.es/resources/templating-kit/themes/pag/js/front-script.js:10</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://administracion.gob.es/resources/templating-kit/themes/pag/js/libs/ajax-buzon.js:9</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Imports core-js or babel-polyfill</h2>
+<ul>
+<li>Type: polyfill-review</li>
+<li>Location: https://administracion.gob.es/resources/templating-kit/themes/pag/js/libs/es5-sham.min.js:2</li>
+<li>Message: Polyfill may still be required for some targets (82.4% unsupported).</li>
+<li>Why it matters: Global polyfill bundles can increase JS size and execution cost.</li>
+<li>Recommendation: Prefer targeted polyfills and differential serving to reduce bundle cost.</li>
+<li>Can I Use feature: es6</li>
+<li>Unsupported target share: 82.4%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_chr 145, and_ff 147, and_qq 14.9, and_uc 15.5, android 145, chrome 146, chrome 145, chrome 144, chrome 143, chrome 139, chrome 133, chrome 131, chrome 116, chrome 112, chrome 109, edge 145, edge 144, firefox 148, firefox 147, firefox 140, kaios 3.0-3.1, kaios 2.5, op_mini all, op_mob 80, opera 127, opera 126, samsung 29, samsung 28</li>
+</ul>
+<h2>[LOW] Imports core-js or babel-polyfill</h2>
+<ul>
+<li>Type: polyfill-review</li>
+<li>Location: https://administracion.gob.es/resources/templating-kit/themes/pag/js/libs/es5-shim.min.js:2</li>
+<li>Message: Polyfill may still be required for some targets (82.4% unsupported).</li>
+<li>Why it matters: Global polyfill bundles can increase JS size and execution cost.</li>
+<li>Recommendation: Prefer targeted polyfills and differential serving to reduce bundle cost.</li>
+<li>Can I Use feature: es6</li>
+<li>Unsupported target share: 82.4%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_chr 145, and_ff 147, and_qq 14.9, and_uc 15.5, android 145, chrome 146, chrome 145, chrome 144, chrome 143, chrome 139, chrome 133, chrome 131, chrome 116, chrome 112, chrome 109, edge 145, edge 144, firefox 148, firefox 147, firefox 140, kaios 3.0-3.1, kaios 2.5, op_mini all, op_mob 80, opera 127, opera 126, samsung 29, samsung 28</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://administracion.gob.es/resources/templating-kit/themes/pag/js/libs/es5-shim.min.js:6</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://administracion.gob.es/resources/templating-kit/themes/pag/js/libs/jquery-ui.min.js:12</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://administracion.gob.es/resources/templating-kit/themes/pag/js/libs/jquery.mCustomScrollbar.js:60</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://administracion.gob.es/resources/templating-kit/themes/pag/js/libs/jquery.mousewheel.js:64</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://administracion.gob.es/ruxitagentjs_ICA7NVfgqrux_10331260218130851.js:176</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul></div>
+</main>
+</body>
+</html>
