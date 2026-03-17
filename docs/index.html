@@ -44,6 +44,9 @@ p, li {
   line-height: 1.65;
 }
 ul { padding-left: 1.4rem; }
+.nav { margin-bottom: 1.5rem; padding-bottom: .75rem; border-bottom: 1px solid var(--line); }
+.nav a { text-decoration: none; margin-right: 1.5rem; color: var(--accent); font-weight: 600; }
+.nav a:hover { text-decoration: underline; }
 .cta {
   display: inline-block;
   margin-top: 1.5rem;
@@ -68,6 +71,10 @@ code {
 </head>
 <body>
 <main>
+  <nav class="nav" aria-label="Site navigation">
+    <a href="./" aria-current="page">Submit a scan</a>
+    <a href="reports.html">View reports</a>
+  </nav>
   <h1>Open Site Review</h1>
   <p>Compatibility and front-end practice scanner for HTML, CSS, and JavaScript.</p>
 
@@ -87,7 +94,7 @@ code {
     publish it here.
   </p>
 
-  <a class="cta" href="reports/">View all reports <span aria-hidden="true">&rarr;</span></a>
+  <a class="cta" href="reports.html">View all reports <span aria-hidden="true">&rarr;</span></a>
 
   <h2>Learn more</h2>
   <p>
