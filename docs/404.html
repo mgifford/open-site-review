@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Page not found – Open Site Review</title>
+<style>
+:root {
+  --bg: #f4f7f4;
+  --surface: #ffffff;
+  --ink: #15201d;
+  --muted: #5a6b64;
+  --line: #d6e2dc;
+  --accent: #0b6e4f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at 10% 10%, #e7f6ef 0%, var(--bg) 55%);
+  color: var(--ink);
+}
+main {
+  max-width: 680px;
+  margin: 4rem auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 6px 24px rgba(7, 24, 16, 0.08);
+}
+h1 { font-size: 1.8rem; margin: 0 0 1rem 0; }
+p { line-height: 1.6; color: var(--muted); }
+a { color: var(--accent); }
+</style>
+<script>
+(function () {
+  // Redirect old .md report URLs to their .html equivalents.
+  // Matches paths that end with /reports/<filename>.md
+  // e.g. /open-site-review/reports/issue-15-20260317T002423Z.md
+  //   -> /open-site-review/reports/issue-15-20260317T002423Z.html
+  var path = window.location.pathname;
+  var parts = path.split('/');
+  if (parts.length >= 2 && parts[parts.length - 2] === 'reports' && parts[parts.length - 1].endsWith('.md')) {
+    window.location.replace(path.replace(/\.md$/, '.html'));
+  }
+}());
+</script>
+</head>
+<body>
+<main>
+  <h1>Page not found</h1>
+  <p>
+    The page you requested could not be found.
+    If you followed a report link ending in <code>.md</code>, the report
+    has moved — try replacing <code>.md</code> with <code>.html</code> in the URL,
+    or <a href="reports/">browse all reports</a>.
+  </p>
+  <p><a href="./">← Back to Open Site Review</a></p>
+</main>
+</body>
+</html>
