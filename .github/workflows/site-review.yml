@@ -180,7 +180,7 @@ jobs:
                 const reportRel = `reports/issue-${issueNumber}-${ts}.md`;
                 fs.copyFileSync(reportFile, `docs/${reportRel}`);
 
-                spawnSync(
+                const indexResult = spawnSync(
                   process.execPath,
                   ['scripts/update-pages-index.js', 'docs', reportRel],
                   {
@@ -194,6 +194,23 @@ jobs:
                     }
                   }
                 );
+
+                if (indexResult.status !== 0) {
+                  console.error(`update-pages-index.js failed (exit ${indexResult.status}):\n${String(indexResult.stderr || '(no stderr)')}`);
+                }
+
+                // The .md file was only needed for HTML companion generation; remove it so
+                // that only the rendered .html report is committed to docs/reports/.
+                // If HTML generation failed (no companion), the .md file is kept so the
+                // fallback URL below still points to a file that will be committed.
+                // The raw markdown content is also still available in the workflow artifact.
+                const htmlReportRel = reportRel.replace(/\.md$/, '.html');
+                const htmlCompanionExists = fs.existsSync(`docs/${htmlReportRel}`);
+                if (!htmlCompanionExists) {
+                  console.warn(`HTML companion not found at docs/${htmlReportRel}; falling back to .md URL`);
+                } else {
+                  try { fs.unlinkSync(`docs/${reportRel}`); } catch { /* already gone */ }
+                }
 
                 // Commit and push the report
                 spawnSync('git', ['config', 'user.name', 'github-actions[bot]']);
@@ -225,7 +242,7 @@ jobs:
                   }
                 }
 
-                reportUrl = `https://${owner}.github.io/${repoName}/${reportRel.replace(/\.md$/, ".html")}`;
+                reportUrl = `https://${owner}.github.io/${repoName}/${htmlCompanionExists ? htmlReportRel : reportRel}`;
                 reportsUrl = `https://${owner}.github.io/${repoName}/reports/`;
 
               } catch (scanError) {
