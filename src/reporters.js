@@ -44,6 +44,152 @@ function toGithubAnnotations(findings) {
     .join("\n");
 }
 
+function formatQualityScore(score) {
+  if (typeof score !== "number") {
+    return "N/A";
+  }
+
+  if (score >= 90) {
+    return `${score}/100 ✅`;
+  }
+
+  if (score >= 70) {
+    return `${score}/100 ⚠️`;
+  }
+
+  return `${score}/100 ❌`;
+}
+
+function renderCssAnalysis(cssAnalysis, lines) {
+  if (!cssAnalysis || cssAnalysis.length === 0) {
+    return;
+  }
+
+  lines.push("## CSS Quality Analysis");
+  lines.push("");
+  lines.push(
+    "Powered by [Project Wallace](https://www.projectwallace.com/) — " +
+      "[css-analyzer](https://github.com/projectwallace/css-analyzer) and " +
+      "[css-code-quality](https://github.com/projectwallace/css-code-quality)."
+  );
+  lines.push("");
+
+  for (const entry of cssAnalysis) {
+    lines.push(`### ${entry.file}`);
+    lines.push("");
+
+    if (entry.error) {
+      lines.push(`- Analysis error: ${entry.error}`);
+      lines.push("");
+      continue;
+    }
+
+    if (entry.quality) {
+      lines.push("**Code Quality Scores**");
+      lines.push("");
+      lines.push(`- Performance: ${formatQualityScore(entry.quality.performance)}`);
+      lines.push(`- Maintainability: ${formatQualityScore(entry.quality.maintainability)}`);
+      lines.push(`- Complexity: ${formatQualityScore(entry.quality.complexity)}`);
+
+      if (entry.quality.violations && entry.quality.violations.length > 0) {
+        lines.push("");
+        lines.push("**Quality Violations**");
+        lines.push("");
+        for (const v of entry.quality.violations) {
+          lines.push(`- \`${v.id}\`: score impact ${v.score}`);
+        }
+      }
+
+      lines.push("");
+    }
+
+    if (entry.complexityMetrics && Object.keys(entry.complexityMetrics).length > 0) {
+      const m = entry.complexityMetrics;
+      lines.push("**Complexity Metrics**");
+      lines.push("");
+      if (typeof m.sourceLinesOfCode === "number") {
+        lines.push(`- Source lines of code: ${m.sourceLinesOfCode}`);
+      }
+
+      if (typeof m.complexity === "number") {
+        lines.push(`- Stylesheet complexity: ${m.complexity}`);
+      }
+
+      if (typeof m.totalRules === "number") {
+        lines.push(`- Total rules: ${m.totalRules}`);
+      }
+
+      if (typeof m.totalSelectors === "number") {
+        lines.push(`- Total selectors: ${m.totalSelectors}`);
+      }
+
+      if (typeof m.totalDeclarations === "number") {
+        lines.push(`- Total declarations: ${m.totalDeclarations}`);
+      }
+
+      if (typeof m.importants === "number" && m.importants > 0) {
+        lines.push(`- \`!important\` declarations: ${m.importants}`);
+      }
+
+      if (m.maxSelectorSpecificity) {
+        lines.push(`- Max selector specificity: ${m.maxSelectorSpecificity}`);
+      }
+
+      lines.push("");
+    }
+
+    if (entry.designTokens && Object.keys(entry.designTokens).length > 0) {
+      const tokens = entry.designTokens;
+      lines.push("**Design Tokens**");
+      lines.push("");
+
+      if (tokens.customProperties) {
+        lines.push(
+          `- Custom properties (CSS variables): ${tokens.customProperties.totalUnique} unique`
+        );
+        const names = Object.keys(tokens.customProperties.unique);
+        if (names.length > 0) {
+          lines.push(`  - ${names.join(", ")}`);
+        }
+      }
+
+      if (tokens.colors) {
+        lines.push(`- Colors: ${tokens.colors.totalUnique} unique`);
+        const colorNames = Object.keys(tokens.colors.unique);
+        if (colorNames.length > 0) {
+          lines.push(`  - ${colorNames.join(", ")}`);
+        }
+      }
+
+      if (tokens.fontFamilies) {
+        lines.push(`- Font families: ${tokens.fontFamilies.totalUnique} unique`);
+        const families = Object.keys(tokens.fontFamilies.unique);
+        if (families.length > 0) {
+          lines.push(`  - ${families.join(", ")}`);
+        }
+      }
+
+      if (tokens.fontSizes) {
+        lines.push(`- Font sizes: ${tokens.fontSizes.totalUnique} unique`);
+        const sizes = Object.keys(tokens.fontSizes.unique);
+        if (sizes.length > 0) {
+          lines.push(`  - ${sizes.join(", ")}`);
+        }
+      }
+
+      if (tokens.zindexes) {
+        lines.push(`- Z-index values: ${tokens.zindexes.totalUnique} unique`);
+        const zvals = Object.keys(tokens.zindexes.unique);
+        if (zvals.length > 0) {
+          lines.push(`  - ${zvals.join(", ")}`);
+        }
+      }
+
+      lines.push("");
+    }
+  }
+}
+
 function toMarkdown(report, config, options = {}) {
   const findings = sortFindings(report.findings);
 
@@ -88,6 +234,8 @@ function toMarkdown(report, config, options = {}) {
       lines.push("");
     }
 
+    renderCssAnalysis(report.cssAnalysis, lines);
+
     return lines.join("\n");
   }
 
@@ -131,6 +279,8 @@ function toMarkdown(report, config, options = {}) {
     lines.push("Annotations emitted to stdout for GitHub Actions parsing.");
     lines.push("");
   }
+
+  renderCssAnalysis(report.cssAnalysis, lines);
 
   return lines.join("\n");
 }
