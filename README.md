@@ -143,6 +143,17 @@ Issue automation behavior:
 
 ## Related tools and resources
 
+### Web Almanac
+
+The [Web Almanac](https://almanac.httparchive.org/) by HTTP Archive is a comprehensive annual report on the state of the web, backed by real-world usage data from millions of websites. It provides valuable context on which HTML, CSS, and JavaScript features are commonly used in the wild — useful for calibrating rule thresholds and understanding real-world adoption.
+
+Relevant chapters:
+
+- **[2024 Markup](https://almanac.httparchive.org/en/2024/markup)** — Covers how HTML is written and structured across the web, including element adoption rates and structural patterns such as `<dialog>`, `<details>`, and modern semantic elements.
+- **[2022 CSS](https://almanac.httparchive.org/en/2022/css)** — Documents the adoption of modern CSS features, usage patterns, and the state of CSS quality across real websites, including data on selectors, custom properties, and layout techniques. (Most recent published CSS edition.)
+
+The Web Almanac data can guide decisions about which modern features to promote or which legacy patterns to flag when configuring scan thresholds.
+
 ### Project Wallace
 
 [Project Wallace](https://www.projectwallace.com/) is a CSS analytics platform for visualizing and understanding your CSS. It is a great place to learn more about CSS complexity, quality, and maintainability.
