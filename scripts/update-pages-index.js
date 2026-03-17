@@ -181,6 +181,7 @@ pre code { background: none; padding: 0; }
 
 function buildReportsHtml(items, { insideReportsDir = false } = {}) {
   const backLink = insideReportsDir ? "../" : "./";
+  const reportsLink = insideReportsDir ? "../reports.html" : "reports.html";
   const rows = items
     .map((item) => {
       const title = escapeHtml(item.issueTitle || "(untitled)");
@@ -191,8 +192,9 @@ function buildReportsHtml(items, { insideReportsDir = false } = {}) {
       }
       const runUrl = escapeHtml(item.runUrl || "");
       const createdAt = escapeHtml(item.createdAt || "");
+      const issueNumber = Number(item.issueNumber) || 0;
 
-      return `<tr>
+      return `<tr data-issue="${issueNumber}" data-title="${title}" data-date="${createdAt}">
 <td>${createdAt}</td>
 <td><a href="${issueUrl}">#${item.issueNumber}</a></td>
 <td>${title}</td>
@@ -257,6 +259,33 @@ th {
   font-weight: 600;
 }
 a { color: var(--accent); }
+.nav { margin-bottom: 1.5rem; padding-bottom: .75rem; border-bottom: 1px solid var(--line); }
+.nav a { text-decoration: none; margin-right: 1.5rem; color: var(--accent); font-weight: 600; }
+.nav a:hover { text-decoration: underline; }
+.table-info { color: var(--muted); font-size: .875rem; margin-top: .75rem; }
+.pagination-nav {
+  display: flex;
+  align-items: center;
+  gap: .375rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+.page-info { color: var(--muted); font-size: .875rem; margin-right: .5rem; }
+.page-btn {
+  padding: .375rem .75rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--accent);
+  cursor: pointer;
+  font-size: .875rem;
+  line-height: 1.4;
+}
+.page-btn:hover { background: var(--bg); }
+.page-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.page-btn-active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.page-btn-active:hover { opacity: .88; }
+.page-ellipsis { padding: 0 .25rem; color: var(--muted); }
 @media (max-width: 760px) {
   table, thead, tbody, tr, th, td { display: block; }
   thead { display: none; }
@@ -272,8 +301,12 @@ a { color: var(--accent); }
 </head>
 <body>
 <main>
+  <nav class="nav" aria-label="Site navigation">
+    <a href="${backLink}">Submit a scan</a>
+    <a href="${reportsLink}" aria-current="page">View reports</a>
+  </nav>
   <h1>Open Site Review Reports</h1>
-  <p>Reports generated from issues whose titles begin with SCAN:. <a href="${backLink}">Back to home</a></p>
+  <p>Reports generated from issues whose titles begin with SCAN:.</p>
   <table aria-label="Site review reports">
     <thead>
       <tr>
@@ -288,12 +321,108 @@ a { color: var(--accent); }
       ${rows}
     </tbody>
   </table>
+  <p class="table-info" id="table-info" aria-live="polite"></p>
+  <div id="pagination"></div>
 </main>
+<script>
+(function () {
+  var PAGE_SIZE = 25;
+  var currentPage = 1;
+  var tbody = document.querySelector('tbody');
+  var tableEl = document.querySelector('table');
+  var paginationEl = document.getElementById('pagination');
+  var tableInfoEl = document.getElementById('table-info');
+  if (!tbody) return;
+
+  function getRows() {
+    return Array.from(tbody.querySelectorAll('tr'));
+  }
+
+  function renderPage() {
+    var rows = getRows();
+    var total = rows.length;
+    var totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+    if (currentPage > totalPages) currentPage = totalPages;
+    var start = (currentPage - 1) * PAGE_SIZE;
+    var end = start + PAGE_SIZE;
+    rows.forEach(function (row, i) {
+      row.style.display = (i >= start && i < end) ? '' : 'none';
+    });
+    if (tableInfoEl) {
+      var showing = Math.min(end, total);
+      tableInfoEl.textContent = total > 0
+        ? 'Showing ' + (start + 1) + ' to ' + showing + ' of ' + total + ' reports'
+        : '';
+    }
+    renderPagination(totalPages);
+  }
+
+  function renderPagination(totalPages) {
+    if (!paginationEl) return;
+    if (totalPages <= 1) {
+      paginationEl.innerHTML = '';
+      return;
+    }
+    var html = '<nav class="pagination-nav" aria-label="Report pages">';
+    html += '<span class="page-info">Page ' + currentPage + ' of ' + totalPages + '</span>';
+    if (currentPage > 1) {
+      html += '<button class="page-btn" data-page="' + (currentPage - 1) + '">Previous</button>';
+    }
+    var pages = [];
+    for (var i = 1; i <= totalPages; i++) {
+      if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
+        pages.push(i);
+      }
+    }
+    var prev = 0;
+    pages.forEach(function (page) {
+      if (prev && page - prev > 1) {
+        html += '<span class="page-ellipsis" aria-hidden="true">\u2026</span>';
+      }
+      var isActive = page === currentPage;
+      html += '<button class="page-btn' + (isActive ? ' page-btn-active' : '') + '" data-page="' + page + '"' +
+        ' aria-label="Page ' + page + '"' +
+        (isActive ? ' aria-current="page"' : '') + '>' + page + '</button>';
+      prev = page;
+    });
+    if (currentPage < totalPages) {
+      html += '<button class="page-btn" data-page="' + (currentPage + 1) + '">Next</button>';
+    }
+    html += '</nav>';
+    paginationEl.innerHTML = html;
+    paginationEl.querySelectorAll('.page-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        currentPage = parseInt(this.dataset.page, 10);
+        renderPage();
+        if (tableEl) {
+          var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          tableEl.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+        }
+      });
+    });
+  }
+
+  renderPage();
+}());
+</script>
 </body>
 </html>`;
 }
 
 function main() {
+  if (process.argv[2] === "--rebuild") {
+    const pagesDir = process.argv[3];
+    if (!pagesDir) {
+      throw new Error("Usage: node scripts/update-pages-index.js --rebuild <pagesDir>");
+    }
+    const metadataPath = path.join(pagesDir, "reports.json");
+    const entries = readJsonSafe(metadataPath, []);
+    fs.writeFileSync(path.join(pagesDir, "reports.html"), buildReportsHtml(entries));
+    fs.mkdirSync(path.join(pagesDir, "reports"), { recursive: true });
+    fs.writeFileSync(path.join(pagesDir, "reports", "index.html"), buildReportsHtml(entries, { insideReportsDir: true }));
+    return;
+  }
+
   const pagesDir = process.argv[2];
   const reportPath = process.argv[3];
   if (!pagesDir || !reportPath) {
