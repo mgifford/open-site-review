@@ -3,6 +3,8 @@ name: Site Review
 permissions:
   contents: write
   issues: write
+  pages: write
+  id-token: write
 
 on:
   schedule:
@@ -55,6 +57,9 @@ jobs:
   scan-issue-queue:
     name: Scan Issue Queue
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     # Skip for PRs; skip for issue events whose title doesn't start with SCAN:
     if: >
       github.event_name != 'pull_request' &&
@@ -74,6 +79,10 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        continue-on-error: true
 
       - name: Fetch open SCAN issues
         id: fetch-issues
@@ -302,3 +311,14 @@ jobs:
           name: open-site-review-reports
           path: issue-*-report.md
           if-no-files-found: ignore
+
+      - name: Upload Pages artifact
+        if: steps.fetch-issues.outputs.result != '[]'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/
+
+      - name: Deploy to GitHub Pages
+        if: steps.fetch-issues.outputs.result != '[]'
+        id: deployment
+        uses: actions/deploy-pages@v4
