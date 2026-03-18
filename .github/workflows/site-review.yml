@@ -10,6 +10,9 @@ on:
   schedule:
     # Run daily at midnight UTC to process any open SCAN: issues
     - cron: '0 0 * * *'
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
@@ -82,6 +85,8 @@ jobs:
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
         continue-on-error: true
 
       - name: Fetch open SCAN issues
@@ -313,12 +318,10 @@ jobs:
           if-no-files-found: ignore
 
       - name: Upload Pages artifact
-        if: steps.fetch-issues.outputs.result != '[]'
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs/
 
       - name: Deploy to GitHub Pages
-        if: steps.fetch-issues.outputs.result != '[]'
         id: deployment
         uses: actions/deploy-pages@v4
