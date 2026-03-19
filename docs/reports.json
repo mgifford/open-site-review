@@ -1,5 +1,15 @@
 [
   {
+    "issueNumber": 28,
+    "issueTitle": "SCAN: GSA",
+    "issueUrl": "https://github.com/mgifford/open-site-review/issues/28",
+    "runUrl": "https://github.com/mgifford/open-site-review/actions/runs/23309599877",
+    "createdAt": "2026-03-19T18:05:52.422Z",
+    "reportPath": "reports/issue-28-20260319T180552Z.md",
+    "filesScanned": 50,
+    "findingsCount": 0
+  },
+  {
     "issueNumber": 27,
     "issueTitle": "SCAN: https://nsf.gov",
     "issueUrl": "https://github.com/mgifford/open-site-review/issues/27",
