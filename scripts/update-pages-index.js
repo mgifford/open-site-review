@@ -193,9 +193,37 @@ pre code { background: none; padding: 0; }
 </html>`;
 }
 
-function buildReportsHtml(items, { insideReportsDir = false } = {}) {
+function getLatestAndArchive(entries) {
+  const seen = new Set();
+  const latest = [];
+  const archive = [];
+  for (const entry of entries) {
+    const key = String(entry.issueNumber);
+    if (!seen.has(key)) {
+      seen.add(key);
+      latest.push(entry);
+    } else {
+      archive.push(entry);
+    }
+  }
+  return { latest, archive };
+}
+
+function buildReportsHtml(items, { insideReportsDir = false, isArchive = false, hasArchive = false } = {}) {
   const backLink = insideReportsDir ? "../" : "./";
   const reportsLink = insideReportsDir ? "../reports.html" : "reports.html";
+  const archiveLink = insideReportsDir ? "../archive.html" : "archive.html";
+
+  const pageTitle = isArchive ? "Open Site Review \u2014 Archive" : "Open Site Review Reports";
+  const heading = isArchive ? "Archived Reports" : "Open Site Review Reports";
+  const description = isArchive
+    ? "Older scan reports. Each issue may have been scanned more than once; only the most recent scan appears on the current reports page."
+    : "Latest reports generated from issues whose titles begin with SCAN:.";
+
+  const archiveNavItem = hasArchive || isArchive
+    ? `<a href="${archiveLink}"${isArchive ? ' aria-current="page"' : ' aria-label="View archived reports"'}>Archive</a>`
+    : "";
+
   const rows = items
     .map((item) => {
       const title = escapeHtml(item.issueTitle || "(untitled)");
@@ -224,7 +252,7 @@ function buildReportsHtml(items, { insideReportsDir = false } = {}) {
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Open Site Review Reports</title>
+<title>${pageTitle}</title>
 <style>
 :root {
   --bg: #f4f7f4;
@@ -323,10 +351,11 @@ time.ts-cell {
 <main>
   <nav class="nav" aria-label="Site navigation">
     <a href="${backLink}">Submit a scan</a>
-    <a href="${reportsLink}" aria-current="page">View reports</a>
+    <a href="${reportsLink}"${!isArchive ? ' aria-current="page"' : ""}>${isArchive ? "Latest reports" : "View reports"}</a>
+    ${archiveNavItem}
   </nav>
-  <h1>Open Site Review Reports</h1>
-  <p>Reports generated from issues whose titles begin with SCAN:.</p>
+  <h1>${heading}</h1>
+  <p>${description}</p>
   <table aria-label="Site review reports">
     <thead>
       <tr>
@@ -440,6 +469,16 @@ time.ts-cell {
 </html>`;
 }
 
+function writeAllReportPages(pagesDir, entries) {
+  const { latest, archive } = getLatestAndArchive(entries);
+  const hasArchive = archive.length > 0;
+  fs.writeFileSync(path.join(pagesDir, "reports.html"), buildReportsHtml(latest, { hasArchive }));
+  fs.writeFileSync(path.join(pagesDir, "archive.html"), buildReportsHtml(archive, { isArchive: true }));
+  fs.mkdirSync(path.join(pagesDir, "reports"), { recursive: true });
+  fs.writeFileSync(path.join(pagesDir, "reports", "index.html"), buildReportsHtml(latest, { insideReportsDir: true, hasArchive }));
+  fs.writeFileSync(path.join(pagesDir, "reports", "archive.html"), buildReportsHtml(archive, { insideReportsDir: true, isArchive: true }));
+}
+
 function main() {
   if (process.argv[2] === "--rebuild") {
     const pagesDir = process.argv[3];
@@ -465,6 +504,7 @@ function main() {
     fs.writeFileSync(path.join(pagesDir, "reports.html"), buildReportsHtml(entries));
     fs.mkdirSync(path.join(pagesDir, "reports"), { recursive: true });
     fs.writeFileSync(path.join(pagesDir, "reports", "index.html"), buildReportsHtml(entries, { insideReportsDir: true }));
+    writeAllReportPages(pagesDir, entries);
     return;
   }
 
@@ -511,9 +551,7 @@ function main() {
 
   const truncated = deduped.slice(0, 500);
   fs.writeFileSync(metadataPath, JSON.stringify(truncated, null, 2));
-  fs.writeFileSync(path.join(pagesDir, "reports.html"), buildReportsHtml(truncated));
-  fs.mkdirSync(path.join(pagesDir, "reports"), { recursive: true });
-  fs.writeFileSync(path.join(pagesDir, "reports", "index.html"), buildReportsHtml(truncated, { insideReportsDir: true }));
+  writeAllReportPages(pagesDir, truncated);
 
   // Generate HTML companion pages for all .md reports that are missing one.
   for (const entry of truncated) {

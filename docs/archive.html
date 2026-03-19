@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Open Site Review Reports</title>
+<title>Open Site Review — Archive</title>
 <style>
 :root {
   --bg: #f4f7f4;
@@ -57,11 +57,6 @@ a { color: var(--accent); }
 .nav a { text-decoration: none; margin-right: 1.5rem; color: var(--accent); font-weight: 600; }
 .nav a:hover { text-decoration: underline; }
 .table-info { color: var(--muted); font-size: .875rem; margin-top: .75rem; }
-time.ts-cell {
-  cursor: default;
-  border-bottom: 1px dotted var(--muted);
-  white-space: nowrap;
-}
 .pagination-nav {
   display: flex;
   align-items: center;
@@ -101,92 +96,57 @@ time.ts-cell {
 <body>
 <main>
   <nav class="nav" aria-label="Site navigation">
-    <a href="../">Submit a scan</a>
-    <a href="../reports.html" aria-current="page">View reports</a>
-    <a href="../archive.html" aria-label="View archived reports">Archive</a>
+    <a href="./">Submit a scan</a>
+    <a href="reports.html">Latest reports</a>
+    <a href="archive.html" aria-current="page">Archive</a>
   </nav>
-  <h1>Open Site Review Reports</h1>
-  <p>Latest reports generated from issues whose titles begin with SCAN:.</p>
+  <h1>Archived Reports</h1>
+  <p>Older scan reports. Each issue may have been scanned more than once; only the most recent scan appears on the current reports page.</p>
   <table aria-label="Site review reports">
     <thead>
       <tr>
-        <th>Date</th>
+        <th>Generated</th>
         <th>Issue</th>
         <th>Title</th>
-        <th>Files</th>
-        <th>Findings</th>
+        <th>Report</th>
+        <th>Run</th>
       </tr>
     </thead>
     <tbody>
-      <tr data-issue="1" data-title="SCAN: Spain" data-date="2026-03-19T15:15:37.709Z">
-<td><time class="ts-cell" datetime="2026-03-19T15:15:37.709Z" title="2026-03-19T15:15:37.709Z">2026-03-19T15:15:37.709Z</time></td>
-<td><a href="https://github.com/mgifford/open-site-review/issues/1">#1</a></td>
-<td><a href="issue-1-20260319T151537Z.html">SCAN: Spain</a></td>
-<td>88</td>
-<td>27</td>
-</tr>
-<tr data-issue="7" data-title="SCAN: Green Web Foundation" data-date="2026-03-19T15:14:52.369Z">
-<td><time class="ts-cell" datetime="2026-03-19T15:14:52.369Z" title="2026-03-19T15:14:52.369Z">2026-03-19T15:14:52.369Z</time></td>
-<td><a href="https://github.com/mgifford/open-site-review/issues/7">#7</a></td>
-<td><a href="issue-7-20260319T151452Z.html">SCAN: Green Web Foundation</a></td>
-<td>51</td>
-<td>0</td>
-</tr>
-<tr data-issue="13" data-title="SCAN: VA.GOV" data-date="2026-03-19T15:13:25.171Z">
-<td><time class="ts-cell" datetime="2026-03-19T15:13:25.171Z" title="2026-03-19T15:13:25.171Z">2026-03-19T15:13:25.171Z</time></td>
+      <tr data-issue="13" data-title="SCAN: VA.GOV" data-date="2026-03-17T13:19:10.770Z">
+<td>2026-03-17T13:19:10.770Z</td>
 <td><a href="https://github.com/mgifford/open-site-review/issues/13">#13</a></td>
-<td><a href="issue-13-20260319T151325Z.html">SCAN: VA.GOV</a></td>
-<td>65</td>
-<td>18</td>
-</tr>
-<tr data-issue="15" data-title="SCAN: medicaid.gov" data-date="2026-03-19T15:13:03.846Z">
-<td><time class="ts-cell" datetime="2026-03-19T15:13:03.846Z" title="2026-03-19T15:13:03.846Z">2026-03-19T15:13:03.846Z</time></td>
-<td><a href="https://github.com/mgifford/open-site-review/issues/15">#15</a></td>
-<td><a href="issue-15-20260319T151303Z.html">SCAN: medicaid.gov</a></td>
-<td>50</td>
-<td>0</td>
-</tr>
-<tr data-issue="13" data-title="SCAN: VA.GOV" data-date="2026-03-17T13:19:10.770Z">
-<td><time class="ts-cell" datetime="2026-03-17T13:19:10.770Z" title="2026-03-17T13:19:10.770Z">2026-03-17T13:19:10.770Z</time></td>
-<td><a href="https://github.com/mgifford/open-site-review/issues/13">#13</a></td>
-<td><a href="issue-13-20260317T131910Z.html">SCAN: VA.GOV</a></td>
-<td>65</td>
-<td>18</td>
+<td>SCAN: VA.GOV</td>
+<td><a href="reports/issue-13-20260317T131910Z.html">View report</a></td>
+<td><a href="https://github.com/mgifford/open-site-review/actions/runs/23196162922">Workflow run</a></td>
 </tr>
 <tr data-issue="15" data-title="SCAN: medicaid.gov" data-date="2026-03-17T13:18:41.763Z">
-<td><time class="ts-cell" datetime="2026-03-17T13:18:41.763Z" title="2026-03-17T13:18:41.763Z">2026-03-17T13:18:41.763Z</time></td>
+<td>2026-03-17T13:18:41.763Z</td>
 <td><a href="https://github.com/mgifford/open-site-review/issues/15">#15</a></td>
-<td><a href="issue-15-20260317T131841Z.html">SCAN: medicaid.gov</a></td>
-<td>50</td>
-<td>0</td>
+<td>SCAN: medicaid.gov</td>
+<td><a href="reports/issue-15-20260317T131841Z.html">View report</a></td>
+<td><a href="https://github.com/mgifford/open-site-review/actions/runs/23196150700">Workflow run</a></td>
 </tr>
 <tr data-issue="15" data-title="SCAN: medicaid.gov" data-date="2026-03-17T00:24:23.420Z">
-<td><time class="ts-cell" datetime="2026-03-17T00:24:23.420Z" title="2026-03-17T00:24:23.420Z">2026-03-17T00:24:23.420Z</time></td>
+<td>2026-03-17T00:24:23.420Z</td>
 <td><a href="https://github.com/mgifford/open-site-review/issues/15">#15</a></td>
-<td><a href="issue-15-20260317T002423Z.html">SCAN: medicaid.gov</a></td>
-<td>50</td>
-<td>0</td>
+<td>SCAN: medicaid.gov</td>
+<td><a href="reports/issue-15-20260317T002423Z.html">View report</a></td>
+<td><a href="https://github.com/mgifford/open-site-review/actions/runs/23172385301">Workflow run</a></td>
 </tr>
 <tr data-issue="13" data-title="SCAN: VA.GOV" data-date="2026-03-17T00:11:59.290Z">
-<td><time class="ts-cell" datetime="2026-03-17T00:11:59.290Z" title="2026-03-17T00:11:59.290Z">2026-03-17T00:11:59.290Z</time></td>
+<td>2026-03-17T00:11:59.290Z</td>
 <td><a href="https://github.com/mgifford/open-site-review/issues/13">#13</a></td>
-<td><a href="issue-13-20260317T001159Z.html">SCAN: VA.GOV</a></td>
-<td>65</td>
-<td>18</td>
+<td>SCAN: VA.GOV</td>
+<td><a href="reports/issue-13-20260317T001159Z.html">View report</a></td>
+<td><a href="https://github.com/mgifford/open-site-review/actions/runs/23172045187">Workflow run</a></td>
 </tr>
-<tr data-issue="7" data-title="SCAN: Green Web Foundation" data-date="2026-03-16T18:22:50.079Z">
-<td><time class="ts-cell" datetime="2026-03-16T18:22:50.079Z" title="2026-03-16T18:22:50.079Z">2026-03-16T18:22:50.079Z</time></td>
-<td><a href="https://github.com/mgifford/open-site-review/issues/7">#7</a></td>
-<td><a href="issue-7-20260316T182250Z.html">SCAN: Green Web Foundation</a></td>
-<td>51</td>
-<td>0</td>
-</tr>
-<tr data-issue="1" data-title="SCAN: Spain" data-date="2026-03-16T17:15:34.097Z">
-<td><time class="ts-cell" datetime="2026-03-16T17:15:34.097Z" title="2026-03-16T17:15:34.097Z">2026-03-16T17:15:34.097Z</time></td>
+<tr data-issue="1" data-title="SCAN: Spain" data-date="2026-03-16T16:41:50.388Z">
+<td>2026-03-16T16:41:50.388Z</td>
 <td><a href="https://github.com/mgifford/open-site-review/issues/1">#1</a></td>
-<td><a href="issue-1-20260316T171534Z.html">SCAN: Spain</a></td>
-<td>88</td>
-<td>27</td>
+<td>SCAN: Spain</td>
+<td><a href="reports/issue-1-20260316T164150Z.html">View report</a></td>
+<td><a href="https://github.com/mgifford/open-site-review/actions/runs/23154952915">Workflow run</a></td>
 </tr>
     </tbody>
   </table>
@@ -272,17 +232,6 @@ time.ts-cell {
   }
 
   renderPage();
-}());
-
-// Format dates using the browser's locale; the full ISO timestamp remains in the title tooltip.
-(function () {
-  document.querySelectorAll('time.ts-cell').forEach(function (el) {
-    var iso = el.getAttribute('datetime');
-    if (!iso) return;
-    var d = new Date(iso);
-    if (isNaN(d.getTime())) return;
-    el.textContent = d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
-  });
 }());
 </script>
 </body>
