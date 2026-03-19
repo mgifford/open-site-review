@@ -222,7 +222,11 @@ function toMarkdown(report, config, options = {}) {
   }
 
   if (findings.length === 0) {
-    lines.push("No findings detected for current rules and targets.");
+    if (report.scannedFiles === 0 && report.sourceErrors && report.sourceErrors.length > 0) {
+      lines.push(`No files were successfully scanned — all ${report.sourceErrors.length} page fetch(es) failed with errors (see "Source Fetch Errors" above).`);
+    } else {
+      lines.push("No findings detected for current rules and targets.");
+    }
 
     if (options.ci) {
       lines.push("");

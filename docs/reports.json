@@ -7,7 +7,8 @@
     "createdAt": "2026-03-19T18:31:37.252Z",
     "reportPath": "reports/issue-27-20260319T183137Z.md",
     "filesScanned": 0,
-    "findingsCount": 0
+    "findingsCount": 0,
+    "sourceErrorsCount": 50
   },
   {
     "issueNumber": 28,
@@ -57,7 +58,8 @@
     "createdAt": "2026-03-19T15:13:25.171Z",
     "reportPath": "reports/issue-13-20260319T151325Z.md",
     "filesScanned": 65,
-    "findingsCount": 18
+    "findingsCount": 18,
+    "sourceErrorsCount": 1
   },
   {
     "issueNumber": 15,
@@ -77,7 +79,8 @@
     "createdAt": "2026-03-17T13:19:10.770Z",
     "reportPath": "reports/issue-13-20260317T131910Z.md",
     "filesScanned": 65,
-    "findingsCount": 18
+    "findingsCount": 18,
+    "sourceErrorsCount": 1
   },
   {
     "issueNumber": 15,
@@ -107,7 +110,8 @@
     "createdAt": "2026-03-17T00:11:59.290Z",
     "reportPath": "reports/issue-13-20260317T001159Z.md",
     "filesScanned": 65,
-    "findingsCount": 18
+    "findingsCount": 18,
+    "sourceErrorsCount": 1
   },
   {
     "issueNumber": 7,

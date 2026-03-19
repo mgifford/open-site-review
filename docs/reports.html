@@ -62,6 +62,10 @@ time.ts-cell {
   border-bottom: 1px dotted var(--muted);
   white-space: nowrap;
 }
+.errors-cell {
+  color: #b94a00;
+  font-weight: 600;
+}
 .pagination-nav {
   display: flex;
   align-items: center;
@@ -115,6 +119,7 @@ time.ts-cell {
         <th>Title</th>
         <th>Files</th>
         <th>Findings</th>
+        <th>Errors</th>
       </tr>
     </thead>
     <tbody>
@@ -124,6 +129,7 @@ time.ts-cell {
 <td><a href="reports/issue-27-20260319T183137Z.html">SCAN: https://nsf.gov</a></td>
 <td>0</td>
 <td>0</td>
+<td class="errors-cell">50</td>
 </tr>
 <tr data-issue="28" data-title="SCAN: GSA" data-date="2026-03-19T18:05:52.422Z">
 <td><time class="ts-cell" datetime="2026-03-19T18:05:52.422Z" title="2026-03-19T18:05:52.422Z">2026-03-19T18:05:52.422Z</time></td>
@@ -131,6 +137,7 @@ time.ts-cell {
 <td><a href="reports/issue-28-20260319T180552Z.html">SCAN: GSA</a></td>
 <td>50</td>
 <td>0</td>
+<td></td>
 </tr>
 <tr data-issue="1" data-title="SCAN: Spain" data-date="2026-03-19T15:15:37.709Z">
 <td><time class="ts-cell" datetime="2026-03-19T15:15:37.709Z" title="2026-03-19T15:15:37.709Z">2026-03-19T15:15:37.709Z</time></td>
@@ -138,6 +145,7 @@ time.ts-cell {
 <td><a href="reports/issue-1-20260319T151537Z.html">SCAN: Spain</a></td>
 <td>88</td>
 <td>27</td>
+<td></td>
 </tr>
 <tr data-issue="7" data-title="SCAN: Green Web Foundation" data-date="2026-03-19T15:14:52.369Z">
 <td><time class="ts-cell" datetime="2026-03-19T15:14:52.369Z" title="2026-03-19T15:14:52.369Z">2026-03-19T15:14:52.369Z</time></td>
@@ -145,6 +153,7 @@ time.ts-cell {
 <td><a href="reports/issue-7-20260319T151452Z.html">SCAN: Green Web Foundation</a></td>
 <td>51</td>
 <td>0</td>
+<td></td>
 </tr>
 <tr data-issue="13" data-title="SCAN: VA.GOV" data-date="2026-03-19T15:13:25.171Z">
 <td><time class="ts-cell" datetime="2026-03-19T15:13:25.171Z" title="2026-03-19T15:13:25.171Z">2026-03-19T15:13:25.171Z</time></td>
@@ -152,6 +161,7 @@ time.ts-cell {
 <td><a href="reports/issue-13-20260319T151325Z.html">SCAN: VA.GOV</a></td>
 <td>65</td>
 <td>18</td>
+<td class="errors-cell">1</td>
 </tr>
 <tr data-issue="15" data-title="SCAN: medicaid.gov" data-date="2026-03-19T15:13:03.846Z">
 <td><time class="ts-cell" datetime="2026-03-19T15:13:03.846Z" title="2026-03-19T15:13:03.846Z">2026-03-19T15:13:03.846Z</time></td>
@@ -159,6 +169,7 @@ time.ts-cell {
 <td><a href="reports/issue-15-20260319T151303Z.html">SCAN: medicaid.gov</a></td>
 <td>50</td>
 <td>0</td>
+<td></td>
 </tr>
     </tbody>
   </table>

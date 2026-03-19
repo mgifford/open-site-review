@@ -191,8 +191,10 @@ jobs:
                 const reportText = scanResult.stdout;
                 const filesScannedMatch = reportText.match(/Files scanned:\s*(\d+)/);
                 const findingsCountMatch = reportText.match(/Findings:\s*(\d+)/);
+                const fetchErrorsMatch = reportText.match(/Source fetch errors:\s*(\d+)/);
                 const filesScanned = filesScannedMatch ? filesScannedMatch[1] : '';
                 const findingsCount = findingsCountMatch ? findingsCountMatch[1] : '';
+                const fetchErrors = fetchErrorsMatch ? fetchErrorsMatch[1] : '';
 
                 // Publish report to GitHub Pages
                 fs.mkdirSync('docs/reports', { recursive: true });
@@ -213,7 +215,8 @@ jobs:
                       ISSUE_URL: issueUrl,
                       RUN_URL: runUrl,
                       FILES_SCANNED: filesScanned,
-                      FINDINGS_COUNT: findingsCount
+                      FINDINGS_COUNT: findingsCount,
+                      FETCH_ERRORS: fetchErrors
                     }
                   }
                 );
