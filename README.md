@@ -147,7 +147,7 @@ This section documents the use of AI tools in this project.
 
 ### Used to build this project
 
-- **GitHub Copilot Coding Agent (Claude Sonnet, via GitHub Copilot)** — Used extensively to develop this project. All pull requests from the initial prototype through ongoing feature development and bug fixes were authored by the GitHub Copilot Coding Agent. This covers code generation, documentation, GitHub Actions workflow authoring, and architectural decisions across the entire `src/` directory and project configuration.
+- **GitHub Copilot Coding Agent (Claude Sonnet, via GitHub Copilot)** — Used extensively to develop this project. All pull requests from the initial prototype through ongoing feature development and bug fixes were authored by the GitHub Copilot Coding Agent. This covers code generation, documentation, GitHub Actions workflow authoring, and architectural decisions across the entire `src/` directory and project configuration. Also used to upgrade GitHub Actions from Node.js 20 to Node.js 24 runtime versions.
 
 ### Used when running this program
 
