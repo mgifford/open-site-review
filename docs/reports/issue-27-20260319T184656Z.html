@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SCAN: https://nsf.gov</title>
+<style>
+:root {
+  --bg: #f4f7f4;
+  --surface: #ffffff;
+  --ink: #15201d;
+  --muted: #5a6b64;
+  --line: #d6e2dc;
+  --accent: #0b6e4f;
+  --code-bg: #eef1ef;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at 10% 10%, #e7f6ef 0%, var(--bg) 55%);
+  color: var(--ink);
+}
+main {
+  max-width: 860px;
+  margin: 2rem auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 6px 24px rgba(7, 24, 16, 0.08);
+}
+nav { margin-bottom: 1.5rem; font-size: .9rem; }
+a { color: var(--accent); }
+h1 { font-size: 1.8rem; margin: 0 0 1rem 0; }
+h2 { font-size: 1.25rem; margin: 1.5rem 0 .5rem 0; border-bottom: 1px solid var(--line); padding-bottom: .3rem; }
+h3 { font-size: 1.05rem; margin: 1.25rem 0 .4rem 0; }
+ul { padding-left: 1.4rem; line-height: 1.7; }
+li { margin: .2rem 0; }
+p { line-height: 1.6; }
+code {
+  background: var(--code-bg);
+  border-radius: 4px;
+  padding: .1em .35em;
+  font-size: .9em;
+  font-family: "IBM Plex Mono", "Fira Code", monospace;
+}
+pre { background: var(--code-bg); padding: 1rem; border-radius: 8px; overflow: auto; }
+pre code { background: none; padding: 0; }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="./">← Back to reports</a></nav>
+  <div id="report"><h1>Open Site Review Report</h1>
+<ul>
+<li>Targets: defaults, not ie &lt;= 11</li>
+<li>Unsupported threshold: 10%</li>
+<li>Polyfill removable threshold: 5%</li>
+<li>Files scanned: 34</li>
+<li>Findings: 5</li>
+<li>Scan mode: URL crawl (same-origin assets only)</li>
+<li>Source fetch errors: 23</li>
+</ul>
+<h2>Source Fetch Errors</h2>
+<ul>
+<li>https://nsf.gov/about/research-areas: Failed to fetch https://nsf.gov/about/research-areas: HTTP 403</li>
+<li>https://nsf.gov/about/governance: Failed to fetch https://nsf.gov/about/governance: HTTP 404</li>
+<li>https://nsf.gov/about/career-opportunities: Failed to fetch https://nsf.gov/about/career-opportunities: HTTP 404</li>
+<li>https://nsf.gov/about/contact: Failed to fetch https://nsf.gov/about/contact: HTTP 404</li>
+<li>https://nsf.gov/about/foia/: Failed to fetch https://nsf.gov/about/foia/: HTTP 404</li>
+<li>https://nsf.gov/funding/how-to-apply: Failed to fetch https://nsf.gov/funding/how-to-apply: HTTP 404</li>
+<li>https://nsf.gov/funding/preparing-proposals: Failed to fetch https://nsf.gov/funding/preparing-proposals: HTTP 404</li>
+<li>https://nsf.gov/funding/submission-methods: Failed to fetch https://nsf.gov/funding/submission-methods: HTTP 404</li>
+<li>https://nsf.gov/funding/postdoctoral-fellows: Failed to fetch https://nsf.gov/funding/postdoctoral-fellows: HTTP 404</li>
+<li>https://nsf.gov/funding/small-business: Failed to fetch https://nsf.gov/funding/small-business: HTTP 404</li>
+<li>https://nsf.gov/funding/initiatives/nairr: Failed to fetch https://nsf.gov/funding/initiatives/nairr: HTTP 404</li>
+<li>https://nsf.gov/funding/initiatives/chips-science: Failed to fetch https://nsf.gov/funding/initiatives/chips-science: HTTP 404</li>
+<li>https://nsf.gov/bfa/dias/policy/pappg: Failed to fetch https://nsf.gov/bfa/dias/policy/pappg: HTTP 404</li>
+<li>https://nsf.gov/bfa/dias/policy/sampling-plans: Failed to fetch https://nsf.gov/bfa/dias/policy/sampling-plans: HTTP 404</li>
+<li>https://nsf.gov/about/section-508: Failed to fetch https://nsf.gov/about/section-508: HTTP 404</li>
+<li>https://nsf.gov/policies/linking: Failed to fetch https://nsf.gov/policies/linking: HTTP 404</li>
+<li>https://nsf.gov/policies/disclaimer: Failed to fetch https://nsf.gov/policies/disclaimer: HTTP 404</li>
+<li>https://nsf.gov/policies/copyright: Failed to fetch https://nsf.gov/policies/copyright: HTTP 404</li>
+<li>https://nsf.gov/policies/quality-standards: Failed to fetch https://nsf.gov/policies/quality-standards: HTTP 404</li>
+<li>https://nsf.gov/resources/assets/js/pages/statistics/statistics.concat.js: Failed to fetch https://nsf.gov/resources/assets/js/pages/statistics/statistics.concat.js: HTTP 404</li>
+<li>https://nsf.gov/resources/assets/js/core/analytics.js: Failed to fetch https://nsf.gov/resources/assets/js/core/analytics.js: HTTP 404</li>
+<li>https://nsf.gov/resources/assets/css/pages/statistics/bootstrap.min.css: Failed to fetch https://nsf.gov/resources/assets/css/pages/statistics/bootstrap.min.css: HTTP 404</li>
+<li>https://ncses.nsf.gov/data-tools: Failed to fetch https://ncses.nsf.gov/data-tools: HTTP 404</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://ncses.nsf.gov/resources/assets/js/core/analytics.js:328</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://ncses.nsf.gov/resources/assets/js/pages/statistics/statistics.concat.js:22</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses nullish coalescing operator</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://ncses.nsf.gov/resources/assets/js/pages/statistics/statistics.concat.js:45</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Nullish coalescing can simplify defaults while avoiding falsy-value bugs, but legacy browsers need transpilation.</li>
+<li>Recommendation: Transpile this syntax for older browser support or gate usage to modern bundles only.</li>
+<li>Can I Use feature: mdn-javascript_operators_nullish_coalescing</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_nullish_coalescing' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://ncses.nsf.gov/resources/assets/js/pages/indicators/home.js:4</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://ncses.nsf.gov/resources/assets/js/pages/statistics/statistics.concat.js:2</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>CSS Quality Analysis</h2>
+<p>Powered by <a href="https://www.projectwallace.com/">Project Wallace</a> — <a href="https://github.com/projectwallace/css-analyzer">css-analyzer</a> and <a href="https://github.com/projectwallace/css-code-quality">css-code-quality</a>.</p>
+<h3>https://ncses.nsf.gov/resources/assets/css/pages/statistics/bootstrap.min.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 76/100 ⚠️</li>
+<li>Maintainability: 80/100 ⚠️</li>
+<li>Complexity: 74/100 ⚠️</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 6</li>
+<li><code>TooMuchComments</code>: score impact 1</li>
+<li><code>TooMuchEmbeddedContent</code>: score impact 17</li>
+<li><code>MaxSelectorsPerRule</code>: score impact 1</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 8</li>
+<li><code>MoreThanMostCommonSelectorsPerRule</code>: score impact 3</li>
+<li><code>MoreThanMostCommonDeclarationsPerRule</code>: score impact 8</li>
+<li><code>MoreThanMostCommonSelectorComplexity</code>: score impact 9</li>
+<li><code>MoreThanMostCommonSelectorSpecificity</code>: score impact 9</li>
+<li><code>MaxSelectorComplexity</code>: score impact 5</li>
+<li><code>ImportantRatio</code>: score impact 3</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 6992</li>
+<li>Stylesheet complexity: 19206</li>
+<li>Total rules: 2288</li>
+<li>Total selectors: 2799</li>
+<li>Total declarations: 4091</li>
+<li><code>!important</code> declarations: 1279</li>
+<li>Max selector specificity: 0,7,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Custom properties (CSS variables): 36 unique</li>
+</ul>
+<p>  - --bs-blue, --bs-indigo, --bs-purple, --bs-pink, --bs-red, --bs-orange, --bs-yellow, --bs-green, --bs-teal, --bs-cyan, --bs-white, --bs-gray, --bs-gray-dark, --bs-primary, --bs-secondary, --bs-success, --bs-info, --bs-warning, --bs-danger, --bs-light, --bs-dark, --bs-font-sans-serif, --bs-font-monospace, --bs-gradient, --bs-gutter-x, --bs-gutter-y, --bs-table-bg, --bs-table-accent-bg, --bs-table-striped-color, --bs-table-striped-bg, --bs-table-active-color, --bs-table-active-bg, --bs-table-hover-color, --bs-table-hover-bg, --bs-position, --bs-aspect-ratio</p>
+<ul>
+<li>Colors: 158 unique</li>
+</ul>
+<p>  - #0d6efd, #6610f2, #6f42c1, #d63384, #dc3545, #fd7e14, #ffc107, #198754, #20c997, #0dcaf0, #fff, #6c757d, #343a40, #f8f9fa, #212529, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0), transparent, currentcolor, #fcf8e3, #0a58ca, #dee2e6, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.075), #cfe2ff, #c5d7f2, #000, #bacbe6, #bfd1ec, #e2e3e5, #d7d8da, #cbccce, #d1d2d4, #d1e7dd, #c7dbd2, #bcd0c7, #c1d6cc, #cff4fc, #c5e8ef, #badce3, #bfe2e9, #fff3cd, #f2e7c3, #e6dbb9, #ece1be, #f8d7da, #eccccf, #dfc2c4, #e5c7ca, #ecedee, #dfe0e1, #e5e6e7, #2c3034, #373b3e, #323539, #ced4da, #86b7fe, rgba(13,110,253,.25), #e9ecef, #dde0e3, rgba(0,0,0,.25), #b6d4fe, #adb5bd, rgba(25,135,84,.9), rgba(25,135,84,.25), rgba(220,53,69,.9), rgba(220,53,69,.25), #0b5ed7, rgba(49,132,253,.5), #0a53be, #5c636a, #565e64, rgba(130,138,145,.5), #51585e, #157347, #146c43, rgba(60,153,110,.5), #13653f, #31d2f2, #25cff2, rgba(11,172,204,.5), #3dd5f3, #ffca2c, #ffc720, rgba(217,164,6,.5), #ffcd39, #bb2d3b, #b02a37, rgba(225,83,97,.5), #a52834, #f9fafb, rgba(211,212,213,.5), #1c1f23, #1a1e21, rgba(66,70,73,.5), #191c1f, rgba(13,110,253,.5), rgba(108,117,125,.5), rgba(25,135,84,.5), rgba(13,202,240,.5), rgba(255,193,7,.5), rgba(220,53,69,.5), rgba(248,249,250,.5), rgba(33,37,41,.5), rgba(0,0,0,.15), #1e2125, rgba(255,255,255,.15), #495057, rgba(0,0,0,.9), rgba(0,0,0,.55), rgba(0,0,0,.7), rgba(0,0,0,.3), rgba(0,0,0,.1), rgba(255,255,255,.55), rgba(255,255,255,.75), rgba(255,255,255,.25), rgba(255,255,255,.1), rgba(0,0,0,.125), rgba(0,0,0,.03), #0c63e4, #e7f1ff, #084298, #06357a, #41464b, #d3d6d8, #34383c, #0f5132, #badbcc, #0c4128, #055160, #b6effb, #04414d, #664d03, #ffecb5, #523e02, #842029, #f5c2c7, #6a1a21, #636464, #fefefe, #fdfdfe, #4f5050, #141619, #d3d3d4, #bcbebf, #101214, #e5e5e5, #bebebf, rgba(255,255,255,.85), rgba(0,0,0,.05), rgba(0,0,0,.2), #f0f0f0, #d8d8d8, rgba(0,0,0,.075), rgba(0,0,0,.175), rgba(0,0,0,.5), rgba(255,255,255,.5)</p>
+<ul>
+<li>Font families: 2 unique</li>
+</ul>
+<p>  - var(--bs-font-sans-serif), var(--bs-font-monospace)</p>
+<ul>
+<li>Font sizes: 25 unique</li>
+</ul>
+<p>  - 1rem, calc(1.375rem + 1.5vw), 2.5rem, calc(1.325rem + .9vw), 2rem, calc(1.3rem + .6vw), 1.75rem, calc(1.275rem + .3vw), 1.5rem, 1.25rem, .875em, .75em, 1em, calc(1.625rem + 4.5vw), 5rem, calc(1.575rem + 3.9vw), 4.5rem, calc(1.525rem + 3.3vw), 4rem, calc(1.475rem + 2.7vw), 3.5rem, calc(1.425rem + 2.1vw), 3rem, .875rem, .75rem</p>
+<ul>
+<li>Z-index values: 13 unique</li>
+</ul>
+<p>  - 0, 1, 2, 3, 5, 1000, 1020, 1030, 1040, 1050, 1060, 1070, 1080</p></div>
+</main>
+</body>
+</html>
