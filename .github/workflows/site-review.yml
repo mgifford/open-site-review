@@ -229,7 +229,7 @@ jobs:
                 // Commit and push the report
                 spawnSync('git', ['config', 'user.name', 'github-actions[bot]']);
                 spawnSync('git', ['config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com']);
-                spawnSync('git', ['add', 'docs/reports', 'docs/reports.json', 'docs/reports.html']);
+                spawnSync('git', ['add', 'docs/reports', 'docs/reports.json', 'docs/reports.html', 'docs/archive.html']);
 
                 const statusResult = spawnSync('git', ['status', '--porcelain'], { encoding: 'utf8' });
                 if (statusResult.stdout.trim()) {
