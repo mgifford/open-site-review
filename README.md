@@ -141,6 +141,29 @@ Issue automation behavior:
 - Add JavaScript/CSS AST-level detectors for stronger precision.
 - Add configurable recommendation templates by severity.
 
+## AI Disclosure
+
+This section documents the use of AI tools in this project.
+
+### Used to build this project
+
+- **GitHub Copilot Coding Agent (Claude Sonnet, via GitHub Copilot)** — Used extensively to develop this project. All pull requests from the initial prototype through ongoing feature development and bug fixes were authored by the GitHub Copilot Coding Agent. This covers code generation, documentation, GitHub Actions workflow authoring, and architectural decisions across the entire `src/` directory and project configuration.
+
+### Used when running this program
+
+No AI or LLM is used at runtime. The tool relies entirely on static, pre-published datasets:
+
+- **caniuse-api** — browser support data sourced from the Can I Use database.
+- **@mdn/browser-compat-data** — browser compatibility metadata from MDN.
+- **browserslist** — resolves browser target queries to specific browser versions.
+- **@projectwallace/css-analyzer** and **@projectwallace/css-code-quality** — static CSS analysis engines.
+
+All analysis is deterministic and rule-based. No network calls to AI services are made during a scan.
+
+### Browser-based AI
+
+No browser-based AI is used in this application. The tool is a server-side CLI; it does not ship any client-side JavaScript and has no browser runtime component.
+
 ## Related tools and resources
 
 ### Web Almanac

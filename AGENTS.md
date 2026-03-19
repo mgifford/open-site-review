@@ -95,6 +95,17 @@ The index page at `https://<owner>.github.io/<repo>/` links to `reports.html`.
 - Rule coverage is intentionally small; contributions expanding `src/rules.js` are welcome.
 - URL crawling is shallow (linked CSS/JS assets only, no recursive page crawling).
 
+## AI Disclosure
+
+Disclosure of AI use is important to this project. When an AI agent contributes to this repository, it **must** update the `## AI Disclosure` section in `README.md` to record:
+
+- Which LLM or AI tool was used.
+- What it was used for (e.g., code generation, documentation, bug fixes).
+- Whether AI is involved when the program runs.
+- Whether any browser-based AI is used in the application.
+
+Do not list AI tools that have not been used. Each LLM should disclose its own use.
+
 ## Errors and Workarounds
 
 - If `npm ci` fails due to a missing `package-lock.json`, run `npm install` first to regenerate it.
