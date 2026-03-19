@@ -5,7 +5,9 @@
     "issueUrl": "https://github.com/mgifford/open-site-review/issues/1",
     "runUrl": "https://github.com/mgifford/open-site-review/actions/runs/23301886571",
     "createdAt": "2026-03-19T15:15:37.709Z",
-    "reportPath": "reports/issue-1-20260319T151537Z.md"
+    "reportPath": "reports/issue-1-20260319T151537Z.md",
+    "filesScanned": 88,
+    "findingsCount": 27
   },
   {
     "issueNumber": 7,
@@ -13,7 +15,9 @@
     "issueUrl": "https://github.com/mgifford/open-site-review/issues/7",
     "runUrl": "https://github.com/mgifford/open-site-review/actions/runs/23301886571",
     "createdAt": "2026-03-19T15:14:52.369Z",
-    "reportPath": "reports/issue-7-20260319T151452Z.md"
+    "reportPath": "reports/issue-7-20260319T151452Z.md",
+    "filesScanned": 51,
+    "findingsCount": 0
   },
   {
     "issueNumber": 13,
@@ -21,7 +25,9 @@
     "issueUrl": "https://github.com/mgifford/open-site-review/issues/13",
     "runUrl": "https://github.com/mgifford/open-site-review/actions/runs/23301886571",
     "createdAt": "2026-03-19T15:13:25.171Z",
-    "reportPath": "reports/issue-13-20260319T151325Z.md"
+    "reportPath": "reports/issue-13-20260319T151325Z.md",
+    "filesScanned": 65,
+    "findingsCount": 18
   },
   {
     "issueNumber": 15,
@@ -29,7 +35,9 @@
     "issueUrl": "https://github.com/mgifford/open-site-review/issues/15",
     "runUrl": "https://github.com/mgifford/open-site-review/actions/runs/23301886571",
     "createdAt": "2026-03-19T15:13:03.846Z",
-    "reportPath": "reports/issue-15-20260319T151303Z.md"
+    "reportPath": "reports/issue-15-20260319T151303Z.md",
+    "filesScanned": 50,
+    "findingsCount": 0
   },
   {
     "issueNumber": 13,
@@ -37,7 +45,9 @@
     "issueUrl": "https://github.com/mgifford/open-site-review/issues/13",
     "runUrl": "https://github.com/mgifford/open-site-review/actions/runs/23196162922",
     "createdAt": "2026-03-17T13:19:10.770Z",
-    "reportPath": "reports/issue-13-20260317T131910Z.md"
+    "reportPath": "reports/issue-13-20260317T131910Z.md",
+    "filesScanned": 65,
+    "findingsCount": 18
   },
   {
     "issueNumber": 15,
@@ -45,7 +55,9 @@
     "issueUrl": "https://github.com/mgifford/open-site-review/issues/15",
     "runUrl": "https://github.com/mgifford/open-site-review/actions/runs/23196150700",
     "createdAt": "2026-03-17T13:18:41.763Z",
-    "reportPath": "reports/issue-15-20260317T131841Z.md"
+    "reportPath": "reports/issue-15-20260317T131841Z.md",
+    "filesScanned": 50,
+    "findingsCount": 0
   },
   {
     "issueNumber": 15,
@@ -53,7 +65,9 @@
     "issueUrl": "https://github.com/mgifford/open-site-review/issues/15",
     "runUrl": "https://github.com/mgifford/open-site-review/actions/runs/23172385301",
     "createdAt": "2026-03-17T00:24:23.420Z",
-    "reportPath": "reports/issue-15-20260317T002423Z.md"
+    "reportPath": "reports/issue-15-20260317T002423Z.md",
+    "filesScanned": 50,
+    "findingsCount": 0
   },
   {
     "issueNumber": 13,
@@ -61,7 +75,9 @@
     "issueUrl": "https://github.com/mgifford/open-site-review/issues/13",
     "runUrl": "https://github.com/mgifford/open-site-review/actions/runs/23172045187",
     "createdAt": "2026-03-17T00:11:59.290Z",
-    "reportPath": "reports/issue-13-20260317T001159Z.md"
+    "reportPath": "reports/issue-13-20260317T001159Z.md",
+    "filesScanned": 65,
+    "findingsCount": 18
   },
   {
     "issueNumber": 7,
@@ -69,7 +85,9 @@
     "issueUrl": "https://github.com/mgifford/open-site-review/issues/7",
     "runUrl": "https://github.com/mgifford/open-site-review/actions/runs/23159325330",
     "createdAt": "2026-03-16T18:22:50.079Z",
-    "reportPath": "reports/issue-7-20260316T182250Z.md"
+    "reportPath": "reports/issue-7-20260316T182250Z.md",
+    "filesScanned": 51,
+    "findingsCount": 0
   },
   {
     "issueNumber": 1,
@@ -77,7 +95,9 @@
     "issueUrl": "https://github.com/mgifford/open-site-review/issues/1",
     "runUrl": "https://github.com/mgifford/open-site-review/actions/runs/23156461419",
     "createdAt": "2026-03-16T17:15:34.097Z",
-    "reportPath": "reports/issue-1-20260316T171534Z.md"
+    "reportPath": "reports/issue-1-20260316T171534Z.md",
+    "filesScanned": 88,
+    "findingsCount": 27
   },
   {
     "issueNumber": 1,
@@ -85,6 +105,8 @@
     "issueUrl": "https://github.com/mgifford/open-site-review/issues/1",
     "runUrl": "https://github.com/mgifford/open-site-review/actions/runs/23154952915",
     "createdAt": "2026-03-16T16:41:50.388Z",
-    "reportPath": "reports/issue-1-20260316T164150Z.md"
+    "reportPath": "reports/issue-1-20260316T164150Z.md",
+    "filesScanned": 88,
+    "findingsCount": 27
   }
 ]
