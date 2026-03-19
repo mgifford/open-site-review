@@ -38,12 +38,14 @@ function extractStatsFromReport(filePath) {
     const text = fs.readFileSync(filePath, "utf8");
     const filesMatch = text.match(/Files scanned:\s*(\d+)/);
     const findingsMatch = text.match(/Findings:\s*(\d+)/);
+    const errorsMatch = text.match(/Source fetch errors:\s*(\d+)/);
     return {
       filesScanned: filesMatch ? Number(filesMatch[1]) : null,
-      findingsCount: findingsMatch ? Number(findingsMatch[1]) : null
+      findingsCount: findingsMatch ? Number(findingsMatch[1]) : null,
+      sourceErrorsCount: errorsMatch ? Number(errorsMatch[1]) : null
     };
   } catch {
-    return { filesScanned: null, findingsCount: null };
+    return { filesScanned: null, findingsCount: null, sourceErrorsCount: null };
   }
 }
 
@@ -236,6 +238,10 @@ function buildReportsHtml(items, { insideReportsDir = false, isArchive = false, 
       const issueNumber = Number(item.issueNumber) || 0;
       const filesScanned = item.filesScanned != null ? escapeHtml(String(item.filesScanned)) : "";
       const findingsCount = item.findingsCount != null ? escapeHtml(String(item.findingsCount)) : "";
+      const sourceErrorsCount = item.sourceErrorsCount != null ? escapeHtml(String(item.sourceErrorsCount)) : "";
+      const errorsCell = sourceErrorsCount
+        ? `<td class="errors-cell">${sourceErrorsCount}</td>`
+        : `<td></td>`;
 
       return `<tr data-issue="${issueNumber}" data-title="${title}" data-date="${createdAt}">
 <td><time class="ts-cell" datetime="${createdAt}" title="${createdAt}">${createdAt}</time></td>
@@ -243,6 +249,7 @@ function buildReportsHtml(items, { insideReportsDir = false, isArchive = false, 
 <td><a href="${reportPath}">${title}</a></td>
 <td>${filesScanned}</td>
 <td>${findingsCount}</td>
+${errorsCell}
 </tr>`;
     })
     .join("\n");
@@ -311,6 +318,10 @@ time.ts-cell {
   border-bottom: 1px dotted var(--muted);
   white-space: nowrap;
 }
+.errors-cell {
+  color: #b94a00;
+  font-weight: 600;
+}
 .pagination-nav {
   display: flex;
   align-items: center;
@@ -364,6 +375,7 @@ time.ts-cell {
         <th>Title</th>
         <th>Files</th>
         <th>Findings</th>
+        <th>Errors</th>
       </tr>
     </thead>
     <tbody>
@@ -489,7 +501,7 @@ function main() {
     const entries = readJsonSafe(metadataPath, []);
     // Backfill stats from existing HTML/MD report files for entries that lack them.
     for (const entry of entries) {
-      if (entry.filesScanned == null || entry.findingsCount == null) {
+      if (entry.filesScanned == null || entry.findingsCount == null || entry.sourceErrorsCount == null) {
         const htmlFile = path.join(pagesDir, reportHtmlPath(entry.reportPath));
         const mdFile = path.join(pagesDir, entry.reportPath);
         const candidate = fs.existsSync(htmlFile) ? htmlFile : fs.existsSync(mdFile) ? mdFile : null;
@@ -497,6 +509,7 @@ function main() {
           const stats = extractStatsFromReport(candidate);
           if (entry.filesScanned == null && stats.filesScanned != null) entry.filesScanned = stats.filesScanned;
           if (entry.findingsCount == null && stats.findingsCount != null) entry.findingsCount = stats.findingsCount;
+          if (entry.sourceErrorsCount == null && stats.sourceErrorsCount != null) entry.sourceErrorsCount = stats.sourceErrorsCount;
         }
       }
     }
@@ -523,6 +536,7 @@ function main() {
   const createdAt = new Date().toISOString();
   const filesScanned = process.env.FILES_SCANNED ? Number(process.env.FILES_SCANNED) : null;
   const findingsCount = process.env.FINDINGS_COUNT ? Number(process.env.FINDINGS_COUNT) : null;
+  const sourceErrorsCount = process.env.FETCH_ERRORS ? Number(process.env.FETCH_ERRORS) : null;
 
   const metadataPath = path.join(pagesDir, "reports.json");
   const entries = readJsonSafe(metadataPath, []);
@@ -535,7 +549,8 @@ function main() {
     createdAt,
     reportPath,
     filesScanned,
-    findingsCount
+    findingsCount,
+    sourceErrorsCount
   });
 
   const deduped = [];
