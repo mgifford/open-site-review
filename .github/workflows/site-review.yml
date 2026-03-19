@@ -187,6 +187,13 @@ jobs:
 
                 fs.writeFileSync(reportFile, scanResult.stdout);
 
+                // Extract scan stats from the markdown report for the index table.
+                const reportText = scanResult.stdout;
+                const filesScannedMatch = reportText.match(/Files scanned:\s*(\d+)/);
+                const findingsCountMatch = reportText.match(/Findings:\s*(\d+)/);
+                const filesScanned = filesScannedMatch ? filesScannedMatch[1] : '';
+                const findingsCount = findingsCountMatch ? findingsCountMatch[1] : '';
+
                 // Publish report to GitHub Pages
                 fs.mkdirSync('docs/reports', { recursive: true });
                 // Timestamp format matches the existing bash convention: YYYYMMDDTHHMMSSz
@@ -204,7 +211,9 @@ jobs:
                       ISSUE_NUMBER: String(issueNumber),
                       ISSUE_TITLE: issue.title,
                       ISSUE_URL: issueUrl,
-                      RUN_URL: runUrl
+                      RUN_URL: runUrl,
+                      FILES_SCANNED: filesScanned,
+                      FINDINGS_COUNT: findingsCount
                     }
                   }
                 );

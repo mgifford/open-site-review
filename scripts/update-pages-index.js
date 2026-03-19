@@ -33,6 +33,20 @@ function reportHtmlPath(reportPath) {
   return reportPath.replace(/\.md$/, ".html");
 }
 
+function extractStatsFromReport(filePath) {
+  try {
+    const text = fs.readFileSync(filePath, "utf8");
+    const filesMatch = text.match(/Files scanned:\s*(\d+)/);
+    const findingsMatch = text.match(/Findings:\s*(\d+)/);
+    return {
+      filesScanned: filesMatch ? Number(filesMatch[1]) : null,
+      findingsCount: findingsMatch ? Number(findingsMatch[1]) : null
+    };
+  } catch {
+    return { filesScanned: null, findingsCount: null };
+  }
+}
+
 function renderMarkdown(text) {
   function esc(s) {
     return String(s)
@@ -218,16 +232,17 @@ function buildReportsHtml(items, { insideReportsDir = false, isArchive = false, 
       if (insideReportsDir && reportPath.startsWith("reports/")) {
         reportPath = reportPath.slice("reports/".length);
       }
-      const runUrl = escapeHtml(item.runUrl || "");
       const createdAt = escapeHtml(item.createdAt || "");
       const issueNumber = Number(item.issueNumber) || 0;
+      const filesScanned = item.filesScanned != null ? escapeHtml(String(item.filesScanned)) : "";
+      const findingsCount = item.findingsCount != null ? escapeHtml(String(item.findingsCount)) : "";
 
       return `<tr data-issue="${issueNumber}" data-title="${title}" data-date="${createdAt}">
-<td>${createdAt}</td>
+<td><time class="ts-cell" datetime="${createdAt}" title="${createdAt}">${createdAt}</time></td>
 <td><a href="${issueUrl}">#${item.issueNumber}</a></td>
-<td>${title}</td>
-<td><a href="${reportPath}">View report</a></td>
-<td>${runUrl ? `<a href="${runUrl}">Workflow run</a>` : ""}</td>
+<td><a href="${reportPath}">${title}</a></td>
+<td>${filesScanned}</td>
+<td>${findingsCount}</td>
 </tr>`;
     })
     .join("\n");
@@ -291,6 +306,11 @@ a { color: var(--accent); }
 .nav a { text-decoration: none; margin-right: 1.5rem; color: var(--accent); font-weight: 600; }
 .nav a:hover { text-decoration: underline; }
 .table-info { color: var(--muted); font-size: .875rem; margin-top: .75rem; }
+time.ts-cell {
+  cursor: default;
+  border-bottom: 1px dotted var(--muted);
+  white-space: nowrap;
+}
 .pagination-nav {
   display: flex;
   align-items: center;
@@ -339,11 +359,11 @@ a { color: var(--accent); }
   <table aria-label="Site review reports">
     <thead>
       <tr>
-        <th>Generated</th>
+        <th>Date</th>
         <th>Issue</th>
         <th>Title</th>
-        <th>Report</th>
-        <th>Run</th>
+        <th>Files</th>
+        <th>Findings</th>
       </tr>
     </thead>
     <tbody>
@@ -433,6 +453,17 @@ a { color: var(--accent); }
 
   renderPage();
 }());
+
+// Format dates using the browser's locale; the full ISO timestamp remains in the title tooltip.
+(function () {
+  document.querySelectorAll('time.ts-cell').forEach(function (el) {
+    var iso = el.getAttribute('datetime');
+    if (!iso) return;
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return;
+    el.textContent = d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+  });
+}());
 </script>
 </body>
 </html>`;
@@ -456,6 +487,23 @@ function main() {
     }
     const metadataPath = path.join(pagesDir, "reports.json");
     const entries = readJsonSafe(metadataPath, []);
+    // Backfill stats from existing HTML/MD report files for entries that lack them.
+    for (const entry of entries) {
+      if (entry.filesScanned == null || entry.findingsCount == null) {
+        const htmlFile = path.join(pagesDir, reportHtmlPath(entry.reportPath));
+        const mdFile = path.join(pagesDir, entry.reportPath);
+        const candidate = fs.existsSync(htmlFile) ? htmlFile : fs.existsSync(mdFile) ? mdFile : null;
+        if (candidate) {
+          const stats = extractStatsFromReport(candidate);
+          if (entry.filesScanned == null && stats.filesScanned != null) entry.filesScanned = stats.filesScanned;
+          if (entry.findingsCount == null && stats.findingsCount != null) entry.findingsCount = stats.findingsCount;
+        }
+      }
+    }
+    fs.writeFileSync(metadataPath, JSON.stringify(entries, null, 2));
+    fs.writeFileSync(path.join(pagesDir, "reports.html"), buildReportsHtml(entries));
+    fs.mkdirSync(path.join(pagesDir, "reports"), { recursive: true });
+    fs.writeFileSync(path.join(pagesDir, "reports", "index.html"), buildReportsHtml(entries, { insideReportsDir: true }));
     writeAllReportPages(pagesDir, entries);
     return;
   }
@@ -473,6 +521,8 @@ function main() {
   const issueUrl = toAbsoluteUrl(process.env.ISSUE_URL || "");
   const runUrl = toAbsoluteUrl(process.env.RUN_URL || "");
   const createdAt = new Date().toISOString();
+  const filesScanned = process.env.FILES_SCANNED ? Number(process.env.FILES_SCANNED) : null;
+  const findingsCount = process.env.FINDINGS_COUNT ? Number(process.env.FINDINGS_COUNT) : null;
 
   const metadataPath = path.join(pagesDir, "reports.json");
   const entries = readJsonSafe(metadataPath, []);
@@ -483,7 +533,9 @@ function main() {
     issueUrl,
     runUrl,
     createdAt,
-    reportPath
+    reportPath,
+    filesScanned,
+    findingsCount
   });
 
   const deduped = [];
