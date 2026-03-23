@@ -1,5 +1,16 @@
 [
   {
+    "issueNumber": 7,
+    "issueTitle": "SCAN: Green Web Foundation",
+    "issueUrl": "https://github.com/mgifford/open-site-review/issues/7",
+    "runUrl": "https://github.com/mgifford/open-site-review/actions/runs/23447843331",
+    "createdAt": "2026-03-23T16:22:00.280Z",
+    "reportPath": "reports/issue-7-20260323T162200Z.md",
+    "filesScanned": 34,
+    "findingsCount": 0,
+    "sourceErrorsCount": 17
+  },
+  {
     "issueNumber": 15,
     "issueTitle": "SCAN: medicaid.gov",
     "issueUrl": "https://github.com/mgifford/open-site-review/issues/15",

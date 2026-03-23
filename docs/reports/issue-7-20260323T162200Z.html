@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SCAN: Green Web Foundation</title>
+<style>
+:root {
+  --bg: #f4f7f4;
+  --surface: #ffffff;
+  --ink: #15201d;
+  --muted: #5a6b64;
+  --line: #d6e2dc;
+  --accent: #0b6e4f;
+  --code-bg: #eef1ef;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at 10% 10%, #e7f6ef 0%, var(--bg) 55%);
+  color: var(--ink);
+}
+main {
+  max-width: 860px;
+  margin: 2rem auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 6px 24px rgba(7, 24, 16, 0.08);
+}
+nav { margin-bottom: 1.5rem; font-size: .9rem; }
+a { color: var(--accent); }
+h1 { font-size: 1.8rem; margin: 0 0 1rem 0; }
+h2 { font-size: 1.25rem; margin: 1.5rem 0 .5rem 0; border-bottom: 1px solid var(--line); padding-bottom: .3rem; }
+h3 { font-size: 1.05rem; margin: 1.25rem 0 .4rem 0; }
+ul { padding-left: 1.4rem; line-height: 1.7; }
+li { margin: .2rem 0; }
+p { line-height: 1.6; }
+code {
+  background: var(--code-bg);
+  border-radius: 4px;
+  padding: .1em .35em;
+  font-size: .9em;
+  font-family: "IBM Plex Mono", "Fira Code", monospace;
+}
+pre { background: var(--code-bg); padding: 1rem; border-radius: 8px; overflow: auto; }
+pre code { background: none; padding: 0; }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="./">← Back to reports</a></nav>
+  <div id="report"><h1>Open Site Review Report</h1>
+<ul>
+<li>Targets: defaults, not ie &lt;= 11</li>
+<li>Unsupported threshold: 10%</li>
+<li>Polyfill removable threshold: 5%</li>
+<li>Files scanned: 34</li>
+<li>Findings: 0</li>
+<li>Scan mode: URL crawl (same-origin assets only)</li>
+<li>Source fetch errors: 17</li>
+</ul>
+<h2>Source Fetch Errors</h2>
+<ul>
+<li>https://thegreenwebfoundation.org/]: Failed to fetch https://thegreenwebfoundation.org/]: HTTP 404</li>
+<li>https://thegreenwebfoundation.org/green-web-dataset/](https://www.google.com/search?q=https://thegreenwebfoundation.org/green-web-dataset/: Failed to fetch https://thegreenwebfoundation.org/green-web-dataset/](https://www.google.com/search?q=https://thegreenwebfoundation.org/green-web-dataset/: HTTP 404</li>
+<li>https://thegreenwebfoundation.org/about/]: Failed to fetch https://thegreenwebfoundation.org/about/]: HTTP 404</li>
+<li>https://thegreenwebfoundation.org/about/governance/](https://www.google.com/search?q=https://thegreenwebfoundation.org/about/governance/: Failed to fetch https://thegreenwebfoundation.org/about/governance/](https://www.google.com/search?q=https://thegreenwebfoundation.org/about/governance/: HTTP 404</li>
+<li>https://thegreenwebfoundation.org/about/open-data/](https://www.google.com/search?q=https://thegreenwebfoundation.org/about/open-data/: Failed to fetch https://thegreenwebfoundation.org/about/open-data/](https://www.google.com/search?q=https://thegreenwebfoundation.org/about/open-data/: HTTP 404</li>
+<li>https://thegreenwebfoundation.org/tools/directory/services-offered/]: Failed to fetch https://thegreenwebfoundation.org/tools/directory/services-offered/]: HTTP 404</li>
+<li>https://thegreenwebfoundation.org/directory/services-offered/green-hosting/](https://www.google.com/search?q=https://thegreenwebfoundation.org/directory/services-offered/green-hosting/: Failed to fetch https://thegreenwebfoundation.org/directory/services-offered/green-hosting/](https://www.google.com/search?q=https://thegreenwebfoundation.org/directory/services-offered/green-hosting/: HTTP 404</li>
+<li>https://thegreenwebfoundation.org/contact/]: Failed to fetch https://thegreenwebfoundation.org/contact/]: HTTP 404</li>
+<li>https://thegreenwebfoundation.org/frequently-asked-questions/](https://www.google.com/search?q=https://thegreenwebfoundation.org/frequently-asked-questions/: Failed to fetch https://thegreenwebfoundation.org/frequently-asked-questions/](https://www.google.com/search?q=https://thegreenwebfoundation.org/frequently-asked-questions/: HTTP 404</li>
+<li>https://thegreenwebfoundation.org/services/]: Failed to fetch https://thegreenwebfoundation.org/services/]: HTTP 404</li>
+<li>https://thegreenwebfoundation.org/services/verification/](https://www.google.com/search?q=https://thegreenwebfoundation.org/services/verification/: Failed to fetch https://thegreenwebfoundation.org/services/verification/](https://www.google.com/search?q=https://thegreenwebfoundation.org/services/verification/: HTTP 404</li>
+<li>https://thegreenwebfoundation.org/news/](https://www.google.com/search?q=https://thegreenwebfoundation.org/news/: Failed to fetch https://thegreenwebfoundation.org/news/](https://www.google.com/search?q=https://thegreenwebfoundation.org/news/: HTTP 404</li>
+<li>https://thegreenwebfoundation.org/category/policy/](https://www.google.com/search?q=https://thegreenwebfoundation.org/category/policy/: Failed to fetch https://thegreenwebfoundation.org/category/policy/](https://www.google.com/search?q=https://thegreenwebfoundation.org/category/policy/: HTTP 404</li>
+<li>https://thegreenwebfoundation.org/newsletter/]: Failed to fetch https://thegreenwebfoundation.org/newsletter/]: HTTP 404</li>
+<li>https://thegreenwebfoundation.org/newsletter/archive/](https://www.google.com/search?q=https://thegreenwebfoundation.org/newsletter/archive/: Failed to fetch https://thegreenwebfoundation.org/newsletter/archive/](https://www.google.com/search?q=https://thegreenwebfoundation.org/newsletter/archive/: HTTP 404</li>
+<li>https://thegreenwebfoundation.org/directory/]: Failed to fetch https://thegreenwebfoundation.org/directory/]: HTTP 404</li>
+<li>https://thegreenwebfoundation.org/directory/search/](https://www.google.com/search?q=https://thegreenwebfoundation.org/directory/search/: Failed to fetch https://thegreenwebfoundation.org/directory/search/](https://www.google.com/search?q=https://thegreenwebfoundation.org/directory/search/: HTTP 404</li>
+</ul>
+<p>No findings detected for current rules and targets.</p></div>
+</main>
+</body>
+</html>
