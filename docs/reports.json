@@ -1,5 +1,16 @@
 [
   {
+    "issueNumber": 28,
+    "issueTitle": "SCAN: GSA",
+    "issueUrl": "https://github.com/mgifford/open-site-review/issues/28",
+    "runUrl": "https://github.com/mgifford/open-site-review/actions/runs/23440892962",
+    "createdAt": "2026-03-23T13:55:51.978Z",
+    "reportPath": "reports/issue-28-20260323T135551Z.md",
+    "filesScanned": 50,
+    "findingsCount": 0,
+    "sourceErrorsCount": null
+  },
+  {
     "issueNumber": 33,
     "issueTitle": "SCAN: https://ontario.ca",
     "issueUrl": "https://github.com/mgifford/open-site-review/issues/33",
