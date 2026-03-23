@@ -63,6 +63,12 @@ jobs:
   scan-issue-queue:
     name: Scan Issue Queue
     runs-on: ubuntu-latest
+    env:
+      # actions/configure-pages@v5, actions/deploy-pages@v4, and the
+      # actions/upload-artifact@v4.6.2 used internally by
+      # actions/upload-pages-artifact@v4 still run on Node.js 20.
+      # Force them to Node.js 24 until their maintainers release Node 24 versions.
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
