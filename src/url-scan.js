@@ -44,11 +44,20 @@ function extractAssetUrls(html, pageUrl) {
     1
   );
 
-  const stylesheetHrefs = extractLinksByRegex(
-    html,
-    /<link[^>]*\srel=["'][^"']*stylesheet[^"']*["'][^>]*\shref=["']([^"']+)["'][^>]*>/gi,
-    1
-  );
+  // Extract stylesheet hrefs using a two-step approach so that the href and rel
+  // attributes can appear in any order (e.g. <link href="..." rel="stylesheet">
+  // is just as valid as <link rel="stylesheet" href="...">).
+  const stylesheetHrefs = [];
+  for (const linkMatch of html.matchAll(/<link\b[^>]*>/gi)) {
+    const tag = linkMatch[0];
+    if (!/\brel=["'][^"']*stylesheet[^"']*["']/i.test(tag)) {
+      continue;
+    }
+    const hrefMatch = tag.match(/\bhref=["']([^"']+)["']/i);
+    if (hrefMatch) {
+      stylesheetHrefs.push(hrefMatch[1].trim());
+    }
+  }
 
   const urls = new Set();
   for (const href of [...scriptSrcs, ...stylesheetHrefs]) {

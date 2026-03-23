@@ -29,6 +29,9 @@ jobs:
   scan-files:
     name: Scan Files (PR)
     runs-on: ubuntu-latest
+    # This job is intentionally skipped for non-PR events (push, schedule,
+    # issues, workflow_dispatch). The "skipped" status in the Actions UI is
+    # expected — file scanning only makes sense in the context of a pull request.
     if: github.event_name == 'pull_request'
     steps:
       - name: Checkout
