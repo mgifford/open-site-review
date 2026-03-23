@@ -1,5 +1,16 @@
 [
   {
+    "issueNumber": 33,
+    "issueTitle": "SCAN: https://ontario.ca",
+    "issueUrl": "https://github.com/mgifford/open-site-review/issues/33",
+    "runUrl": "https://github.com/mgifford/open-site-review/actions/runs/23447931517",
+    "createdAt": "2026-03-23T16:22:48.465Z",
+    "reportPath": "reports/issue-33-20260323T162248Z.md",
+    "filesScanned": 43,
+    "findingsCount": 5,
+    "sourceErrorsCount": 16
+  },
+  {
     "issueNumber": 7,
     "issueTitle": "SCAN: Green Web Foundation",
     "issueUrl": "https://github.com/mgifford/open-site-review/issues/7",
