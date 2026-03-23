@@ -1,5 +1,16 @@
 [
   {
+    "issueNumber": 1,
+    "issueTitle": "SCAN: Spain",
+    "issueUrl": "https://github.com/mgifford/open-site-review/issues/1",
+    "runUrl": "https://github.com/mgifford/open-site-review/actions/runs/23446537730",
+    "createdAt": "2026-03-23T15:53:36.343Z",
+    "reportPath": "reports/issue-1-20260323T155336Z.md",
+    "filesScanned": 97,
+    "findingsCount": 27,
+    "sourceErrorsCount": null
+  },
+  {
     "issueNumber": 28,
     "issueTitle": "SCAN: GSA",
     "issueUrl": "https://github.com/mgifford/open-site-review/issues/28",
