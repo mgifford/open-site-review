@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SCAN: dokieli</title>
+<style>
+:root {
+  --bg: #f4f7f4;
+  --surface: #ffffff;
+  --ink: #15201d;
+  --muted: #5a6b64;
+  --line: #d6e2dc;
+  --accent: #0b6e4f;
+  --code-bg: #eef1ef;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at 10% 10%, #e7f6ef 0%, var(--bg) 55%);
+  color: var(--ink);
+}
+main {
+  max-width: 860px;
+  margin: 2rem auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 6px 24px rgba(7, 24, 16, 0.08);
+}
+nav { margin-bottom: 1.5rem; font-size: .9rem; }
+a { color: var(--accent); }
+h1 { font-size: 1.8rem; margin: 0 0 1rem 0; }
+h2 { font-size: 1.25rem; margin: 1.5rem 0 .5rem 0; border-bottom: 1px solid var(--line); padding-bottom: .3rem; }
+h3 { font-size: 1.05rem; margin: 1.25rem 0 .4rem 0; }
+ul { padding-left: 1.4rem; line-height: 1.7; }
+li { margin: .2rem 0; }
+p { line-height: 1.6; }
+code {
+  background: var(--code-bg);
+  border-radius: 4px;
+  padding: .1em .35em;
+  font-size: .9em;
+  font-family: "IBM Plex Mono", "Fira Code", monospace;
+}
+pre { background: var(--code-bg); padding: 1rem; border-radius: 8px; overflow: auto; }
+pre code { background: none; padding: 0; }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="./">← Back to reports</a></nav>
+  <div id="report"><h1>Open Site Review Report</h1>
+<ul>
+<li>Targets: defaults, not ie &lt;= 11</li>
+<li>Unsupported threshold: 10%</li>
+<li>Polyfill removable threshold: 5%</li>
+<li>Files scanned: 5</li>
+<li>Findings: 5</li>
+<li>Scan mode: URL crawl (same-origin assets only)</li>
+</ul>
+<h2>[HIGH] Uses CSS :has() selector</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://dokie.li/media/css/basic.css:164</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: :has() can replace JavaScript-driven parent-state logic, but support can lag in older browsers.</li>
+<li>Recommendation: Keep critical functionality resilient if :has() is unavailable, especially for core navigation and forms.</li>
+<li>Can I Use feature: css-has</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/CSS/:has</li>
+</ul>
+<h2>[HIGH] Uses CSS :has() selector</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://dokie.li/media/css/dokieli.css:755</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: :has() can replace JavaScript-driven parent-state logic, but support can lag in older browsers.</li>
+<li>Recommendation: Keep critical functionality resilient if :has() is unavailable, especially for core navigation and forms.</li>
+<li>Can I Use feature: css-has</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/CSS/:has</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://dokie.li/scripts/dokieli.js:1</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses nullish coalescing operator</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://dokie.li/scripts/dokieli.js:1</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Nullish coalescing can simplify defaults while avoiding falsy-value bugs, but legacy browsers need transpilation.</li>
+<li>Recommendation: Transpile this syntax for older browser support or gate usage to modern bundles only.</li>
+<li>Can I Use feature: mdn-javascript_operators_nullish_coalescing</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_nullish_coalescing' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://dokie.li/scripts/dokieli.js:1</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>CSS Quality Analysis</h2>
+<p>Powered by <a href="https://www.projectwallace.com/">Project Wallace</a> — <a href="https://github.com/projectwallace/css-analyzer">css-analyzer</a> and <a href="https://github.com/projectwallace/css-code-quality">css-code-quality</a>.</p>
+<h3>https://dokie.li/media/css/basic.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 91/100 ✅</li>
+<li>Maintainability: 98/100 ✅</li>
+<li>Complexity: 81/100 ⚠️</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>EmptyRules</code>: score impact 1</li>
+<li><code>DeclarationDuplications</code>: score impact 3</li>
+<li><code>TooMuchComments</code>: score impact 5</li>
+<li><code>MaxSelectorsPerRule</code>: score impact 1</li>
+<li><code>MoreThanMostCommonDeclarationsPerRule</code>: score impact 1</li>
+<li><code>MoreThanMostCommonSelectorComplexity</code>: score impact 1</li>
+<li><code>MoreThanMostCommonSelectorSpecificity</code>: score impact 4</li>
+<li><code>MaxSelectorComplexity</code>: score impact 5</li>
+<li><code>AverageSelectorComplexity</code>: score impact 8</li>
+<li><code>IdSelectorRatio</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 1095</li>
+<li>Stylesheet complexity: 4580</li>
+<li>Total rules: 302</li>
+<li>Total selectors: 482</li>
+<li>Total declarations: 603</li>
+<li><code>!important</code> declarations: 26</li>
+<li>Max selector specificity: 2,2,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 37 unique</li>
+</ul>
+<p>  - linktext, #000, #ccc, #333, #fdffdd, #c00, #080, transparent, currentcolor, #f3f3f3, #eee, #900, #ffffff, #000000, rgba(0, 0, 0, 0.06), #fff, #bbb, #f00, #00f, #fbfbfb, #fbfffb, #ae1e1e, #0f0, #ff0, #0ff, rgba(255, 0, 0, 0.1), rgba(255, 255, 255, 1), rgba(64, 150, 238, 0.1), #666, #777, #888, #999, #aaa, #ddd, #efe, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)</p>
+<ul>
+<li>Font families: 4 unique</li>
+</ul>
+<p>  - 'Ubuntu', 'Ubuntu Mono', sans-serif, 'Ubuntu', system-ui, sans-serif</p>
+<ul>
+<li>Font sizes: 21 unique</li>
+</ul>
+<p>  - 10pt, 16pt, 14pt, 12pt, 11pt, 9pt, 1.1em, 18px, 2em, 1.7em, 1.5em, 1.3em, 1em, 1.25em, 0.923em, 2.5em, 3em, 5.5em, 7.5em, 1.4em, 1.2em</p>
+<ul>
+<li>Z-index values: 2 unique</li>
+</ul>
+<p>  - 2147483647, -1</p>
+<h3>https://dokie.li/media/css/dokieli.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 66/100 ❌</li>
+<li>Maintainability: 75/100 ⚠️</li>
+<li>Complexity: 72/100 ⚠️</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 4</li>
+<li><code>TooMuchComments</code>: score impact 10</li>
+<li><code>TooMuchEmbeddedContent</code>: score impact 20</li>
+<li><code>MaxSelectorsPerRule</code>: score impact 15</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 3</li>
+<li><code>MoreThanMostCommonSelectorsPerRule</code>: score impact 2</li>
+<li><code>MoreThanMostCommonDeclarationsPerRule</code>: score impact 5</li>
+<li><code>MoreThanMostCommonSelectorComplexity</code>: score impact 7</li>
+<li><code>MoreThanMostCommonSelectorSpecificity</code>: score impact 10</li>
+<li><code>MaxSelectorComplexity</code>: score impact 5</li>
+<li><code>AverageSelectorComplexity</code>: score impact 5</li>
+<li><code>IdSelectorRatio</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 4242</li>
+<li>Stylesheet complexity: 14673</li>
+<li>Total rules: 1094</li>
+<li>Total selectors: 1588</li>
+<li>Total declarations: 2588</li>
+<li><code>!important</code> declarations: 152</li>
+<li>Max selector specificity: 2,2,1</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 88 unique</li>
+</ul>
+<p>  - #fff, #000, #555, #ccc, #777, #080, #efe, currentcolor, transparent, #333, rgba(0,0,0,0.1), #e8f5e9, #4caf50, #2d7a2d, #ddd, #f5f5f5, #f0f4ff, #2563eb, #eee, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.35), rgba(33, 33, 33, 0.2), #ffffff, #000000, #008800, #ffff00, #ff0000, #00ffff, #0099ff, #0000ff, #ff00ff, #d1001c, #ffb900, #900090, #ff7f00, #0088ee, #009999, #9a3a00, #9a6c00, rgba(0, 0, 0, 0.06), rgba(33,33,33,0.2), #cccccc, #eeeeee, #f2f2f2, #f00, #900, #d0ddff, #ffd0d0, #ffffd0, rgba(128,128,128,0.2), rgba(64,64,64,0.9), rgba(198,255,255,0.5), rgba(0,178,255,0.5), rgba(255,255,0,0.5), rgba(255,0,0,0.5), #f0f0f0, #242424, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.3), black, #e3e3e3, white, #212121, #449e48, #c9e7cb, #bdbdbd, #9e9e9e, #dbefdc, #edf7ee, rgba(0,0,0,.2), rgba(0,0,0,.14), rgba(0,0,0,.12), #070, rgba(51, 181, 229, 0.4), #0078a8, #38f, rgba(255,255,255,0.5), rgba(0,0,0,0.65), #f4f4f4, #bbb, rgba(0,0,0,0.4), rgba(255, 255, 255, 0.8), rgba(0,0,0,0.2), #757575, #585858, #999, #666, #222</p>
+<ul>
+<li>Font families: 9 unique</li>
+</ul>
+<p>  - 'Ubuntu', 'Ubuntu Mono', 'Ubuntu', system-ui, sans-serif, 'Ubuntu Mono', ui-monospace, monospace, monospace, 'Ubuntu', &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif, Light,sans-serif, 'Lucida Console', Monaco, monospace, Tahoma, Verdana, sans-serif</p>
+<ul>
+<li>Font sizes: 35 unique</li>
+</ul>
+<p>  - 12pt, 8pt, 9pt, 10pt, 18px, 1em, 14px, 0.85em, 0.9em, 24px, 1.2em, 0.8em, 1.75em, 1.231em, 1.4em, 16px, 2em, 1.25em, 12px, 48px, 96px, 1.17em, .58em, 75%, 7em, 112px, 0.5em, 5em, 350%, 0.975em, 0.6em, 0.75rem, 22px, 13px, 1.08333em</p>
+<ul>
+<li>Z-index values: 14 unique</li>
+</ul>
+<p>  - 1, 100, 200, 400, 500, 600, 650, 700, 800, 1000, 2000, 2147483646, 2147483647, -1</p></div>
+</main>
+</body>
+</html>

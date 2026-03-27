@@ -1,5 +1,16 @@
 [
   {
+    "issueNumber": 36,
+    "issueTitle": "SCAN: dokieli",
+    "issueUrl": "https://github.com/mgifford/open-site-review/issues/36",
+    "runUrl": "https://github.com/mgifford/open-site-review/actions/runs/23649747197",
+    "createdAt": "2026-03-27T13:57:55.601Z",
+    "reportPath": "reports/issue-36-20260327T135755Z.md",
+    "filesScanned": 5,
+    "findingsCount": 5,
+    "sourceErrorsCount": null
+  },
+  {
     "issueNumber": 33,
     "issueTitle": "SCAN: https://ontario.ca",
     "issueUrl": "https://github.com/mgifford/open-site-review/issues/33",
