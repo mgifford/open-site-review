@@ -12,6 +12,7 @@
   --muted: #5a6b64;
   --line: #d6e2dc;
   --accent: #0b6e4f;
+  --accent-ring: rgba(11, 110, 79, 0.18);
 }
 * { box-sizing: border-box; }
 body {
@@ -67,6 +68,58 @@ code {
   padding: .1em .35em;
   font-size: .9em;
 }
+.scan-form {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+}
+.form-group label {
+  font-weight: 600;
+  font-size: .95rem;
+  color: var(--ink);
+}
+.form-group small {
+  color: var(--muted);
+  font-size: .825rem;
+}
+.form-group input[type="text"],
+.form-group textarea {
+  font-family: inherit;
+  font-size: .95rem;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: .55rem .75rem;
+  width: 100%;
+  transition: border-color .15s;
+}
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-ring);
+}
+.form-group textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+.scan-form .cta {
+  align-self: flex-start;
+  cursor: pointer;
+  border: none;
+}
+.form-error {
+  color: #b94a00;
+  margin: 0;
+  display: none;
+}
 </style>
 </head>
 <body>
@@ -85,16 +138,37 @@ code {
     <li>Highlights native web platform features that can replace JavaScript.</li>
   </ul>
 
-  <h2>How to request a scan</h2>
+  <h2>Submit a scan</h2>
   <p>
-    Open a GitHub issue in the
-    <a href="https://github.com/mgifford/open-site-review">open-site-review repository</a>
-    with a title beginning with <code>SCAN:</code> and include the URLs you want reviewed in
-    the issue body. The workflow will run automatically, post the report as a comment, and
-    publish it here.
+    Enter a short site name and the URLs you want reviewed (one per line).
+    Clicking <strong>Open issue on GitHub</strong> will take you to GitHub with the issue
+    pre-filled — just click <em>Submit new issue</em> there to queue the scan.
   </p>
+  <form class="scan-form" id="scan-form" novalidate>
+    <div class="form-group">
+      <label for="scan-title">Site name <span aria-hidden="true">*</span></label>
+      <input type="text" id="scan-title" name="scan-title" required
+             placeholder="e.g. example.com"
+             autocomplete="off" />
+      <small>Used as the issue title: <code>SCAN: &lt;site name&gt;</code></small>
+    </div>
+    <div class="form-group">
+      <label for="scan-urls">URLs to scan <span aria-hidden="true">*</span></label>
+      <textarea id="scan-urls" name="scan-urls" required
+                placeholder="https://example.com&#10;https://example.com/about"></textarea>
+      <small>One URL per line. The workflow will crawl linked CSS and JS assets automatically.</small>
+    </div>
+    <p id="scan-form-error" class="form-error" role="alert"></p>
+    <button type="submit" class="cta">Open issue on GitHub <span aria-hidden="true">&rarr;</span></button>
+  </form>
 
-  <a class="cta" href="reports/">View all reports <span aria-hidden="true">&rarr;</span></a>
+  <h2>How it works</h2>
+  <p>
+    Submitting the form opens a pre-filled issue in the
+    <a href="https://github.com/mgifford/open-site-review">open-site-review repository</a>.
+    Any issue whose title begins with <code>SCAN:</code> is picked up automatically by the
+    CI workflow, which runs the scan, posts the report as a comment, and publishes it here.
+  </p>
 
   <h2>Learn more</h2>
   <p>
@@ -109,5 +183,47 @@ code {
     <a href="https://github.com/mgifford/open-site-review">github.com/mgifford/open-site-review</a>
   </p>
 </main>
+<script>
+(function () {
+  var form = document.getElementById('scan-form');
+  var errorEl = document.getElementById('scan-form-error');
+  if (!form) return;
+
+  function showError(msg) {
+    errorEl.textContent = msg;
+    errorEl.style.display = 'block';
+  }
+
+  function clearError() {
+    errorEl.textContent = '';
+    errorEl.style.display = 'none';
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    clearError();
+
+    var titleVal = document.getElementById('scan-title').value.trim();
+    var urlsVal = document.getElementById('scan-urls').value.trim();
+
+    if (!titleVal) {
+      showError('Please enter a site name.');
+      document.getElementById('scan-title').focus();
+      return;
+    }
+    if (!urlsVal) {
+      showError('Please enter at least one URL.');
+      document.getElementById('scan-urls').focus();
+      return;
+    }
+
+    var issueTitle = 'SCAN: ' + titleVal;
+    var issueBody = urlsVal;
+    var base = 'https://github.com/mgifford/open-site-review/issues/new';
+    var url = base + '?title=' + encodeURIComponent(issueTitle) + '&body=' + encodeURIComponent(issueBody);
+    window.open(url, '_blank', 'noopener,noreferrer');
+  });
+}());
+</script>
 </body>
 </html>
