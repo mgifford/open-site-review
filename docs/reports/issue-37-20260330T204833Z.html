@@ -1,0 +1,2401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SCAN: oregon.gov</title>
+<style>
+:root {
+  --bg: #f4f7f4;
+  --surface: #ffffff;
+  --ink: #15201d;
+  --muted: #5a6b64;
+  --line: #d6e2dc;
+  --accent: #0b6e4f;
+  --code-bg: #eef1ef;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at 10% 10%, #e7f6ef 0%, var(--bg) 55%);
+  color: var(--ink);
+}
+main {
+  max-width: 860px;
+  margin: 2rem auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 6px 24px rgba(7, 24, 16, 0.08);
+}
+nav { margin-bottom: 1.5rem; font-size: .9rem; }
+a { color: var(--accent); }
+h1 { font-size: 1.8rem; margin: 0 0 1rem 0; }
+h2 { font-size: 1.25rem; margin: 1.5rem 0 .5rem 0; border-bottom: 1px solid var(--line); padding-bottom: .3rem; }
+h3 { font-size: 1.05rem; margin: 1.25rem 0 .4rem 0; }
+ul { padding-left: 1.4rem; line-height: 1.7; }
+li { margin: .2rem 0; }
+p { line-height: 1.6; }
+code {
+  background: var(--code-bg);
+  border-radius: 4px;
+  padding: .1em .35em;
+  font-size: .9em;
+  font-family: "IBM Plex Mono", "Fira Code", monospace;
+}
+pre { background: var(--code-bg); padding: 1rem; border-radius: 8px; overflow: auto; }
+pre code { background: none; padding: 0; }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="./">← Back to reports</a></nav>
+  <div id="report"><h1>Open Site Review Report</h1>
+<ul>
+<li>Targets: defaults, not ie &lt;= 11</li>
+<li>Unsupported threshold: 10%</li>
+<li>Polyfill removable threshold: 5%</li>
+<li>Files scanned: 155</li>
+<li>Findings: 37</li>
+<li>Scan mode: URL crawl (same-origin assets only)</li>
+<li>Source fetch errors: 8</li>
+</ul>
+<h2>Source Fetch Errors</h2>
+<ul>
+<li>https://oregon.gov/oregon-newsroom/lib/bootstrap/dist/js/bootstrap.bundle.min.js: Failed to fetch https://oregon.gov/oregon-newsroom/lib/bootstrap/dist/js/bootstrap.bundle.min.js: HTTP 404</li>
+<li>https://oregon.gov/oregon-newsroom/lib/jquery/dist/jquery.min.js: Failed to fetch https://oregon.gov/oregon-newsroom/lib/jquery/dist/jquery.min.js: HTTP 404</li>
+<li>https://oregon.gov/oregon-newsroom/lib/jquery-validation/dist/jquery.validate.min.js: Failed to fetch https://oregon.gov/oregon-newsroom/lib/jquery-validation/dist/jquery.validate.min.js: HTTP 404</li>
+<li>https://oregon.gov/oregon-newsroom/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js: Failed to fetch https://oregon.gov/oregon-newsroom/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js: HTTP 404</li>
+<li>https://oregon.gov/oregon-newsroom/lib/bootstrap/dist/css/bootstrap.min.css: Failed to fetch https://oregon.gov/oregon-newsroom/lib/bootstrap/dist/css/bootstrap.min.css: HTTP 404</li>
+<li>https://oregon.gov/oregon-newsroom/lib/fontawesome/6.4.0/fontawesome.min.css: Failed to fetch https://oregon.gov/oregon-newsroom/lib/fontawesome/6.4.0/fontawesome.min.css: HTTP 404</li>
+<li>https://oregon.gov/oregon-newsroom/lib/fontawesome/6.4.0/solid.min.css: Failed to fetch https://oregon.gov/oregon-newsroom/lib/fontawesome/6.4.0/solid.min.css: HTTP 404</li>
+<li>https://oregon.gov/oregon-newsroom/css/spExtra.css: Failed to fetch https://oregon.gov/oregon-newsroom/css/spExtra.css: HTTP 404</li>
+</ul>
+<h2>[HIGH] Uses document.write</h2>
+<ul>
+<li>Type: deprecated-pattern</li>
+<li>Location: https://oregon.gov/_layouts/15/16.0.5456.1000/init.js:1</li>
+<li>Message: Legacy pattern relies on a deprecated web platform feature.</li>
+<li>Why it matters: document.write can block parsing, hurt performance, and create maintainability and security risk.</li>
+<li>Recommendation: Replace with DOM APIs or server-side rendering patterns that avoid parser-blocking behavior.</li>
+<li>Can I Use feature: documentwrite</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'documentwrite' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/write</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://oregon.gov/odhs/Style%20Library/JS/theme-components.js:6032</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses nullish coalescing operator</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://oregon.gov/odhs/Style%20Library/JS/theme-components.js:25439</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Nullish coalescing can simplify defaults while avoiding falsy-value bugs, but legacy browsers need transpilation.</li>
+<li>Recommendation: Transpile this syntax for older browser support or gate usage to modern bundles only.</li>
+<li>Can I Use feature: mdn-javascript_operators_nullish_coalescing</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_nullish_coalescing' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://oregon.gov/odot/Style%20Library/JS/theme-components.js:5355</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://oregon.gov/odva/_layouts/15/formbuilder/scripts/bundle.js:892</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses nullish coalescing operator</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://oregon.gov/odva/_layouts/15/formbuilder/scripts/bundle.js:55780</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Nullish coalescing can simplify defaults while avoiding falsy-value bugs, but legacy browsers need transpilation.</li>
+<li>Recommendation: Transpile this syntax for older browser support or gate usage to modern bundles only.</li>
+<li>Can I Use feature: mdn-javascript_operators_nullish_coalescing</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_nullish_coalescing' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing</li>
+</ul>
+<h2>[HIGH] Uses document.write</h2>
+<ul>
+<li>Type: deprecated-pattern</li>
+<li>Location: https://oregon.gov/odva/_layouts/15/formbuilder/scripts/bundle.js:89679</li>
+<li>Message: Legacy pattern relies on a deprecated web platform feature.</li>
+<li>Why it matters: document.write can block parsing, hurt performance, and create maintainability and security risk.</li>
+<li>Recommendation: Replace with DOM APIs or server-side rendering patterns that avoid parser-blocking behavior.</li>
+<li>Can I Use feature: documentwrite</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'documentwrite' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/write</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://oregon.gov/Style%20Library/JS/main.js:20635</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses nullish coalescing operator</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://oregon.gov/Style%20Library/JS/main.js:6997</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Nullish coalescing can simplify defaults while avoiding falsy-value bugs, but legacy browsers need transpilation.</li>
+<li>Recommendation: Transpile this syntax for older browser support or gate usage to modern bundles only.</li>
+<li>Can I Use feature: mdn-javascript_operators_nullish_coalescing</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_nullish_coalescing' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing</li>
+</ul>
+<h2>[HIGH] Uses document.write</h2>
+<ul>
+<li>Type: deprecated-pattern</li>
+<li>Location: https://oregon.gov/Style%20Library/JS/main.js:886</li>
+<li>Message: Legacy pattern relies on a deprecated web platform feature.</li>
+<li>Why it matters: document.write can block parsing, hurt performance, and create maintainability and security risk.</li>
+<li>Recommendation: Replace with DOM APIs or server-side rendering patterns that avoid parser-blocking behavior.</li>
+<li>Can I Use feature: documentwrite</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'documentwrite' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/write</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://oregon.gov/treasury/SiteAssets/Source-Libraries/jquery.SPServices.js:4463</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses nullish coalescing operator</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://oregon.gov/treasury/SiteAssets/Source-Libraries/jquery.SPServices.js:4129</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Nullish coalescing can simplify defaults while avoiding falsy-value bugs, but legacy browsers need transpilation.</li>
+<li>Recommendation: Transpile this syntax for older browser support or gate usage to modern bundles only.</li>
+<li>Can I Use feature: mdn-javascript_operators_nullish_coalescing</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_nullish_coalescing' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://oregon.gov/treasury/SiteAssets/Source-Libraries/moment.js:684</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://oregon.gov/treasury/Style%20Library/JS/Chart.bundle.min.js:10</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[LOW] Uses synchronous XMLHttpRequest</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://oregon.gov/_layouts/15/16.0.5456.1000/init.js:1</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Synchronous XHR blocks the main thread and degrades responsiveness and accessibility.</li>
+<li>Recommendation: Move to async fetch/XMLHttpRequest patterns and handle loading states without blocking UI interaction.</li>
+<li>Can I Use feature: xmlhttprequest</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'xmlhttprequest' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/open</li>
+</ul>
+<h2>[LOW] Imports core-js or babel-polyfill</h2>
+<ul>
+<li>Type: polyfill-review</li>
+<li>Location: https://oregon.gov/odhs/Style%20Library/JS/theme-components.js:2410</li>
+<li>Message: Polyfill may still be required for some targets (82.4% unsupported).</li>
+<li>Why it matters: Global polyfill bundles can increase JS size and execution cost.</li>
+<li>Recommendation: Prefer targeted polyfills and differential serving to reduce bundle cost.</li>
+<li>Can I Use feature: es6</li>
+<li>Unsupported target share: 82.4%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_chr 145, and_ff 147, and_qq 14.9, and_uc 15.5, android 145, chrome 146, chrome 145, chrome 144, chrome 143, chrome 139, chrome 133, chrome 131, chrome 116, chrome 112, chrome 109, edge 145, edge 144, firefox 148, firefox 147, firefox 140, kaios 3.0-3.1, kaios 2.5, op_mini all, op_mob 80, opera 127, opera 126, samsung 29, samsung 28</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://oregon.gov/odhs/Style%20Library/JS/theme-components.js:10416</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://oregon.gov/ODOT/SiteAssets/accordionAutoExpand.js:1</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Imports core-js or babel-polyfill</h2>
+<ul>
+<li>Type: polyfill-review</li>
+<li>Location: https://oregon.gov/odot/Style%20Library/JS/theme-components.js:1639</li>
+<li>Message: Polyfill may still be required for some targets (82.4% unsupported).</li>
+<li>Why it matters: Global polyfill bundles can increase JS size and execution cost.</li>
+<li>Recommendation: Prefer targeted polyfills and differential serving to reduce bundle cost.</li>
+<li>Can I Use feature: es6</li>
+<li>Unsupported target share: 82.4%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_chr 145, and_ff 147, and_qq 14.9, and_uc 15.5, android 145, chrome 146, chrome 145, chrome 144, chrome 143, chrome 139, chrome 133, chrome 131, chrome 116, chrome 112, chrome 109, edge 145, edge 144, firefox 148, firefox 147, firefox 140, kaios 3.0-3.1, kaios 2.5, op_mini all, op_mob 80, opera 127, opera 126, samsung 29, samsung 28</li>
+</ul>
+<h2>[LOW] Imports core-js or babel-polyfill</h2>
+<ul>
+<li>Type: polyfill-review</li>
+<li>Location: https://oregon.gov/odva/_layouts/15/formbuilder/scripts/bundle.js:50799</li>
+<li>Message: Polyfill may still be required for some targets (82.4% unsupported).</li>
+<li>Why it matters: Global polyfill bundles can increase JS size and execution cost.</li>
+<li>Recommendation: Prefer targeted polyfills and differential serving to reduce bundle cost.</li>
+<li>Can I Use feature: es6</li>
+<li>Unsupported target share: 82.4%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_chr 145, and_ff 147, and_qq 14.9, and_uc 15.5, android 145, chrome 146, chrome 145, chrome 144, chrome 143, chrome 139, chrome 133, chrome 131, chrome 116, chrome 112, chrome 109, edge 145, edge 144, firefox 148, firefox 147, firefox 140, kaios 3.0-3.1, kaios 2.5, op_mini all, op_mob 80, opera 127, opera 126, samsung 29, samsung 28</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://oregon.gov/odva/_layouts/15/formbuilder/scripts/bundle.js:9106</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Imports core-js or babel-polyfill</h2>
+<ul>
+<li>Type: polyfill-review</li>
+<li>Location: https://oregon.gov/odva/Services/_layouts/15/OID.SharePoint.StarterTemplate/scripts/data-tables-web-part.js:1</li>
+<li>Message: Polyfill may still be required for some targets (82.4% unsupported).</li>
+<li>Why it matters: Global polyfill bundles can increase JS size and execution cost.</li>
+<li>Recommendation: Prefer targeted polyfills and differential serving to reduce bundle cost.</li>
+<li>Can I Use feature: es6</li>
+<li>Unsupported target share: 82.4%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_chr 145, and_ff 147, and_qq 14.9, and_uc 15.5, android 145, chrome 146, chrome 145, chrome 144, chrome 143, chrome 139, chrome 133, chrome 131, chrome 116, chrome 112, chrome 109, edge 145, edge 144, firefox 148, firefox 147, firefox 140, kaios 3.0-3.1, kaios 2.5, op_mini all, op_mob 80, opera 127, opera 126, samsung 29, samsung 28</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://oregon.gov/odva/Services/_layouts/15/OID.SharePoint.StarterTemplate/scripts/data-tables-web-part.js:1</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://oregon.gov/ODVA/SiteAssets/scripts/RSS/FeedEk/js/FeedEk.js:17</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Imports core-js or babel-polyfill</h2>
+<ul>
+<li>Type: polyfill-review</li>
+<li>Location: https://oregon.gov/Style%20Library/JS/fetch-polyfill.js:436</li>
+<li>Message: Polyfill may still be required for some targets (82.4% unsupported).</li>
+<li>Why it matters: Global polyfill bundles can increase JS size and execution cost.</li>
+<li>Recommendation: Prefer targeted polyfills and differential serving to reduce bundle cost.</li>
+<li>Can I Use feature: es6</li>
+<li>Unsupported target share: 82.4%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_chr 145, and_ff 147, and_qq 14.9, and_uc 15.5, android 145, chrome 146, chrome 145, chrome 144, chrome 143, chrome 139, chrome 133, chrome 131, chrome 116, chrome 112, chrome 109, edge 145, edge 144, firefox 148, firefox 147, firefox 140, kaios 3.0-3.1, kaios 2.5, op_mini all, op_mob 80, opera 127, opera 126, samsung 29, samsung 28</li>
+</ul>
+<h2>[LOW] Loads Web Components polyfill</h2>
+<ul>
+<li>Type: polyfill-review</li>
+<li>Location: https://oregon.gov/Style%20Library/JS/main.js:18721</li>
+<li>Message: Polyfill may still be required for some targets (23.5% unsupported).</li>
+<li>Why it matters: Web Components polyfills are expensive and may no longer be required for modern browser targets.</li>
+<li>Recommendation: Review support needs and only ship Web Components polyfills to unsupported browsers.</li>
+<li>Can I Use feature: custom-elementsv1</li>
+<li>Unsupported target share: 23.5%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: ios_saf 26.3, ios_saf 26.2, ios_saf 18.5-18.7, kaios 2.5, op_mini all, safari 26.3, safari 26.2, safari 18.5-18.7</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/CustomElementRegistry</li>
+</ul>
+<h2>[LOW] Imports core-js or babel-polyfill</h2>
+<ul>
+<li>Type: polyfill-review</li>
+<li>Location: https://oregon.gov/Style%20Library/JS/main.js:18</li>
+<li>Message: Polyfill may still be required for some targets (82.4% unsupported).</li>
+<li>Why it matters: Global polyfill bundles can increase JS size and execution cost.</li>
+<li>Recommendation: Prefer targeted polyfills and differential serving to reduce bundle cost.</li>
+<li>Can I Use feature: es6</li>
+<li>Unsupported target share: 82.4%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_chr 145, and_ff 147, and_qq 14.9, and_uc 15.5, android 145, chrome 146, chrome 145, chrome 144, chrome 143, chrome 139, chrome 133, chrome 131, chrome 116, chrome 112, chrome 109, edge 145, edge 144, firefox 148, firefox 147, firefox 140, kaios 3.0-3.1, kaios 2.5, op_mini all, op_mob 80, opera 127, opera 126, samsung 29, samsung 28</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://oregon.gov/Style%20Library/JS/main.js:7042</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://oregon.gov/treasury/SiteAssets/Source-Libraries/bootstrap.js:39</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://oregon.gov/treasury/SiteAssets/Source-Libraries/fullcalendar.js:154</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://oregon.gov/treasury/SiteAssets/Source-Libraries/jquery.js:2776</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://oregon.gov/treasury/SiteAssets/Source-Libraries/jquery.SPServices.js:484</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://oregon.gov/treasury/Style%20Library/js/jquery.flexslider-min.js:5</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://oregon.gov/treasury/Style%20Library/JS/script.js:4</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://oregon.gov/treasury/Style%20Library/JS/Upward-Carousel.js:17</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://oregon.gov/treasury/Style%20Library/markup/charts/charts.js:4</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://oregon.gov/treasury/Style%20Library/markup/slider/slider.js:4</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>CSS Quality Analysis</h2>
+<p>Powered by <a href="https://www.projectwallace.com/">Project Wallace</a> — <a href="https://github.com/projectwallace/css-analyzer">css-analyzer</a> and <a href="https://github.com/projectwallace/css-code-quality">css-code-quality</a>.</p>
+<h3>https://oregon.gov/Style%20Library/css/main.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 83/100 ⚠️</li>
+<li>Maintainability: 61/100 ❌</li>
+<li>Complexity: 73/100 ⚠️</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 6</li>
+<li><code>TooMuchEmbeddedContent</code>: score impact 11</li>
+<li><code>MaxSelectorsPerRule</code>: score impact 15</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 9</li>
+<li><code>MoreThanMostCommonSelectorsPerRule</code>: score impact 7</li>
+<li><code>MoreThanMostCommonDeclarationsPerRule</code>: score impact 8</li>
+<li><code>MoreThanMostCommonSelectorComplexity</code>: score impact 10</li>
+<li><code>MoreThanMostCommonSelectorSpecificity</code>: score impact 10</li>
+<li><code>MaxSelectorComplexity</code>: score impact 5</li>
+<li><code>AverageSelectorComplexity</code>: score impact 1</li>
+<li><code>ImportantRatio</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 8034</li>
+<li>Stylesheet complexity: 22600</li>
+<li>Total rules: 2302</li>
+<li>Total selectors: 3435</li>
+<li>Total declarations: 4474</li>
+<li><code>!important</code> declarations: 867</li>
+<li>Max selector specificity: 1,2,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Custom properties (CSS variables): 37 unique</li>
+</ul>
+<p>  - --colorBlack, --colorWhite, --colorLightGrey90, --colorLightGrey80, --colorLightGrey75, --colorGrey30, --colorGrey40, --colorGreenContrast, --colorAnchorHover, --blue, --indigo, --purple, --pink, --red, --orange, --yellow, --green, --teal, --cyan, --white, --gray, --gray-dark, --primary, --secondary, --success, --info, --warning, --danger, --light, --dark, --breakpoint-xs, --breakpoint-sm, --breakpoint-md, --breakpoint-lg, --breakpoint-xl, --font-family-sans-serif, --font-family-monospace</p>
+<ul>
+<li>Colors: 186 unique</li>
+</ul>
+<p>  - #222, #fff, #f4f4f4, #eee, #e4e4e4, #444, #555, #3b6440, #2d4a62, #333, #4d4d4d, #e0e0e0, rgba(0,0,0,0), rgba(0,0,0,.045), #007bff, #6610f2, #6f42c1, #e83e8c, #dc3545, #fd7e14, #ffc107, #28a745, #20c997, #17a2b8, #6c757d, #343a40, #a02830, #f8f9fa, rgba(0,0,0,.1), #fcf8e3, #dee2e6, #212529, rgba(0,0,0,.05), rgba(0,0,0,.075), #c8d4ca, #99ae9c, #bac9bc, #d6d8db, #b3b7bb, #c8cbcf, #c3e6cb, #8fd19e, #b1dfbb, #bee5eb, #86cfda, #abdde5, #ffeeba, #ffdf7e, #ffe8a1, #e4c3c5, #ce8f93, #dcb1b4, #fdfdfe, #fbfcfc, #ececf6, #c6c8ca, #95999c, #b9bbbe, #454d55, #495057, #e9ecef, rgba(255,255,255,.05), rgba(255,255,255,.075), #ced4da, #72ac79, rgba(59,100,64,.25), rgba(40,167,69,.9), rgba(40,167,69,.25), #34ce57, rgba(160,40,48,.9), rgba(160,40,48,.25), #c9323c, #2d4c31, #28442b, rgba(88,123,93,.5), #233c26, #5a6268, #545b62, rgba(130,138,145,.5), #4e555b, #218838, #1e7e34, rgba(72,180,97,.5), #1c7430, #138496, #117a8b, rgba(58,176,195,.5), #10707f, #e0a800, #d39e00, rgba(222,170,12,.5), #c69500, #812027, #771e24, rgba(174,72,79,.5), #6d1b21, #e2e6ea, #dae0e5, rgba(216,217,219,.5), #d3d9df, #23272b, #1d2124, rgba(82,88,93,.5), #171a1d, rgba(59,100,64,.5), rgba(108,117,125,.5), rgba(40,167,69,.5), rgba(23,162,184,.5), rgba(255,193,7,.5), rgba(160,40,48,.5), rgba(248,249,250,.5), rgba(52,58,64,.5), rgba(0,0,0,.15), #16181b, #adb5bd, #93bf98, rgba(0,0,0,.9), rgba(0,0,0,.5), rgba(0,0,0,.7), rgba(0,0,0,.3), rgba(255,255,255,.5), rgba(255,255,255,.75), rgba(255,255,255,.25), rgba(255,255,255,.1), rgba(0,0,0,.125), rgba(0,0,0,.03), #1f3421, #d8e0d9, #0c140d, #383d41, #e2e3e5, #202326, #155724, #d4edda, #0b2e13, #0c5460, #d1ecf1, #062c33, #856404, #fff3cd, #533f03, #531519, #ecd4d6, #2a0b0d, #818182, #fefefe, #686868, #1b1e21, #d6d8d9, #040505, rgba(255, 255, 255, 0.15), transparent, #000, rgba(255,255,255,.85), rgba(0,0,0,.2), rgba(0,0,0,.25), #f7f7f7, #ebebeb, currentcolor, rgba(0,0,0,.175), #494f54, #19692c, #0f6674, #ba8b00, #63191e, #cbd3da, #121416, #8b9c43, rgba(0,0,0,.35), rgba(0,0,0,.4), rgba(0,0,0,.45), rgba(0,0,0,.55), rgba(0,0,0,.6), rgba(0,0,0,.65), rgba(0,0,0,.75), rgba(0,0,0,.8), rgba(0,0,0,.85), rgba(0,0,0,.95), #2e4d32, #f2f2f2, #3b644d, rgba(136,136,136,.3), rgba(0, 0, 0, 0.062), #2f6044, #888, #29d</p>
+<ul>
+<li>Font families: 5 unique</li>
+</ul>
+<p>  - sans-serif, -apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,&quot;Noto Sans&quot;,&quot;Liberation Sans&quot;,sans-serif,&quot;Apple Color Emoji&quot;,&quot;Segoe UI Emoji&quot;,&quot;Segoe UI Symbol&quot;,&quot;Noto Color Emoji&quot;, SFMono-Regular,Menlo,Monaco,Consolas,&quot;Liberation Mono&quot;,&quot;Courier New&quot;,monospace, a, &quot;DM Sans&quot;,sans-serif</p>
+<ul>
+<li>Font sizes: 39 unique</li>
+</ul>
+<p>  - 0, 1rem, 80%, 75%, 1em, 1.5rem, 2.5rem, 2rem, 1.75rem, 1.25rem, 6rem, 5.5rem, 4.5rem, 3.5rem, 90%, 87.5%, 100%, 0.875rem, 0.75rem, 13.3px, 16px, 14.3px, 15px, 15.5px, 16.5px, 17.75px, 18.5px, .8em, 1.42rem, 2.2rem, 1.6rem, 1.2rem, .9em, 1.8rem, .75em, 1.05em, 2.8rem, 1.3rem, 1.2em</p>
+<ul>
+<li>Z-index values: 17 unique</li>
+</ul>
+<p>  - 0, 1, 2, 3, 4, 5, 10, 15, 1000, 1020, 1030, 1031, 1040, 1050, 1060, 1070, -1</p>
+<h3>https://oregon.gov/Style%20Library/css/main-below-fold.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 96/100 ✅</li>
+<li>Maintainability: 97/100 ✅</li>
+<li>Complexity: 88/100 ⚠️</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 4</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MoreThanMostCommonDeclarationsPerRule</code>: score impact 1</li>
+<li><code>MoreThanMostCommonSelectorComplexity</code>: score impact 1</li>
+<li><code>MoreThanMostCommonSelectorSpecificity</code>: score impact 1</li>
+<li><code>MaxSelectorComplexity</code>: score impact 5</li>
+<li><code>AverageSelectorComplexity</code>: score impact 5</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 881</li>
+<li>Stylesheet complexity: 2905</li>
+<li>Total rules: 197</li>
+<li>Total selectors: 211</li>
+<li>Total declarations: 646</li>
+<li><code>!important</code> declarations: 11</li>
+<li>Max selector specificity: 1,0,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Custom properties (CSS variables): 9 unique</li>
+</ul>
+<p>  - --colorBlack, --colorWhite, --colorLightGrey90, --colorLightGrey80, --colorLightGrey75, --colorGrey30, --colorGrey40, --colorGreenContrast, --colorAnchorHover</p>
+<ul>
+<li>Colors: 27 unique</li>
+</ul>
+<p>  - #222, #fff, #f4f4f4, #eee, #e4e4e4, #444, #555, #3b6440, #2d4a62, #333, #4d4d4d, #e0e0e0, #ddd, gray, #6ac74e, #ccc, rgba(0,0,0,0), #29d, rgba(0,0,0,.04), #aaa, #888, transparent, black, rgba(0,0,0,.45), rgba(41,92,63,.92), rgba(0,0,0,.2), #8b9c43</p>
+<ul>
+<li>Font families: 1 unique</li>
+</ul>
+<p>  - &quot;Crimson Pro&quot;</p>
+<ul>
+<li>Font sizes: 11 unique</li>
+</ul>
+<p>  - 0, 1.36rem, 1rem, 1.5rem, 3.2rem, 1.3rem, 1.1rem, .8em, .82em, 3rem, 1.1em</p>
+<ul>
+<li>Z-index values: 2 unique</li>
+</ul>
+<p>  - 1, 2</p>
+<h3>https://oregon.gov/odva/Connect/_layouts/15/OID.SharePoint.StarterTemplate/styles/icon-animations.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 61</li>
+<li>Stylesheet complexity: 161</li>
+<li>Total rules: 2</li>
+<li>Total selectors: 2</li>
+<li>Total declarations: 43</li>
+<li>Max selector specificity: 0,1,0</li>
+</ul>
+<h3>https://oregon.gov/odva/Connect/_layouts/15/OID.SharePoint.StarterTemplate/styles/markup-styles.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>MaxSelectorComplexity</code>: score impact 1</li>
+<li><code>ImportantRatio</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 84</li>
+<li>Stylesheet complexity: 239</li>
+<li>Total rules: 28</li>
+<li>Total selectors: 29</li>
+<li>Total declarations: 54</li>
+<li><code>!important</code> declarations: 13</li>
+<li>Max selector specificity: 1,0,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 6 unique</li>
+</ul>
+<p>  - #fff, #ddd, #000, #92b7d1, white, #333</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 17px, 11.05px, 15px</p>
+<h3>https://oregon.gov/odva/Connect/_layouts/15/OID.SharePoint.StarterTemplate/styles/styles.min.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 80/100 ⚠️</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>SelectorDuplications</code>: score impact 10</li>
+<li><code>DeclarationDuplications</code>: score impact 10</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 0</li>
+<li>Stylesheet complexity: 0</li>
+<li>Total rules: 0</li>
+<li>Total selectors: 0</li>
+<li>Total declarations: 0</li>
+<li>Max selector specificity: 0,0,0</li>
+</ul>
+<h3>https://oregon.gov/odva/Services/_layouts/15/OID.SharePoint.StarterTemplate/styles/icon-animations.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 61</li>
+<li>Stylesheet complexity: 161</li>
+<li>Total rules: 2</li>
+<li>Total selectors: 2</li>
+<li>Total declarations: 43</li>
+<li>Max selector specificity: 0,1,0</li>
+</ul>
+<h3>https://oregon.gov/odva/Services/_layouts/15/OID.SharePoint.StarterTemplate/styles/markup-styles.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>MaxSelectorComplexity</code>: score impact 1</li>
+<li><code>ImportantRatio</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 84</li>
+<li>Stylesheet complexity: 239</li>
+<li>Total rules: 28</li>
+<li>Total selectors: 29</li>
+<li>Total declarations: 54</li>
+<li><code>!important</code> declarations: 13</li>
+<li>Max selector specificity: 1,0,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 6 unique</li>
+</ul>
+<p>  - #fff, #ddd, #000, #92b7d1, white, #333</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 17px, 11.05px, 15px</p>
+<h3>https://oregon.gov/odva/Services/_layouts/15/OID.SharePoint.StarterTemplate/styles/styles.min.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 80/100 ⚠️</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>SelectorDuplications</code>: score impact 10</li>
+<li><code>DeclarationDuplications</code>: score impact 10</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 0</li>
+<li>Stylesheet complexity: 0</li>
+<li>Total rules: 0</li>
+<li>Total selectors: 0</li>
+<li>Total declarations: 0</li>
+<li>Max selector specificity: 0,0,0</li>
+</ul>
+<h3>https://oregon.gov/treasury/about-treasury/_layouts/15/OID.SharePoint.StarterTemplate/styles/icon-animations.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 61</li>
+<li>Stylesheet complexity: 161</li>
+<li>Total rules: 2</li>
+<li>Total selectors: 2</li>
+<li>Total declarations: 43</li>
+<li>Max selector specificity: 0,1,0</li>
+</ul>
+<h3>https://oregon.gov/treasury/about-treasury/_layouts/15/OID.SharePoint.StarterTemplate/styles/markup-styles.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>MaxSelectorComplexity</code>: score impact 1</li>
+<li><code>ImportantRatio</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 84</li>
+<li>Stylesheet complexity: 239</li>
+<li>Total rules: 28</li>
+<li>Total selectors: 29</li>
+<li>Total declarations: 54</li>
+<li><code>!important</code> declarations: 13</li>
+<li>Max selector specificity: 1,0,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 6 unique</li>
+</ul>
+<p>  - #fff, #ddd, #000, #92b7d1, white, #333</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 17px, 11.05px, 15px</p>
+<h3>https://oregon.gov/treasury/about-treasury/_layouts/15/OID.SharePoint.StarterTemplate/styles/styles.min.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 80/100 ⚠️</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>SelectorDuplications</code>: score impact 10</li>
+<li><code>DeclarationDuplications</code>: score impact 10</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 0</li>
+<li>Stylesheet complexity: 0</li>
+<li>Total rules: 0</li>
+<li>Total selectors: 0</li>
+<li>Total declarations: 0</li>
+<li>Max selector specificity: 0,0,0</li>
+</ul>
+<h3>https://oregon.gov/treasury/Style%20Library/css/flexslider.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 94/100 ✅</li>
+<li>Maintainability: 96/100 ✅</li>
+<li>Complexity: 93/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>TooMuchComments</code>: score impact 6</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 4</li>
+<li><code>MaxSelectorComplexity</code>: score impact 3</li>
+<li><code>AverageSelectorComplexity</code>: score impact 4</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 207</li>
+<li>Stylesheet complexity: 680</li>
+<li>Total rules: 47</li>
+<li>Total selectors: 51</li>
+<li>Total declarations: 152</li>
+<li><code>!important</code> declarations: 1</li>
+<li>Max selector specificity: 0,5,2</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 9 unique</li>
+</ul>
+<p>  - rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0.3), #000, #666, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3), #333, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)</p>
+<ul>
+<li>Font families: 2 unique</li>
+</ul>
+<p>  - 'flexslider-icon', &quot;flexslider-icon&quot;</p>
+<ul>
+<li>Font sizes: 2 unique</li>
+</ul>
+<p>  - 40px, 20px</p>
+<ul>
+<li>Z-index values: 3 unique</li>
+</ul>
+<p>  - 10, 100, -1</p>
+<h3>https://oregon.gov/treasury/Style%20Library/CSS/flexslider.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 94/100 ✅</li>
+<li>Maintainability: 96/100 ✅</li>
+<li>Complexity: 93/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>TooMuchComments</code>: score impact 6</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 4</li>
+<li><code>MaxSelectorComplexity</code>: score impact 3</li>
+<li><code>AverageSelectorComplexity</code>: score impact 4</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 207</li>
+<li>Stylesheet complexity: 680</li>
+<li>Total rules: 47</li>
+<li>Total selectors: 51</li>
+<li>Total declarations: 152</li>
+<li><code>!important</code> declarations: 1</li>
+<li>Max selector specificity: 0,5,2</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 9 unique</li>
+</ul>
+<p>  - rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0.3), #000, #666, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3), #333, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)</p>
+<ul>
+<li>Font families: 2 unique</li>
+</ul>
+<p>  - 'flexslider-icon', &quot;flexslider-icon&quot;</p>
+<ul>
+<li>Font sizes: 2 unique</li>
+</ul>
+<p>  - 40px, 20px</p>
+<ul>
+<li>Z-index values: 3 unique</li>
+</ul>
+<p>  - 10, 100, -1</p>
+<h3>https://oregon.gov/treasury/Style%20Library/CSS/agency.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 84/100 ⚠️</li>
+<li>Maintainability: 78/100 ⚠️</li>
+<li>Complexity: 71/100 ⚠️</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>EmptyRules</code>: score impact 1</li>
+<li><code>DeclarationDuplications</code>: score impact 5</li>
+<li><code>TooMuchComments</code>: score impact 10</li>
+<li><code>MaxSelectorsPerRule</code>: score impact 15</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 3</li>
+<li><code>MoreThanMostCommonSelectorsPerRule</code>: score impact 1</li>
+<li><code>MoreThanMostCommonDeclarationsPerRule</code>: score impact 3</li>
+<li><code>MoreThanMostCommonSelectorComplexity</code>: score impact 9</li>
+<li><code>MoreThanMostCommonSelectorSpecificity</code>: score impact 9</li>
+<li><code>MaxSelectorComplexity</code>: score impact 5</li>
+<li><code>AverageSelectorComplexity</code>: score impact 5</li>
+<li><code>IdSelectorRatio</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 3304</li>
+<li>Stylesheet complexity: 11503</li>
+<li>Total rules: 840</li>
+<li>Total selectors: 1234</li>
+<li>Total declarations: 1947</li>
+<li><code>!important</code> declarations: 45</li>
+<li>Max selector specificity: 2,1,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 58 unique</li>
+</ul>
+<p>  - #ff0, #000, transparent, #f2f2f2, #333, #003657, #fff, #f1f1f1, rgba(0, 0, 0, 0.6), #21759b, #eee, #2e7dae, #ccc, #a2a2a2, #ddd, #599ac3, #efeeee, lightgray, #f7f7f7, #e7e7e7, #555, #f8fff0, #234600, #fffce5, #840, #fef5f1, #8c2e0b, #be7, #ed5, #ed541d, #dedede, #e9e9e9, #666, #999, #d8d8d8, #ffc643, rgba(0, 47, 77, 0.8), #0077b5, #046293, #bd081c, #8c0615, #dd4b39, #c23321, #55acee, #2795e9, #3b5998, #2d4373, #777, #5e5e5e, #888888, rgba(86, 86, 86, 86), #666666, #e8b33e, white, #ffffff, #003c61, #555555, black</p>
+<ul>
+<li>Font families: 8 unique</li>
+</ul>
+<p>  - sans-serif, monospace, &quot;Roboto&quot;, arial, Georgia, &quot;Times New Roman&quot;, &quot;DejaVu Serif&quot;, serif, &quot;Poppins&quot;, Helvetica, Arial, &quot;Nimbus Sans L&quot;, sans-serif, &quot;Source Sans Pro&quot;, Helvetica, Arial, &quot;Nimbus Sans L&quot;, sans-serif, 'Roboto', sans-serif, &quot;FontAwesome&quot;</p>
+<ul>
+<li>Font sizes: 41 unique</li>
+</ul>
+<p>  - 10px, 1em, 80%, 75%, 100%, 1.6rem, 1.8rem, 28px, 4rem, calc(28px + 18 * ((100vw - 500px) / 524)), 46px, 2.7rem, calc(2.7rem + 1 * ((100vw - 500px) / 524)), 3rem, 2rem, calc(2rem + 1 * ((100vw - 500px) / 524)), 1.3rem, 1.7rem, 1rem, 1.4rem, 1.5rem, 1.5em, 14px, 1.2rem, 0.92em, modular-scale(1, 0.55em), 0.9em, 75px, 35px, 29px, 16px, calc(40px + 10 * ((100vw - 1024px) / 416)), calc(16px + 2 * ((100vw - 1024px) / 416)), 50px, 18px, 15px, 23px, calc(23px + 12 * ((100vw - 1024px) / 416)), calc(23px + 7 * ((100vw - 1024px) / 416)), 30px, 2.6rem</p>
+<ul>
+<li>Z-index values: 15 unique</li>
+</ul>
+<p>  - 0, 1, 2, 3, 4, 10, 20, 23, 24, 25, 100, 2000, 10000, 20000, 100000</p>
+<h3>https://oregon.gov/treasury/public-financial-services/_layouts/15/OID.SharePoint.StarterTemplate/styles/icon-animations.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 61</li>
+<li>Stylesheet complexity: 161</li>
+<li>Total rules: 2</li>
+<li>Total selectors: 2</li>
+<li>Total declarations: 43</li>
+<li>Max selector specificity: 0,1,0</li>
+</ul>
+<h3>https://oregon.gov/treasury/public-financial-services/_layouts/15/OID.SharePoint.StarterTemplate/styles/markup-styles.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>MaxSelectorComplexity</code>: score impact 1</li>
+<li><code>ImportantRatio</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 84</li>
+<li>Stylesheet complexity: 239</li>
+<li>Total rules: 28</li>
+<li>Total selectors: 29</li>
+<li>Total declarations: 54</li>
+<li><code>!important</code> declarations: 13</li>
+<li>Max selector specificity: 1,0,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 6 unique</li>
+</ul>
+<p>  - #fff, #ddd, #000, #92b7d1, white, #333</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 17px, 11.05px, 15px</p>
+<h3>https://oregon.gov/treasury/public-financial-services/_layouts/15/OID.SharePoint.StarterTemplate/styles/styles.min.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 80/100 ⚠️</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>SelectorDuplications</code>: score impact 10</li>
+<li><code>DeclarationDuplications</code>: score impact 10</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 0</li>
+<li>Stylesheet complexity: 0</li>
+<li>Total rules: 0</li>
+<li>Total selectors: 0</li>
+<li>Total declarations: 0</li>
+<li>Max selector specificity: 0,0,0</li>
+</ul>
+<h3>https://oregon.gov/oha/HSD/OHP/_layouts/15/OID.SharePoint.StarterTemplate/styles/icon-animations.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 61</li>
+<li>Stylesheet complexity: 161</li>
+<li>Total rules: 2</li>
+<li>Total selectors: 2</li>
+<li>Total declarations: 43</li>
+<li>Max selector specificity: 0,1,0</li>
+</ul>
+<h3>https://oregon.gov/oha/HSD/OHP/_layouts/15/OID.SharePoint.StarterTemplate/styles/markup-styles.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>MaxSelectorComplexity</code>: score impact 1</li>
+<li><code>ImportantRatio</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 84</li>
+<li>Stylesheet complexity: 239</li>
+<li>Total rules: 28</li>
+<li>Total selectors: 29</li>
+<li>Total declarations: 54</li>
+<li><code>!important</code> declarations: 13</li>
+<li>Max selector specificity: 1,0,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 6 unique</li>
+</ul>
+<p>  - #fff, #ddd, #000, #92b7d1, white, #333</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 17px, 11.05px, 15px</p>
+<h3>https://oregon.gov/oha/HSD/OHP/_layouts/15/OID.SharePoint.StarterTemplate/styles/styles.min.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 80/100 ⚠️</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>SelectorDuplications</code>: score impact 10</li>
+<li><code>DeclarationDuplications</code>: score impact 10</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 0</li>
+<li>Stylesheet complexity: 0</li>
+<li>Total rules: 0</li>
+<li>Total selectors: 0</li>
+<li>Total declarations: 0</li>
+<li>Max selector specificity: 0,0,0</li>
+</ul>
+<h3>https://oregon.gov/boli/_layouts/15/OID.SharePoint.StarterTemplate/styles/icon-animations.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 61</li>
+<li>Stylesheet complexity: 161</li>
+<li>Total rules: 2</li>
+<li>Total selectors: 2</li>
+<li>Total declarations: 43</li>
+<li>Max selector specificity: 0,1,0</li>
+</ul>
+<h3>https://oregon.gov/boli/_layouts/15/OID.SharePoint.StarterTemplate/styles/markup-styles.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>MaxSelectorComplexity</code>: score impact 1</li>
+<li><code>ImportantRatio</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 84</li>
+<li>Stylesheet complexity: 239</li>
+<li>Total rules: 28</li>
+<li>Total selectors: 29</li>
+<li>Total declarations: 54</li>
+<li><code>!important</code> declarations: 13</li>
+<li>Max selector specificity: 1,0,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 6 unique</li>
+</ul>
+<p>  - #fff, #ddd, #000, #92b7d1, white, #333</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 17px, 11.05px, 15px</p>
+<h3>https://oregon.gov/boli/_layouts/15/OID.SharePoint.StarterTemplate/styles/styles.min.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 80/100 ⚠️</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>SelectorDuplications</code>: score impact 10</li>
+<li><code>DeclarationDuplications</code>: score impact 10</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 0</li>
+<li>Stylesheet complexity: 0</li>
+<li>Total rules: 0</li>
+<li>Total selectors: 0</li>
+<li>Total declarations: 0</li>
+<li>Max selector specificity: 0,0,0</li>
+</ul>
+<h3>https://oregon.gov/treasury/_layouts/15/OID.SharePoint.StarterTemplate/styles/icon-animations.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 61</li>
+<li>Stylesheet complexity: 161</li>
+<li>Total rules: 2</li>
+<li>Total selectors: 2</li>
+<li>Total declarations: 43</li>
+<li>Max selector specificity: 0,1,0</li>
+</ul>
+<h3>https://oregon.gov/treasury/_layouts/15/OID.SharePoint.StarterTemplate/styles/markup-styles.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>MaxSelectorComplexity</code>: score impact 1</li>
+<li><code>ImportantRatio</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 84</li>
+<li>Stylesheet complexity: 239</li>
+<li>Total rules: 28</li>
+<li>Total selectors: 29</li>
+<li>Total declarations: 54</li>
+<li><code>!important</code> declarations: 13</li>
+<li>Max selector specificity: 1,0,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 6 unique</li>
+</ul>
+<p>  - #fff, #ddd, #000, #92b7d1, white, #333</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 17px, 11.05px, 15px</p>
+<h3>https://oregon.gov/treasury/_layouts/15/OID.SharePoint.StarterTemplate/styles/styles.min.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 80/100 ⚠️</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>SelectorDuplications</code>: score impact 10</li>
+<li><code>DeclarationDuplications</code>: score impact 10</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 0</li>
+<li>Stylesheet complexity: 0</li>
+<li>Total rules: 0</li>
+<li>Total selectors: 0</li>
+<li>Total declarations: 0</li>
+<li>Max selector specificity: 0,0,0</li>
+</ul>
+<h3>https://oregon.gov/osp/AMBERALERT/_layouts/15/OID.SharePoint.StarterTemplate/styles/icon-animations.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 61</li>
+<li>Stylesheet complexity: 161</li>
+<li>Total rules: 2</li>
+<li>Total selectors: 2</li>
+<li>Total declarations: 43</li>
+<li>Max selector specificity: 0,1,0</li>
+</ul>
+<h3>https://oregon.gov/osp/AMBERALERT/_layouts/15/OID.SharePoint.StarterTemplate/styles/markup-styles.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>MaxSelectorComplexity</code>: score impact 1</li>
+<li><code>ImportantRatio</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 84</li>
+<li>Stylesheet complexity: 239</li>
+<li>Total rules: 28</li>
+<li>Total selectors: 29</li>
+<li>Total declarations: 54</li>
+<li><code>!important</code> declarations: 13</li>
+<li>Max selector specificity: 1,0,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 6 unique</li>
+</ul>
+<p>  - #fff, #ddd, #000, #92b7d1, white, #333</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 17px, 11.05px, 15px</p>
+<h3>https://oregon.gov/osp/AMBERALERT/_layouts/15/OID.SharePoint.StarterTemplate/styles/styles.min.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 80/100 ⚠️</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>SelectorDuplications</code>: score impact 10</li>
+<li><code>DeclarationDuplications</code>: score impact 10</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 0</li>
+<li>Stylesheet complexity: 0</li>
+<li>Total rules: 0</li>
+<li>Total selectors: 0</li>
+<li>Total declarations: 0</li>
+<li>Max selector specificity: 0,0,0</li>
+</ul>
+<h3>https://oregon.gov/odva/Resources/_layouts/15/OID.SharePoint.StarterTemplate/styles/icon-animations.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 61</li>
+<li>Stylesheet complexity: 161</li>
+<li>Total rules: 2</li>
+<li>Total selectors: 2</li>
+<li>Total declarations: 43</li>
+<li>Max selector specificity: 0,1,0</li>
+</ul>
+<h3>https://oregon.gov/odva/Resources/_layouts/15/OID.SharePoint.StarterTemplate/styles/markup-styles.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>MaxSelectorComplexity</code>: score impact 1</li>
+<li><code>ImportantRatio</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 84</li>
+<li>Stylesheet complexity: 239</li>
+<li>Total rules: 28</li>
+<li>Total selectors: 29</li>
+<li>Total declarations: 54</li>
+<li><code>!important</code> declarations: 13</li>
+<li>Max selector specificity: 1,0,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 6 unique</li>
+</ul>
+<p>  - #fff, #ddd, #000, #92b7d1, white, #333</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 17px, 11.05px, 15px</p>
+<h3>https://oregon.gov/odva/Resources/_layouts/15/OID.SharePoint.StarterTemplate/styles/styles.min.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 80/100 ⚠️</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>SelectorDuplications</code>: score impact 10</li>
+<li><code>DeclarationDuplications</code>: score impact 10</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 0</li>
+<li>Stylesheet complexity: 0</li>
+<li>Total rules: 0</li>
+<li>Total selectors: 0</li>
+<li>Total declarations: 0</li>
+<li>Max selector specificity: 0,0,0</li>
+</ul>
+<h3>https://oregon.gov/gov/_layouts/15/OID.SharePoint.StarterTemplate/styles/icon-animations.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 61</li>
+<li>Stylesheet complexity: 161</li>
+<li>Total rules: 2</li>
+<li>Total selectors: 2</li>
+<li>Total declarations: 43</li>
+<li>Max selector specificity: 0,1,0</li>
+</ul>
+<h3>https://oregon.gov/gov/_layouts/15/OID.SharePoint.StarterTemplate/styles/markup-styles.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>MaxSelectorComplexity</code>: score impact 1</li>
+<li><code>ImportantRatio</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 84</li>
+<li>Stylesheet complexity: 239</li>
+<li>Total rules: 28</li>
+<li>Total selectors: 29</li>
+<li>Total declarations: 54</li>
+<li><code>!important</code> declarations: 13</li>
+<li>Max selector specificity: 1,0,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 6 unique</li>
+</ul>
+<p>  - #fff, #ddd, #000, #92b7d1, white, #333</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 17px, 11.05px, 15px</p>
+<h3>https://oregon.gov/gov/_layouts/15/OID.SharePoint.StarterTemplate/styles/styles.min.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 80/100 ⚠️</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>SelectorDuplications</code>: score impact 10</li>
+<li><code>DeclarationDuplications</code>: score impact 10</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 0</li>
+<li>Stylesheet complexity: 0</li>
+<li>Total rules: 0</li>
+<li>Total selectors: 0</li>
+<li>Total declarations: 0</li>
+<li>Max selector specificity: 0,0,0</li>
+</ul>
+<h3>https://oregon.gov/odva/_layouts/15/OID.SharePoint.StarterTemplate/styles/icon-animations.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 61</li>
+<li>Stylesheet complexity: 161</li>
+<li>Total rules: 2</li>
+<li>Total selectors: 2</li>
+<li>Total declarations: 43</li>
+<li>Max selector specificity: 0,1,0</li>
+</ul>
+<h3>https://oregon.gov/odva/_layouts/15/OID.SharePoint.StarterTemplate/styles/markup-styles.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>MaxSelectorComplexity</code>: score impact 1</li>
+<li><code>ImportantRatio</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 84</li>
+<li>Stylesheet complexity: 239</li>
+<li>Total rules: 28</li>
+<li>Total selectors: 29</li>
+<li>Total declarations: 54</li>
+<li><code>!important</code> declarations: 13</li>
+<li>Max selector specificity: 1,0,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 6 unique</li>
+</ul>
+<p>  - #fff, #ddd, #000, #92b7d1, white, #333</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 17px, 11.05px, 15px</p>
+<h3>https://oregon.gov/odva/_layouts/15/OID.SharePoint.StarterTemplate/styles/styles.min.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 80/100 ⚠️</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>SelectorDuplications</code>: score impact 10</li>
+<li><code>DeclarationDuplications</code>: score impact 10</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 0</li>
+<li>Stylesheet complexity: 0</li>
+<li>Total rules: 0</li>
+<li>Total selectors: 0</li>
+<li>Total declarations: 0</li>
+<li>Max selector specificity: 0,0,0</li>
+</ul>
+<h3>https://oregon.gov/odot/DMV/_layouts/15/OID.SharePoint.StarterTemplate/styles/icon-animations.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 61</li>
+<li>Stylesheet complexity: 161</li>
+<li>Total rules: 2</li>
+<li>Total selectors: 2</li>
+<li>Total declarations: 43</li>
+<li>Max selector specificity: 0,1,0</li>
+</ul>
+<h3>https://oregon.gov/odot/DMV/_layouts/15/OID.SharePoint.StarterTemplate/styles/markup-styles.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>MaxSelectorComplexity</code>: score impact 1</li>
+<li><code>ImportantRatio</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 84</li>
+<li>Stylesheet complexity: 239</li>
+<li>Total rules: 28</li>
+<li>Total selectors: 29</li>
+<li>Total declarations: 54</li>
+<li><code>!important</code> declarations: 13</li>
+<li>Max selector specificity: 1,0,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 6 unique</li>
+</ul>
+<p>  - #fff, #ddd, #000, #92b7d1, white, #333</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 17px, 11.05px, 15px</p>
+<h3>https://oregon.gov/odot/Style%20Library/CSS/theme-components.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 97/100 ✅</li>
+<li>Maintainability: 97/100 ✅</li>
+<li>Complexity: 88/100 ⚠️</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 3</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 3</li>
+<li><code>MaxSelectorComplexity</code>: score impact 4</li>
+<li><code>AverageSelectorComplexity</code>: score impact 8</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 489</li>
+<li>Stylesheet complexity: 1941</li>
+<li>Total rules: 106</li>
+<li>Total selectors: 169</li>
+<li>Total declarations: 303</li>
+<li><code>!important</code> declarations: 16</li>
+<li>Max selector specificity: 1,2,4</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 17 unique</li>
+</ul>
+<p>  - white, rgb(25, 60, 124), #ddd, #f4f4f4, #003da6, green, transparent, #293352, rgba(41, 51, 82, 0.85), rgba(27, 34, 58, 0.6), rgba(0, 0, 0, 0.45), #af060c, rgba(0, 61, 166, 0.92), black, #1b223a, rgba(60, 60, 60, 0.3), rgba(255, 255, 255, 0.6)</p>
+<ul>
+<li>Font families: 1 unique</li>
+</ul>
+<p>  - &quot;Font Awesome 5 Pro&quot;</p>
+<ul>
+<li>Font sizes: 10 unique</li>
+</ul>
+<p>  - 1.18rem, 1.3em, 1.88rem, 2.4rem, 1.5em, 2em, 170%, 30px, 20px, 2rem</p>
+<h3>https://oregon.gov/odot/DMV/_layouts/15/OID.SharePoint.StarterTemplate/styles/styles.min.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 80/100 ⚠️</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>SelectorDuplications</code>: score impact 10</li>
+<li><code>DeclarationDuplications</code>: score impact 10</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 0</li>
+<li>Stylesheet complexity: 0</li>
+<li>Total rules: 0</li>
+<li>Total selectors: 0</li>
+<li>Total declarations: 0</li>
+<li>Max selector specificity: 0,0,0</li>
+</ul>
+<h3>https://oregon.gov/odhs/Style%20Library/CSS/bootstrap.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 94/100 ✅</li>
+<li>Maintainability: 62/100 ❌</li>
+<li>Complexity: 72/100 ⚠️</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 5</li>
+<li><code>TooMuchComments</code>: score impact 1</li>
+<li><code>MaxSelectorsPerRule</code>: score impact 15</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonSelectorsPerRule</code>: score impact 3</li>
+<li><code>MoreThanMostCommonDeclarationsPerRule</code>: score impact 5</li>
+<li><code>MoreThanMostCommonSelectorComplexity</code>: score impact 10</li>
+<li><code>MoreThanMostCommonSelectorSpecificity</code>: score impact 10</li>
+<li><code>MaxSelectorComplexity</code>: score impact 5</li>
+<li><code>AverageSelectorComplexity</code>: score impact 3</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 5518</li>
+<li>Stylesheet complexity: 17879</li>
+<li>Total rules: 1454</li>
+<li>Total selectors: 2517</li>
+<li>Total declarations: 2925</li>
+<li><code>!important</code> declarations: 68</li>
+<li>Max selector specificity: 0,8,3</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Custom properties (CSS variables): 131 unique</li>
+</ul>
+<p>  - --white-h, --white-s, --white-l, --white, --black-h, --black-s, --black-l, --black, --white-always-h, --white-always-s, --white-always-l, --white-always, --black-always-h, --black-always-s, --black-always-l, --black-always, --gray-13, --gray-19, --gray-20, --gray-27, --gray-28, --gray-33, --gray-40, --gray-42, --gray-47, --gray-53, --gray-55, --gray-60, --gray-64, --gray-80, --gray-83, --gray-84, --gray-87, --gray-89, --gray-90, --gray-91, --gray-92, --gray-93, --gray-94, --gray-96, --gray-97, --gray-98, --brand-primary-h, --brand-primary-s, --brand-primary-l, --brand-primary, --brand-primary-d-5, --brand-primary-d-10, --brand-primary-d-15, --brand-primary-d-17, --brand-primary-l-40, --brand-success-h, --brand-success-s, --brand-success-l, --brand-success, --brand-success-d-5, --brand-success-d-10, --brand-success-d-15, --brand-success-d-17, --brand-success-text-h, --brand-success-text-s, --brand-success-text-l, --brand-success-text, --brand-success-text-d-10, --brand-success-text-l-20, --brand-success-bg-h, --brand-success-bg-s, --brand-success-bg-l, --brand-success-bg, --brand-success-bg-d-5, --brand-success-bg-d-10, --brand-info-h, --brand-info-s, --brand-info-l, --brand-info, --brand-info-d-5, --brand-info-d-10, --brand-info-d-15, --brand-info-d-17, --brand-info-text-h, --brand-info-text-s, --brand-info-text-l, --brand-info-text, --brand-info-text-d-10, --brand-info-text-l-20, --brand-info-bg-h, --brand-info-bg-s, --brand-info-bg-l, --brand-info-bg, --brand-info-bg-d-5, --brand-info-bg-d-10, --brand-warning-h, --brand-warning-s, --brand-warning-l, --brand-warning, --brand-warning-d-5, --brand-warning-d-10, --brand-warning-d-15, --brand-warning-d-17, --brand-warning-text-h, --brand-warning-text-s, --brand-warning-text-l, --brand-warning-text, --brand-warning-text-d-10, --brand-warning-text-l-20, --brand-warning-bg-h, --brand-warning-bg-s, --brand-warning-bg-l, --brand-warning-bg, --brand-warning-bg-d-5, --brand-warning-bg-d-10, --brand-danger-h, --brand-danger-s, --brand-danger-l, --brand-danger, --brand-danger-d-5, --brand-danger-d-10, --brand-danger-d-15, --brand-danger-d-17, --brand-danger-text-h, --brand-danger-text-s, --brand-danger-text-l, --brand-danger-text, --brand-danger-text-d-10, --brand-danger-text-l-20, --brand-danger-bg-h, --brand-danger-bg-s, --brand-danger-bg-l, --brand-danger-bg, --brand-danger-bg-d-5, --brand-danger-bg-d-10</p>
+<ul>
+<li>Colors: 136 unique</li>
+</ul>
+<p>  - hsl(var(--white-h), var(--white-s), var(--white-l)), hsl(var(--black-h), var(--black-s), var(--black-l)), hsl(var(--white-always-h), var(--white-always-s), var(--white-always-l)), hsl(var(--black-always-h), var(--black-always-s), var(--black-always-l)), hsl(0deg, 0%, 13%), hsl(0deg, 0%, 19%), hsl(0deg, 0%, 20%), hsl(0deg, 0%, 27%), hsl(0deg, 0%, 28%), hsl(0deg, 0%, 33%), hsl(0deg, 0%, 40%), hsl(0deg, 0%, 42%), hsl(0deg, 0%, 47%), hsl(0deg, 0%, 53%), hsl(0deg, 0%, 55%), hsl(0deg, 0%, 60%), hsl(0deg, 0%, 64%), hsl(0deg, 0%, 80%), hsl(0deg, 0%, 83%), hsl(0deg, 0%, 84%), hsl(0deg, 0%, 87%), hsl(0deg, 0%, 89%), hsl(0deg, 0%, 90%), hsl(0deg, 0%, 91%), hsl(0deg, 0%, 92%), hsl(0deg, 0%, 93%), hsl(0deg, 0%, 94%), hsl(0deg, 0%, 96%), hsl(0deg, 0%, 97%), hsl(0deg, 0%, 98%), hsl(var(--brand-primary-h), var(--brand-primary-s), var(--brand-primary-l)), hsl(var(--brand-primary-h), var(--brand-primary-s), calc(var(--brand-primary-l) - 5%)), hsl(var(--brand-primary-h), var(--brand-primary-s), calc(var(--brand-primary-l) - 10%)), hsl(var(--brand-primary-h), var(--brand-primary-s), calc(var(--brand-primary-l) - 15%)), hsl(var(--brand-primary-h), var(--brand-primary-s), calc(var(--brand-primary-l) - 17%)), hsl(var(--brand-primary-h), var(--brand-primary-s), calc(var(--brand-primary-l) + 40%)), hsl(var(--brand-success-h), var(--brand-success-s), var(--brand-success-l)), hsl(var(--brand-success-h), var(--brand-success-s), calc(var(--brand-success-l) - 5%)), hsl(var(--brand-success-h), var(--brand-success-s), calc(var(--brand-success-l) - 10%)), hsl(var(--brand-success-h), var(--brand-success-s), calc(var(--brand-success-l) - 15%)), hsl(var(--brand-success-h), var(--brand-success-s), calc(var(--brand-success-l) - 17%)), hsl(var(--brand-success-text-h), var(--brand-success-text-s), var(--brand-success-text-l)), hsl(var(--brand-success-text-h), var(--brand-success-text-s), calc(var(--brand-success-text-l) - 10%)), hsl(var(--brand-success-text-h), var(--brand-success-text-s), calc(var(--brand-success-text-l) + 20%)), hsl(var(--brand-success-bg-h), var(--brand-success-bg-s), var(--brand-success-bg-l)), hsl(var(--brand-success-bg-h), var(--brand-success-bg-s), calc(var(--brand-success-bg-l) - 5%)), hsl(var(--brand-success-bg-h), var(--brand-success-bg-s), calc(var(--brand-success-bg-l) - 10%)), hsl(var(--brand-info-h), var(--brand-info-s), var(--brand-info-l)), hsl(var(--brand-info-h), var(--brand-info-s), calc(var(--brand-info-l) - 5%)), hsl(var(--brand-info-h), var(--brand-info-s), calc(var(--brand-info-l) - 10%)), hsl(var(--brand-info-h), var(--brand-info-s), calc(var(--brand-info-l) - 15%)), hsl(var(--brand-info-h), var(--brand-info-s), calc(var(--brand-info-l) - 17%)), hsl(var(--brand-info-text-h), var(--brand-info-text-s), var(--brand-info-text-l)), hsl(var(--brand-info-text-h), var(--brand-info-text-s), calc(var(--brand-info-text-l) - 10%)), hsl(var(--brand-info-text-h), var(--brand-info-text-s), calc(var(--brand-info-text-l) + 20%)), hsl(var(--brand-info-bg-h), var(--brand-info-bg-s), var(--brand-info-bg-l)), hsl(var(--brand-info-bg-h), var(--brand-info-bg-s), calc(var(--brand-info-bg-l) - 5%)), hsl(var(--brand-info-bg-h), var(--brand-info-bg-s), calc(var(--brand-info-bg-l) - 10%)), hsl(var(--brand-warning-h), var(--brand-warning-s), var(--brand-warning-l)), hsl(var(--brand-warning-h), var(--brand-warning-s), calc(var(--brand-warning-l) - 5%)), hsl(var(--brand-warning-h), var(--brand-warning-s), calc(var(--brand-warning-l) - 10%)), hsl(var(--brand-warning-h), var(--brand-warning-s), calc(var(--brand-warning-l) - 15%)), hsl(var(--brand-warning-h), var(--brand-warning-s), calc(var(--brand-warning-l) - 17%)), hsl(var(--brand-warning-text-h), var(--brand-warning-text-s), var(--brand-warning-text-l)), hsl(var(--brand-warning-text-h), var(--brand-warning-text-s), calc(var(--brand-warning-text-l) - 10%)), hsl(var(--brand-warning-text-h), var(--brand-warning-text-s), calc(var(--brand-warning-text-l) + 20%)), hsl(var(--brand-warning-bg-h), var(--brand-warning-bg-s), var(--brand-warning-bg-l)), hsl(var(--brand-warning-bg-h), var(--brand-warning-bg-s), calc(var(--brand-warning-bg-l) - 5%)), hsl(var(--brand-warning-bg-h), var(--brand-warning-bg-s), calc(var(--brand-warning-bg-l) - 10%)), hsl(var(--brand-danger-h), var(--brand-danger-s), var(--brand-danger-l)), hsl(var(--brand-danger-h), var(--brand-danger-s), calc(var(--brand-danger-l) - 5%)), hsl(var(--brand-danger-h), var(--brand-danger-s), calc(var(--brand-danger-l) - 10%)), hsl(var(--brand-danger-h), var(--brand-danger-s), calc(var(--brand-danger-l) - 15%)), hsl(var(--brand-danger-h), var(--brand-danger-s), calc(var(--brand-danger-l) - 17%)), hsl(var(--brand-danger-text-h), var(--brand-danger-text-s), var(--brand-danger-text-l)), hsl(var(--brand-danger-text-h), var(--brand-danger-text-s), calc(var(--brand-danger-text-l) - 10%)), hsl(var(--brand-danger-text-h), var(--brand-danger-text-s), calc(var(--brand-danger-text-l) + 20%)), hsl(var(--brand-danger-bg-h), var(--brand-danger-bg-s), var(--brand-danger-bg-l)), hsl(var(--brand-danger-bg-h), var(--brand-danger-bg-s), calc(var(--brand-danger-bg-l) - 5%)), hsl(var(--brand-danger-bg-h), var(--brand-danger-bg-s), calc(var(--brand-danger-bg-l) - 10%)), transparent, #ff0, #000, #c0c0c0, #999, #fff, #ddd, rgba(0, 0, 0, 0), #c7254e, #f9f2f4, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.075), #66afe9, hsla(var(--black-h), var(--black-s), var(--black-l), 0.075), rgba(102, 175, 233, 0.6), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.125), rgba(0, 0, 0, 0.12), hsla(var(--black-h), var(--black-s), var(--black-l), 0.15), rgba(0, 0, 0, 0.175), hsla(var(--white-h), var(--white-s), var(--white-l), 0.1), rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.15), rgba(255, 255, 255, 0.15), hsla(var(--black-h), var(--black-s), var(--black-l), 0.05), hsla(var(--black-h), var(--black-s), var(--black-l), 0.2), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.0001), hsl(0deg, 0%, calc(100% - (13% * 0.95))), hsl(0deg, 0%, calc(100% - (19% * 0.95))), hsl(0deg, 0%, calc(100% - (20% * 0.95))), hsl(0deg, 0%, calc(100% - (27% * 0.95))), hsl(0deg, 0%, calc(100% - (28% * 0.95))), hsl(0deg, 0%, calc(100% - (33% * 0.95))), hsl(0deg, 0%, calc(100% - (40% * 0.95))), hsl(0deg, 0%, calc(100% - (42% * 0.95))), hsl(0deg, 0%, calc(100% - (47% * 0.95))), hsl(0deg, 0%, calc(100% - (53% * 0.95))), hsl(0deg, 0%, calc(100% - (55% * 0.95))), hsl(0deg, 0%, calc(100% - (60% * 0.95))), hsl(0deg, 0%, calc(100% - (64% * 0.95))), hsl(0deg, 0%, calc(100% - (80% * 0.95))), hsl(0deg, 0%, calc(100% - (83% * 0.95))), hsl(0deg, 0%, calc(100% - (84% * 0.95))), hsl(0deg, 0%, calc(100% - (87% * 0.95))), hsl(0deg, 0%, calc(100% - (89% * 0.95))), hsl(0deg, 0%, calc(100% - (90% * 0.95))), hsl(0deg, 0%, calc(100% - (91% * 0.95))), hsl(0deg, 0%, calc(100% - (92% * 0.95))), hsl(0deg, 0%, calc(100% - (93% * 0.95))), hsl(0deg, 0%, calc(100% - (94% * 0.95))), hsl(0deg, 0%, calc(100% - (96% * 0.95))), hsl(0deg, 0%, calc(100% - (97% * 0.95))), hsl(0deg, 0%, calc(100% - (98% * 0.95)))</p>
+<ul>
+<li>Font families: 7 unique</li>
+</ul>
+<p>  - sans-serif, monospace, monospace, &quot;Glyphicons Halflings&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace, serif, a</p>
+<ul>
+<li>Font sizes: 22 unique</li>
+</ul>
+<p>  - 0, 2em, 80%, 75%, 1em, 10px, 14px, 65%, 36px, 30px, 24px, 18px, 12px, 16px, 21px, 85%, 90%, 17.5px, 100%, 13px, 63px, 20px</p>
+<ul>
+<li>Z-index values: 12 unique</li>
+</ul>
+<p>  - 2, 3, 5, 10, 15, 990, 1000, 1030, 1040, 1050, 1060, 1070</p>
+<h3>https://oregon.gov/odhs/_layouts/15/OID.SharePoint.StarterTemplate/styles/icon-animations.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 61</li>
+<li>Stylesheet complexity: 161</li>
+<li>Total rules: 2</li>
+<li>Total selectors: 2</li>
+<li>Total declarations: 43</li>
+<li>Max selector specificity: 0,1,0</li>
+</ul>
+<h3>https://oregon.gov/odhs/_layouts/15/OID.SharePoint.StarterTemplate/styles/markup-styles.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>MaxSelectorComplexity</code>: score impact 1</li>
+<li><code>ImportantRatio</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 84</li>
+<li>Stylesheet complexity: 239</li>
+<li>Total rules: 28</li>
+<li>Total selectors: 29</li>
+<li>Total declarations: 54</li>
+<li><code>!important</code> declarations: 13</li>
+<li>Max selector specificity: 1,0,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 6 unique</li>
+</ul>
+<p>  - #fff, #ddd, #000, #92b7d1, white, #333</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 17px, 11.05px, 15px</p>
+<h3>https://oregon.gov/odhs/Style%20Library/CSS/theme-components.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 91/100 ✅</li>
+<li>Maintainability: 81/100 ⚠️</li>
+<li>Complexity: 69/100 ❌</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>EmptyRules</code>: score impact 2</li>
+<li><code>DeclarationDuplications</code>: score impact 5</li>
+<li><code>TooMuchComments</code>: score impact 2</li>
+<li><code>MaxSelectorsPerRule</code>: score impact 11</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 3</li>
+<li><code>MoreThanMostCommonSelectorsPerRule</code>: score impact 2</li>
+<li><code>MoreThanMostCommonDeclarationsPerRule</code>: score impact 3</li>
+<li><code>MoreThanMostCommonSelectorComplexity</code>: score impact 6</li>
+<li><code>MoreThanMostCommonSelectorSpecificity</code>: score impact 10</li>
+<li><code>MaxSelectorComplexity</code>: score impact 5</li>
+<li><code>AverageSelectorComplexity</code>: score impact 9</li>
+<li><code>IdSelectorRatio</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 3444</li>
+<li>Stylesheet complexity: 15120</li>
+<li>Total rules: 719</li>
+<li>Total selectors: 1575</li>
+<li>Total declarations: 1795</li>
+<li><code>!important</code> declarations: 139</li>
+<li>Max selector specificity: 2,0,1</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Custom properties (CSS variables): 6 unique</li>
+</ul>
+<p>  - --or-link-color, --meganav-width, --details-color, --details-bg-color, --details-line-color, --background-color</p>
+<ul>
+<li>Colors: 92 unique</li>
+</ul>
+<p>  - #eee, #0e5f9b, #78b6e0, transparent, hsla(var(--black-h), var(--black-s), var(--black-l), 0.045), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95), black, rgba(27, 109, 74, 0.9), rgba(216, 241, 249, 0.9), rgba(30, 68, 52, 0.85), rgba(255, 255, 255, 0.85), rgba(16, 53, 122, 0.85), white, hsla(var(--black-h), var(--black-s), var(--black-l), 0.06), hsla(var(--black-h), var(--black-s), var(--black-l), 0.1), hsla(var(--black-h), var(--black-s), var(--black-l), 0.15), #222, #444, #8d8c8e, #999, #0d6ea7, #0d6395, #7d4da0, #674084, #212457, #1c2672, #b65b07, #a25006, #994c06, #a91f50, #951b47, #348359, #2f754f, rgba(0, 0, 0, 0.09), rgba(0, 0, 0, 0.065), rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.04), #f4f4f4, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.75), #ccc, #f3f6f7, hsla(var(--black-h), var(--black-s), var(--black-l), 0.18), hsla(var(--black-h), var(--black-s), var(--black-l), 0.07), #333, #0f75af, #fff, #002d5d, rgba(0, 0, 0, 0.19), #f79443, #71a850, #57afce, #7d4d9f, yellow, rgba(87, 175, 206, 0.5), #085186, #585aa8, #3f4193, hsla(var(--black-h), var(--black-s), var(--black-l), 0.4), #979797, #676668, hsla(var(--black-h), var(--black-s), var(--black-l), 0.09), hsla(var(--black-h), var(--black-s), var(--black-l), 0.12), #d3d3d3, rgba(255, 255, 255, 0.2), #0072c6, lightgrey, #184e49, #3a87ad, #141414, #84560b, #175f74, #e4c125, grey</p>
+<ul>
+<li>Font families: 2 unique</li>
+</ul>
+<p>  - &quot;Font Awesome 5 Pro&quot;, &quot;Inter&quot;, &quot;Helvetica&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif</p>
+<ul>
+<li>Font sizes: 44 unique</li>
+</ul>
+<p>  - 0, 13px, 16px, 13.5px, 14px, 14.5px, 15px, 15.5px, 1rem, 16.5px, 17px, 18px, 19px, 20px, 2.5rem, 2.88rem, 2.34rem, 2.025rem, 1.62rem, 1.35rem, 1.08rem, 2.72rem, 1.65rem, 1.125rem, 0.9375rem, 0.75rem, 0.94rem, 1.3rem, 1.125em, 1.1em, 1.8rem, 1.7rem, 1.5rem, 1.6rem, 1.28rem, 1.2rem, 0.9rem, 1em, 0.95rem, 2rem, 1.78rem, 17.5px, 1.37rem, 2.52rem</p>
+<ul>
+<li>Z-index values: 7 unique</li>
+</ul>
+<p>  - 0, 1, 2, 100, 200, 999, 2000</p>
+<h3>https://oregon.gov/odhs/_layouts/15/OID.SharePoint.StarterTemplate/styles/styles.min.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 80/100 ⚠️</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>SelectorDuplications</code>: score impact 10</li>
+<li><code>DeclarationDuplications</code>: score impact 10</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 0</li>
+<li>Stylesheet complexity: 0</li>
+<li>Total rules: 0</li>
+<li>Total selectors: 0</li>
+<li>Total declarations: 0</li>
+<li>Max selector specificity: 0,0,0</li>
+</ul>
+<h3>https://oregon.gov/oha/PH/_layouts/15/OID.SharePoint.StarterTemplate/styles/icon-animations.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 61</li>
+<li>Stylesheet complexity: 161</li>
+<li>Total rules: 2</li>
+<li>Total selectors: 2</li>
+<li>Total declarations: 43</li>
+<li>Max selector specificity: 0,1,0</li>
+</ul>
+<h3>https://oregon.gov/oha/PH/_layouts/15/OID.SharePoint.StarterTemplate/styles/markup-styles.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>MaxSelectorComplexity</code>: score impact 1</li>
+<li><code>ImportantRatio</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 84</li>
+<li>Stylesheet complexity: 239</li>
+<li>Total rules: 28</li>
+<li>Total selectors: 29</li>
+<li>Total declarations: 54</li>
+<li><code>!important</code> declarations: 13</li>
+<li>Max selector specificity: 1,0,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 6 unique</li>
+</ul>
+<p>  - #fff, #ddd, #000, #92b7d1, white, #333</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 17px, 11.05px, 15px</p>
+<h3>https://oregon.gov/oha/PH/_layouts/15/OID.SharePoint.StarterTemplate/styles/styles.min.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 80/100 ⚠️</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>SelectorDuplications</code>: score impact 10</li>
+<li><code>DeclarationDuplications</code>: score impact 10</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 0</li>
+<li>Stylesheet complexity: 0</li>
+<li>Total rules: 0</li>
+<li>Total selectors: 0</li>
+<li>Total declarations: 0</li>
+<li>Max selector specificity: 0,0,0</li>
+</ul>
+<h3>https://oregon.gov/oha/PH/DISEASESCONDITIONS/CHRONICDISEASE/MEDICALMARIJUANAPROGRAM/_layouts/15/OID.SharePoint.StarterTemplate/styles/icon-animations.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 61</li>
+<li>Stylesheet complexity: 161</li>
+<li>Total rules: 2</li>
+<li>Total selectors: 2</li>
+<li>Total declarations: 43</li>
+<li>Max selector specificity: 0,1,0</li>
+</ul>
+<h3>https://oregon.gov/oha/PH/DISEASESCONDITIONS/CHRONICDISEASE/MEDICALMARIJUANAPROGRAM/_layouts/15/OID.SharePoint.StarterTemplate/styles/markup-styles.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>MaxSelectorComplexity</code>: score impact 1</li>
+<li><code>ImportantRatio</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 84</li>
+<li>Stylesheet complexity: 239</li>
+<li>Total rules: 28</li>
+<li>Total selectors: 29</li>
+<li>Total declarations: 54</li>
+<li><code>!important</code> declarations: 13</li>
+<li>Max selector specificity: 1,0,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 6 unique</li>
+</ul>
+<p>  - #fff, #ddd, #000, #92b7d1, white, #333</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 17px, 11.05px, 15px</p>
+<h3>https://oregon.gov/oha/PH/DISEASESCONDITIONS/CHRONICDISEASE/MEDICALMARIJUANAPROGRAM/_layouts/15/OID.SharePoint.StarterTemplate/styles/styles.min.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 80/100 ⚠️</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>SelectorDuplications</code>: score impact 10</li>
+<li><code>DeclarationDuplications</code>: score impact 10</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 0</li>
+<li>Stylesheet complexity: 0</li>
+<li>Total rules: 0</li>
+<li>Total selectors: 0</li>
+<li>Total declarations: 0</li>
+<li>Max selector specificity: 0,0,0</li>
+</ul>
+<h3>https://oregon.gov/odva/Benefits/_layouts/15/OID.SharePoint.StarterTemplate/styles/icon-animations.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 61</li>
+<li>Stylesheet complexity: 161</li>
+<li>Total rules: 2</li>
+<li>Total selectors: 2</li>
+<li>Total declarations: 43</li>
+<li>Max selector specificity: 0,1,0</li>
+</ul>
+<h3>https://oregon.gov/odva/Benefits/_layouts/15/OID.SharePoint.StarterTemplate/styles/markup-styles.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>MaxSelectorComplexity</code>: score impact 1</li>
+<li><code>ImportantRatio</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 84</li>
+<li>Stylesheet complexity: 239</li>
+<li>Total rules: 28</li>
+<li>Total selectors: 29</li>
+<li>Total declarations: 54</li>
+<li><code>!important</code> declarations: 13</li>
+<li>Max selector specificity: 1,0,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 6 unique</li>
+</ul>
+<p>  - #fff, #ddd, #000, #92b7d1, white, #333</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 17px, 11.05px, 15px</p>
+<h3>https://oregon.gov/odva/Benefits/_layouts/15/OID.SharePoint.StarterTemplate/styles/styles.min.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 80/100 ⚠️</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>SelectorDuplications</code>: score impact 10</li>
+<li><code>DeclarationDuplications</code>: score impact 10</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 0</li>
+<li>Stylesheet complexity: 0</li>
+<li>Total rules: 0</li>
+<li>Total selectors: 0</li>
+<li>Total declarations: 0</li>
+<li>Max selector specificity: 0,0,0</li>
+</ul>
+<h3>https://oregon.gov/treasury/Upward-Oregon/_layouts/15/OID.SharePoint.StarterTemplate/styles/icon-animations.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 61</li>
+<li>Stylesheet complexity: 161</li>
+<li>Total rules: 2</li>
+<li>Total selectors: 2</li>
+<li>Total declarations: 43</li>
+<li>Max selector specificity: 0,1,0</li>
+</ul>
+<h3>https://oregon.gov/treasury/Upward-Oregon/_layouts/15/OID.SharePoint.StarterTemplate/styles/markup-styles.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>MaxSelectorComplexity</code>: score impact 1</li>
+<li><code>ImportantRatio</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 84</li>
+<li>Stylesheet complexity: 239</li>
+<li>Total rules: 28</li>
+<li>Total selectors: 29</li>
+<li>Total declarations: 54</li>
+<li><code>!important</code> declarations: 13</li>
+<li>Max selector specificity: 1,0,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 6 unique</li>
+</ul>
+<p>  - #fff, #ddd, #000, #92b7d1, white, #333</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 17px, 11.05px, 15px</p>
+<h3>https://oregon.gov/treasury/Upward-Oregon/_layouts/15/OID.SharePoint.StarterTemplate/styles/styles.min.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 80/100 ⚠️</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>SelectorDuplications</code>: score impact 10</li>
+<li><code>DeclarationDuplications</code>: score impact 10</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 0</li>
+<li>Stylesheet complexity: 0</li>
+<li>Total rules: 0</li>
+<li>Total selectors: 0</li>
+<li>Total declarations: 0</li>
+<li>Max selector specificity: 0,0,0</li>
+</ul>
+<h3>https://oregon.gov/dsl/lands/_layouts/15/OID.SharePoint.StarterTemplate/styles/icon-animations.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 61</li>
+<li>Stylesheet complexity: 161</li>
+<li>Total rules: 2</li>
+<li>Total selectors: 2</li>
+<li>Total declarations: 43</li>
+<li>Max selector specificity: 0,1,0</li>
+</ul>
+<h3>https://oregon.gov/dsl/lands/_layouts/15/OID.SharePoint.StarterTemplate/styles/markup-styles.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>MaxSelectorComplexity</code>: score impact 1</li>
+<li><code>ImportantRatio</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 84</li>
+<li>Stylesheet complexity: 239</li>
+<li>Total rules: 28</li>
+<li>Total selectors: 29</li>
+<li>Total declarations: 54</li>
+<li><code>!important</code> declarations: 13</li>
+<li>Max selector specificity: 1,0,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 6 unique</li>
+</ul>
+<p>  - #fff, #ddd, #000, #92b7d1, white, #333</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 17px, 11.05px, 15px</p>
+<h3>https://oregon.gov/dsl/lands/_layouts/15/OID.SharePoint.StarterTemplate/styles/styles.min.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 80/100 ⚠️</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>SelectorDuplications</code>: score impact 10</li>
+<li><code>DeclarationDuplications</code>: score impact 10</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 0</li>
+<li>Stylesheet complexity: 0</li>
+<li>Total rules: 0</li>
+<li>Total selectors: 0</li>
+<li>Total declarations: 0</li>
+<li>Max selector specificity: 0,0,0</li>
+</ul>
+<h3>https://oregon.gov/treasury/invested-for-oregon/_layouts/15/OID.SharePoint.StarterTemplate/styles/icon-animations.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 61</li>
+<li>Stylesheet complexity: 161</li>
+<li>Total rules: 2</li>
+<li>Total selectors: 2</li>
+<li>Total declarations: 43</li>
+<li>Max selector specificity: 0,1,0</li>
+</ul>
+<h3>https://oregon.gov/treasury/invested-for-oregon/_layouts/15/OID.SharePoint.StarterTemplate/styles/markup-styles.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>MaxSelectorComplexity</code>: score impact 1</li>
+<li><code>ImportantRatio</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 84</li>
+<li>Stylesheet complexity: 239</li>
+<li>Total rules: 28</li>
+<li>Total selectors: 29</li>
+<li>Total declarations: 54</li>
+<li><code>!important</code> declarations: 13</li>
+<li>Max selector specificity: 1,0,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 6 unique</li>
+</ul>
+<p>  - #fff, #ddd, #000, #92b7d1, white, #333</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 17px, 11.05px, 15px</p>
+<h3>https://oregon.gov/treasury/invested-for-oregon/_layouts/15/OID.SharePoint.StarterTemplate/styles/styles.min.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 80/100 ⚠️</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>SelectorDuplications</code>: score impact 10</li>
+<li><code>DeclarationDuplications</code>: score impact 10</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 0</li>
+<li>Stylesheet complexity: 0</li>
+<li>Total rules: 0</li>
+<li>Total selectors: 0</li>
+<li>Total declarations: 0</li>
+<li>Max selector specificity: 0,0,0</li>
+</ul>
+<h3>https://oregon.gov/treasury/SiteAssets/Source-Libraries/CSS/fullcalendar.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 85/100 ⚠️</li>
+<li>Maintainability: 97/100 ✅</li>
+<li>Complexity: 93/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>EmptyRules</code>: score impact 1</li>
+<li><code>DeclarationDuplications</code>: score impact 4</li>
+<li><code>TooMuchComments</code>: score impact 10</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MoreThanMostCommonDeclarationsPerRule</code>: score impact 1</li>
+<li><code>MoreThanMostCommonSelectorComplexity</code>: score impact 1</li>
+<li><code>MoreThanMostCommonSelectorSpecificity</code>: score impact 1</li>
+<li><code>MaxSelectorComplexity</code>: score impact 2</li>
+<li><code>AverageSelectorComplexity</code>: score impact 3</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 866</li>
+<li>Stylesheet complexity: 2734</li>
+<li>Total rules: 252</li>
+<li>Total selectors: 316</li>
+<li>Total declarations: 550</li>
+<li><code>!important</code> declarations: 15</li>
+<li>Max selector specificity: 1,1,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 32 unique</li>
+</ul>
+<p>  - #ffc643, #003657, white, gray, #bce8f1, #8fdf82, #d7d7d7, #f5f5f5, #e6e6e6, #bfbfbf, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.25), #333, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.05), #333333, #cccccc, rgba(0, 0, 0, 0.15), transparent, #003c61, #fff, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3), #000, red, #ddd, #eee, #666, #fcf8e3, #f2f2f2, #808080</p>
+<ul>
+<li>Font families: 2 unique</li>
+</ul>
+<p>  - &quot;Courier New&quot;, Courier, monospace, monospace</p>
+<ul>
+<li>Font sizes: 7 unique</li>
+</ul>
+<p>  - 1em, .85em, 200%, 160%, 125%, .9em, 11px</p>
+<ul>
+<li>Z-index values: 9 unique</li>
+</ul>
+<p>  - 0, 1, 2, 3, 4, 5, 6, 25, 9999</p>
+<h3>https://oregon.gov/treasury/Style%20Library/CSS/timeline.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 81/100 ⚠️</li>
+<li>Maintainability: 98/100 ✅</li>
+<li>Complexity: 91/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>Imports</code>: score impact 10</li>
+<li><code>EmptyRules</code>: score impact 1</li>
+<li><code>SelectorDuplications</code>: score impact 4</li>
+<li><code>TooMuchComments</code>: score impact 4</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MaxSelectorComplexity</code>: score impact 3</li>
+<li><code>AverageSelectorComplexity</code>: score impact 6</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 176</li>
+<li>Stylesheet complexity: 599</li>
+<li>Total rules: 47</li>
+<li>Total selectors: 48</li>
+<li>Total declarations: 123</li>
+<li><code>!important</code> declarations: 5</li>
+<li>Max selector specificity: 0,2,4</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 12 unique</li>
+</ul>
+<p>  - white, #ffcd4c, #003c61, gray, rgba(255,255,255,.2), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.19), rgba(255, 255, 255, 0.5), rgba(255,255,255,0.2), transparent, #fff, grey</p>
+<ul>
+<li>Font sizes: 2 unique</li>
+</ul>
+<p>  - 1.2rem, 1.1rem</p>
+<h3>https://oregon.gov/treasury/Style%20Library/CSS/IAP-targets-dates-and-Performance-table.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 93/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>AverageSelectorComplexity</code>: score impact 2</li>
+<li><code>IdSelectorRatio</code>: score impact 3</li>
+<li><code>ImportantRatio</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 27</li>
+<li>Stylesheet complexity: 85</li>
+<li>Total rules: 7</li>
+<li>Total selectors: 8</li>
+<li>Total declarations: 18</li>
+<li><code>!important</code> declarations: 4</li>
+<li>Max selector specificity: 1,1,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 1 unique</li>
+</ul>
+<p>  - rgba(0,0,0,0)</p>
+<ul>
+<li>Font families: 1 unique</li>
+</ul>
+<p>  - 'Glyphicons Halflings'</p>
+<h3>https://oregon.gov/osmb/boater-info/_layouts/15/OID.SharePoint.StarterTemplate/styles/icon-animations.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 61</li>
+<li>Stylesheet complexity: 161</li>
+<li>Total rules: 2</li>
+<li>Total selectors: 2</li>
+<li>Total declarations: 43</li>
+<li>Max selector specificity: 0,1,0</li>
+</ul>
+<h3>https://oregon.gov/osmb/boater-info/_layouts/15/OID.SharePoint.StarterTemplate/styles/markup-styles.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 100/100 ✅</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>MaxSelectorComplexity</code>: score impact 1</li>
+<li><code>ImportantRatio</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 84</li>
+<li>Stylesheet complexity: 239</li>
+<li>Total rules: 28</li>
+<li>Total selectors: 29</li>
+<li>Total declarations: 54</li>
+<li><code>!important</code> declarations: 13</li>
+<li>Max selector specificity: 1,0,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 6 unique</li>
+</ul>
+<p>  - #fff, #ddd, #000, #92b7d1, white, #333</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 17px, 11.05px, 15px</p>
+<h3>https://oregon.gov/osmb/boater-info/_layouts/15/OID.SharePoint.StarterTemplate/styles/styles.min.css</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 80/100 ⚠️</li>
+<li>Maintainability: 100/100 ✅</li>
+<li>Complexity: 100/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>SelectorDuplications</code>: score impact 10</li>
+<li><code>DeclarationDuplications</code>: score impact 10</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 0</li>
+<li>Stylesheet complexity: 0</li>
+<li>Total rules: 0</li>
+<li>Total selectors: 0</li>
+<li>Total declarations: 0</li>
+<li>Max selector specificity: 0,0,0</li>
+</ul></div>
+</main>
+</body>
+</html>

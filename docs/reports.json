@@ -1,5 +1,16 @@
 [
   {
+    "issueNumber": 37,
+    "issueTitle": "SCAN: oregon.gov",
+    "issueUrl": "https://github.com/mgifford/open-site-review/issues/37",
+    "runUrl": "https://github.com/mgifford/open-site-review/actions/runs/23766993351",
+    "createdAt": "2026-03-30T20:48:33.267Z",
+    "reportPath": "reports/issue-37-20260330T204833Z.md",
+    "filesScanned": 155,
+    "findingsCount": 37,
+    "sourceErrorsCount": 8
+  },
+  {
     "issueNumber": 36,
     "issueTitle": "SCAN: dokieli",
     "issueUrl": "https://github.com/mgifford/open-site-review/issues/36",
