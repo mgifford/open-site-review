@@ -7,6 +7,7 @@
     "open-site-review": "src/cli.js"
   },
   "scripts": {
+    "test": "node --test",
     "scan": "node src/cli.js",
     "scan:example": "node src/cli.js --paths \"examples/**/*.{html,css,js}\" --format markdown",
     "scan:url": "node src/cli.js --urls \"https://example.com\" --format markdown",

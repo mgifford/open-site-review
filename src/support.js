@@ -280,5 +280,12 @@ function evaluateSupport(feature, targetQuery, options = {}) {
 
 module.exports = {
   evaluateSupport,
-  getMdnMetadata
+  getMdnMetadata,
+  // exported for testing
+  getByPath,
+  parseMajorVersion,
+  familyFromTarget,
+  isBcdSupportEntrySupported,
+  normalizeAudienceWeights,
+  weightedUnsupportedPercent
 };

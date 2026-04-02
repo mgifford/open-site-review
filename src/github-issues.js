@@ -330,5 +330,12 @@ async function resolveUrlsFromIssue(issueRef, token) {
 }
 
 module.exports = {
-  resolveUrlsFromIssue
+  resolveUrlsFromIssue,
+  // exported for testing
+  extractUrls,
+  extractUrlFromTitle,
+  parseUrlLimit,
+  parseIssueReference,
+  isHtmlUrl,
+  extractSitemapLocs
 };
