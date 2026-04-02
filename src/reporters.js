@@ -292,5 +292,8 @@ function toMarkdown(report, config, options = {}) {
 module.exports = {
   toMarkdown,
   toGithubAnnotations,
-  sortFindings
+  sortFindings,
+  // exported for testing
+  formatQualityScore,
+  annotationLevel
 };

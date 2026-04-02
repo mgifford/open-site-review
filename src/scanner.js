@@ -209,5 +209,9 @@ async function scanFiles(config) {
 }
 
 module.exports = {
-  scanFiles
+  scanFiles,
+  // exported for testing
+  classifyFinding,
+  sourceTypeFromPath,
+  lineForMatch
 };

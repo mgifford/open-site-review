@@ -202,7 +202,11 @@ async function main() {
   console.log(toMarkdown(report, config, { ci: config.ci }));
 }
 
-main().catch((error) => {
-  console.error(error.message);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch((error) => {
+    console.error(error.message);
+    process.exit(1);
+  });
+}
+
+module.exports = { splitGlobList, parseArgValue, hasFlag };

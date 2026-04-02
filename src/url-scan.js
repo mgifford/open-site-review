@@ -13,12 +13,18 @@ function resolveAssetUrl(baseUrl, assetPath) {
 }
 
 function detectSourceTypeFromUrl(assetUrl) {
-  const lowered = assetUrl.toLowerCase();
-  if (lowered.endsWith(".css")) {
+  let pathname;
+  try {
+    pathname = new URL(assetUrl).pathname.toLowerCase();
+  } catch {
+    pathname = assetUrl.toLowerCase();
+  }
+
+  if (pathname.endsWith(".css")) {
     return "css";
   }
 
-  if (lowered.endsWith(".js") || lowered.endsWith(".mjs") || lowered.endsWith(".cjs")) {
+  if (pathname.endsWith(".js") || pathname.endsWith(".mjs") || pathname.endsWith(".cjs")) {
     return "js";
   }
 
@@ -170,5 +176,11 @@ async function fetchSourcesFromUrls(urls, options = {}) {
 }
 
 module.exports = {
-  fetchSourcesFromUrls
+  fetchSourcesFromUrls,
+  // exported for testing
+  stripHash,
+  resolveAssetUrl,
+  detectSourceTypeFromUrl,
+  extractLinksByRegex,
+  extractAssetUrls
 };
