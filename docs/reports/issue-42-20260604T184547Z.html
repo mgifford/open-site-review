@@ -1,0 +1,2537 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SCAN: NSF.gov</title>
+<style>
+:root {
+  --bg: #f4f7f4;
+  --surface: #ffffff;
+  --ink: #15201d;
+  --muted: #5a6b64;
+  --line: #d6e2dc;
+  --accent: #0b6e4f;
+  --code-bg: #eef1ef;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at 10% 10%, #e7f6ef 0%, var(--bg) 55%);
+  color: var(--ink);
+}
+main {
+  max-width: 860px;
+  margin: 2rem auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 6px 24px rgba(7, 24, 16, 0.08);
+}
+nav { margin-bottom: 1.5rem; font-size: .9rem; }
+a { color: var(--accent); }
+h1 { font-size: 1.8rem; margin: 0 0 1rem 0; }
+h2 { font-size: 1.25rem; margin: 1.5rem 0 .5rem 0; border-bottom: 1px solid var(--line); padding-bottom: .3rem; }
+h3 { font-size: 1.05rem; margin: 1.25rem 0 .4rem 0; }
+ul { padding-left: 1.4rem; line-height: 1.7; }
+li { margin: .2rem 0; }
+p { line-height: 1.6; }
+code {
+  background: var(--code-bg);
+  border-radius: 4px;
+  padding: .1em .35em;
+  font-size: .9em;
+  font-family: "IBM Plex Mono", "Fira Code", monospace;
+}
+pre { background: var(--code-bg); padding: 1rem; border-radius: 8px; overflow: auto; }
+pre code { background: none; padding: 0; }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="./">← Back to reports</a></nav>
+  <div id="report"><h1>Open Site Review Report</h1>
+<ul>
+<li>Targets: defaults, not ie &lt;= 11</li>
+<li>Unsupported threshold: 10%</li>
+<li>Polyfill removable threshold: 5%</li>
+<li>Files scanned: 145</li>
+<li>Findings: 79</li>
+<li>Scan mode: URL crawl (same-origin assets only)</li>
+<li>Source fetch errors: 14</li>
+</ul>
+<h2>Source Fetch Errors</h2>
+<ul>
+<li>https://nsf.gov/sites/default/files/js/js_cVSbUlGnpKn0Z2mtOlMTna7FEs5f8h3XW-9kqWC_RUc.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jmEOwiAMRi8E40hLga5DoSXQRefpRaNm-sOk-fL62jSFGFWAdwcvmJYmrCZIzlB78lnC2QVpaB4xqFRhZO0T92XWFQtaC2EMYxL-t9RQt8ZWZVQ1ocFtRyL3BkMilHFWIEcjfvsJTnD9lsV8zjvK4iEfRBGfMvYU0UM7eJUtrFXS-M5s_RK7e-YdUnZm3w: Failed to fetch https://nsf.gov/sites/default/files/js/js_cVSbUlGnpKn0Z2mtOlMTna7FEs5f8h3XW-9kqWC_RUc.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jmEOwiAMRi8E40hLga5DoSXQRefpRaNm-sOk-fL62jSFGFWAdwcvmJYmrCZIzlB78lnC2QVpaB4xqFRhZO0T92XWFQtaC2EMYxL-t9RQt8ZWZVQ1ocFtRyL3BkMilHFWIEcjfvsJTnD9lsV8zjvK4iEfRBGfMvYU0UM7eJUtrFXS-M5s_RK7e-YdUnZm3w: HTTP 400</li>
+<li>https://nsf.gov/sites/default/files/css/css_bKSC8fBYrWbC0r-s_TQZUaeaXYS9r9LJ8vmVaFLC_BA.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJyFkAFuwyAMRS8EyZEig52EldjIhm65_Ui7bpMmMcmyrO-nzzeAWAX4nOFrmFYVri5KzlAshSzxNkdRclfr01GEiatNbOtSdzrI-6AEGLUdwUYYpntC0hGyEtSmhH5NmXxOfBvRm9x9AOax5-XSm9UhJJuM9kUT138DKWWoPf3FDb9CqZ_Jvkqv8gRRW4E8wRt8uG9yRok5BQU9f4lVWtyL9ETmCihsCmW3l8OPMjUuLfTTd0JnEhPk5SBMsDwCzn-l6fGAs9MqHXMAI9fsHV_en6xX2Cg: Failed to fetch https://nsf.gov/sites/default/files/css/css_bKSC8fBYrWbC0r-s_TQZUaeaXYS9r9LJ8vmVaFLC_BA.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJyFkAFuwyAMRS8EyZEig52EldjIhm65_Ui7bpMmMcmyrO-nzzeAWAX4nOFrmFYVri5KzlAshSzxNkdRclfr01GEiatNbOtSdzrI-6AEGLUdwUYYpntC0hGyEtSmhH5NmXxOfBvRm9x9AOax5-XSm9UhJJuM9kUT138DKWWoPf3FDb9CqZ_Jvkqv8gRRW4E8wRt8uG9yRok5BQU9f4lVWtyL9ETmCihsCmW3l8OPMjUuLfTTd0JnEhPk5SBMsDwCzn-l6fGAs9MqHXMAI9fsHV_en6xX2Cg: HTTP 400</li>
+<li>https://nsf.gov/sites/default/files/css/css_hYuij6XC7jvxTksMfaEZcIOC1dEs_Igu7NCk5cMgwCE.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJyFkIFuwyAMRH8Ikk-KDHYSVgcjG7rl70fadZs0iUnIso6n4w5ArAL5nOFrmVaVXF0UZiiWAku8zVGU3DX6dhTJlKtN2dal7nSQ98CkdQQEJcCo7Qg2wjDdE5KOkJWgNiX0a2LynPJtRG9y9wFyHnteLn3YsALLJqP7oinXfwMpMdSe_uKGX6HUa2ZfpZ_yBFFbAZ7gDT7cNzmjRE5BQc9fYpUW9yI9kbkCCptC2e3l8KNMLZcWevWd0JnEBLwchAmWR8D5rzQ9HnB2WqVjDmDkmr3jy_sTLAbkyw: Failed to fetch https://nsf.gov/sites/default/files/css/css_hYuij6XC7jvxTksMfaEZcIOC1dEs_Igu7NCk5cMgwCE.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJyFkIFuwyAMRH8Ikk-KDHYSVgcjG7rl70fadZs0iUnIso6n4w5ArAL5nOFrmVaVXF0UZiiWAku8zVGU3DX6dhTJlKtN2dal7nSQ98CkdQQEJcCo7Qg2wjDdE5KOkJWgNiX0a2LynPJtRG9y9wFyHnteLn3YsALLJqP7oinXfwMpMdSe_uKGX6HUa2ZfpZ_yBFFbAZ7gDT7cNzmjRE5BQc9fYpUW9yI9kbkCCptC2e3l8KNMLZcWevWd0JnEBLwchAmWR8D5rzQ9HnB2WqVjDmDkmr3jy_sTLAbkyw: HTTP 400</li>
+<li>https://nsf.gov/sites/default/files/css/css_VRcCNvRPB9_xuv8aDnJai3SKtB0ofAizG15B2zRqpFo.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jFEOwyAMQy8E5UhVIGnLCgki0G23X7dV-5mEFFmW_RxAbAL8dHCZaanCzQRJCYpGnyTsLkgl85bT5SJM3HRiXea2USZrfSXAUHv2OsIwHhGpjpBVDuuBeUwlWWXUV2q9sm1yXvmCWHuBNMENHuZHuiY9bEXiuTcqIUKaM2GEOUXe1f1H02dn9KmNsvOgZLreUa__LwyhgcM: Failed to fetch https://nsf.gov/sites/default/files/css/css_VRcCNvRPB9_xuv8aDnJai3SKtB0ofAizG15B2zRqpFo.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jFEOwyAMQy8E5UhVIGnLCgki0G23X7dV-5mEFFmW_RxAbAL8dHCZaanCzQRJCYpGnyTsLkgl85bT5SJM3HRiXea2USZrfSXAUHv2OsIwHhGpjpBVDuuBeUwlWWXUV2q9sm1yXvmCWHuBNMENHuZHuiY9bEXiuTcqIUKaM2GEOUXe1f1H02dn9KmNsvOgZLreUa__LwyhgcM: HTTP 400</li>
+<li>https://nsf.gov/sites/default/files/css/css_-Uo4tUCBVAh3TFQWG1jDPPMjcdrYdzWvL7ZYB920XMk.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jFEOwyAMQy8E5UhVgLRlhQQlsK23X7dV-5mEZFlW8myIsTHQ4eAK0yJMzQTOGaomnznsLrCgeduZSmVCajqRLnPbsKC1XhBikF68jrAAEm0E2a3PfTi48t16IEIZUZlXHv0FWxeyjU_VLxilV8gT3OBpfqRr3MNWOZ19oxwS5LlgTDDnRLu6_9P06Rk9tGFxHhRN10fUa_8FUAeEGg: Failed to fetch https://nsf.gov/sites/default/files/css/css_-Uo4tUCBVAh3TFQWG1jDPPMjcdrYdzWvL7ZYB920XMk.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jFEOwyAMQy8E5UhVgLRlhQQlsK23X7dV-5mEZFlW8myIsTHQ4eAK0yJMzQTOGaomnznsLrCgeduZSmVCajqRLnPbsKC1XhBikF68jrAAEm0E2a3PfTi48t16IEIZUZlXHv0FWxeyjU_VLxilV8gT3OBpfqRr3MNWOZ19oxwS5LlgTDDnRLu6_9P06Rk9tGFxHhRN10fUa_8FUAeEGg: HTTP 400</li>
+<li>https://nsf.gov/sites/default/files/css/css_-Uo4tUCBVAh3TFQWG1jDPPMjcdrYdzWvL7ZYB920XMk.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jVGOwzAIRC9kx0eKsKGtNzZYgNvm9pvdVv2pFAmh0fBmAEQX4D3BWywXFfZQpDUYVnOTsqUiSuFvHaoPYWK3he2y-o06xZiVAIvOnu0MK6AYEXSLuc3TwqvcYwZm0jOqyVXO7ko-laPLMeMFos4BbYEfeIYDr76v1DNhKjC8CodPPLnMchtSj9JgUiq0tRNWWFvlzdK3tfzngu3m1FMGozDtgfZ--gt-w4xc: Failed to fetch https://nsf.gov/sites/default/files/css/css_-Uo4tUCBVAh3TFQWG1jDPPMjcdrYdzWvL7ZYB920XMk.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jVGOwzAIRC9kx0eKsKGtNzZYgNvm9pvdVv2pFAmh0fBmAEQX4D3BWywXFfZQpDUYVnOTsqUiSuFvHaoPYWK3he2y-o06xZiVAIvOnu0MK6AYEXSLuc3TwqvcYwZm0jOqyVXO7ko-laPLMeMFos4BbYEfeIYDr76v1DNhKjC8CodPPLnMchtSj9JgUiq0tRNWWFvlzdK3tfzngu3m1FMGozDtgfZ--gt-w4xc: HTTP 400</li>
+<li>https://nsf.gov/sites/default/files/css/css_IZ1eHGP0ZOT00bWNfM1cSEJz3Xr9KHdV2zhQ84rvD3k.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jwFqBDEIRS-UTI40mMSdTdfEoGbbuX2z06UUCgER-T71CzkbQzsDvIvtJtzMJSaCriUSp0dILOheaVa1c8NmujW97XbHit4DodgKiIKQk4wadYXl8iwZZYUc_PQRWltTVNpjJl2aIj541e9Sml2rVpQggWG-uOVzgjakeeMZfQUaHL4Y1h8my-hAG3zAl_uFQuZEJQrI-Uc0HuneebpWp5wK0F4xF9gvb-G_tF1zTk-d50IERTf0M-v76DegwdC3: Failed to fetch https://nsf.gov/sites/default/files/css/css_IZ1eHGP0ZOT00bWNfM1cSEJz3Xr9KHdV2zhQ84rvD3k.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jwFqBDEIRS-UTI40mMSdTdfEoGbbuX2z06UUCgER-T71CzkbQzsDvIvtJtzMJSaCriUSp0dILOheaVa1c8NmujW97XbHit4DodgKiIKQk4wadYXl8iwZZYUc_PQRWltTVNpjJl2aIj541e9Sml2rVpQggWG-uOVzgjakeeMZfQUaHL4Y1h8my-hAG3zAl_uFQuZEJQrI-Uc0HuneebpWp5wK0F4xF9gvb-G_tF1zTk-d50IERTf0M-v76DegwdC3: HTTP 400</li>
+<li>https://nsf.gov/sites/default/files/css/css_YEXQuPBzizK1vSP2eU1jGMm8DawtRytkalY_9Vp5bVY.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9kGtuAyEMhC_E40grA85CAzayYdPcvpu0SX5UQrJGo_FnWzKkNBjo7uHPuIswDRO5VuhaQuV49ZEFzUNO1zoT0lBHetlGxobWBkFIUWYLusLwOBM7EBRlxe182ABEayqj8KpfeV_2BccUsoPP6r9gktmhOviCb_Mm_eAZc-dyzpsOArtAz_qCP4mb1GeoRTMmoxwL1K1hKrDVQlf1_yP3PGD0rgObD-dfzNRbeu02R8Gb-qe6xmlW_AFIt6eH: Failed to fetch https://nsf.gov/sites/default/files/css/css_YEXQuPBzizK1vSP2eU1jGMm8DawtRytkalY_9Vp5bVY.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9kGtuAyEMhC_E40grA85CAzayYdPcvpu0SX5UQrJGo_FnWzKkNBjo7uHPuIswDRO5VuhaQuV49ZEFzUNO1zoT0lBHetlGxobWBkFIUWYLusLwOBM7EBRlxe182ABEayqj8KpfeV_2BccUsoPP6r9gktmhOviCb_Mm_eAZc-dyzpsOArtAz_qCP4mb1GeoRTMmoxwL1K1hKrDVQlf1_yP3PGD0rgObD-dfzNRbeu02R8Gb-qe6xmlW_AFIt6eH: HTTP 400</li>
+<li>https://nsf.gov/news/algorithm-created-deep-learning-finds-potential: Failed to fetch https://nsf.gov/news/algorithm-created-deep-learning-finds-potential: HTTP 403</li>
+<li>https://nsf.gov/news/astronomers-find-elusive-target-hiding-behind-dust: Failed to fetch https://nsf.gov/news/astronomers-find-elusive-target-hiding-behind-dust: HTTP 403</li>
+<li>https://nsf.gov/news/astronomers-find-golden-glow-distant-stellar: Failed to fetch https://nsf.gov/news/astronomers-find-golden-glow-distant-stellar: HTTP 403</li>
+<li>https://nsf.gov/news/biologists-find-10-lineages-fish-able-live-highly: Failed to fetch https://nsf.gov/news/biologists-find-10-lineages-fish-able-live-highly: HTTP 403</li>
+<li>https://nsf.gov/news/birds-follow-army-ants-find-prey: Failed to fetch https://nsf.gov/news/birds-follow-army-ants-find-prey: HTTP 403</li>
+<li>https://nsf.gov/news/chemists-find-path-new-blue-meteorite-minerals: Failed to fetch https://nsf.gov/news/chemists-find-path-new-blue-meteorite-minerals: HTTP 403</li>
+</ul>
+<h2>[HIGH] Uses nullish coalescing operator</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/modules/contrib/google_tag/js/gtm.js?tg2467:12</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Nullish coalescing can simplify defaults while avoiding falsy-value bugs, but legacy browsers need transpilation.</li>
+<li>Recommendation: Transpile this syntax for older browser support or gate usage to modern bundles only.</li>
+<li>Can I Use feature: mdn-javascript_operators_nullish_coalescing</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_nullish_coalescing' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing</li>
+</ul>
+<h2>[HIGH] Uses CSS :has() selector</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/css/css_-oiYCWVtT_BhGviuQXNUmgB04xZ0Xkda20b0IsvjJc8.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9juuOAyEIhV_IyyNNUJkZtwpGcNq-_dpus3-amBByAh_nACkpAz09fITbO5OayKVAkxwKx5uP3NG82lS1MSGpOJJ90xMrWhs6Qop91CArLOUrJ-wr5ODLBiBaU-eMK5nQFtx1BRY-eLVvPZPaaXVbUR11dLLKs9oKVDhsVqx_TOqjQXHwAw_zD3nlEc_GM1eMcMxQtoopw_b6Qvz3yL3vjDxlOvsAgmbIPcnH31wZ7-Lf3VVOo-Av9TS1AQ:11</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: :has() can replace JavaScript-driven parent-state logic, but support can lag in older browsers.</li>
+<li>Recommendation: Keep critical functionality resilient if :has() is unavailable, especially for core navigation and forms.</li>
+<li>Can I Use feature: css-has</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/CSS/:has</li>
+</ul>
+<h2>[HIGH] Uses CSS :has() selector</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/css/css_2hGscWttZ705Ltx8_s2aEDrJ8--f-aq6-JPcTuQ2_Rk.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9kFtuxCAMRTfEY0mRASehAxjZpu3sviTttB-VkCzLuvfIL0hJCdrTw0_hdqamJlIp0CWHQvHhIzGaK82qdmrYVFyTfdMTK1obGCFFHjXICosKK_ugdxugNeQVVXJ7zCS6hOiglc9YQDHdzZYrM-rgZpVm9BWoEApa2m2c77vMbzjx6FAcvMGn-aW90ohnp3xhHRgOhn7KC_5T3Gh9hHnsickIxQxlq5gybPfi_r_k7gFGnqJYfQBBM-QjvXp_Acszv1Q:12</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: :has() can replace JavaScript-driven parent-state logic, but support can lag in older browsers.</li>
+<li>Recommendation: Keep critical functionality resilient if :has() is unavailable, especially for core navigation and forms.</li>
+<li>Can I Use feature: css-has</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/CSS/:has</li>
+</ul>
+<h2>[HIGH] Uses CSS :has() selector</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/css/css_65tZSVJibuMePlL9xaFmA37Gb9jlAK1_F08FAHNeXnk.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jw1qwzAMhS_kxEcKsq22XmXJSHK33H5pVkahYBDi8fTpD0pxAd4jvMR6UWEPWYigW00k-R6zKIZnOlTrwshuK9tl8xs2XBYgVJ8BSRFK1tGSzbBSH7WgzpCrPJYEzHOKKt-PZNOjSK4yq3et7OeoGaVI4FhObvqcog_lxeWI_gcWHR1ohS_4Cf9kLJKpJgXd30yXkW9djossmOQKtDUsFbZzb_y01rMv2G6OLSYwDMO-i72W_gJsuMMU:13</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: :has() can replace JavaScript-driven parent-state logic, but support can lag in older browsers.</li>
+<li>Recommendation: Keep critical functionality resilient if :has() is unavailable, especially for core navigation and forms.</li>
+<li>Can I Use feature: css-has</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/CSS/:has</li>
+</ul>
+<h2>[HIGH] Uses CSS :has() selector</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/css/css_anjDo5RqAAQNbsdpQAE93P3Y6u6dUWIUJHkfIy0-hus.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9j_0KwyAMxF9I6yOVqGnrqomYuI-3X7uV_TMQQjhyvzsIxKgM9HJwiWlpTGoC5wxVks8cdhe4oTnXoUplQlKZSJZZNyxorW8IMbRevIywle_WAxG2EZV55ZHfUHsjq3xMHYEKPqPlxYbjo9P8wrH1CnmCGzzNj3bKPWyV04kJhwR5LhgTzDnRLu7_NH1yRl6iWJwHQdPlEeXqfwMXOIWB:8</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: :has() can replace JavaScript-driven parent-state logic, but support can lag in older browsers.</li>
+<li>Recommendation: Keep critical functionality resilient if :has() is unavailable, especially for core navigation and forms.</li>
+<li>Can I Use feature: css-has</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/CSS/:has</li>
+</ul>
+<h2>[HIGH] Uses CSS :has() selector</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/css/css_Bn0d-_dVgW7R6dKEhEbXAs9WIMUIM-V1RqfKmz2v5do.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJyNkWFuwyAMhS8E5EiRA05gITbFZl1vP5qt249KKBKyLPvj2Q8gBGWgxwS_iVsrkxrPOUORtGT2--S5onmGnh2FCUnFkayzRjzQ2hVBW8VgCe9iFUGwjviNP-0CRGMqYuVRPx2woc2J9mtUD6IjNIOi6FUT1yR5G3q4teR3u4IfqlR8rhbOkTIG-z-QVe6n_IChtgLZwQd8mT9yUm4-Fk79vilQYatQorzg_4prVNrSXUYMRtgnyPOBIcF87jK9l9w5wMhDFI9p6a9omtzDS_sbniXw3A:8</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: :has() can replace JavaScript-driven parent-state logic, but support can lag in older browsers.</li>
+<li>Recommendation: Keep critical functionality resilient if :has() is unavailable, especially for core navigation and forms.</li>
+<li>Can I Use feature: css-has</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/CSS/:has</li>
+</ul>
+<h2>[HIGH] Uses CSS container queries</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/css/css_Bn0d-_dVgW7R6dKEhEbXAs9WIMUIM-V1RqfKmz2v5do.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJyNkWFuwyAMhS8E5EiRA05gITbFZl1vP5qt249KKBKyLPvj2Q8gBGWgxwS_iVsrkxrPOUORtGT2--S5onmGnh2FCUnFkayzRjzQ2hVBW8VgCe9iFUGwjviNP-0CRGMqYuVRPx2woc2J9mtUD6IjNIOi6FUT1yR5G3q4teR3u4IfqlR8rhbOkTIG-z-QVe6n_IChtgLZwQd8mT9yUm4-Fk79vilQYatQorzg_4prVNrSXUYMRtgnyPOBIcF87jK9l9w5wMhDFI9p6a9omtzDS_sbniXw3A:2</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Container queries can reduce JavaScript-driven responsive logic and simplify component-level layout behavior.</li>
+<li>Recommendation: Use container queries where possible, but ensure critical layouts remain usable when unsupported.</li>
+<li>Can I Use feature: css-container-queries</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/CSS/@container</li>
+</ul>
+<h2>[HIGH] Uses CSS :has() selector</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/css/css_JExsS-q965oaNSQs7uOV1kONjaMFwBZbqLvlY86RvmA.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9kGtuAyEMhC_E40grA84uDWBkm01z-5Jt0_6ohIRG1vhjMIaUlKA9PfwU7sbU1EQqBbrkUCjefSRG85JZ1U4Nm4prctv0wIrWBkZIkUcNssLwnI5VBEFecTudNkBra-pAplW_5HafIrqEaF-GMBZQTFfY8m-MOrhZpXn6N5h4dCgOPuDT_JJeacSjU573TQeGnaEf8ob_HDdaH2HOf2AyQjFD2SqmDNs1i_9vuesBI09RrD7MLZshj_TONmfGh_hLXaU0Cn4BdFvFYw:12</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: :has() can replace JavaScript-driven parent-state logic, but support can lag in older browsers.</li>
+<li>Recommendation: Keep critical functionality resilient if :has() is unavailable, especially for core navigation and forms.</li>
+<li>Can I Use feature: css-has</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/CSS/:has</li>
+</ul>
+<h2>[HIGH] Uses CSS :has() selector</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/css/css_KH-QyHTkBJaeSG_Nhy2hB3ZCLNnd60z3F-Q2t_ZkpGs.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jmtuAzEIhC_kx5FWrM1m3dhgAd40t6-TRv1TyRJCI_iYAXI2BnpG-IhwCJO5xLVC17JXTveYWNC92lStMyGZBtJjsxMbeg8VxVbALgg5yWi7rrBcrpJRVsiNL78D0Zo6Z1wthL7isXys8o1X-y6FzE-r-4oStCHkjWf1XzDL6FADfMG3-yOj8Uhn5-mpTjkVqFvDXGB7JWj8PwrvO6dPNWxxB0U39JH14--ugg-N7x4a51HxB-uBtAE:11</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: :has() can replace JavaScript-driven parent-state logic, but support can lag in older browsers.</li>
+<li>Recommendation: Keep critical functionality resilient if :has() is unavailable, especially for core navigation and forms.</li>
+<li>Can I Use feature: css-has</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/CSS/:has</li>
+</ul>
+<h2>[HIGH] Uses CSS :has() selector</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/css/css_locNyUNJQmd00vJ1AIaiTgUXn6QOuYIchQz4wii33U4.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jmuuAyEIhTek45ImqMyMrYIB7L3dfaeP9E8TE0JO4DsHIGdjoHuAj1g2YTKXuFboWmLldA2JBd2znap1JiTThXRb7cCG3kNFsSkw7GAptPtCG0sDK0wzQxSEnGS0qDNs55uPQIQyoyrvPNv38zPztdB1RgnaEPLGZ_U3mGV0qAtc4N99yWA80tH5zFSnnArUtWEusD4vaPgdLS-f07sathBB0Q39y_rJfwC9VKK2:11</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: :has() can replace JavaScript-driven parent-state logic, but support can lag in older browsers.</li>
+<li>Recommendation: Keep critical functionality resilient if :has() is unavailable, especially for core navigation and forms.</li>
+<li>Can I Use feature: css-has</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/CSS/:has</li>
+</ul>
+<h2>[HIGH] Uses CSS :has() selector</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/css/css_lSY3cdWNn1HtuF-bXowS1kx8KOSqctoOt0dYkWXN0vM.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9z1EOwyAIANALaT1Sg0pbNwUj2K23X7st-1liQgiBBwkQozLQ4eBbTEtjUhM4Z6iSfOZwd4EbmiudValMSCoTyTLrhgWt9Q0hhtaLlxGLaU8R24isvFsPRGOVeeXRvKH2Rlb5jDqCCj6j5cWG8-lr-MGx9Qp5ghs8zU875R62yuliwiFBngvGBHNOdBf335ree0YOUSzOg6Dp8ojyvf8COkGS8w:9</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: :has() can replace JavaScript-driven parent-state logic, but support can lag in older browsers.</li>
+<li>Recommendation: Keep critical functionality resilient if :has() is unavailable, especially for core navigation and forms.</li>
+<li>Can I Use feature: css-has</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/CSS/:has</li>
+</ul>
+<h2>[HIGH] Uses CSS :has() selector</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/css/css_mKJWobzyYqcUL6YgPYkFQISzK6sG2VwtqA1xf319vTQ.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJyFkGGKxDAIhS-UNEcqNrGtO4mGaGZ2br-ZUvbPQhZERL-nDyElE-B3gLtY9iZsLkrOUJW2LPERojR0nzSqUoWRTRfWfbUTC3oP3U5pxIcn3qUVMBKeCbaGkGLrZdMZdsjTb8CMbUadY1cmRp9xtxmY5ZDZvMJB_K_3htYbe5MRdQYajH8YlhnTFZvf6LaVWq-QF_iCb7dTNmwhQr0M_WqCSY9nFRqbnEokyGvBRLCOHzw0_G0tl87pW4eZsIGi6_pKep9zT8KXhisvRVLP-AOgnM5g:13</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: :has() can replace JavaScript-driven parent-state logic, but support can lag in older browsers.</li>
+<li>Recommendation: Keep critical functionality resilient if :has() is unavailable, especially for core navigation and forms.</li>
+<li>Can I Use feature: css-has</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/CSS/:has</li>
+</ul>
+<h2>[HIGH] Uses CSS :has() selector</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/css/css_rZLl9Z_qVIx2YWYOfhhkB7yy2Xsz5PZmiFBU2n_u08A.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9j2FuwzAIhS9kx0eKsE0Srw5YgLv19nO6dftRyRJCCD4ePMjZGOgR4LdYNmEyl7hWaFpi5XQLiQXdlUZ1NiYk04V0W-3AE72PgpCT9DPqDNsQrAtmv5WKvha6zeid7z4CEcqMulRGUptCvPNsLljBxl-X2NSB4DBA3nhE-wGz9AZ1gQ_4csOXoYQEzQqT-1sMxj0djcuQcw0EdoF26Gv3v7N0aj0OOwdmp5wK1PXEXGB9vhbeW8vzgNOHGp4hgqLr-plf2t_ju7mz:11</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: :has() can replace JavaScript-driven parent-state logic, but support can lag in older browsers.</li>
+<li>Recommendation: Keep critical functionality resilient if :has() is unavailable, especially for core navigation and forms.</li>
+<li>Can I Use feature: css-has</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/CSS/:has</li>
+</ul>
+<h2>[HIGH] Uses CSS :has() selector</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/css/css_v9mHPKF95W0AgbqCfAP__i7iwmySUzagYLE33EQ9AIM.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9juuOAyEIhV_IyyNNUJkZtwpGcNq-_dpus3-amBByAh-HAykpAz09fITbO5OayKVAkxwKx5uP3NG82lS1MSGpOJJ90xMrWgsFu66A0BFS7KMGWWEpXzlhXyEHXzYA0Zo657uSCW3BfRms8MGrfeuZ1E6r24rqqKOTVZ7VVqDCYbNi_WNSHw2Kgx94mH_IK494Np5_xQjHDGWrmDJsrxTiv0fufWfkKdPZBxA0Q-5JPv7myngX_-6uchoFfwEDWcGk:12</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: :has() can replace JavaScript-driven parent-state logic, but support can lag in older browsers.</li>
+<li>Recommendation: Keep critical functionality resilient if :has() is unavailable, especially for core navigation and forms.</li>
+<li>Can I Use feature: css-has</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/CSS/:has</li>
+</ul>
+<h2>[HIGH] Uses CSS :has() selector</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/css/css_yvEd5zyVo8gzlQegbs7CE6v_4tezdPtu27L5mKeaCig.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jGsKwzAMgy-Ux5GKk7ht1sQOdrKtt1-3lf0ZFIwQ0idDSp2Bdg-ncbMwdRO5FGiaQ-G4-ciC5i2Hq40Jqasjnae-YkVrgyCkKKMGvcIWvtsARChXVOGFr3rBPoRs5-PaF0wyGhQHN3iaH-k7j7g2zsfeKMcMZaqYMkwl06b-P3KfndFdO1YfQNEMfSQ9_78ARsB0UQ:7</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: :has() can replace JavaScript-driven parent-state logic, but support can lag in older browsers.</li>
+<li>Recommendation: Keep critical functionality resilient if :has() is unavailable, especially for core navigation and forms.</li>
+<li>Can I Use feature: css-has</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: caniuse</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/CSS/:has</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_0KYDivoXPmk4PuH4FEiNp3bisc3JdZ6e9m7NdtJUeEk.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9j2EOgyAMhS-EciRToSITWgJ1zp1-zLiF-WNJ8_L69aVpwVphoF3DafopM4kyHAKk4sfAZtGGM6q3VBcTE5KUnso0yIwRuw5MHVrP9C-UUdZMnXCtpEyG547O6Y9RjtkFHAScdlWufQ83ePzCqL7rtQs8QmiAj-DQQJJ6lslovRy_NIlYIZyJcuWWNwoMNnha2mHxFgnuDRFezZzY13fVWjZb9KEv_NaHBA:14</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_1qjs87h6ey4qSWCXW1VmYInXW2nqJGdH5-TN8tXFVAI.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9juEOwiAMhF8IxiMtHXQMhZaUEp1PLxo16o8lzeXr9XIphKAMtDt4wbQKkxrPOUNtacnsz86zoHnIoFKZkLRN1NZZNyxoLfhxDInpMJRR9CggqF3IKo-pxgvcdozRvcFE5phxVoguDvnfJzjB9dcs5lPvCi8pY0sBF5AvX7n7rXIaz5jeLqG5p94B5mRs_Q:4</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_33-lVF9cWcorSODvIP3v0HaWT3VCZZqYf-ZXDki-m2U.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9juEOwiAMhF8IxiMtHXQdDloCXXQ-vcyoUX8sab5c7y5NIQQV4N3BSwxzFVbjJSUoLU5J_Oq8VDQHuspFGFnbwG0edcGM1oLvYYjCZ6UFq5zlMQOhTZHXjqZn1Yq6VbYqfYrxFe47Erm3MCRCCUcFctTxvw9wgduvmc3nvKMkE6QvQ2XzS5HYvzBbu4bmnnwAeQt6BA:4</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_5RA0tEVDCWLg8BaotAM22CzDuDLESV-PRjP3ksP-NOQ.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9T9EOwjAI_KFu_aSFUcaqHTQtU-fXWxc10wcTcjmOy-WAEExBNg8v0k9FxRxqSpBrHJPi2aMWck9obMkqJFZ7qdNgMy3UdYDtGKLKP1MhW4t0pm2ywwL3jZj9mzhW5USDAXtu8Lv3cILbt7i4T7znpCOkgxAXYELI1mphoRBt_-XgqDGQwOWgmK44Z42tuVvrNVS_4wMzC3IC:14</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9j2EOgjAMhS802JFIWcuYbO2yFRFP7zRqkB8mzcvr95qmBUQV4N3C2_RTEVbjJEbINYxR3GKdFDJPaS5lYWKtPddp0JkSdR24FmIQ_jdUSNfCnUqrbFyB-07e248xXsRHGhS89U3OfQ8XuP3CZL7rrY8yQjyARBjAQdZ2Vj1zlI2jAMbAyzGsAYnheiAqq5uzhPaMWeuG1b70AeraeXk:18</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9j2EOgyAMhS-EciRToSITWgJ1zp1-zLiF-WNJ8_L69aVpwVphoF3DafopM4kyHAKk4sfAZtGGM6q3VBcTE5KUnso0yIwRuw5MHVrP9C-UUdZMnXCtpEyG547O6Y9RjtkFHAScdlWufQ83ePzCqL7rtQs8QmiAj-DQQJJ6lslovRy_NIlYIZyJcuWWNwoMNnha2mHxFgnuDRFezZzY13fVWjZb9KEv_NaHBA:18</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9j2EOwjAIhS_UrUdakDJWbaFpWXSe3rqoUX8sIS8f8EIeEIIpyObhBeNcVcyhpgSlxVNSvHjUSu4pnXJRIbE2SpsnWyjTMAD2ZYgqh6ZE1Y4MlWytMpj2Kg4r3Ddi9m9wrMqJJgP23OW_H-EMt99hdp_zPmZgQijWY2KlEG3_7cthuuJSNPZYbm3X0PyuD0PVcSI:18</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jmEOwiAMRi8E40hLga5DoSXQRefpRaNm-sOk-fL62jSFGFWAdwcvmJYmrCZIzlB78lnC2QVpaB4xqFRhZO0T92XWFQtaC2EMYxL-t9RQt8ZWZVQ1ocFtRyL3BkMilHFWIEcjfvsJTnD9lsV8zjvK4iEfRBGfMvYU0UM7eJUtrFXS-M5s_RK7e-YdUnZm3w:18</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jmEOwjAIRi_UtUdaWMtYtYOmpeo8vZ1RM_1hQr48HoQAIagAbw5eYOcirMZLSpBrnJL4s_NS0OzRac3CyFot13nUBVccBvB9GKLwv6WC2goPKr2y8QXuGxK5NxgSoYSjAjnq8dtbOMHtW67mc95RkgnSQdQYkOFyMCrNL1li_8u0eg3VPfMB7vRkdw:18</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jtEOwjAIRX-oWz9pYS1j047btCw6v97OqFEfTMjJ4UIIFKOBdPf0lH4qUHMBKVGuy5gQzj6gsDvQbM1QVqu91mmwmVfuOgptGBfov6XCthXtDK2yC4VuO4v4lzgBJPFgJF4afvueTnT9Dlf3Pu8lYaT0ERi2MGcs7Qu31Uus_sE7InldeQ:18</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9juEOwiAMhF8IxiMtHXQdDloCXXQ-vcyoUX8sab5c7y5NIQQV4N3BSwxzFVbjJSUoLU5J_Oq8VDQHuspFGFnbwG0edcGM1oLvYYjCZ6UFq5zlMQOhTZHXjqZn1Yq6VbYqfYrxFe47Erm3MCRCCUcFctTxvw9wgduvmc3nvKMkE6QvQ2XzS5HYvzBbu4bmnnwAeQt6BA:18</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9juEOwiAMhF8IxiMtHXQMhZaUEp1PLxo16o8lzeXr9XIphKAMtDt4wbQKkxrPOUNtacnsz86zoHnIoFKZkLRN1NZZNyxoLfhxDInpMJRR9CggqF3IKo-pxgvcdozRvcFE5phxVoguDvnfJzjB9dcs5lPvCi8pY0sBF5AvX7n7rXIaz5jeLqG5p94B5mRs_Q:18</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jWEOwiAMRi8E9EhLhY6h0BIo0Xl60aiJ_ljSvLy2X1oMQQV5B3yLW5uwGi85Y-3plMVfwEsj88S0UoWJtTvu66IbFbIW_VyGJHwYytT0KNBIR2OrMqsa3_C-U4zwERNFYqZFMUKc-O8dnvH2Oyzmex5Uht-qpPnUjH4NHV58ACOXY5c:18</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9T9EOgyAM_CGUTzIdVGSWlkCNc18_ZtzifFjSXK53l6YH3qsAbxYO0o9FWI0TIsg13kjcbJ0UNG9oLGVhZK0913HQCRN2Hbhm-ij8L1RQl8KdSptsXIHnhiHYDzFBJBAOCsGGBte9hzs8fsVkvudtILkBnYSYIKCDrO0tV9BH3bucEqmJcCTqVfeyMgl4ijyfTZXFTVliK2eWuvpqd3wBwkSABg:18</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9T9EOgyAM_CGUTzJdqciElkCN275-zLjF-WDSXK53l6YHzqkAPy3spB-LsBqUGCHXcIuCs0UpZD7QWMrCxFp7ruOgEyXqOsBmuiB8GYpU9CpQSJfCnUqbbLDA60ne2y8xXsRHGhS89Q3Oew93ePyLyfzO25DAE0LW9iYWckG3bodEaiLsiXrWnawcBVwMPB9NlQWnLKF1MUtdXbUbvgHXsoYk:18</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9T9EOwjAI_KFu_aSFUcaqHTQtU-fXWxc10wcTcjmOy-WAEExBNg8v0k9FxRxqSpBrHJPi2aMWck9obMkqJFZ7qdNgMy3UdYDtGKLKP1MhW4t0pm2ywwL3jZj9mzhW5USDAXtu8Lv3cILbt7i4T7znpCOkgxAXYELI1mphoRBt_-XgqDGQwOWgmK44Z42tuVvrNVS_4wMzC3IC:18</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9TVsOwyAMuxAtR6pSSFM2ihGke51-dNqmbh-VIsuxY4e8V1C6W3qTfipIahxipFzDGOHO1qGw2aCxJSNx0tqnOg0688JdR66ZPiAdHc1ccOQX1rWkTtEmG1focWcR-yFGAIk8KImVBv97Tye6_YqL-dZbvmz_dsJEjrXW4HmkopAW27kSMVLcCYrVzRlhK1nr1Vf7wieh1nxB:18</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_BmwS8kLzTL_FwKygL_pv9MTzF6Kmk9OJ1KZWm09ZU84.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9TVsOwyAMuxAtR6pSSFM2ihGke51-dNqmbh-VIsuxY4e8V1C6W3qTfipIahxipFzDGOHO1qGw2aCxJSNx0tqnOg0688JdR66ZPiAdHc1ccOQX1rWkTtEmG1focWcR-yFGAIk8KImVBv97Tye6_YqL-dZbvmz_dsJEjrXW4HmkopAW27kSMVLcCYrVzRlhK1nr1Vf7wieh1nxB:4</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_BNlXh94dMCUqERMkcw21sRxvhoa2JAURsVXVSJ5jLfo.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9T9EOgyAM_CGUTzJdqciElkCN275-zLjF-WDSXK53l6YHzqkAPy3spB-LsBqUGCHXcIuCs0UpZD7QWMrCxFp7ruOgEyXqOsBmuiB8GYpU9CpQSJfCnUqbbLDA60ne2y8xXsRHGhS89Q3Oew93ePyLyfzO25DAE0LW9iYWckG3bodEaiLsiXrWnawcBVwMPB9NlQWnLKF1MUtdXbUbvgHXsoYk:4</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_sUie_dvF7a10SWCeceEvDmsoobqyRZBLmW1KtpACdgY.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jWEOwiAMRi8E9EhLhY6h0BIo0Xl60aiJ_ljSvLy2X1oMQQV5B3yLW5uwGi85Y-3plMVfwEsj88S0UoWJtTvu66IbFbIW_VyGJHwYytT0KNBIR2OrMqsa3_C-U4zwERNFYqZFMUKc-O8dnvH2Oyzmex5Uht-qpPnUjH4NHV58ACOXY5c:4</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_teOcUM9D0XUkix6gJwtRVc-l32gvrWcgoVIe68kNqvM.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jmEOwjAIRi_UtUdaWMtYtYOmpeo8vZ1RM_1hQr48HoQAIagAbw5eYOcirMZLSpBrnJL4s_NS0OzRac3CyFot13nUBVccBvB9GKLwv6WC2goPKr2y8QXuGxK5NxgSoYSjAjnq8dtbOMHtW67mc95RkgnSQdQYkOFyMCrNL1li_8u0eg3VPfMB7vRkdw:14</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_wlRQNk36g0Q55e4D_ACSX35inWv5_iEnrUojSUSbms0.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9j2EOwjAIhS_UrUdakDJWbaFpWXSe3rqoUX8sIS8f8EIeEIIpyObhBeNcVcyhpgSlxVNSvHjUSu4pnXJRIbE2SpsnWyjTMAD2ZYgqh6ZE1Y4MlWytMpj2Kg4r3Ddi9m9wrMqJJgP23OW_H-EMt99hdp_zPmZgQijWY2KlEG3_7cthuuJSNPZYbm3X0PyuD0PVcSI:4</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_xCnpbr9t25DP0U6vTilszJwCHwxT_SJyL8Dh6iroFzY.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jtEOwjAIRX-oWz9pYS1j047btCw6v97OqFEfTMjJ4UIIFKOBdPf0lH4qUHMBKVGuy5gQzj6gsDvQbM1QVqu91mmwmVfuOgptGBfov6XCthXtDK2yC4VuO4v4lzgBJPFgJF4afvueTnT9Dlf3Pu8lYaT0ERi2MGcs7Qu31Uus_sE7InldeQ:14</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_YjyEyhUBiryHp10PwyYOppbYGrdsWPpr5ISHN5uSTUA.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9j2EOgjAMhS802JFIWcuYbO2yFRFP7zRqkB8mzcvr95qmBUQV4N3C2_RTEVbjJEbINYxR3GKdFDJPaS5lYWKtPddp0JkSdR24FmIQ_jdUSNfCnUqrbFyB-07e248xXsRHGhS89U3OfQ8XuP3CZL7rrY8yQjyARBjAQdZ2Vj1zlI2jAMbAyzGsAYnheiAqq5uzhPaMWeuG1b70AeraeXk:14</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_zr-o7J1sI12Z9Cyc29buGXuUtjzAqilprDY5h1uCi7c.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9T9EOgyAM_CGUTzIdVGSWlkCNc18_ZtzifFjSXK53l6YH3qsAbxYO0o9FWI0TIsg13kjcbJ0UNG9oLGVhZK0913HQCRN2Hbhm-ij8L1RQl8KdSptsXIHnhiHYDzFBJBAOCsGGBte9hzs8fsVkvudtILkBnYSYIKCDrO0tV9BH3bucEqmJcCTqVfeyMgl4ijyfTZXFTVliK2eWuvpqd3wBwkSABg:14</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[HIGH] Uses JavaScript optional chaining</h2>
+<ul>
+<li>Type: too-new</li>
+<li>Location: https://nsf.gov/themes/custom/nsf_theme/js/touchpoints.js?tg2467:96</li>
+<li>Message: Feature may be too new for target browsers (14.7% unsupported).</li>
+<li>Why it matters: Optional chaining improves readability and safety, but very old browsers require transpilation.</li>
+<li>Recommendation: If older browsers are in scope, transpile this syntax and serve appropriate bundles.</li>
+<li>Can I Use feature: mdn-javascript_operators_optional_chaining</li>
+<li>Unsupported target share: 14.7%</li>
+<li>Compatibility source: mdn-bcd</li>
+<li>Compatibility note: Can I Use feature 'mdn-javascript_operators_optional_chaining' unavailable; used MDN fallback.</li>
+<li>Unsupported targets: and_qq 14.9, and_uc 15.5, kaios 3.0-3.1, kaios 2.5, op_mini all</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_0KYDivoXPmk4PuH4FEiNp3bisc3JdZ6e9m7NdtJUeEk.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9j2EOgyAMhS-EciRToSITWgJ1zp1-zLiF-WNJ8_L69aVpwVphoF3DafopM4kyHAKk4sfAZtGGM6q3VBcTE5KUnso0yIwRuw5MHVrP9C-UUdZMnXCtpEyG547O6Y9RjtkFHAScdlWufQ83ePzCqL7rtQs8QmiAj-DQQJJ6lslovRy_NIlYIZyJcuWWNwoMNnha2mHxFgnuDRFezZzY13fVWjZb9KEv_NaHBA:4</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_1qjs87h6ey4qSWCXW1VmYInXW2nqJGdH5-TN8tXFVAI.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9juEOwiAMhF8IxiMtHXQMhZaUEp1PLxo16o8lzeXr9XIphKAMtDt4wbQKkxrPOUNtacnsz86zoHnIoFKZkLRN1NZZNyxoLfhxDInpMJRR9CggqF3IKo-pxgvcdozRvcFE5phxVoguDvnfJzjB9dcs5lPvCi8pY0sBF5AvX7n7rXIaz5jeLqG5p94B5mRs_Q:5</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_33-lVF9cWcorSODvIP3v0HaWT3VCZZqYf-ZXDki-m2U.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9juEOwiAMhF8IxiMtHXQdDloCXXQ-vcyoUX8sab5c7y5NIQQV4N3BSwxzFVbjJSUoLU5J_Oq8VDQHuspFGFnbwG0edcGM1oLvYYjCZ6UFq5zlMQOhTZHXjqZn1Yq6VbYqfYrxFe47Erm3MCRCCUcFctTxvw9wgduvmc3nvKMkE6QvQ2XzS5HYvzBbu4bmnnwAeQt6BA:7</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_5RA0tEVDCWLg8BaotAM22CzDuDLESV-PRjP3ksP-NOQ.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9T9EOwjAI_KFu_aSFUcaqHTQtU-fXWxc10wcTcjmOy-WAEExBNg8v0k9FxRxqSpBrHJPi2aMWck9obMkqJFZ7qdNgMy3UdYDtGKLKP1MhW4t0pm2ywwL3jZj9mzhW5USDAXtu8Lv3cILbt7i4T7znpCOkgxAXYELI1mphoRBt_-XgqDGQwOWgmK44Z42tuVvrNVS_4wMzC3IC:4</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9j2EOgjAMhS802JFIWcuYbO2yFRFP7zRqkB8mzcvr95qmBUQV4N3C2_RTEVbjJEbINYxR3GKdFDJPaS5lYWKtPddp0JkSdR24FmIQ_jdUSNfCnUqrbFyB-07e248xXsRHGhS89U3OfQ8XuP3CZL7rrY8yQjyARBjAQdZ2Vj1zlI2jAMbAyzGsAYnheiAqq5uzhPaMWeuG1b70AeraeXk:18</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9j2EOgyAMhS-EciRToSITWgJ1zp1-zLiF-WNJ8_L69aVpwVphoF3DafopM4kyHAKk4sfAZtGGM6q3VBcTE5KUnso0yIwRuw5MHVrP9C-UUdZMnXCtpEyG547O6Y9RjtkFHAScdlWufQ83ePzCqL7rtQs8QmiAj-DQQJJ6lslovRy_NIlYIZyJcuWWNwoMNnha2mHxFgnuDRFezZzY13fVWjZb9KEv_NaHBA:18</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9j2EOwjAIhS_UrUdakDJWbaFpWXSe3rqoUX8sIS8f8EIeEIIpyObhBeNcVcyhpgSlxVNSvHjUSu4pnXJRIbE2SpsnWyjTMAD2ZYgqh6ZE1Y4MlWytMpj2Kg4r3Ddi9m9wrMqJJgP23OW_H-EMt99hdp_zPmZgQijWY2KlEG3_7cthuuJSNPZYbm3X0PyuD0PVcSI:18</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jmEOwiAMRi8E40hLga5DoSXQRefpRaNm-sOk-fL62jSFGFWAdwcvmJYmrCZIzlB78lnC2QVpaB4xqFRhZO0T92XWFQtaC2EMYxL-t9RQt8ZWZVQ1ocFtRyL3BkMilHFWIEcjfvsJTnD9lsV8zjvK4iEfRBGfMvYU0UM7eJUtrFXS-M5s_RK7e-YdUnZm3w:18</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jmEOwjAIRi_UtUdaWMtYtYOmpeo8vZ1RM_1hQr48HoQAIagAbw5eYOcirMZLSpBrnJL4s_NS0OzRac3CyFot13nUBVccBvB9GKLwv6WC2goPKr2y8QXuGxK5NxgSoYSjAjnq8dtbOMHtW67mc95RkgnSQdQYkOFyMCrNL1li_8u0eg3VPfMB7vRkdw:18</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jtEOwjAIRX-oWz9pYS1j047btCw6v97OqFEfTMjJ4UIIFKOBdPf0lH4qUHMBKVGuy5gQzj6gsDvQbM1QVqu91mmwmVfuOgptGBfov6XCthXtDK2yC4VuO4v4lzgBJPFgJF4afvueTnT9Dlf3Pu8lYaT0ERi2MGcs7Qu31Uus_sE7InldeQ:18</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9juEOwiAMhF8IxiMtHXQdDloCXXQ-vcyoUX8sab5c7y5NIQQV4N3BSwxzFVbjJSUoLU5J_Oq8VDQHuspFGFnbwG0edcGM1oLvYYjCZ6UFq5zlMQOhTZHXjqZn1Yq6VbYqfYrxFe47Erm3MCRCCUcFctTxvw9wgduvmc3nvKMkE6QvQ2XzS5HYvzBbu4bmnnwAeQt6BA:18</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9juEOwiAMhF8IxiMtHXQMhZaUEp1PLxo16o8lzeXr9XIphKAMtDt4wbQKkxrPOUNtacnsz86zoHnIoFKZkLRN1NZZNyxoLfhxDInpMJRR9CggqF3IKo-pxgvcdozRvcFE5phxVoguDvnfJzjB9dcs5lPvCi8pY0sBF5AvX7n7rXIaz5jeLqG5p94B5mRs_Q:18</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jWEOwiAMRi8E9EhLhY6h0BIo0Xl60aiJ_ljSvLy2X1oMQQV5B3yLW5uwGi85Y-3plMVfwEsj88S0UoWJtTvu66IbFbIW_VyGJHwYytT0KNBIR2OrMqsa3_C-U4zwERNFYqZFMUKc-O8dnvH2Oyzmex5Uht-qpPnUjH4NHV58ACOXY5c:18</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9T9EOgyAM_CGUTzIdVGSWlkCNc18_ZtzifFjSXK53l6YH3qsAbxYO0o9FWI0TIsg13kjcbJ0UNG9oLGVhZK0913HQCRN2Hbhm-ij8L1RQl8KdSptsXIHnhiHYDzFBJBAOCsGGBte9hzs8fsVkvudtILkBnYSYIKCDrO0tV9BH3bucEqmJcCTqVfeyMgl4ijyfTZXFTVliK2eWuvpqd3wBwkSABg:18</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9T9EOgyAM_CGUTzJdqciElkCN275-zLjF-WDSXK53l6YHzqkAPy3spB-LsBqUGCHXcIuCs0UpZD7QWMrCxFp7ruOgEyXqOsBmuiB8GYpU9CpQSJfCnUqbbLDA60ne2y8xXsRHGhS89Q3Oew93ePyLyfzO25DAE0LW9iYWckG3bodEaiLsiXrWnawcBVwMPB9NlQWnLKF1MUtdXbUbvgHXsoYk:18</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9T9EOwjAI_KFu_aSFUcaqHTQtU-fXWxc10wcTcjmOy-WAEExBNg8v0k9FxRxqSpBrHJPi2aMWck9obMkqJFZ7qdNgMy3UdYDtGKLKP1MhW4t0pm2ywwL3jZj9mzhW5USDAXtu8Lv3cILbt7i4T7znpCOkgxAXYELI1mphoRBt_-XgqDGQwOWgmK44Z42tuVvrNVS_4wMzC3IC:18</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_6x3wajo9FF3XCqx--SiQi_asZPAY9o91_tSPdke_04c.js?scope=footer&amp;amp;delta=8&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9TVsOwyAMuxAtR6pSSFM2ihGke51-dNqmbh-VIsuxY4e8V1C6W3qTfipIahxipFzDGOHO1qGw2aCxJSNx0tqnOg0688JdR66ZPiAdHc1ccOQX1rWkTtEmG1focWcR-yFGAIk8KImVBv97Tye6_YqL-dZbvmz_dsJEjrXW4HmkopAW27kSMVLcCYrVzRlhK1nr1Vf7wieh1nxB:18</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_BmwS8kLzTL_FwKygL_pv9MTzF6Kmk9OJ1KZWm09ZU84.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9TVsOwyAMuxAtR6pSSFM2ihGke51-dNqmbh-VIsuxY4e8V1C6W3qTfipIahxipFzDGOHO1qGw2aCxJSNx0tqnOg0688JdR66ZPiAdHc1ccOQX1rWkTtEmG1focWcR-yFGAIk8KImVBv97Tye6_YqL-dZbvmz_dsJEjrXW4HmkopAW27kSMVLcCYrVzRlhK1nr1Vf7wieh1nxB:6</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_BNlXh94dMCUqERMkcw21sRxvhoa2JAURsVXVSJ5jLfo.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9T9EOgyAM_CGUTzJdqciElkCN275-zLjF-WDSXK53l6YHzqkAPy3spB-LsBqUGCHXcIuCs0UpZD7QWMrCxFp7ruOgEyXqOsBmuiB8GYpU9CpQSJfCnUqbbLDA60ne2y8xXsRHGhS89Q3Oew93ePyLyfzO25DAE0LW9iYWckG3bodEaiLsiXrWnawcBVwMPB9NlQWnLKF1MUtdXbUbvgHXsoYk:5</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_jlZE15tS4aZanNPRp6Gp0XnT_2GwQfLnpKRvJO7_Lrc.js?scope=footer&amp;amp;delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9j2EOgjAMhS802JFIWcuYbO2yFRFP7zRqkB8mzcvr95qmBUQV4N3C2_RTEVbjJEbINYxR3GKdFDJPaS5lYWKtPddp0JkSdR24FmIQ_jdUSNfCnUqrbFyB-07e248xXsRHGhS89U3OfQ8XuP3CZL7rrY8yQjyARBjAQdZ2Vj1zlI2jAMbAyzGsAYnheiAqq5uzhPaMWeuG1b70AeraeXk:3</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_jlZE15tS4aZanNPRp6Gp0XnT_2GwQfLnpKRvJO7_Lrc.js?scope=footer&amp;amp;delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9j2EOgyAMhS-EciRToSITWgJ1zp1-zLiF-WNJ8_L69aVpwVphoF3DafopM4kyHAKk4sfAZtGGM6q3VBcTE5KUnso0yIwRuw5MHVrP9C-UUdZMnXCtpEyG547O6Y9RjtkFHAScdlWufQ83ePzCqL7rtQs8QmiAj-DQQJJ6lslovRy_NIlYIZyJcuWWNwoMNnha2mHxFgnuDRFezZzY13fVWjZb9KEv_NaHBA:3</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_jlZE15tS4aZanNPRp6Gp0XnT_2GwQfLnpKRvJO7_Lrc.js?scope=footer&amp;amp;delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9j2EOwjAIhS_UrUdakDJWbaFpWXSe3rqoUX8sIS8f8EIeEIIpyObhBeNcVcyhpgSlxVNSvHjUSu4pnXJRIbE2SpsnWyjTMAD2ZYgqh6ZE1Y4MlWytMpj2Kg4r3Ddi9m9wrMqJJgP23OW_H-EMt99hdp_zPmZgQijWY2KlEG3_7cthuuJSNPZYbm3X0PyuD0PVcSI:3</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_jlZE15tS4aZanNPRp6Gp0XnT_2GwQfLnpKRvJO7_Lrc.js?scope=footer&amp;amp;delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jmEOwiAMRi8E40hLga5DoSXQRefpRaNm-sOk-fL62jSFGFWAdwcvmJYmrCZIzlB78lnC2QVpaB4xqFRhZO0T92XWFQtaC2EMYxL-t9RQt8ZWZVQ1ocFtRyL3BkMilHFWIEcjfvsJTnD9lsV8zjvK4iEfRBGfMvYU0UM7eJUtrFXS-M5s_RK7e-YdUnZm3w:3</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_jlZE15tS4aZanNPRp6Gp0XnT_2GwQfLnpKRvJO7_Lrc.js?scope=footer&amp;amp;delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jmEOwjAIRi_UtUdaWMtYtYOmpeo8vZ1RM_1hQr48HoQAIagAbw5eYOcirMZLSpBrnJL4s_NS0OzRac3CyFot13nUBVccBvB9GKLwv6WC2goPKr2y8QXuGxK5NxgSoYSjAjnq8dtbOMHtW67mc95RkgnSQdQYkOFyMCrNL1li_8u0eg3VPfMB7vRkdw:3</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_jlZE15tS4aZanNPRp6Gp0XnT_2GwQfLnpKRvJO7_Lrc.js?scope=footer&amp;amp;delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jtEOwjAIRX-oWz9pYS1j047btCw6v97OqFEfTMjJ4UIIFKOBdPf0lH4qUHMBKVGuy5gQzj6gsDvQbM1QVqu91mmwmVfuOgptGBfov6XCthXtDK2yC4VuO4v4lzgBJPFgJF4afvueTnT9Dlf3Pu8lYaT0ERi2MGcs7Qu31Uus_sE7InldeQ:3</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_jlZE15tS4aZanNPRp6Gp0XnT_2GwQfLnpKRvJO7_Lrc.js?scope=footer&amp;amp;delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9juEOwiAMhF8IxiMtHXQdDloCXXQ-vcyoUX8sab5c7y5NIQQV4N3BSwxzFVbjJSUoLU5J_Oq8VDQHuspFGFnbwG0edcGM1oLvYYjCZ6UFq5zlMQOhTZHXjqZn1Yq6VbYqfYrxFe47Erm3MCRCCUcFctTxvw9wgduvmc3nvKMkE6QvQ2XzS5HYvzBbu4bmnnwAeQt6BA:3</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_jlZE15tS4aZanNPRp6Gp0XnT_2GwQfLnpKRvJO7_Lrc.js?scope=footer&amp;amp;delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9juEOwiAMhF8IxiMtHXQMhZaUEp1PLxo16o8lzeXr9XIphKAMtDt4wbQKkxrPOUNtacnsz86zoHnIoFKZkLRN1NZZNyxoLfhxDInpMJRR9CggqF3IKo-pxgvcdozRvcFE5phxVoguDvnfJzjB9dcs5lPvCi8pY0sBF5AvX7n7rXIaz5jeLqG5p94B5mRs_Q:3</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_jlZE15tS4aZanNPRp6Gp0XnT_2GwQfLnpKRvJO7_Lrc.js?scope=footer&amp;amp;delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jWEOwiAMRi8E9EhLhY6h0BIo0Xl60aiJ_ljSvLy2X1oMQQV5B3yLW5uwGi85Y-3plMVfwEsj88S0UoWJtTvu66IbFbIW_VyGJHwYytT0KNBIR2OrMqsa3_C-U4zwERNFYqZFMUKc-O8dnvH2Oyzmex5Uht-qpPnUjH4NHV58ACOXY5c:3</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_jlZE15tS4aZanNPRp6Gp0XnT_2GwQfLnpKRvJO7_Lrc.js?scope=footer&amp;amp;delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9T9EOgyAM_CGUTzIdVGSWlkCNc18_ZtzifFjSXK53l6YH3qsAbxYO0o9FWI0TIsg13kjcbJ0UNG9oLGVhZK0913HQCRN2Hbhm-ij8L1RQl8KdSptsXIHnhiHYDzFBJBAOCsGGBte9hzs8fsVkvudtILkBnYSYIKCDrO0tV9BH3bucEqmJcCTqVfeyMgl4ijyfTZXFTVliK2eWuvpqd3wBwkSABg:3</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_jlZE15tS4aZanNPRp6Gp0XnT_2GwQfLnpKRvJO7_Lrc.js?scope=footer&amp;amp;delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9T9EOgyAM_CGUTzJdqciElkCN275-zLjF-WDSXK53l6YHzqkAPy3spB-LsBqUGCHXcIuCs0UpZD7QWMrCxFp7ruOgEyXqOsBmuiB8GYpU9CpQSJfCnUqbbLDA60ne2y8xXsRHGhS89Q3Oew93ePyLyfzO25DAE0LW9iYWckG3bodEaiLsiXrWnawcBVwMPB9NlQWnLKF1MUtdXbUbvgHXsoYk:3</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_jlZE15tS4aZanNPRp6Gp0XnT_2GwQfLnpKRvJO7_Lrc.js?scope=footer&amp;amp;delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9T9EOwjAI_KFu_aSFUcaqHTQtU-fXWxc10wcTcjmOy-WAEExBNg8v0k9FxRxqSpBrHJPi2aMWck9obMkqJFZ7qdNgMy3UdYDtGKLKP1MhW4t0pm2ywwL3jZj9mzhW5USDAXtu8Lv3cILbt7i4T7znpCOkgxAXYELI1mphoRBt_-XgqDGQwOWgmK44Z42tuVvrNVS_4wMzC3IC:3</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_jlZE15tS4aZanNPRp6Gp0XnT_2GwQfLnpKRvJO7_Lrc.js?scope=footer&amp;amp;delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9TVsOwyAMuxAtR6pSSFM2ihGke51-dNqmbh-VIsuxY4e8V1C6W3qTfipIahxipFzDGOHO1qGw2aCxJSNx0tqnOg0688JdR66ZPiAdHc1ccOQX1rWkTtEmG1focWcR-yFGAIk8KImVBv97Tye6_YqL-dZbvmz_dsJEjrXW4HmkopAW27kSMVLcCYrVzRlhK1nr1Vf7wieh1nxB:3</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_sUie_dvF7a10SWCeceEvDmsoobqyRZBLmW1KtpACdgY.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jWEOwiAMRi8E9EhLhY6h0BIo0Xl60aiJ_ljSvLy2X1oMQQV5B3yLW5uwGi85Y-3plMVfwEsj88S0UoWJtTvu66IbFbIW_VyGJHwYytT0KNBIR2OrMqsa3_C-U4zwERNFYqZFMUKc-O8dnvH2Oyzmex5Uht-qpPnUjH4NHV58ACOXY5c:5</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_teOcUM9D0XUkix6gJwtRVc-l32gvrWcgoVIe68kNqvM.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jmEOwjAIRi_UtUdaWMtYtYOmpeo8vZ1RM_1hQr48HoQAIagAbw5eYOcirMZLSpBrnJL4s_NS0OzRac3CyFot13nUBVccBvB9GKLwv6WC2goPKr2y8QXuGxK5NxgSoYSjAjnq8dtbOMHtW67mc95RkgnSQdQYkOFyMCrNL1li_8u0eg3VPfMB7vRkdw:4</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_wlRQNk36g0Q55e4D_ACSX35inWv5_iEnrUojSUSbms0.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9j2EOwjAIhS_UrUdakDJWbaFpWXSe3rqoUX8sIS8f8EIeEIIpyObhBeNcVcyhpgSlxVNSvHjUSu4pnXJRIbE2SpsnWyjTMAD2ZYgqh6ZE1Y4MlWytMpj2Kg4r3Ddi9m9wrMqJJgP23OW_H-EMt99hdp_zPmZgQijWY2KlEG3_7cthuuJSNPZYbm3X0PyuD0PVcSI:5</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_xCnpbr9t25DP0U6vTilszJwCHwxT_SJyL8Dh6iroFzY.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jtEOwjAIRX-oWz9pYS1j047btCw6v97OqFEfTMjJ4UIIFKOBdPf0lH4qUHMBKVGuy5gQzj6gsDvQbM1QVqu91mmwmVfuOgptGBfov6XCthXtDK2yC4VuO4v4lzgBJPFgJF4afvueTnT9Dlf3Pu8lYaT0ERi2MGcs7Qu31Uus_sE7InldeQ:4</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_YjyEyhUBiryHp10PwyYOppbYGrdsWPpr5ISHN5uSTUA.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9j2EOgjAMhS802JFIWcuYbO2yFRFP7zRqkB8mzcvr95qmBUQV4N3C2_RTEVbjJEbINYxR3GKdFDJPaS5lYWKtPddp0JkSdR24FmIQ_jdUSNfCnUqrbFyB-07e248xXsRHGhS89U3OfQ8XuP3CZL7rrY8yQjyARBjAQdZ2Vj1zlI2jAMbAyzGsAYnheiAqq5uzhPaMWeuG1b70AeraeXk:4</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>[LOW] Detects legacy jQuery usage</h2>
+<ul>
+<li>Type: legacy-modernization-opportunity</li>
+<li>Location: https://nsf.gov/sites/default/files/js/js_zr-o7J1sI12Z9Cyc29buGXuUtjzAqilprDY5h1uCi7c.js?scope=footer&amp;amp;delta=5&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9T9EOgyAM_CGUTzIdVGSWlkCNc18_ZtzifFjSXK53l6YH3qsAbxYO0o9FWI0TIsg13kjcbJ0UNG9oLGVhZK0913HQCRN2Hbhm-ij8L1RQl8KdSptsXIHnhiHYDzFBJBAOCsGGBte9hzs8fsVkvudtILkBnYSYIKCDrO0tV9BH3bucEqmJcCTqVfeyMgl4ijyfTZXFTVliK2eWuvpqd3wBwkSABg:4</li>
+<li>Message: Pattern has modern native alternatives that may reduce code weight.</li>
+<li>Why it matters: Many DOM tasks historically handled by jQuery are now covered by standard APIs.</li>
+<li>Recommendation: Evaluate whether targeted vanilla replacements can reduce dependency and improve startup performance.</li>
+<li>Can I Use feature: queryselector</li>
+<li>Unsupported target share: 0.0%</li>
+<li>Compatibility source: caniuse</li>
+<li>MDN: https://developer.mozilla.org/docs/Web/API/Document/querySelector</li>
+</ul>
+<h2>CSS Quality Analysis</h2>
+<p>Powered by <a href="https://www.projectwallace.com/">Project Wallace</a> — <a href="https://github.com/projectwallace/css-analyzer">css-analyzer</a> and <a href="https://github.com/projectwallace/css-code-quality">css-code-quality</a>.</p>
+<h3>https://nsf.gov/sites/default/files/css/css_-c1EwUNdVwTMjOIhQg2lACGrxBIXtSdMFDBriCoezf8.css?delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJyNkWFuwyAMhS8E5EiRA05gITbFZl1vP5qt249KKBKyLPvj2Q8gBGWgxwS_iVsrkxrPOUORtGT2--S5onmGnh2FCUnFkayzRjzQ2hVBW8VgCe9iFUGwjviNP-0CRGMqYuVRPx2woc2J9mtUD6IjNIOi6FUT1yR5G3q4teR3u4IfqlR8rhbOkTIG-z-QVe6n_IChtgLZwQd8mT9yUm4-Fk79vilQYatQorzg_4prVNrSXUYMRtgnyPOBIcF87jK9l9w5wMhDFI9p6a9omtzDS_sbniXw3A</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 98/100 ✅</li>
+<li>Maintainability: 98/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>TooMuchEmbeddedContent</code>: score impact 2</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MaxSelectorComplexity</code>: score impact 2</li>
+<li><code>AverageSelectorComplexity</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 344</li>
+<li>Stylesheet complexity: 968</li>
+<li>Total rules: 100</li>
+<li>Total selectors: 117</li>
+<li>Total declarations: 224</li>
+<li><code>!important</code> declarations: 2</li>
+<li>Max selector specificity: 0,3,2</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 11 unique</li>
+</ul>
+<p>  - #fff, #000, #555, transparent, #232323, rgba(0,0,0,0.063), #ccc, #0071b3, #018fe2, #727272, #fff4f4</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 0.875em, 16px, 32px</p>
+<ul>
+<li>Z-index values: 1 unique</li>
+</ul>
+<p>  - 1261</p>
+<h3>https://nsf.gov/sites/default/files/css/css_Bn0d-_dVgW7R6dKEhEbXAs9WIMUIM-V1RqfKmz2v5do.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJyNkWFuwyAMhS8E5EiRA05gITbFZl1vP5qt249KKBKyLPvj2Q8gBGWgxwS_iVsrkxrPOUORtGT2--S5onmGnh2FCUnFkayzRjzQ2hVBW8VgCe9iFUGwjviNP-0CRGMqYuVRPx2woc2J9mtUD6IjNIOi6FUT1yR5G3q4teR3u4IfqlR8rhbOkTIG-z-QVe6n_IChtgLZwQd8mT9yUm4-Fk79vilQYatQorzg_4prVNrSXUYMRtgnyPOBIcF87jK9l9w5wMhDFI9p6a9omtzDS_sbniXw3A</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 68/100 ❌</li>
+<li>Maintainability: 32/100 ❌</li>
+<li>Complexity: 70/100 ⚠️</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 7</li>
+<li><code>CssSize</code>: score impact 5</li>
+<li><code>TooMuchEmbeddedContent</code>: score impact 20</li>
+<li><code>SourceLinesOfCode</code>: score impact 15</li>
+<li><code>MaxSelectorsPerRule</code>: score impact 15</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 8</li>
+<li><code>MoreThanMostCommonSelectorsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonDeclarationsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonSelectorComplexity</code>: score impact 10</li>
+<li><code>MoreThanMostCommonSelectorSpecificity</code>: score impact 10</li>
+<li><code>MaxSelectorComplexity</code>: score impact 5</li>
+<li><code>AverageSelectorComplexity</code>: score impact 5</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 30423</li>
+<li>Stylesheet complexity: 107317</li>
+<li>Total rules: 8044</li>
+<li>Total selectors: 15289</li>
+<li>Total declarations: 14435</li>
+<li><code>!important</code> declarations: 43</li>
+<li>Max selector specificity: 2,1,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Custom properties (CSS variables): 3 unique</li>
+</ul>
+<p>  - --gap, --line-offset, --line-thickness</p>
+<ul>
+<li>Colors: 132 unique</li>
+</ul>
+<p>  - transparent, #f1f3f6, #1b1b1b, #005ea2, #1a4480, #2491ff, #162e51, #dfe1e2, #fff, #edeff0, #73b3e7, #aacdec, #757575, #000, rgba(0,0,0,.4), #005699, rgba(0,0,0,.3), #0076d6, #e5a000, #f7f9fa, rgba(0,0,0,.25), #1c1d1f, buttontext, #a9aeb1, graytext, #97d4ea, #e1f3f8, #c3ebfa, currentcolor, canvastext, linktext, #c9c9c9, #00bde3, #28a0cb, #07648d, #c9ab48, #a88f48, #947100, #3d4551, #04c585, #00a871, #008659, #b50909, #00a91c, rgba(0,0,0,.1), #d3d3d3, rgba(0,0,0,.7), rgba(0,118,214,.1), #e6e6e6, selecteditem, #c6cace, #f0f0f0, highlight, #5d5d52, #f9f9f9, activetext, #cfe8ff, #eff6fb, #e52207, #e66f0e, #ffbe2e, #fee685, #538200, #009ec1, #676cc8, #8168b3, #d72d79, #adadad, #454545, #dbf6ed, #92d9bb, #0ceda6, #146947, #ddaa01, #e6c74c, #f5e6af, #f8e1de, #d83933, #6f3331, #faf3d1, #c2850c, #ecf3ec, #4d8055, #154c21, #e7f6f8, #0081a1, #9c3d10, #332d29, #ccc, #f3f4ee, #232323, hsla(0,0%,69%,.5), rgba(0,0,0,.125), #828388, hsla(200,5%,88%,.5), #919191, #565c65, rgba(0,0,0,.12), rgba(0,0,0,.5), #8d9297, hsla(44,96%,89%,.7), #71767a, rgba(27,27,27,.75), rgba(22,46,81,.7), #333, #e5e9ee, #d3d6d7, #fff4f4, #a6a6a6, #f2f1eb, #f6f6f3, #e7e7df, hsla(0,0%,100%,0.6), #1a1a1a, #f9f8f6, #fcfcfa, #e9e9dd, hsla(0,0%,0%,0.125), #dfdfd9, hsla(0,0%,0%,0.2), #bfbfba, hsla(0,0%,0%,0.5), #1e5c90, #0071b8, #007bc6, #2369a6, #0c97ed, #1f86c7, hsla(203,10%,10%,0.25), #144b78, #08639b, white</p>
+<ul>
+<li>Font families: 9 unique</li>
+</ul>
+<p>  - Open Sans, Open Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol, Roboto Mono Web, Merriweather Web, monospace,monospace, Merriweather Web,Georgia,Cambria,Times New Roman,Times,serif, Roboto Mono Web,Bitstream Vera Sans Mono,Consolas,Courier,monospace, Lucida Grande,Lucida Sans Unicode,liberation sans,sans-serif, Source Sans Pro,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif</p>
+<ul>
+<li>Font sizes: 54 unique</li>
+</ul>
+<p>  - 1.27rem, 1.52rem, 1.77rem, .89rem, 1.01rem, .95rem, 2.03rem, 2.54rem, 52px, 3.25rem, .76rem, 1.39rem, 100%, 2em, 1em, 80%, 75%, .82rem, 1.34rem, .98rem, .77rem, .83rem, 1.31rem, 1.91rem, 2.38rem, 2.86rem, 1.08rem, 3.04rem, .79rem, .85rem, .91rem, 1.04rem, 1.95rem, 2.44rem, 2.93rem, .75rem, 17px, 1.0625rem, 15px, .9375rem, 1px, 60px, 3.75rem, 30px, 1.875rem, 14px, .875rem, .9rem, 2.28rem, 1.25rem, 8.25pt, 16.5pt, 13.5pt, 10.5pt</p>
+<ul>
+<li>Z-index values: 18 unique</li>
+</ul>
+<p>  - 0, 1, 2, 3, 100, 200, 300, 400, 499, 500, 501, 600, 1000, 1260, 3000, 99999, 100000, -100</p>
+<h3>https://nsf.gov/sites/default/files/css/css_iIKCG4uIt3_3zbcFXo8iJtvu-ccAdfdjNUqVxUWP8uY.css?delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9juuOAyEIhV_IyyNNUJkZtwpGcNq-_dpus3-amBByAh_nACkpAz09fITbO5OayKVAkxwKx5uP3NG82lS1MSGpOJJ90xMrWhs6Qop91CArLOUrJ-wr5ODLBiBaU-eMK5nQFtx1BRY-eLVvPZPaaXVbUR11dLLKs9oKVDhsVqx_TOqjQXHwAw_zD3nlEc_GM1eMcMxQtoopw_b6Qvz3yL3vjDxlOvsAgmbIPcnH31wZ7-Lf3VVOo-Av9TS1AQ</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 95/100 ✅</li>
+<li>Maintainability: 98/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 3</li>
+<li><code>TooMuchEmbeddedContent</code>: score impact 2</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MaxSelectorComplexity</code>: score impact 2</li>
+<li><code>AverageSelectorComplexity</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 356</li>
+<li>Stylesheet complexity: 1000</li>
+<li>Total rules: 105</li>
+<li>Total selectors: 122</li>
+<li>Total declarations: 231</li>
+<li><code>!important</code> declarations: 2</li>
+<li>Max selector specificity: 0,3,2</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 10 unique</li>
+</ul>
+<p>  - #fff, #000, #555, transparent, #232323, rgba(0,0,0,0.063), #ccc, #0071b3, #018fe2, #727272</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 0.875em, 16px, 32px</p>
+<ul>
+<li>Z-index values: 1 unique</li>
+</ul>
+<p>  - 1261</p>
+<h3>https://nsf.gov/sites/default/files/css/css_-oiYCWVtT_BhGviuQXNUmgB04xZ0Xkda20b0IsvjJc8.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9juuOAyEIhV_IyyNNUJkZtwpGcNq-_dpus3-amBByAh_nACkpAz09fITbO5OayKVAkxwKx5uP3NG82lS1MSGpOJJ90xMrWhs6Qop91CArLOUrJ-wr5ODLBiBaU-eMK5nQFtx1BRY-eLVvPZPaaXVbUR11dLLKs9oKVDhsVqx_TOqjQXHwAw_zD3nlEc_GM1eMcMxQtoopw_b6Qvz3yL3vjDxlOvsAgmbIPcnH31wZ7-Lf3VVOo-Av9TS1AQ</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 68/100 ❌</li>
+<li>Maintainability: 32/100 ❌</li>
+<li>Complexity: 70/100 ⚠️</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 7</li>
+<li><code>CssSize</code>: score impact 5</li>
+<li><code>TooMuchEmbeddedContent</code>: score impact 20</li>
+<li><code>SourceLinesOfCode</code>: score impact 15</li>
+<li><code>MaxSelectorsPerRule</code>: score impact 15</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 8</li>
+<li><code>MoreThanMostCommonSelectorsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonDeclarationsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonSelectorComplexity</code>: score impact 10</li>
+<li><code>MoreThanMostCommonSelectorSpecificity</code>: score impact 10</li>
+<li><code>MaxSelectorComplexity</code>: score impact 5</li>
+<li><code>AverageSelectorComplexity</code>: score impact 5</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 29433</li>
+<li>Stylesheet complexity: 104245</li>
+<li>Total rules: 7780</li>
+<li>Total selectors: 14911</li>
+<li>Total declarations: 13889</li>
+<li><code>!important</code> declarations: 43</li>
+<li>Max selector specificity: 2,1,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Custom properties (CSS variables): 3 unique</li>
+</ul>
+<p>  - --gap, --line-offset, --line-thickness</p>
+<ul>
+<li>Colors: 130 unique</li>
+</ul>
+<p>  - #005ea2, #162e51, transparent, #f1f3f6, #1b1b1b, #1a4480, #2491ff, #dfe1e2, #fff, #edeff0, #73b3e7, #aacdec, rgba(0,0,0,.25), #757575, #1c1d1f, buttontext, #0076d6, #a9aeb1, graytext, #000, #97d4ea, #e1f3f8, #f7f9fa, #c3ebfa, currentcolor, canvastext, linktext, #c9c9c9, #00bde3, #28a0cb, #07648d, #c9ab48, #a88f48, #947100, #3d4551, #04c585, #00a871, #008659, #b50909, #00a91c, rgba(0,0,0,.1), #d3d3d3, rgba(0,0,0,.7), rgba(0,118,214,.1), #e6e6e6, selecteditem, #c6cace, #f0f0f0, highlight, #5d5d52, #f9f9f9, activetext, #cfe8ff, #eff6fb, #e52207, #e66f0e, #ffbe2e, #fee685, #538200, #009ec1, #676cc8, #8168b3, #d72d79, #adadad, #454545, #dbf6ed, #92d9bb, #0ceda6, #146947, #ddaa01, #e6c74c, #f5e6af, #f8e1de, #d83933, #6f3331, #faf3d1, #e5a000, #c2850c, #ecf3ec, #4d8055, #154c21, #e7f6f8, #0081a1, #9c3d10, #332d29, #ccc, #f3f4ee, #232323, hsla(0,0%,69%,.5), rgba(0,0,0,.125), #828388, hsla(200,5%,88%,.5), #919191, #565c65, rgba(0,0,0,.12), rgba(0,0,0,.4), rgba(0,0,0,.5), #8d9297, hsla(44,96%,89%,.7), #71767a, rgba(27,27,27,.75), rgba(22,46,81,.7), #333, #e5e9ee, #d3d6d7, #fff4f4, #a6a6a6, #f2f1eb, #f6f6f3, #e7e7df, hsla(0,0%,100%,0.6), #1a1a1a, #f9f8f6, #fcfcfa, #e9e9dd, hsla(0,0%,0%,0.125), #dfdfd9, hsla(0,0%,0%,0.2), #bfbfba, hsla(0,0%,0%,0.5), #1e5c90, #0071b8, #007bc6, #2369a6, #0c97ed, #1f86c7, hsla(203,10%,10%,0.25), #144b78, #08639b, white</p>
+<ul>
+<li>Font families: 9 unique</li>
+</ul>
+<p>  - Open Sans, Open Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol, Roboto Mono Web, Merriweather Web, monospace,monospace, Merriweather Web,Georgia,Cambria,Times New Roman,Times,serif, Roboto Mono Web,Bitstream Vera Sans Mono,Consolas,Courier,monospace, Lucida Grande,Lucida Sans Unicode,liberation sans,sans-serif, Source Sans Pro,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif</p>
+<ul>
+<li>Font sizes: 54 unique</li>
+</ul>
+<p>  - .89rem, 1.01rem, .95rem, 2.03rem, 2.54rem, 52px, 3.25rem, 1.52rem, 1.77rem, 1.27rem, .76rem, 100%, 2em, 1em, 80%, 75%, .82rem, 1.39rem, 1.34rem, .98rem, .77rem, .83rem, 1.31rem, 1.91rem, 2.38rem, 2.86rem, 1.08rem, 3.04rem, .79rem, .85rem, .91rem, 1.04rem, 1.95rem, 2.44rem, 2.93rem, .75rem, 17px, 1.0625rem, 15px, .9375rem, 1px, 60px, 3.75rem, 30px, 1.875rem, 14px, .875rem, .9rem, 2.28rem, 1.25rem, 8.25pt, 16.5pt, 13.5pt, 10.5pt</p>
+<ul>
+<li>Z-index values: 18 unique</li>
+</ul>
+<p>  - 0, 1, 2, 3, 100, 200, 300, 400, 499, 500, 501, 600, 1000, 1260, 3000, 99999, 100000, -100</p>
+<h3>https://nsf.gov/sites/default/files/css/css_sJ8uv-dMi158PBUXu9eoTYb7q-JJrhn7I6oF0CT7NLQ.css?delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jGsKwzAMgy-Ux5GKk7ht1sQOdrKtt1-3lf0ZFIwQ0idDSp2Bdg-ncbMwdRO5FGiaQ-G4-ciC5i2Hq40Jqasjnae-YkVrgyCkKKMGvcIWvtsARChXVOGFr3rBPoRs5-PaF0wyGhQHN3iaH-k7j7g2zsfeKMcMZaqYMkwl06b-P3KfndFdO1YfQNEMfSQ9_78ARsB0UQ</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 98/100 ✅</li>
+<li>Maintainability: 98/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>TooMuchEmbeddedContent</code>: score impact 2</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MaxSelectorComplexity</code>: score impact 2</li>
+<li><code>AverageSelectorComplexity</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 342</li>
+<li>Stylesheet complexity: 964</li>
+<li>Total rules: 99</li>
+<li>Total selectors: 116</li>
+<li>Total declarations: 223</li>
+<li><code>!important</code> declarations: 2</li>
+<li>Max selector specificity: 0,3,2</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 10 unique</li>
+</ul>
+<p>  - #fff, #000, #555, transparent, #232323, rgba(0,0,0,0.063), #ccc, #0071b3, #018fe2, #727272</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 0.875em, 16px, 32px</p>
+<ul>
+<li>Z-index values: 1 unique</li>
+</ul>
+<p>  - 1261</p>
+<h3>https://nsf.gov/sites/default/files/css/css_yvEd5zyVo8gzlQegbs7CE6v_4tezdPtu27L5mKeaCig.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jGsKwzAMgy-Ux5GKk7ht1sQOdrKtt1-3lf0ZFIwQ0idDSp2Bdg-ncbMwdRO5FGiaQ-G4-ciC5i2Hq40Jqasjnae-YkVrgyCkKKMGvcIWvtsARChXVOGFr3rBPoRs5-PaF0wyGhQHN3iaH-k7j7g2zsfeKMcMZaqYMkwl06b-P3KfndFdO1YfQNEMfSQ9_78ARsB0UQ</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 68/100 ❌</li>
+<li>Maintainability: 32/100 ❌</li>
+<li>Complexity: 70/100 ⚠️</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 7</li>
+<li><code>CssSize</code>: score impact 5</li>
+<li><code>TooMuchEmbeddedContent</code>: score impact 20</li>
+<li><code>SourceLinesOfCode</code>: score impact 15</li>
+<li><code>MaxSelectorsPerRule</code>: score impact 15</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 8</li>
+<li><code>MoreThanMostCommonSelectorsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonDeclarationsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonSelectorComplexity</code>: score impact 10</li>
+<li><code>MoreThanMostCommonSelectorSpecificity</code>: score impact 10</li>
+<li><code>MaxSelectorComplexity</code>: score impact 5</li>
+<li><code>AverageSelectorComplexity</code>: score impact 5</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 29056</li>
+<li>Stylesheet complexity: 103216</li>
+<li>Total rules: 7693</li>
+<li>Total selectors: 14739</li>
+<li>Total declarations: 13690</li>
+<li><code>!important</code> declarations: 43</li>
+<li>Max selector specificity: 2,1,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Custom properties (CSS variables): 3 unique</li>
+</ul>
+<p>  - --gap, --line-offset, --line-thickness</p>
+<ul>
+<li>Colors: 130 unique</li>
+</ul>
+<p>  - transparent, #f1f3f6, #1b1b1b, #005ea2, #1a4480, #2491ff, #162e51, #dfe1e2, #fff, #edeff0, #73b3e7, #aacdec, rgba(0,0,0,.25), #757575, #1c1d1f, buttontext, #0076d6, #a9aeb1, graytext, #000, #97d4ea, #e1f3f8, #f7f9fa, #c3ebfa, currentcolor, canvastext, linktext, #c9c9c9, #00bde3, #28a0cb, #07648d, #c9ab48, #a88f48, #947100, #3d4551, #04c585, #00a871, #008659, #b50909, #00a91c, rgba(0,0,0,.1), #d3d3d3, rgba(0,0,0,.7), rgba(0,118,214,.1), #e6e6e6, selecteditem, #c6cace, #f0f0f0, highlight, #5d5d52, #f9f9f9, activetext, #cfe8ff, #eff6fb, #e52207, #e66f0e, #ffbe2e, #fee685, #538200, #009ec1, #676cc8, #8168b3, #d72d79, #adadad, #454545, #dbf6ed, #92d9bb, #0ceda6, #146947, #ddaa01, #e6c74c, #f5e6af, #f8e1de, #d83933, #6f3331, #faf3d1, #e5a000, #c2850c, #ecf3ec, #4d8055, #154c21, #e7f6f8, #0081a1, #9c3d10, #332d29, #ccc, #f3f4ee, #232323, hsla(0,0%,69%,.5), rgba(0,0,0,.125), #828388, hsla(200,5%,88%,.5), #919191, #565c65, rgba(0,0,0,.12), rgba(0,0,0,.4), rgba(0,0,0,.5), #8d9297, hsla(44,96%,89%,.7), #71767a, rgba(27,27,27,.75), rgba(22,46,81,.7), #333, #e5e9ee, #d3d6d7, #fff4f4, #a6a6a6, #f2f1eb, #f6f6f3, #e7e7df, hsla(0,0%,100%,0.6), #1a1a1a, #f9f8f6, #fcfcfa, #e9e9dd, hsla(0,0%,0%,0.125), #dfdfd9, hsla(0,0%,0%,0.2), #bfbfba, hsla(0,0%,0%,0.5), #1e5c90, #0071b8, #007bc6, #2369a6, #0c97ed, #1f86c7, hsla(203,10%,10%,0.25), #144b78, #08639b, white</p>
+<ul>
+<li>Font families: 9 unique</li>
+</ul>
+<p>  - Open Sans, Open Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol, Roboto Mono Web, Merriweather Web, monospace,monospace, Merriweather Web,Georgia,Cambria,Times New Roman,Times,serif, Roboto Mono Web,Bitstream Vera Sans Mono,Consolas,Courier,monospace, Lucida Grande,Lucida Sans Unicode,liberation sans,sans-serif, Source Sans Pro,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif</p>
+<ul>
+<li>Font sizes: 54 unique</li>
+</ul>
+<p>  - .89rem, 1.01rem, .95rem, 100%, 2em, 1em, 80%, 75%, .82rem, .76rem, 1.39rem, 1.34rem, .98rem, 2.03rem, .77rem, .83rem, 1.31rem, 1.91rem, 2.38rem, 2.86rem, 1.08rem, 2.54rem, 3.04rem, .79rem, .85rem, .91rem, 1.04rem, 1.95rem, 2.44rem, 2.93rem, .75rem, 52px, 3.25rem, 1.52rem, 1.77rem, 1.27rem, 17px, 1.0625rem, 15px, .9375rem, 1px, 60px, 3.75rem, 30px, 1.875rem, 14px, .875rem, .9rem, 2.28rem, 1.25rem, 8.25pt, 16.5pt, 13.5pt, 10.5pt</p>
+<ul>
+<li>Z-index values: 18 unique</li>
+</ul>
+<p>  - 0, 1, 2, 3, 100, 200, 300, 400, 499, 500, 501, 600, 1000, 1260, 3000, 99999, 100000, -100</p>
+<h3>https://nsf.gov/sites/default/files/css/css_-c1EwUNdVwTMjOIhQg2lACGrxBIXtSdMFDBriCoezf8.css?delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJyFkAFuwyAMRS8EyZEig52EldjIhm65_Ui7bpMmMcmyrO-nzzeAWAX4nOFrmFYVri5KzlAshSzxNkdRclfr01GEiatNbOtSdzrI-6AEGLUdwUYYpntC0hGyEtSmhH5NmXxOfBvRm9x9AOax5-XSm9UhJJuM9kUT138DKWWoPf3FDb9CqZ_Jvkqv8gRRW4E8wRt8uG9yRok5BQU9f4lVWtyL9ETmCihsCmW3l8OPMjUuLfTTd0JnEhPk5SBMsDwCzn-l6fGAs9MqHXMAI9fsHV_en6xX2Cg</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 98/100 ✅</li>
+<li>Maintainability: 98/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>TooMuchEmbeddedContent</code>: score impact 2</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MaxSelectorComplexity</code>: score impact 2</li>
+<li><code>AverageSelectorComplexity</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 344</li>
+<li>Stylesheet complexity: 968</li>
+<li>Total rules: 100</li>
+<li>Total selectors: 117</li>
+<li>Total declarations: 224</li>
+<li><code>!important</code> declarations: 2</li>
+<li>Max selector specificity: 0,3,2</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 11 unique</li>
+</ul>
+<p>  - #fff, #000, #555, transparent, #232323, rgba(0,0,0,0.063), #ccc, #0071b3, #018fe2, #727272, #fff4f4</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 0.875em, 16px, 32px</p>
+<ul>
+<li>Z-index values: 1 unique</li>
+</ul>
+<p>  - 1261</p>
+<h3>https://nsf.gov/sites/default/files/css/css_sJ8uv-dMi158PBUXu9eoTYb7q-JJrhn7I6oF0CT7NLQ.css?delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jmuuAyEIhTek45ImqMyMrYIB7L3dfaeP9E8TE0JO4DsHIGdjoHuAj1g2YTKXuFboWmLldA2JBd2znap1JiTThXRb7cCG3kNFsSkw7GAptPtCG0sDK0wzQxSEnGS0qDNs55uPQIQyoyrvPNv38zPztdB1RgnaEPLGZ_U3mGV0qAtc4N99yWA80tH5zFSnnArUtWEusD4vaPgdLS-f07sathBB0Q39y_rJfwC9VKK2</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 98/100 ✅</li>
+<li>Maintainability: 98/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>TooMuchEmbeddedContent</code>: score impact 2</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MaxSelectorComplexity</code>: score impact 2</li>
+<li><code>AverageSelectorComplexity</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 342</li>
+<li>Stylesheet complexity: 964</li>
+<li>Total rules: 99</li>
+<li>Total selectors: 116</li>
+<li>Total declarations: 223</li>
+<li><code>!important</code> declarations: 2</li>
+<li>Max selector specificity: 0,3,2</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 10 unique</li>
+</ul>
+<p>  - #fff, #000, #555, transparent, #232323, rgba(0,0,0,0.063), #ccc, #0071b3, #018fe2, #727272</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 0.875em, 16px, 32px</p>
+<ul>
+<li>Z-index values: 1 unique</li>
+</ul>
+<p>  - 1261</p>
+<h3>https://nsf.gov/sites/default/files/css/css_locNyUNJQmd00vJ1AIaiTgUXn6QOuYIchQz4wii33U4.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jmuuAyEIhTek45ImqMyMrYIB7L3dfaeP9E8TE0JO4DsHIGdjoHuAj1g2YTKXuFboWmLldA2JBd2znap1JiTThXRb7cCG3kNFsSkw7GAptPtCG0sDK0wzQxSEnGS0qDNs55uPQIQyoyrvPNv38zPztdB1RgnaEPLGZ_U3mGV0qAtc4N99yWA80tH5zFSnnArUtWEusD4vaPgdLS-f07sathBB0Q39y_rJfwC9VKK2</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 68/100 ❌</li>
+<li>Maintainability: 32/100 ❌</li>
+<li>Complexity: 70/100 ⚠️</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 7</li>
+<li><code>CssSize</code>: score impact 5</li>
+<li><code>TooMuchEmbeddedContent</code>: score impact 20</li>
+<li><code>SourceLinesOfCode</code>: score impact 15</li>
+<li><code>MaxSelectorsPerRule</code>: score impact 15</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 8</li>
+<li><code>MoreThanMostCommonSelectorsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonDeclarationsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonSelectorComplexity</code>: score impact 10</li>
+<li><code>MoreThanMostCommonSelectorSpecificity</code>: score impact 10</li>
+<li><code>MaxSelectorComplexity</code>: score impact 5</li>
+<li><code>AverageSelectorComplexity</code>: score impact 5</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 29785</li>
+<li>Stylesheet complexity: 105556</li>
+<li>Total rules: 7863</li>
+<li>Total selectors: 14947</li>
+<li>Total declarations: 14186</li>
+<li><code>!important</code> declarations: 45</li>
+<li>Max selector specificity: 2,1,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Custom properties (CSS variables): 3 unique</li>
+</ul>
+<p>  - --gap, --line-offset, --line-thickness</p>
+<ul>
+<li>Colors: 130 unique</li>
+</ul>
+<p>  - currentcolor, #f7f9fa, #dfe1e2, #1c1d1f, #ecf3ec, #00a91c, transparent, #0076d6, #005ea2, #faf3d1, #ffbe2e, #f8e1de, #d83933, #e7f6f8, #00bde3, #9c3d10, #fff, #f1f3f6, #1a4480, #162e51, #b50909, #e5a000, #4d8055, #1b1b1b, #2491ff, #edeff0, #73b3e7, #aacdec, rgba(0,0,0,.25), #757575, buttontext, #a9aeb1, graytext, #000, #97d4ea, #e1f3f8, #c3ebfa, canvastext, linktext, #c9c9c9, #28a0cb, #07648d, #c9ab48, #a88f48, #947100, #3d4551, #04c585, #00a871, #008659, rgba(0,0,0,.1), #d3d3d3, rgba(0,0,0,.7), rgba(0,118,214,.1), #e6e6e6, selecteditem, #c6cace, #f0f0f0, highlight, #5d5d52, #f9f9f9, activetext, #cfe8ff, #eff6fb, #e52207, #e66f0e, #fee685, #538200, #009ec1, #676cc8, #8168b3, #d72d79, #adadad, #454545, #dbf6ed, #92d9bb, #0ceda6, #146947, #ddaa01, #e6c74c, #f5e6af, #6f3331, #c2850c, #154c21, #0081a1, #332d29, #ccc, #f3f4ee, #232323, hsla(0,0%,69%,.5), rgba(0,0,0,.125), #828388, hsla(200,5%,88%,.5), #919191, #565c65, rgba(0,0,0,.12), rgba(0,0,0,.4), rgba(0,0,0,.5), #8d9297, hsla(44,96%,89%,.7), #71767a, rgba(27,27,27,.75), rgba(22,46,81,.7), #333, #e5e9ee, #d3d6d7, #fff4f4, #a6a6a6, #f2f1eb, #f6f6f3, #e7e7df, hsla(0,0%,100%,0.6), #1a1a1a, #f9f8f6, #fcfcfa, #e9e9dd, hsla(0,0%,0%,0.125), #dfdfd9, hsla(0,0%,0%,0.2), #bfbfba, hsla(0,0%,0%,0.5), #1e5c90, #0071b8, #007bc6, #2369a6, #0c97ed, #1f86c7, hsla(203,10%,10%,0.25), #144b78, #08639b, white</p>
+<ul>
+<li>Font families: 9 unique</li>
+</ul>
+<p>  - Roboto Mono Web, Merriweather Web, Open Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol, Open Sans, monospace,monospace, Merriweather Web,Georgia,Cambria,Times New Roman,Times,serif, Roboto Mono Web,Bitstream Vera Sans Mono,Consolas,Courier,monospace, Lucida Grande,Lucida Sans Unicode,liberation sans,sans-serif, Source Sans Pro,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif</p>
+<ul>
+<li>Font sizes: 55 unique</li>
+</ul>
+<p>  - 1.01rem, 1.39rem, 1.22rem, .89rem, .95rem, 100%, 2em, 1em, 80%, 75%, .82rem, .76rem, 1.34rem, .98rem, 2.03rem, .77rem, .83rem, 1.31rem, 1.91rem, 2.38rem, 2.86rem, 1.08rem, 2.54rem, 3.04rem, .79rem, .85rem, .91rem, 1.04rem, 1.95rem, 2.44rem, 2.93rem, .75rem, 52px, 3.25rem, 1.52rem, 1.77rem, 1.27rem, 17px, 1.0625rem, 15px, .9375rem, 1px, 60px, 3.75rem, 30px, 1.875rem, 14px, .875rem, .9rem, 2.28rem, 1.25rem, 8.25pt, 16.5pt, 13.5pt, 10.5pt</p>
+<ul>
+<li>Z-index values: 18 unique</li>
+</ul>
+<p>  - 0, 1, 2, 3, 100, 200, 300, 400, 499, 500, 501, 600, 1000, 1260, 3000, 99999, 100000, -100</p>
+<h3>https://nsf.gov/sites/default/files/css/css_-c1EwUNdVwTMjOIhQg2lACGrxBIXtSdMFDBriCoezf8.css?delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJyFkIFuwyAMRH8Ikk-KDHYSVgcjG7rl70fadZs0iUnIso6n4w5ArAL5nOFrmVaVXF0UZiiWAku8zVGU3DX6dhTJlKtN2dal7nSQ98CkdQQEJcCo7Qg2wjDdE5KOkJWgNiX0a2LynPJtRG9y9wFyHnteLn3YsALLJqP7oinXfwMpMdSe_uKGX6HUa2ZfpZ_yBFFbAZ7gDT7cNzmjRE5BQc9fYpUW9yI9kbkCCptC2e3l8KNMLZcWevWd0JnEBLwchAmWR8D5rzQ9HnB2WqVjDmDkmr3jy_sTLAbkyw</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 98/100 ✅</li>
+<li>Maintainability: 98/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>TooMuchEmbeddedContent</code>: score impact 2</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MaxSelectorComplexity</code>: score impact 2</li>
+<li><code>AverageSelectorComplexity</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 344</li>
+<li>Stylesheet complexity: 968</li>
+<li>Total rules: 100</li>
+<li>Total selectors: 117</li>
+<li>Total declarations: 224</li>
+<li><code>!important</code> declarations: 2</li>
+<li>Max selector specificity: 0,3,2</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 11 unique</li>
+</ul>
+<p>  - #fff, #000, #555, transparent, #232323, rgba(0,0,0,0.063), #ccc, #0071b3, #018fe2, #727272, #fff4f4</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 0.875em, 16px, 32px</p>
+<ul>
+<li>Z-index values: 1 unique</li>
+</ul>
+<p>  - 1261</p>
+<h3>https://nsf.gov/sites/default/files/css/css_sJ8uv-dMi158PBUXu9eoTYb7q-JJrhn7I6oF0CT7NLQ.css?delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9j_0KwyAMxF9I6yOVqGnrqomYuI-3X7uV_TMQQjhyvzsIxKgM9HJwiWlpTGoC5wxVks8cdhe4oTnXoUplQlKZSJZZNyxorW8IMbRevIywle_WAxG2EZV55ZHfUHsjq3xMHYEKPqPlxYbjo9P8wrH1CnmCGzzNj3bKPWyV04kJhwR5LhgTzDnRLu7_NH1yRl6iWJwHQdPlEeXqfwMXOIWB</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 98/100 ✅</li>
+<li>Maintainability: 98/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>TooMuchEmbeddedContent</code>: score impact 2</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MaxSelectorComplexity</code>: score impact 2</li>
+<li><code>AverageSelectorComplexity</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 342</li>
+<li>Stylesheet complexity: 964</li>
+<li>Total rules: 99</li>
+<li>Total selectors: 116</li>
+<li>Total declarations: 223</li>
+<li><code>!important</code> declarations: 2</li>
+<li>Max selector specificity: 0,3,2</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 10 unique</li>
+</ul>
+<p>  - #fff, #000, #555, transparent, #232323, rgba(0,0,0,0.063), #ccc, #0071b3, #018fe2, #727272</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 0.875em, 16px, 32px</p>
+<ul>
+<li>Z-index values: 1 unique</li>
+</ul>
+<p>  - 1261</p>
+<h3>https://nsf.gov/sites/default/files/css/css_anjDo5RqAAQNbsdpQAE93P3Y6u6dUWIUJHkfIy0-hus.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9j_0KwyAMxF9I6yOVqGnrqomYuI-3X7uV_TMQQjhyvzsIxKgM9HJwiWlpTGoC5wxVks8cdhe4oTnXoUplQlKZSJZZNyxorW8IMbRevIywle_WAxG2EZV55ZHfUHsjq3xMHYEKPqPlxYbjo9P8wrH1CnmCGzzNj3bKPWyV04kJhwR5LhgTzDnRLu7_NH1yRl6iWJwHQdPlEeXqfwMXOIWB</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 68/100 ❌</li>
+<li>Maintainability: 32/100 ❌</li>
+<li>Complexity: 70/100 ⚠️</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 7</li>
+<li><code>CssSize</code>: score impact 5</li>
+<li><code>TooMuchEmbeddedContent</code>: score impact 20</li>
+<li><code>SourceLinesOfCode</code>: score impact 15</li>
+<li><code>MaxSelectorsPerRule</code>: score impact 15</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 8</li>
+<li><code>MoreThanMostCommonSelectorsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonDeclarationsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonSelectorComplexity</code>: score impact 10</li>
+<li><code>MoreThanMostCommonSelectorSpecificity</code>: score impact 10</li>
+<li><code>MaxSelectorComplexity</code>: score impact 5</li>
+<li><code>AverageSelectorComplexity</code>: score impact 5</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 29303</li>
+<li>Stylesheet complexity: 104093</li>
+<li>Total rules: 7758</li>
+<li>Total selectors: 14848</li>
+<li>Total declarations: 13828</li>
+<li><code>!important</code> declarations: 43</li>
+<li>Max selector specificity: 2,1,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Custom properties (CSS variables): 3 unique</li>
+</ul>
+<p>  - --gap, --line-offset, --line-thickness</p>
+<ul>
+<li>Colors: 130 unique</li>
+</ul>
+<p>  - transparent, #f1f3f6, #1b1b1b, #005ea2, #1a4480, #2491ff, #162e51, #dfe1e2, #fff, #edeff0, #73b3e7, #aacdec, rgba(0,0,0,.25), #f7f9fa, #757575, #1c1d1f, buttontext, #0076d6, #a9aeb1, graytext, #000, #97d4ea, #e1f3f8, #c3ebfa, currentcolor, canvastext, linktext, #c9c9c9, #00bde3, #28a0cb, #07648d, #c9ab48, #a88f48, #947100, #3d4551, #04c585, #00a871, #008659, #b50909, #00a91c, rgba(0,0,0,.1), #d3d3d3, rgba(0,0,0,.7), rgba(0,118,214,.1), #e6e6e6, selecteditem, #c6cace, #f0f0f0, highlight, #5d5d52, #f9f9f9, activetext, #cfe8ff, #eff6fb, #e52207, #e66f0e, #ffbe2e, #fee685, #538200, #009ec1, #676cc8, #8168b3, #d72d79, #adadad, #454545, #dbf6ed, #92d9bb, #0ceda6, #146947, #ddaa01, #e6c74c, #f5e6af, #f8e1de, #d83933, #6f3331, #faf3d1, #e5a000, #c2850c, #ecf3ec, #4d8055, #154c21, #e7f6f8, #0081a1, #9c3d10, #332d29, #ccc, #f3f4ee, #232323, hsla(0,0%,69%,.5), rgba(0,0,0,.125), #828388, hsla(200,5%,88%,.5), #919191, #565c65, rgba(0,0,0,.12), rgba(0,0,0,.4), rgba(0,0,0,.5), #8d9297, hsla(44,96%,89%,.7), #71767a, rgba(27,27,27,.75), rgba(22,46,81,.7), #333, #e5e9ee, #d3d6d7, #fff4f4, #a6a6a6, #f2f1eb, #f6f6f3, #e7e7df, hsla(0,0%,100%,0.6), #1a1a1a, #f9f8f6, #fcfcfa, #e9e9dd, hsla(0,0%,0%,0.125), #dfdfd9, hsla(0,0%,0%,0.2), #bfbfba, hsla(0,0%,0%,0.5), #1e5c90, #0071b8, #007bc6, #2369a6, #0c97ed, #1f86c7, hsla(203,10%,10%,0.25), #144b78, #08639b, white</p>
+<ul>
+<li>Font families: 9 unique</li>
+</ul>
+<p>  - Open Sans, Open Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol, Roboto Mono Web, Merriweather Web, monospace,monospace, Merriweather Web,Georgia,Cambria,Times New Roman,Times,serif, Roboto Mono Web,Bitstream Vera Sans Mono,Consolas,Courier,monospace, Lucida Grande,Lucida Sans Unicode,liberation sans,sans-serif, Source Sans Pro,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif</p>
+<ul>
+<li>Font sizes: 54 unique</li>
+</ul>
+<p>  - .89rem, 1.01rem, .95rem, 1.27rem, 100%, 2em, 1em, 80%, 75%, .82rem, .76rem, 1.39rem, 1.34rem, .98rem, 2.03rem, .77rem, .83rem, 1.31rem, 1.91rem, 2.38rem, 2.86rem, 1.08rem, 2.54rem, 3.04rem, .79rem, .85rem, .91rem, 1.04rem, 1.95rem, 2.44rem, 2.93rem, .75rem, 52px, 3.25rem, 1.52rem, 1.77rem, 17px, 1.0625rem, 15px, .9375rem, 1px, 60px, 3.75rem, 30px, 1.875rem, 14px, .875rem, .9rem, 2.28rem, 1.25rem, 8.25pt, 16.5pt, 13.5pt, 10.5pt</p>
+<ul>
+<li>Z-index values: 18 unique</li>
+</ul>
+<p>  - 0, 1, 2, 3, 100, 200, 300, 400, 499, 500, 501, 600, 1000, 1260, 3000, 99999, 100000, -100</p>
+<h3>https://nsf.gov/sites/default/files/css/css_iIKCG4uIt3_3zbcFXo8iJtvu-ccAdfdjNUqVxUWP8uY.css?delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jmtuAzEIhC_kx5FWrM1m3dhgAd40t6-TRv1TyRJCI_iYAXI2BnpG-IhwCJO5xLVC17JXTveYWNC92lStMyGZBtJjsxMbeg8VxVbALgg5yWi7rrBcrpJRVsiNL78D0Zo6Z1wthL7isXys8o1X-y6FzE-r-4oStCHkjWf1XzDL6FADfMG3-yOj8Uhn5-mpTjkVqFvDXGB7JWj8PwrvO6dPNWxxB0U39JH14--ugg-N7x4a51HxB-uBtAE</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 95/100 ✅</li>
+<li>Maintainability: 98/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 3</li>
+<li><code>TooMuchEmbeddedContent</code>: score impact 2</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MaxSelectorComplexity</code>: score impact 2</li>
+<li><code>AverageSelectorComplexity</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 356</li>
+<li>Stylesheet complexity: 1000</li>
+<li>Total rules: 105</li>
+<li>Total selectors: 122</li>
+<li>Total declarations: 231</li>
+<li><code>!important</code> declarations: 2</li>
+<li>Max selector specificity: 0,3,2</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 10 unique</li>
+</ul>
+<p>  - #fff, #000, #555, transparent, #232323, rgba(0,0,0,0.063), #ccc, #0071b3, #018fe2, #727272</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 0.875em, 16px, 32px</p>
+<ul>
+<li>Z-index values: 1 unique</li>
+</ul>
+<p>  - 1261</p>
+<h3>https://nsf.gov/sites/default/files/css/css_KH-QyHTkBJaeSG_Nhy2hB3ZCLNnd60z3F-Q2t_ZkpGs.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jmtuAzEIhC_kx5FWrM1m3dhgAd40t6-TRv1TyRJCI_iYAXI2BnpG-IhwCJO5xLVC17JXTveYWNC92lStMyGZBtJjsxMbeg8VxVbALgg5yWi7rrBcrpJRVsiNL78D0Zo6Z1wthL7isXys8o1X-y6FzE-r-4oStCHkjWf1XzDL6FADfMG3-yOj8Uhn5-mpTjkVqFvDXGB7JWj8PwrvO6dPNWxxB0U39JH14--ugg-N7x4a51HxB-uBtAE</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 68/100 ❌</li>
+<li>Maintainability: 32/100 ❌</li>
+<li>Complexity: 70/100 ⚠️</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 7</li>
+<li><code>CssSize</code>: score impact 5</li>
+<li><code>TooMuchEmbeddedContent</code>: score impact 20</li>
+<li><code>SourceLinesOfCode</code>: score impact 15</li>
+<li><code>MaxSelectorsPerRule</code>: score impact 15</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 8</li>
+<li><code>MoreThanMostCommonSelectorsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonDeclarationsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonSelectorComplexity</code>: score impact 10</li>
+<li><code>MoreThanMostCommonSelectorSpecificity</code>: score impact 10</li>
+<li><code>MaxSelectorComplexity</code>: score impact 5</li>
+<li><code>AverageSelectorComplexity</code>: score impact 5</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 29901</li>
+<li>Stylesheet complexity: 105875</li>
+<li>Total rules: 7886</li>
+<li>Total selectors: 15013</li>
+<li>Total declarations: 14234</li>
+<li><code>!important</code> declarations: 45</li>
+<li>Max selector specificity: 2,1,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Custom properties (CSS variables): 3 unique</li>
+</ul>
+<p>  - --gap, --line-offset, --line-thickness</p>
+<ul>
+<li>Colors: 130 unique</li>
+</ul>
+<p>  - currentcolor, #f7f9fa, #dfe1e2, #1c1d1f, #ecf3ec, #00a91c, transparent, #0076d6, #005ea2, #faf3d1, #ffbe2e, #f8e1de, #d83933, #e7f6f8, #00bde3, #9c3d10, #fff, #f1f3f6, #1a4480, #162e51, #b50909, #e5a000, #4d8055, #1b1b1b, #2491ff, #edeff0, #73b3e7, #aacdec, rgba(0,0,0,.25), #757575, buttontext, #a9aeb1, graytext, #000, #97d4ea, #e1f3f8, #c3ebfa, canvastext, linktext, #c9c9c9, #28a0cb, #07648d, #c9ab48, #a88f48, #947100, #3d4551, #04c585, #00a871, #008659, rgba(0,0,0,.1), #d3d3d3, rgba(0,0,0,.7), rgba(0,118,214,.1), #e6e6e6, selecteditem, #c6cace, #f0f0f0, highlight, #5d5d52, #f9f9f9, activetext, #cfe8ff, #eff6fb, #e52207, #e66f0e, #fee685, #538200, #009ec1, #676cc8, #8168b3, #d72d79, #adadad, #454545, #dbf6ed, #92d9bb, #0ceda6, #146947, #ddaa01, #e6c74c, #f5e6af, #6f3331, #c2850c, #154c21, #0081a1, #332d29, #ccc, #f3f4ee, #232323, hsla(0,0%,69%,.5), rgba(0,0,0,.125), #828388, hsla(200,5%,88%,.5), #919191, #565c65, rgba(0,0,0,.12), rgba(0,0,0,.4), rgba(0,0,0,.5), #8d9297, hsla(44,96%,89%,.7), #71767a, rgba(27,27,27,.75), rgba(22,46,81,.7), #333, #e5e9ee, #d3d6d7, #fff4f4, #a6a6a6, #f2f1eb, #f6f6f3, #e7e7df, hsla(0,0%,100%,0.6), #1a1a1a, #f9f8f6, #fcfcfa, #e9e9dd, hsla(0,0%,0%,0.125), #dfdfd9, hsla(0,0%,0%,0.2), #bfbfba, hsla(0,0%,0%,0.5), #1e5c90, #0071b8, #007bc6, #2369a6, #0c97ed, #1f86c7, hsla(203,10%,10%,0.25), #144b78, #08639b, white</p>
+<ul>
+<li>Font families: 9 unique</li>
+</ul>
+<p>  - Roboto Mono Web, Merriweather Web, Open Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol, Open Sans, monospace,monospace, Merriweather Web,Georgia,Cambria,Times New Roman,Times,serif, Roboto Mono Web,Bitstream Vera Sans Mono,Consolas,Courier,monospace, Lucida Grande,Lucida Sans Unicode,liberation sans,sans-serif, Source Sans Pro,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif</p>
+<ul>
+<li>Font sizes: 55 unique</li>
+</ul>
+<p>  - 1.01rem, 1.39rem, 1.22rem, .89rem, .95rem, 2.03rem, 2.54rem, 52px, 3.25rem, 1.52rem, 1.77rem, 1.27rem, .76rem, 100%, 2em, 1em, 80%, 75%, .82rem, 1.34rem, .98rem, .77rem, .83rem, 1.31rem, 1.91rem, 2.38rem, 2.86rem, 1.08rem, 3.04rem, .79rem, .85rem, .91rem, 1.04rem, 1.95rem, 2.44rem, 2.93rem, .75rem, 17px, 1.0625rem, 15px, .9375rem, 1px, 60px, 3.75rem, 30px, 1.875rem, 14px, .875rem, .9rem, 2.28rem, 1.25rem, 8.25pt, 16.5pt, 13.5pt, 10.5pt</p>
+<ul>
+<li>Z-index values: 18 unique</li>
+</ul>
+<p>  - 0, 1, 2, 3, 100, 200, 300, 400, 499, 500, 501, 600, 1000, 1260, 3000, 99999, 100000, -100</p>
+<h3>https://nsf.gov/sites/default/files/css/css_sJ8uv-dMi158PBUXu9eoTYb7q-JJrhn7I6oF0CT7NLQ.css?delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jFEOwyAMQy8E5UhVIGnLCgki0G23X7dV-5mEFFmW_RxAbAL8dHCZaanCzQRJCYpGnyTsLkgl85bT5SJM3HRiXea2USZrfSXAUHv2OsIwHhGpjpBVDuuBeUwlWWXUV2q9sm1yXvmCWHuBNMENHuZHuiY9bEXiuTcqIUKaM2GEOUXe1f1H02dn9KmNsvOgZLreUa__LwyhgcM</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 98/100 ✅</li>
+<li>Maintainability: 98/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>TooMuchEmbeddedContent</code>: score impact 2</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MaxSelectorComplexity</code>: score impact 2</li>
+<li><code>AverageSelectorComplexity</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 342</li>
+<li>Stylesheet complexity: 964</li>
+<li>Total rules: 99</li>
+<li>Total selectors: 116</li>
+<li>Total declarations: 223</li>
+<li><code>!important</code> declarations: 2</li>
+<li>Max selector specificity: 0,3,2</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 10 unique</li>
+</ul>
+<p>  - #fff, #000, #555, transparent, #232323, rgba(0,0,0,0.063), #ccc, #0071b3, #018fe2, #727272</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 0.875em, 16px, 32px</p>
+<ul>
+<li>Z-index values: 1 unique</li>
+</ul>
+<p>  - 1261</p>
+<h3>https://nsf.gov/sites/default/files/css/css_sJ8uv-dMi158PBUXu9eoTYb7q-JJrhn7I6oF0CT7NLQ.css?delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jFEOwyAMQy8E5UhVgLRlhQQlsK23X7dV-5mEZFlW8myIsTHQ4eAK0yJMzQTOGaomnznsLrCgeduZSmVCajqRLnPbsKC1XhBikF68jrAAEm0E2a3PfTi48t16IEIZUZlXHv0FWxeyjU_VLxilV8gT3OBpfqRr3MNWOZ19oxwS5LlgTDDnRLu6_9P06Rk9tGFxHhRN10fUa_8FUAeEGg</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 98/100 ✅</li>
+<li>Maintainability: 98/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>TooMuchEmbeddedContent</code>: score impact 2</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MaxSelectorComplexity</code>: score impact 2</li>
+<li><code>AverageSelectorComplexity</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 342</li>
+<li>Stylesheet complexity: 964</li>
+<li>Total rules: 99</li>
+<li>Total selectors: 116</li>
+<li>Total declarations: 223</li>
+<li><code>!important</code> declarations: 2</li>
+<li>Max selector specificity: 0,3,2</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 10 unique</li>
+</ul>
+<p>  - #fff, #000, #555, transparent, #232323, rgba(0,0,0,0.063), #ccc, #0071b3, #018fe2, #727272</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 0.875em, 16px, 32px</p>
+<ul>
+<li>Z-index values: 1 unique</li>
+</ul>
+<p>  - 1261</p>
+<h3>https://nsf.gov/sites/default/files/css/css_nQn8xAHc_uWqKXm63wMf2ZWfRgEM3qQbGFfgii5R_sA.css?delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jVGOwzAIRC9kx0eKsKGtNzZYgNvm9pvdVv2pFAmh0fBmAEQX4D3BWywXFfZQpDUYVnOTsqUiSuFvHaoPYWK3he2y-o06xZiVAIvOnu0MK6AYEXSLuc3TwqvcYwZm0jOqyVXO7ko-laPLMeMFos4BbYEfeIYDr76v1DNhKjC8CodPPLnMchtSj9JgUiq0tRNWWFvlzdK3tfzngu3m1FMGozDtgfZ--gt-w4xc</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 98/100 ✅</li>
+<li>Maintainability: 98/100 ✅</li>
+<li>Complexity: 96/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>TooMuchEmbeddedContent</code>: score impact 2</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MaxSelectorComplexity</code>: score impact 2</li>
+<li><code>AverageSelectorComplexity</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 358</li>
+<li>Stylesheet complexity: 1020</li>
+<li>Total rules: 104</li>
+<li>Total selectors: 122</li>
+<li>Total declarations: 233</li>
+<li><code>!important</code> declarations: 2</li>
+<li>Max selector specificity: 0,3,2</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 10 unique</li>
+</ul>
+<p>  - #fff, #000, #555, transparent, #232323, rgba(0,0,0,0.063), #ccc, #0071b3, #018fe2, #727272</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 0.875em, 16px, 32px</p>
+<ul>
+<li>Z-index values: 1 unique</li>
+</ul>
+<p>  - 1261</p>
+<h3>https://nsf.gov/sites/default/files/css/css_KSqtnfUyvG2nCcI8HHhsUqzIECW0tGHEW3R5CI4M6os.css?delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9j2FuwzAIhS9kx0eKsE0Srw5YgLv19nO6dftRyRJCCD4ePMjZGOgR4LdYNmEyl7hWaFpi5XQLiQXdlUZ1NiYk04V0W-3AE72PgpCT9DPqDNsQrAtmv5WKvha6zeid7z4CEcqMulRGUptCvPNsLljBxl-X2NSB4DBA3nhE-wGz9AZ1gQ_4csOXoYQEzQqT-1sMxj0djcuQcw0EdoF26Gv3v7N0aj0OOwdmp5wK1PXEXGB9vhbeW8vzgNOHGp4hgqLr-plf2t_ju7mz</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 98/100 ✅</li>
+<li>Maintainability: 98/100 ✅</li>
+<li>Complexity: 96/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>TooMuchEmbeddedContent</code>: score impact 2</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MaxSelectorComplexity</code>: score impact 2</li>
+<li><code>AverageSelectorComplexity</code>: score impact 2</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 356</li>
+<li>Stylesheet complexity: 1006</li>
+<li>Total rules: 104</li>
+<li>Total selectors: 121</li>
+<li>Total declarations: 232</li>
+<li><code>!important</code> declarations: 2</li>
+<li>Max selector specificity: 0,3,2</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 11 unique</li>
+</ul>
+<p>  - #fff, #000, #555, transparent, #232323, rgba(0,0,0,0.063), #ccc, #0071b3, #018fe2, #727272, #fff4f4</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 0.875em, 16px, 32px</p>
+<ul>
+<li>Z-index values: 1 unique</li>
+</ul>
+<p>  - 1261</p>
+<h3>https://nsf.gov/sites/default/files/css/css_rZLl9Z_qVIx2YWYOfhhkB7yy2Xsz5PZmiFBU2n_u08A.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9j2FuwzAIhS9kx0eKsE0Srw5YgLv19nO6dftRyRJCCD4ePMjZGOgR4LdYNmEyl7hWaFpi5XQLiQXdlUZ1NiYk04V0W-3AE72PgpCT9DPqDNsQrAtmv5WKvha6zeid7z4CEcqMulRGUptCvPNsLljBxl-X2NSB4DBA3nhE-wGz9AZ1gQ_4csOXoYQEzQqT-1sMxj0djcuQcw0EdoF26Gv3v7N0aj0OOwdmp5wK1PXEXGB9vhbeW8vzgNOHGp4hgqLr-plf2t_ju7mz</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 68/100 ❌</li>
+<li>Maintainability: 32/100 ❌</li>
+<li>Complexity: 70/100 ⚠️</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 7</li>
+<li><code>CssSize</code>: score impact 5</li>
+<li><code>TooMuchEmbeddedContent</code>: score impact 20</li>
+<li><code>SourceLinesOfCode</code>: score impact 15</li>
+<li><code>MaxSelectorsPerRule</code>: score impact 15</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 8</li>
+<li><code>MoreThanMostCommonSelectorsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonDeclarationsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonSelectorComplexity</code>: score impact 10</li>
+<li><code>MoreThanMostCommonSelectorSpecificity</code>: score impact 10</li>
+<li><code>MaxSelectorComplexity</code>: score impact 5</li>
+<li><code>AverageSelectorComplexity</code>: score impact 5</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 29520</li>
+<li>Stylesheet complexity: 104600</li>
+<li>Total rules: 7811</li>
+<li>Total selectors: 14927</li>
+<li>Total declarations: 13950</li>
+<li><code>!important</code> declarations: 43</li>
+<li>Max selector specificity: 2,1,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Custom properties (CSS variables): 3 unique</li>
+</ul>
+<p>  - --gap, --line-offset, --line-thickness</p>
+<ul>
+<li>Colors: 130 unique</li>
+</ul>
+<p>  - #f7f9fa, #1b1b1b, #005ea2, #1a4480, #2491ff, #162e51, rgba(0,0,0,.5), #fff, transparent, #f1f3f6, #dfe1e2, #edeff0, #73b3e7, #aacdec, #000, rgba(0,0,0,.25), #757575, #1c1d1f, buttontext, #0076d6, #a9aeb1, graytext, #97d4ea, #e1f3f8, #c3ebfa, currentcolor, canvastext, linktext, #c9c9c9, #00bde3, #28a0cb, #07648d, #c9ab48, #a88f48, #947100, #3d4551, #04c585, #00a871, #008659, #b50909, #00a91c, rgba(0,0,0,.1), #d3d3d3, rgba(0,0,0,.7), rgba(0,118,214,.1), #e6e6e6, selecteditem, #c6cace, #f0f0f0, highlight, #5d5d52, #f9f9f9, activetext, #cfe8ff, #eff6fb, #e52207, #e66f0e, #ffbe2e, #fee685, #538200, #009ec1, #676cc8, #8168b3, #d72d79, #adadad, #454545, #dbf6ed, #92d9bb, #0ceda6, #146947, #ddaa01, #e6c74c, #f5e6af, #f8e1de, #d83933, #6f3331, #faf3d1, #e5a000, #c2850c, #ecf3ec, #4d8055, #154c21, #e7f6f8, #0081a1, #9c3d10, #332d29, #ccc, #f3f4ee, #232323, hsla(0,0%,69%,.5), rgba(0,0,0,.125), #828388, hsla(200,5%,88%,.5), #919191, #565c65, rgba(0,0,0,.12), rgba(0,0,0,.4), #8d9297, hsla(44,96%,89%,.7), #71767a, rgba(27,27,27,.75), rgba(22,46,81,.7), #333, #e5e9ee, #d3d6d7, #fff4f4, #a6a6a6, #f2f1eb, #f6f6f3, #e7e7df, hsla(0,0%,100%,0.6), #1a1a1a, #f9f8f6, #fcfcfa, #e9e9dd, hsla(0,0%,0%,0.125), #dfdfd9, hsla(0,0%,0%,0.2), #bfbfba, hsla(0,0%,0%,0.5), #1e5c90, #0071b8, #007bc6, #2369a6, #0c97ed, #1f86c7, hsla(203,10%,10%,0.25), #144b78, #08639b, white</p>
+<ul>
+<li>Font families: 9 unique</li>
+</ul>
+<p>  - Open Sans, Open Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol, Roboto Mono Web, Merriweather Web, monospace,monospace, Merriweather Web,Georgia,Cambria,Times New Roman,Times,serif, Roboto Mono Web,Bitstream Vera Sans Mono,Consolas,Courier,monospace, Lucida Grande,Lucida Sans Unicode,liberation sans,sans-serif, Source Sans Pro,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif</p>
+<ul>
+<li>Font sizes: 54 unique</li>
+</ul>
+<p>  - .89rem, 1.01rem, 1.39rem, .95rem, 2.03rem, 2.54rem, 52px, 3.25rem, 1.52rem, 1.77rem, 1.27rem, .76rem, 100%, 2em, 1em, 80%, 75%, .82rem, 1.34rem, .98rem, .77rem, .83rem, 1.31rem, 1.91rem, 2.38rem, 2.86rem, 1.08rem, 3.04rem, .79rem, .85rem, .91rem, 1.04rem, 1.95rem, 2.44rem, 2.93rem, .75rem, 17px, 1.0625rem, 15px, .9375rem, 1px, 60px, 3.75rem, 30px, 1.875rem, 14px, .875rem, .9rem, 2.28rem, 1.25rem, 8.25pt, 16.5pt, 13.5pt, 10.5pt</p>
+<ul>
+<li>Z-index values: 18 unique</li>
+</ul>
+<p>  - 0, 1, 2, 3, 100, 200, 300, 400, 499, 500, 501, 600, 1000, 1260, 3000, 99999, 100000, -100</p>
+<h3>https://nsf.gov/sites/default/files/css/css_sJ8uv-dMi158PBUXu9eoTYb7q-JJrhn7I6oF0CT7NLQ.css?delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jw1qwzAMhS_kxEcKsq22XmXJSHK33H5pVkahYBDi8fTpD0pxAd4jvMR6UWEPWYigW00k-R6zKIZnOlTrwshuK9tl8xs2XBYgVJ8BSRFK1tGSzbBSH7WgzpCrPJYEzHOKKt-PZNOjSK4yq3et7OeoGaVI4FhObvqcog_lxeWI_gcWHR1ohS_4Cf9kLJKpJgXd30yXkW9djossmOQKtDUsFbZzb_y01rMv2G6OLSYwDMO-i72W_gJsuMMU</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 98/100 ✅</li>
+<li>Maintainability: 98/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>TooMuchEmbeddedContent</code>: score impact 2</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MaxSelectorComplexity</code>: score impact 2</li>
+<li><code>AverageSelectorComplexity</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 342</li>
+<li>Stylesheet complexity: 964</li>
+<li>Total rules: 99</li>
+<li>Total selectors: 116</li>
+<li>Total declarations: 223</li>
+<li><code>!important</code> declarations: 2</li>
+<li>Max selector specificity: 0,3,2</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 10 unique</li>
+</ul>
+<p>  - #fff, #000, #555, transparent, #232323, rgba(0,0,0,0.063), #ccc, #0071b3, #018fe2, #727272</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 0.875em, 16px, 32px</p>
+<ul>
+<li>Z-index values: 1 unique</li>
+</ul>
+<p>  - 1261</p>
+<h3>https://nsf.gov/sites/default/files/css/css_65tZSVJibuMePlL9xaFmA37Gb9jlAK1_F08FAHNeXnk.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jw1qwzAMhS_kxEcKsq22XmXJSHK33H5pVkahYBDi8fTpD0pxAd4jvMR6UWEPWYigW00k-R6zKIZnOlTrwshuK9tl8xs2XBYgVJ8BSRFK1tGSzbBSH7WgzpCrPJYEzHOKKt-PZNOjSK4yq3et7OeoGaVI4FhObvqcog_lxeWI_gcWHR1ohS_4Cf9kLJKpJgXd30yXkW9djossmOQKtDUsFbZzb_y01rMv2G6OLSYwDMO-i72W_gJsuMMU</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 68/100 ❌</li>
+<li>Maintainability: 32/100 ❌</li>
+<li>Complexity: 70/100 ⚠️</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 7</li>
+<li><code>CssSize</code>: score impact 5</li>
+<li><code>TooMuchEmbeddedContent</code>: score impact 20</li>
+<li><code>SourceLinesOfCode</code>: score impact 15</li>
+<li><code>MaxSelectorsPerRule</code>: score impact 15</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 8</li>
+<li><code>MoreThanMostCommonSelectorsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonDeclarationsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonSelectorComplexity</code>: score impact 10</li>
+<li><code>MoreThanMostCommonSelectorSpecificity</code>: score impact 10</li>
+<li><code>MaxSelectorComplexity</code>: score impact 5</li>
+<li><code>AverageSelectorComplexity</code>: score impact 5</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 30220</li>
+<li>Stylesheet complexity: 106867</li>
+<li>Total rules: 7981</li>
+<li>Total selectors: 15140</li>
+<li>Total declarations: 14419</li>
+<li><code>!important</code> declarations: 45</li>
+<li>Max selector specificity: 2,1,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Custom properties (CSS variables): 3 unique</li>
+</ul>
+<p>  - --gap, --line-offset, --line-thickness</p>
+<ul>
+<li>Colors: 130 unique</li>
+</ul>
+<p>  - currentcolor, #f7f9fa, #dfe1e2, #1c1d1f, #ecf3ec, #00a91c, transparent, #0076d6, #005ea2, #faf3d1, #ffbe2e, #f8e1de, #d83933, #e7f6f8, #00bde3, #9c3d10, #fff, #f1f3f6, #1a4480, #162e51, #b50909, #e5a000, #4d8055, #1b1b1b, #2491ff, #edeff0, #73b3e7, #aacdec, #000, rgba(0,0,0,.25), #757575, buttontext, #a9aeb1, graytext, #97d4ea, #e1f3f8, #c3ebfa, canvastext, linktext, #c9c9c9, #28a0cb, #07648d, #c9ab48, #a88f48, #947100, #3d4551, #04c585, #00a871, #008659, rgba(0,0,0,.1), #d3d3d3, rgba(0,0,0,.7), rgba(0,118,214,.1), #e6e6e6, selecteditem, #c6cace, #f0f0f0, highlight, #5d5d52, #f9f9f9, activetext, #cfe8ff, #eff6fb, #e52207, #e66f0e, #fee685, #538200, #009ec1, #676cc8, #8168b3, #d72d79, #adadad, #454545, #dbf6ed, #92d9bb, #0ceda6, #146947, #ddaa01, #e6c74c, #f5e6af, #6f3331, #c2850c, #154c21, #0081a1, #332d29, #ccc, #f3f4ee, #232323, hsla(0,0%,69%,.5), rgba(0,0,0,.125), #828388, hsla(200,5%,88%,.5), #919191, #565c65, rgba(0,0,0,.12), rgba(0,0,0,.4), rgba(0,0,0,.5), #8d9297, hsla(44,96%,89%,.7), #71767a, rgba(27,27,27,.75), rgba(22,46,81,.7), #333, #e5e9ee, #d3d6d7, #fff4f4, #a6a6a6, #f2f1eb, #f6f6f3, #e7e7df, hsla(0,0%,100%,0.6), #1a1a1a, #f9f8f6, #fcfcfa, #e9e9dd, hsla(0,0%,0%,0.125), #dfdfd9, hsla(0,0%,0%,0.2), #bfbfba, hsla(0,0%,0%,0.5), #1e5c90, #0071b8, #007bc6, #2369a6, #0c97ed, #1f86c7, hsla(203,10%,10%,0.25), #144b78, #08639b, white</p>
+<ul>
+<li>Font families: 9 unique</li>
+</ul>
+<p>  - Roboto Mono Web, Merriweather Web, Open Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol, Open Sans, monospace,monospace, Merriweather Web,Georgia,Cambria,Times New Roman,Times,serif, Roboto Mono Web,Bitstream Vera Sans Mono,Consolas,Courier,monospace, Lucida Grande,Lucida Sans Unicode,liberation sans,sans-serif, Source Sans Pro,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif</p>
+<ul>
+<li>Font sizes: 55 unique</li>
+</ul>
+<p>  - 1.01rem, 1.39rem, 1.22rem, .89rem, .95rem, 2.03rem, 2.54rem, 52px, 3.25rem, 1.52rem, 1.77rem, 1.27rem, .76rem, 100%, 2em, 1em, 80%, 75%, .82rem, 1.34rem, .98rem, .77rem, .83rem, 1.31rem, 1.91rem, 2.38rem, 2.86rem, 1.08rem, 3.04rem, .79rem, .85rem, .91rem, 1.04rem, 1.95rem, 2.44rem, 2.93rem, .75rem, 17px, 1.0625rem, 15px, .9375rem, 1px, 60px, 3.75rem, 30px, 1.875rem, 14px, .875rem, .9rem, 2.28rem, 1.25rem, 8.25pt, 16.5pt, 13.5pt, 10.5pt</p>
+<ul>
+<li>Z-index values: 18 unique</li>
+</ul>
+<p>  - 0, 1, 2, 3, 100, 200, 300, 400, 499, 500, 501, 600, 1000, 1260, 3000, 99999, 100000, -100</p>
+<h3>https://nsf.gov/sites/default/files/css/css_sJ8uv-dMi158PBUXu9eoTYb7q-JJrhn7I6oF0CT7NLQ.css?delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9jwFqBDEIRS-UTI40mMSdTdfEoGbbuX2z06UUCgER-T71CzkbQzsDvIvtJtzMJSaCriUSp0dILOheaVa1c8NmujW97XbHit4DodgKiIKQk4wadYXl8iwZZYUc_PQRWltTVNpjJl2aIj541e9Sml2rVpQggWG-uOVzgjakeeMZfQUaHL4Y1h8my-hAG3zAl_uFQuZEJQrI-Uc0HuneebpWp5wK0F4xF9gvb-G_tF1zTk-d50IERTf0M-v76DegwdC3</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 98/100 ✅</li>
+<li>Maintainability: 98/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>TooMuchEmbeddedContent</code>: score impact 2</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MaxSelectorComplexity</code>: score impact 2</li>
+<li><code>AverageSelectorComplexity</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 342</li>
+<li>Stylesheet complexity: 964</li>
+<li>Total rules: 99</li>
+<li>Total selectors: 116</li>
+<li>Total declarations: 223</li>
+<li><code>!important</code> declarations: 2</li>
+<li>Max selector specificity: 0,3,2</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 10 unique</li>
+</ul>
+<p>  - #fff, #000, #555, transparent, #232323, rgba(0,0,0,0.063), #ccc, #0071b3, #018fe2, #727272</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 0.875em, 16px, 32px</p>
+<ul>
+<li>Z-index values: 1 unique</li>
+</ul>
+<p>  - 1261</p>
+<h3>https://nsf.gov/sites/default/files/css/css_sJ8uv-dMi158PBUXu9eoTYb7q-JJrhn7I6oF0CT7NLQ.css?delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9z1EOwyAIANALaT1Sg0pbNwUj2K23X7st-1liQgiBBwkQozLQ4eBbTEtjUhM4Z6iSfOZwd4EbmiudValMSCoTyTLrhgWt9Q0hhtaLlxGLaU8R24isvFsPRGOVeeXRvKH2Rlb5jDqCCj6j5cWG8-lr-MGx9Qp5ghs8zU875R62yuliwiFBngvGBHNOdBf335ree0YOUSzOg6Dp8ojyvf8COkGS8w</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 98/100 ✅</li>
+<li>Maintainability: 98/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>TooMuchEmbeddedContent</code>: score impact 2</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MaxSelectorComplexity</code>: score impact 2</li>
+<li><code>AverageSelectorComplexity</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 342</li>
+<li>Stylesheet complexity: 964</li>
+<li>Total rules: 99</li>
+<li>Total selectors: 116</li>
+<li>Total declarations: 223</li>
+<li><code>!important</code> declarations: 2</li>
+<li>Max selector specificity: 0,3,2</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 10 unique</li>
+</ul>
+<p>  - #fff, #000, #555, transparent, #232323, rgba(0,0,0,0.063), #ccc, #0071b3, #018fe2, #727272</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 0.875em, 16px, 32px</p>
+<ul>
+<li>Z-index values: 1 unique</li>
+</ul>
+<p>  - 1261</p>
+<h3>https://nsf.gov/sites/default/files/css/css_lSY3cdWNn1HtuF-bXowS1kx8KOSqctoOt0dYkWXN0vM.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9z1EOwyAIANALaT1Sg0pbNwUj2K23X7st-1liQgiBBwkQozLQ4eBbTEtjUhM4Z6iSfOZwd4EbmiudValMSCoTyTLrhgWt9Q0hhtaLlxGLaU8R24isvFsPRGOVeeXRvKH2Rlb5jDqCCj6j5cWG8-lr-MGx9Qp5ghs8zU875R62yuliwiFBngvGBHNOdBf335ree0YOUSzOg6Dp8ojyvf8COkGS8w</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 68/100 ❌</li>
+<li>Maintainability: 32/100 ❌</li>
+<li>Complexity: 70/100 ⚠️</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 7</li>
+<li><code>CssSize</code>: score impact 5</li>
+<li><code>TooMuchEmbeddedContent</code>: score impact 20</li>
+<li><code>SourceLinesOfCode</code>: score impact 15</li>
+<li><code>MaxSelectorsPerRule</code>: score impact 15</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 8</li>
+<li><code>MoreThanMostCommonSelectorsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonDeclarationsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonSelectorComplexity</code>: score impact 10</li>
+<li><code>MoreThanMostCommonSelectorSpecificity</code>: score impact 10</li>
+<li><code>MaxSelectorComplexity</code>: score impact 5</li>
+<li><code>AverageSelectorComplexity</code>: score impact 5</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 29314</li>
+<li>Stylesheet complexity: 104120</li>
+<li>Total rules: 7761</li>
+<li>Total selectors: 14851</li>
+<li>Total declarations: 13835</li>
+<li><code>!important</code> declarations: 43</li>
+<li>Max selector specificity: 2,1,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Custom properties (CSS variables): 3 unique</li>
+</ul>
+<p>  - --gap, --line-offset, --line-thickness</p>
+<ul>
+<li>Colors: 130 unique</li>
+</ul>
+<p>  - #005ea2, #162e51, transparent, #f1f3f6, #1b1b1b, #1a4480, #2491ff, #dfe1e2, #fff, #edeff0, #73b3e7, #aacdec, rgba(0,0,0,.25), #f7f9fa, #757575, #1c1d1f, buttontext, #0076d6, #a9aeb1, graytext, #000, #97d4ea, #e1f3f8, #c3ebfa, currentcolor, canvastext, linktext, #c9c9c9, #00bde3, #28a0cb, #07648d, #c9ab48, #a88f48, #947100, #3d4551, #04c585, #00a871, #008659, #b50909, #00a91c, rgba(0,0,0,.1), #d3d3d3, rgba(0,0,0,.7), rgba(0,118,214,.1), #e6e6e6, selecteditem, #c6cace, #f0f0f0, highlight, #5d5d52, #f9f9f9, activetext, #cfe8ff, #eff6fb, #e52207, #e66f0e, #ffbe2e, #fee685, #538200, #009ec1, #676cc8, #8168b3, #d72d79, #adadad, #454545, #dbf6ed, #92d9bb, #0ceda6, #146947, #ddaa01, #e6c74c, #f5e6af, #f8e1de, #d83933, #6f3331, #faf3d1, #e5a000, #c2850c, #ecf3ec, #4d8055, #154c21, #e7f6f8, #0081a1, #9c3d10, #332d29, #ccc, #f3f4ee, #232323, hsla(0,0%,69%,.5), rgba(0,0,0,.125), #828388, hsla(200,5%,88%,.5), #919191, #565c65, rgba(0,0,0,.12), rgba(0,0,0,.4), rgba(0,0,0,.5), #8d9297, hsla(44,96%,89%,.7), #71767a, rgba(27,27,27,.75), rgba(22,46,81,.7), #333, #e5e9ee, #d3d6d7, #fff4f4, #a6a6a6, #f2f1eb, #f6f6f3, #e7e7df, hsla(0,0%,100%,0.6), #1a1a1a, #f9f8f6, #fcfcfa, #e9e9dd, hsla(0,0%,0%,0.125), #dfdfd9, hsla(0,0%,0%,0.2), #bfbfba, hsla(0,0%,0%,0.5), #1e5c90, #0071b8, #007bc6, #2369a6, #0c97ed, #1f86c7, hsla(203,10%,10%,0.25), #144b78, #08639b, white</p>
+<ul>
+<li>Font families: 9 unique</li>
+</ul>
+<p>  - Open Sans, Open Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol, Roboto Mono Web, Merriweather Web, monospace,monospace, Merriweather Web,Georgia,Cambria,Times New Roman,Times,serif, Roboto Mono Web,Bitstream Vera Sans Mono,Consolas,Courier,monospace, Lucida Grande,Lucida Sans Unicode,liberation sans,sans-serif, Source Sans Pro,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif</p>
+<ul>
+<li>Font sizes: 54 unique</li>
+</ul>
+<p>  - .89rem, 1.01rem, .95rem, 1.27rem, 100%, 2em, 1em, 80%, 75%, .82rem, .76rem, 1.39rem, 1.34rem, .98rem, 2.03rem, .77rem, .83rem, 1.31rem, 1.91rem, 2.38rem, 2.86rem, 1.08rem, 2.54rem, 3.04rem, .79rem, .85rem, .91rem, 1.04rem, 1.95rem, 2.44rem, 2.93rem, .75rem, 52px, 3.25rem, 1.52rem, 1.77rem, 17px, 1.0625rem, 15px, .9375rem, 1px, 60px, 3.75rem, 30px, 1.875rem, 14px, .875rem, .9rem, 2.28rem, 1.25rem, 8.25pt, 16.5pt, 13.5pt, 10.5pt</p>
+<ul>
+<li>Z-index values: 18 unique</li>
+</ul>
+<p>  - 0, 1, 2, 3, 100, 200, 300, 400, 499, 500, 501, 600, 1000, 1260, 3000, 99999, 100000, -100</p>
+<h3>https://nsf.gov/sites/default/files/css/css_8bh-X2L74xaGO9-s17gkZiZfd_m018gbG4aQ1x6WmSo.css?delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJyFkGGKxDAIhS-UNEcqNrGtO4mGaGZ2br-ZUvbPQhZERL-nDyElE-B3gLtY9iZsLkrOUJW2LPERojR0nzSqUoWRTRfWfbUTC3oP3U5pxIcn3qUVMBKeCbaGkGLrZdMZdsjTb8CMbUadY1cmRp9xtxmY5ZDZvMJB_K_3htYbe5MRdQYajH8YlhnTFZvf6LaVWq-QF_iCb7dTNmwhQr0M_WqCSY9nFRqbnEokyGvBRLCOHzw0_G0tl87pW4eZsIGi6_pKep9zT8KXhisvRVLP-AOgnM5g</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 95/100 ✅</li>
+<li>Maintainability: 98/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 3</li>
+<li><code>TooMuchEmbeddedContent</code>: score impact 2</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MaxSelectorComplexity</code>: score impact 2</li>
+<li><code>AverageSelectorComplexity</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 368</li>
+<li>Stylesheet complexity: 1038</li>
+<li>Total rules: 109</li>
+<li>Total selectors: 126</li>
+<li>Total declarations: 239</li>
+<li><code>!important</code> declarations: 2</li>
+<li>Max selector specificity: 0,3,2</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 10 unique</li>
+</ul>
+<p>  - #fff, #000, #555, transparent, #232323, rgba(0,0,0,0.063), #ccc, #0071b3, #018fe2, #727272</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 0.875em, 16px, 32px</p>
+<ul>
+<li>Z-index values: 1 unique</li>
+</ul>
+<p>  - 1261</p>
+<h3>https://nsf.gov/sites/default/files/css/css_mKJWobzyYqcUL6YgPYkFQISzK6sG2VwtqA1xf319vTQ.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJyFkGGKxDAIhS-UNEcqNrGtO4mGaGZ2br-ZUvbPQhZERL-nDyElE-B3gLtY9iZsLkrOUJW2LPERojR0nzSqUoWRTRfWfbUTC3oP3U5pxIcn3qUVMBKeCbaGkGLrZdMZdsjTb8CMbUadY1cmRp9xtxmY5ZDZvMJB_K_3htYbe5MRdQYajH8YlhnTFZvf6LaVWq-QF_iCb7dTNmwhQr0M_WqCSY9nFRqbnEokyGvBRLCOHzw0_G0tl87pW4eZsIGi6_pKep9zT8KXhisvRVLP-AOgnM5g</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 68/100 ❌</li>
+<li>Maintainability: 32/100 ❌</li>
+<li>Complexity: 70/100 ⚠️</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 7</li>
+<li><code>CssSize</code>: score impact 5</li>
+<li><code>TooMuchEmbeddedContent</code>: score impact 20</li>
+<li><code>SourceLinesOfCode</code>: score impact 15</li>
+<li><code>MaxSelectorsPerRule</code>: score impact 15</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 8</li>
+<li><code>MoreThanMostCommonSelectorsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonDeclarationsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonSelectorComplexity</code>: score impact 10</li>
+<li><code>MoreThanMostCommonSelectorSpecificity</code>: score impact 10</li>
+<li><code>MaxSelectorComplexity</code>: score impact 5</li>
+<li><code>AverageSelectorComplexity</code>: score impact 5</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 29658</li>
+<li>Stylesheet complexity: 104964</li>
+<li>Total rules: 7844</li>
+<li>Total selectors: 14998</li>
+<li>Total declarations: 14020</li>
+<li><code>!important</code> declarations: 43</li>
+<li>Max selector specificity: 2,1,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Custom properties (CSS variables): 3 unique</li>
+</ul>
+<p>  - --gap, --line-offset, --line-thickness</p>
+<ul>
+<li>Colors: 130 unique</li>
+</ul>
+<p>  - #005ea2, #162e51, transparent, #f1f3f6, #1b1b1b, #1a4480, #2491ff, #dfe1e2, #fff, #edeff0, #73b3e7, #aacdec, #0076d6, rgba(0,0,0,.25), #757575, #1c1d1f, buttontext, #a9aeb1, graytext, #000, #97d4ea, #e1f3f8, #f7f9fa, #c3ebfa, currentcolor, canvastext, linktext, #c9c9c9, #00bde3, #28a0cb, #07648d, #c9ab48, #a88f48, #947100, #3d4551, #04c585, #00a871, #008659, #b50909, #00a91c, rgba(0,0,0,.1), #d3d3d3, rgba(0,0,0,.7), rgba(0,118,214,.1), #e6e6e6, selecteditem, #c6cace, #f0f0f0, highlight, #5d5d52, #f9f9f9, activetext, #cfe8ff, #eff6fb, #e52207, #e66f0e, #ffbe2e, #fee685, #538200, #009ec1, #676cc8, #8168b3, #d72d79, #adadad, #454545, #dbf6ed, #92d9bb, #0ceda6, #146947, #ddaa01, #e6c74c, #f5e6af, #f8e1de, #d83933, #6f3331, #faf3d1, #e5a000, #c2850c, #ecf3ec, #4d8055, #154c21, #e7f6f8, #0081a1, #9c3d10, #332d29, #ccc, #f3f4ee, #232323, hsla(0,0%,69%,.5), rgba(0,0,0,.125), #828388, hsla(200,5%,88%,.5), #919191, #565c65, rgba(0,0,0,.12), rgba(0,0,0,.4), rgba(0,0,0,.5), #8d9297, hsla(44,96%,89%,.7), #71767a, rgba(27,27,27,.75), rgba(22,46,81,.7), #333, #e5e9ee, #d3d6d7, #fff4f4, #a6a6a6, #f2f1eb, #f6f6f3, #e7e7df, hsla(0,0%,100%,0.6), #1a1a1a, #f9f8f6, #fcfcfa, #e9e9dd, hsla(0,0%,0%,0.125), #dfdfd9, hsla(0,0%,0%,0.2), #bfbfba, hsla(0,0%,0%,0.5), #1e5c90, #0071b8, #007bc6, #2369a6, #0c97ed, #1f86c7, hsla(203,10%,10%,0.25), #144b78, #08639b, white</p>
+<ul>
+<li>Font families: 9 unique</li>
+</ul>
+<p>  - Open Sans, Open Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol, Roboto Mono Web, Merriweather Web, monospace,monospace, Merriweather Web,Georgia,Cambria,Times New Roman,Times,serif, Roboto Mono Web,Bitstream Vera Sans Mono,Consolas,Courier,monospace, Lucida Grande,Lucida Sans Unicode,liberation sans,sans-serif, Source Sans Pro,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif</p>
+<ul>
+<li>Font sizes: 54 unique</li>
+</ul>
+<p>  - .89rem, 1.01rem, .95rem, 2.03rem, 2.54rem, 52px, 3.25rem, 1.52rem, 1.77rem, 1.27rem, .76rem, 100%, 2em, 1em, 80%, 75%, .82rem, 1.39rem, 1.34rem, .98rem, .77rem, .83rem, 1.31rem, 1.91rem, 2.38rem, 2.86rem, 1.08rem, 3.04rem, .79rem, .85rem, .91rem, 1.04rem, 1.95rem, 2.44rem, 2.93rem, .75rem, 17px, 1.0625rem, 15px, .9375rem, 1px, 60px, 3.75rem, 30px, 1.875rem, 14px, .875rem, .9rem, 2.28rem, 1.25rem, 8.25pt, 16.5pt, 13.5pt, 10.5pt</p>
+<ul>
+<li>Z-index values: 18 unique</li>
+</ul>
+<p>  - 0, 1, 2, 3, 100, 200, 300, 400, 499, 500, 501, 600, 1000, 1260, 3000, 99999, 100000, -100</p>
+<h3>https://nsf.gov/sites/default/files/css/css_-c1EwUNdVwTMjOIhQg2lACGrxBIXtSdMFDBriCoezf8.css?delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9kFtuxCAMRTfEY0mRASehAxjZpu3sviTttB-VkCzLuvfIL0hJCdrTw0_hdqamJlIp0CWHQvHhIzGaK82qdmrYVFyTfdMTK1obGCFFHjXICosKK_ugdxugNeQVVXJ7zCS6hOiglc9YQDHdzZYrM-rgZpVm9BWoEApa2m2c77vMbzjx6FAcvMGn-aW90ohnp3xhHRgOhn7KC_5T3Gh9hHnsickIxQxlq5gybPfi_r_k7gFGnqJYfQBBM-QjvXp_Acszv1Q</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 98/100 ✅</li>
+<li>Maintainability: 98/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>TooMuchEmbeddedContent</code>: score impact 2</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MaxSelectorComplexity</code>: score impact 2</li>
+<li><code>AverageSelectorComplexity</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 344</li>
+<li>Stylesheet complexity: 968</li>
+<li>Total rules: 100</li>
+<li>Total selectors: 117</li>
+<li>Total declarations: 224</li>
+<li><code>!important</code> declarations: 2</li>
+<li>Max selector specificity: 0,3,2</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 11 unique</li>
+</ul>
+<p>  - #fff, #000, #555, transparent, #232323, rgba(0,0,0,0.063), #ccc, #0071b3, #018fe2, #727272, #fff4f4</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 0.875em, 16px, 32px</p>
+<ul>
+<li>Z-index values: 1 unique</li>
+</ul>
+<p>  - 1261</p>
+<h3>https://nsf.gov/sites/default/files/css/css_2hGscWttZ705Ltx8_s2aEDrJ8--f-aq6-JPcTuQ2_Rk.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9kFtuxCAMRTfEY0mRASehAxjZpu3sviTttB-VkCzLuvfIL0hJCdrTw0_hdqamJlIp0CWHQvHhIzGaK82qdmrYVFyTfdMTK1obGCFFHjXICosKK_ugdxugNeQVVXJ7zCS6hOiglc9YQDHdzZYrM-rgZpVm9BWoEApa2m2c77vMbzjx6FAcvMGn-aW90ohnp3xhHRgOhn7KC_5T3Gh9hHnsickIxQxlq5gybPfi_r_k7gFGnqJYfQBBM-QjvXp_Acszv1Q</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 68/100 ❌</li>
+<li>Maintainability: 32/100 ❌</li>
+<li>Complexity: 70/100 ⚠️</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 7</li>
+<li><code>CssSize</code>: score impact 5</li>
+<li><code>TooMuchEmbeddedContent</code>: score impact 20</li>
+<li><code>SourceLinesOfCode</code>: score impact 15</li>
+<li><code>MaxSelectorsPerRule</code>: score impact 15</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 8</li>
+<li><code>MoreThanMostCommonSelectorsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonDeclarationsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonSelectorComplexity</code>: score impact 10</li>
+<li><code>MoreThanMostCommonSelectorSpecificity</code>: score impact 10</li>
+<li><code>MaxSelectorComplexity</code>: score impact 5</li>
+<li><code>AverageSelectorComplexity</code>: score impact 5</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 29745</li>
+<li>Stylesheet complexity: 105408</li>
+<li>Total rules: 7876</li>
+<li>Total selectors: 15028</li>
+<li>Total declarations: 14075</li>
+<li><code>!important</code> declarations: 43</li>
+<li>Max selector specificity: 2,1,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Custom properties (CSS variables): 3 unique</li>
+</ul>
+<p>  - --gap, --line-offset, --line-thickness</p>
+<ul>
+<li>Colors: 130 unique</li>
+</ul>
+<p>  - transparent, #f1f3f6, #1b1b1b, #005ea2, #1a4480, #2491ff, #162e51, #dfe1e2, #fff, #edeff0, #73b3e7, #aacdec, #f7f9fa, #000, rgba(0,0,0,.25), #757575, #1c1d1f, buttontext, #0076d6, #a9aeb1, graytext, #97d4ea, #e1f3f8, #c3ebfa, currentcolor, canvastext, linktext, #c9c9c9, #00bde3, #28a0cb, #07648d, #c9ab48, #a88f48, #947100, #3d4551, #04c585, #00a871, #008659, #b50909, #00a91c, rgba(0,0,0,.1), #d3d3d3, rgba(0,0,0,.7), rgba(0,118,214,.1), #e6e6e6, selecteditem, #c6cace, #f0f0f0, highlight, #5d5d52, #f9f9f9, activetext, #cfe8ff, #eff6fb, #e52207, #e66f0e, #ffbe2e, #fee685, #538200, #009ec1, #676cc8, #8168b3, #d72d79, #adadad, #454545, #dbf6ed, #92d9bb, #0ceda6, #146947, #ddaa01, #e6c74c, #f5e6af, #f8e1de, #d83933, #6f3331, #faf3d1, #e5a000, #c2850c, #ecf3ec, #4d8055, #154c21, #e7f6f8, #0081a1, #9c3d10, #332d29, #ccc, #f3f4ee, #232323, hsla(0,0%,69%,.5), rgba(0,0,0,.125), #828388, hsla(200,5%,88%,.5), #919191, #565c65, rgba(0,0,0,.12), rgba(0,0,0,.4), rgba(0,0,0,.5), #8d9297, hsla(44,96%,89%,.7), #71767a, rgba(27,27,27,.75), rgba(22,46,81,.7), #333, #e5e9ee, #d3d6d7, #fff4f4, #a6a6a6, #f2f1eb, #f6f6f3, #e7e7df, hsla(0,0%,100%,0.6), #1a1a1a, #f9f8f6, #fcfcfa, #e9e9dd, hsla(0,0%,0%,0.125), #dfdfd9, hsla(0,0%,0%,0.2), #bfbfba, hsla(0,0%,0%,0.5), #1e5c90, #0071b8, #007bc6, #2369a6, #0c97ed, #1f86c7, hsla(203,10%,10%,0.25), #144b78, #08639b, white</p>
+<ul>
+<li>Font families: 9 unique</li>
+</ul>
+<p>  - Open Sans, Open Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol, Roboto Mono Web, Merriweather Web, monospace,monospace, Merriweather Web,Georgia,Cambria,Times New Roman,Times,serif, Roboto Mono Web,Bitstream Vera Sans Mono,Consolas,Courier,monospace, Lucida Grande,Lucida Sans Unicode,liberation sans,sans-serif, Source Sans Pro,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif</p>
+<ul>
+<li>Font sizes: 54 unique</li>
+</ul>
+<p>  - .89rem, 2.03rem, 2.54rem, 52px, 3.25rem, 1.52rem, 1.77rem, 1.27rem, 1.01rem, .76rem, .95rem, 100%, 2em, 1em, 80%, 75%, .82rem, 1.39rem, 1.34rem, .98rem, .77rem, .83rem, 1.31rem, 1.91rem, 2.38rem, 2.86rem, 1.08rem, 3.04rem, .79rem, .85rem, .91rem, 1.04rem, 1.95rem, 2.44rem, 2.93rem, .75rem, 17px, 1.0625rem, 15px, .9375rem, 1px, 60px, 3.75rem, 30px, 1.875rem, 14px, .875rem, .9rem, 2.28rem, 1.25rem, 8.25pt, 16.5pt, 13.5pt, 10.5pt</p>
+<ul>
+<li>Z-index values: 18 unique</li>
+</ul>
+<p>  - 0, 1, 2, 3, 100, 200, 300, 400, 499, 500, 501, 600, 1000, 1260, 3000, 99999, 100000, -100</p>
+<h3>https://nsf.gov/sites/default/files/css/css_sF9AI9neE4q_J0KGDeb6ZpY1-zcAPLEYbt9ZA1BJpBo.css?delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9kGtuAyEMhC_E40grA85CAzayYdPcvpu0SX5UQrJGo_FnWzKkNBjo7uHPuIswDRO5VuhaQuV49ZEFzUNO1zoT0lBHetlGxobWBkFIUWYLusLwOBM7EBRlxe182ABEayqj8KpfeV_2BccUsoPP6r9gktmhOviCb_Mm_eAZc-dyzpsOArtAz_qCP4mb1GeoRTMmoxwL1K1hKrDVQlf1_yP3PGD0rgObD-dfzNRbeu02R8Gb-qe6xmlW_AFIt6eH</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 95/100 ✅</li>
+<li>Maintainability: 98/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 3</li>
+<li><code>TooMuchEmbeddedContent</code>: score impact 2</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MaxSelectorComplexity</code>: score impact 2</li>
+<li><code>AverageSelectorComplexity</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 358</li>
+<li>Stylesheet complexity: 1004</li>
+<li>Total rules: 106</li>
+<li>Total selectors: 123</li>
+<li>Total declarations: 232</li>
+<li><code>!important</code> declarations: 2</li>
+<li>Max selector specificity: 0,3,2</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 11 unique</li>
+</ul>
+<p>  - #fff, #000, #555, transparent, #232323, rgba(0,0,0,0.063), #ccc, #0071b3, #018fe2, #727272, #fff4f4</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 0.875em, 16px, 32px</p>
+<ul>
+<li>Z-index values: 1 unique</li>
+</ul>
+<p>  - 1261</p>
+<h3>https://nsf.gov/sites/default/files/css/css_sF9AI9neE4q_J0KGDeb6ZpY1-zcAPLEYbt9ZA1BJpBo.css?delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9kGtuAyEMhC_E40grA84uDWBkm01z-5Jt0_6ohIRG1vhjMIaUlKA9PfwU7sbU1EQqBbrkUCjefSRG85JZ1U4Nm4prctv0wIrWBkZIkUcNssLwnI5VBEFecTudNkBra-pAplW_5HafIrqEaF-GMBZQTFfY8m-MOrhZpXn6N5h4dCgOPuDT_JJeacSjU573TQeGnaEf8ob_HDdaH2HOf2AyQjFD2SqmDNs1i_9vuesBI09RrD7MLZshj_TONmfGh_hLXaU0Cn4BdFvFYw</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 95/100 ✅</li>
+<li>Maintainability: 98/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 3</li>
+<li><code>TooMuchEmbeddedContent</code>: score impact 2</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MaxSelectorComplexity</code>: score impact 2</li>
+<li><code>AverageSelectorComplexity</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 358</li>
+<li>Stylesheet complexity: 1004</li>
+<li>Total rules: 106</li>
+<li>Total selectors: 123</li>
+<li>Total declarations: 232</li>
+<li><code>!important</code> declarations: 2</li>
+<li>Max selector specificity: 0,3,2</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 11 unique</li>
+</ul>
+<p>  - #fff, #000, #555, transparent, #232323, rgba(0,0,0,0.063), #ccc, #0071b3, #018fe2, #727272, #fff4f4</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 0.875em, 16px, 32px</p>
+<ul>
+<li>Z-index values: 1 unique</li>
+</ul>
+<p>  - 1261</p>
+<h3>https://nsf.gov/sites/default/files/css/css_JExsS-q965oaNSQs7uOV1kONjaMFwBZbqLvlY86RvmA.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9kGtuAyEMhC_E40grA84uDWBkm01z-5Jt0_6ohIRG1vhjMIaUlKA9PfwU7sbU1EQqBbrkUCjefSRG85JZ1U4Nm4prctv0wIrWBkZIkUcNssLwnI5VBEFecTudNkBra-pAplW_5HafIrqEaF-GMBZQTFfY8m-MOrhZpXn6N5h4dCgOPuDT_JJeacSjU573TQeGnaEf8ob_HDdaH2HOf2AyQjFD2SqmDNs1i_9vuesBI09RrD7MLZshj_TONmfGh_hLXaU0Cn4BdFvFYw</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 68/100 ❌</li>
+<li>Maintainability: 32/100 ❌</li>
+<li>Complexity: 70/100 ⚠️</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 7</li>
+<li><code>CssSize</code>: score impact 5</li>
+<li><code>TooMuchEmbeddedContent</code>: score impact 20</li>
+<li><code>SourceLinesOfCode</code>: score impact 15</li>
+<li><code>MaxSelectorsPerRule</code>: score impact 15</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 8</li>
+<li><code>MoreThanMostCommonSelectorsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonDeclarationsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonSelectorComplexity</code>: score impact 10</li>
+<li><code>MoreThanMostCommonSelectorSpecificity</code>: score impact 10</li>
+<li><code>MaxSelectorComplexity</code>: score impact 5</li>
+<li><code>AverageSelectorComplexity</code>: score impact 5</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 29758</li>
+<li>Stylesheet complexity: 105479</li>
+<li>Total rules: 7867</li>
+<li>Total selectors: 15001</li>
+<li>Total declarations: 14099</li>
+<li><code>!important</code> declarations: 43</li>
+<li>Max selector specificity: 2,1,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Custom properties (CSS variables): 3 unique</li>
+</ul>
+<p>  - --gap, --line-offset, --line-thickness</p>
+<ul>
+<li>Colors: 130 unique</li>
+</ul>
+<p>  - #dfe1e2, transparent, #f1f3f6, #1b1b1b, #005ea2, #1a4480, #2491ff, #162e51, #fff, #edeff0, #73b3e7, #aacdec, #757575, #000, rgba(0,0,0,.4), #f7f9fa, rgba(0,0,0,.25), #1c1d1f, buttontext, #0076d6, #a9aeb1, graytext, #97d4ea, #e1f3f8, #c3ebfa, currentcolor, canvastext, linktext, #c9c9c9, #00bde3, #28a0cb, #07648d, #c9ab48, #a88f48, #947100, #3d4551, #04c585, #00a871, #008659, #b50909, #00a91c, rgba(0,0,0,.1), #d3d3d3, rgba(0,0,0,.7), rgba(0,118,214,.1), #e6e6e6, selecteditem, #c6cace, #f0f0f0, highlight, #5d5d52, #f9f9f9, activetext, #cfe8ff, #eff6fb, #e52207, #e66f0e, #ffbe2e, #fee685, #538200, #009ec1, #676cc8, #8168b3, #d72d79, #adadad, #454545, #dbf6ed, #92d9bb, #0ceda6, #146947, #ddaa01, #e6c74c, #f5e6af, #f8e1de, #d83933, #6f3331, #faf3d1, #e5a000, #c2850c, #ecf3ec, #4d8055, #154c21, #e7f6f8, #0081a1, #9c3d10, #332d29, #ccc, #f3f4ee, #232323, hsla(0,0%,69%,.5), rgba(0,0,0,.125), #828388, hsla(200,5%,88%,.5), #919191, #565c65, rgba(0,0,0,.12), rgba(0,0,0,.5), #8d9297, hsla(44,96%,89%,.7), #71767a, rgba(27,27,27,.75), rgba(22,46,81,.7), #333, #e5e9ee, #d3d6d7, #fff4f4, #a6a6a6, #f2f1eb, #f6f6f3, #e7e7df, hsla(0,0%,100%,0.6), #1a1a1a, #f9f8f6, #fcfcfa, #e9e9dd, hsla(0,0%,0%,0.125), #dfdfd9, hsla(0,0%,0%,0.2), #bfbfba, hsla(0,0%,0%,0.5), #1e5c90, #0071b8, #007bc6, #2369a6, #0c97ed, #1f86c7, hsla(203,10%,10%,0.25), #144b78, #08639b, white</p>
+<ul>
+<li>Font families: 9 unique</li>
+</ul>
+<p>  - Open Sans, Open Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol, Roboto Mono Web, Merriweather Web, monospace,monospace, Merriweather Web,Georgia,Cambria,Times New Roman,Times,serif, Roboto Mono Web,Bitstream Vera Sans Mono,Consolas,Courier,monospace, Lucida Grande,Lucida Sans Unicode,liberation sans,sans-serif, Source Sans Pro,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif</p>
+<ul>
+<li>Font sizes: 54 unique</li>
+</ul>
+<p>  - .89rem, 1.01rem, .95rem, 1.27rem, 2.03rem, 2.54rem, 52px, 3.25rem, 1.52rem, 1.77rem, .76rem, 100%, 2em, 1em, 80%, 75%, .82rem, 1.39rem, 1.34rem, .98rem, .77rem, .83rem, 1.31rem, 1.91rem, 2.38rem, 2.86rem, 1.08rem, 3.04rem, .79rem, .85rem, .91rem, 1.04rem, 1.95rem, 2.44rem, 2.93rem, .75rem, 17px, 1.0625rem, 15px, .9375rem, 1px, 60px, 3.75rem, 30px, 1.875rem, 14px, .875rem, .9rem, 2.28rem, 1.25rem, 8.25pt, 16.5pt, 13.5pt, 10.5pt</p>
+<ul>
+<li>Z-index values: 18 unique</li>
+</ul>
+<p>  - 0, 1, 2, 3, 100, 200, 300, 400, 499, 500, 501, 600, 1000, 1260, 3000, 99999, 100000, -100</p>
+<h3>https://nsf.gov/sites/default/files/css/css_iIKCG4uIt3_3zbcFXo8iJtvu-ccAdfdjNUqVxUWP8uY.css?delta=0&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9juuOAyEIhV_IyyNNUJkZtwpGcNq-_dpus3-amBByAh-HAykpAz09fITbO5OayKVAkxwKx5uP3NG82lS1MSGpOJJ90xMrWgsFu66A0BFS7KMGWWEpXzlhXyEHXzYA0Zo657uSCW3BfRms8MGrfeuZ1E6r24rqqKOTVZ7VVqDCYbNi_WNSHw2Kgx94mH_IK494Np5_xQjHDGWrmDJsrxTiv0fufWfkKdPZBxA0Q-5JPv7myngX_-6uchoFfwEDWcGk</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 95/100 ✅</li>
+<li>Maintainability: 98/100 ✅</li>
+<li>Complexity: 97/100 ✅</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 3</li>
+<li><code>TooMuchEmbeddedContent</code>: score impact 2</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 2</li>
+<li><code>MaxSelectorComplexity</code>: score impact 2</li>
+<li><code>AverageSelectorComplexity</code>: score impact 1</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 356</li>
+<li>Stylesheet complexity: 1000</li>
+<li>Total rules: 105</li>
+<li>Total selectors: 122</li>
+<li>Total declarations: 231</li>
+<li><code>!important</code> declarations: 2</li>
+<li>Max selector specificity: 0,3,2</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Colors: 10 unique</li>
+</ul>
+<p>  - #fff, #000, #555, transparent, #232323, rgba(0,0,0,0.063), #ccc, #0071b3, #018fe2, #727272</p>
+<ul>
+<li>Font sizes: 3 unique</li>
+</ul>
+<p>  - 0.875em, 16px, 32px</p>
+<ul>
+<li>Z-index values: 1 unique</li>
+</ul>
+<p>  - 1261</p>
+<h3>https://nsf.gov/sites/default/files/css/css_v9mHPKF95W0AgbqCfAP__i7iwmySUzagYLE33EQ9AIM.css?delta=1&amp;amp;language=en&amp;amp;theme=nsf_theme&amp;amp;include=eJx9juuOAyEIhV_IyyNNUJkZtwpGcNq-_dpus3-amBByAh-HAykpAz09fITbO5OayKVAkxwKx5uP3NG82lS1MSGpOJJ90xMrWgsFu66A0BFS7KMGWWEpXzlhXyEHXzYA0Zo657uSCW3BfRms8MGrfeuZ1E6r24rqqKOTVZ7VVqDCYbNi_WNSHw2Kgx94mH_IK494Np5_xQjHDGWrmDJsrxTiv0fufWfkKdPZBxA0Q-5JPv7myngX_-6uchoFfwEDWcGk</h3>
+<p><strong>Code Quality Scores</strong></p>
+<ul>
+<li>Performance: 68/100 ❌</li>
+<li>Maintainability: 32/100 ❌</li>
+<li>Complexity: 70/100 ⚠️</li>
+</ul>
+<p><strong>Quality Violations</strong></p>
+<ul>
+<li><code>DeclarationDuplications</code>: score impact 7</li>
+<li><code>CssSize</code>: score impact 5</li>
+<li><code>TooMuchEmbeddedContent</code>: score impact 20</li>
+<li><code>SourceLinesOfCode</code>: score impact 15</li>
+<li><code>MaxSelectorsPerRule</code>: score impact 15</li>
+<li><code>MaxDeclarationsPerRule</code>: score impact 8</li>
+<li><code>MoreThanMostCommonSelectorsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonDeclarationsPerRule</code>: score impact 15</li>
+<li><code>MoreThanMostCommonSelectorComplexity</code>: score impact 10</li>
+<li><code>MoreThanMostCommonSelectorSpecificity</code>: score impact 10</li>
+<li><code>MaxSelectorComplexity</code>: score impact 5</li>
+<li><code>AverageSelectorComplexity</code>: score impact 5</li>
+</ul>
+<p><strong>Complexity Metrics</strong></p>
+<ul>
+<li>Source lines of code: 30058</li>
+<li>Stylesheet complexity: 106279</li>
+<li>Total rules: 7921</li>
+<li>Total selectors: 15085</li>
+<li>Total declarations: 14317</li>
+<li><code>!important</code> declarations: 45</li>
+<li>Max selector specificity: 2,1,0</li>
+</ul>
+<p><strong>Design Tokens</strong></p>
+<ul>
+<li>Custom properties (CSS variables): 3 unique</li>
+</ul>
+<p>  - --gap, --line-offset, --line-thickness</p>
+<ul>
+<li>Colors: 130 unique</li>
+</ul>
+<p>  - currentcolor, #f7f9fa, #dfe1e2, #1c1d1f, #ecf3ec, #00a91c, transparent, #0076d6, #005ea2, #faf3d1, #ffbe2e, #f8e1de, #d83933, #e7f6f8, #00bde3, #9c3d10, #fff, #f1f3f6, #1a4480, #162e51, #b50909, #e5a000, #4d8055, #1b1b1b, #2491ff, #edeff0, #73b3e7, #aacdec, rgba(0,0,0,.25), #757575, buttontext, #a9aeb1, graytext, #000, #97d4ea, #e1f3f8, #c3ebfa, canvastext, linktext, #c9c9c9, #28a0cb, #07648d, #c9ab48, #a88f48, #947100, #3d4551, #04c585, #00a871, #008659, rgba(0,0,0,.1), #d3d3d3, rgba(0,0,0,.7), rgba(0,118,214,.1), #e6e6e6, selecteditem, #c6cace, #f0f0f0, highlight, #5d5d52, #f9f9f9, activetext, #cfe8ff, #eff6fb, #e52207, #e66f0e, #fee685, #538200, #009ec1, #676cc8, #8168b3, #d72d79, #adadad, #454545, #dbf6ed, #92d9bb, #0ceda6, #146947, #ddaa01, #e6c74c, #f5e6af, #6f3331, #c2850c, #154c21, #0081a1, #332d29, #ccc, #f3f4ee, #232323, hsla(0,0%,69%,.5), rgba(0,0,0,.125), #828388, hsla(200,5%,88%,.5), #919191, #565c65, rgba(0,0,0,.12), rgba(0,0,0,.4), rgba(0,0,0,.5), #8d9297, hsla(44,96%,89%,.7), #71767a, rgba(27,27,27,.75), rgba(22,46,81,.7), #333, #e5e9ee, #d3d6d7, #fff4f4, #a6a6a6, #f2f1eb, #f6f6f3, #e7e7df, hsla(0,0%,100%,0.6), #1a1a1a, #f9f8f6, #fcfcfa, #e9e9dd, hsla(0,0%,0%,0.125), #dfdfd9, hsla(0,0%,0%,0.2), #bfbfba, hsla(0,0%,0%,0.5), #1e5c90, #0071b8, #007bc6, #2369a6, #0c97ed, #1f86c7, hsla(203,10%,10%,0.25), #144b78, #08639b, white</p>
+<ul>
+<li>Font families: 9 unique</li>
+</ul>
+<p>  - Roboto Mono Web, Merriweather Web, Open Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol, Open Sans, monospace,monospace, Merriweather Web,Georgia,Cambria,Times New Roman,Times,serif, Roboto Mono Web,Bitstream Vera Sans Mono,Consolas,Courier,monospace, Lucida Grande,Lucida Sans Unicode,liberation sans,sans-serif, Source Sans Pro,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif</p>
+<ul>
+<li>Font sizes: 55 unique</li>
+</ul>
+<p>  - 1.01rem, 1.39rem, 1.22rem, .89rem, .95rem, 2.03rem, 2.54rem, 52px, 3.25rem, 1.52rem, 1.77rem, 1.27rem, .76rem, 100%, 2em, 1em, 80%, 75%, .82rem, 1.34rem, .98rem, .77rem, .83rem, 1.31rem, 1.91rem, 2.38rem, 2.86rem, 1.08rem, 3.04rem, .79rem, .85rem, .91rem, 1.04rem, 1.95rem, 2.44rem, 2.93rem, .75rem, 17px, 1.0625rem, 15px, .9375rem, 1px, 60px, 3.75rem, 30px, 1.875rem, 14px, .875rem, .9rem, 2.28rem, 1.25rem, 8.25pt, 16.5pt, 13.5pt, 10.5pt</p>
+<ul>
+<li>Z-index values: 18 unique</li>
+</ul>
+<p>  - 0, 1, 2, 3, 100, 200, 300, 400, 499, 500, 501, 600, 1000, 1260, 3000, 99999, 100000, -100</p></div>
+</main>
+</body>
+</html>

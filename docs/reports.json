@@ -1,5 +1,16 @@
 [
   {
+    "issueNumber": 42,
+    "issueTitle": "SCAN: NSF.gov",
+    "issueUrl": "https://github.com/mgifford/open-site-review/issues/42",
+    "runUrl": "https://github.com/mgifford/open-site-review/actions/runs/26972304113",
+    "createdAt": "2026-06-04T18:45:47.269Z",
+    "reportPath": "reports/issue-42-20260604T184547Z.md",
+    "filesScanned": 145,
+    "findingsCount": 79,
+    "sourceErrorsCount": 14
+  },
+  {
     "issueNumber": 37,
     "issueTitle": "SCAN: oregon.gov",
     "issueUrl": "https://github.com/mgifford/open-site-review/issues/37",
